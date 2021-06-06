@@ -40,10 +40,9 @@ class Shader {
   Shader();
   ~Shader();
 
-  void compileShader(const char *fileName);
-  void compileShader(const char *fileName, GLSLShader::Type type);
-  void compileShader(const std::string &source, 
-      GLSLShader::Type type, const char *fileName = NULL);
+  void compileShader(const std::string& fileName);
+  void compileShader(const std::string& fileName, GLSLShader::Type type);
+  void compileSource(const std::string &source, GLSLShader::Type type);
 
   void link();
   void validate();
@@ -80,7 +79,7 @@ class Shader {
 
   GLint getUniformLocation(const char *name);
   bool fileExists(const std::string &fileName);
-  std::string getExtension(const char *fileName);
+  std::string getExtension(const std::string& fileName);
 
   // Make these private in order to make the object non-copyable
   Shader(const Shader &other) {}

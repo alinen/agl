@@ -55,7 +55,7 @@ Shader::~Shader() {
   delete[] shaderNames;
 }
 
-void Shader::compileShader(const char *fileName) {
+void Shader::compileShader(const std::string& fileName) {
 
   int extSize = sizeof(GLSLShaderInfo::ShaderFileExtension);
   int numExts = sizeof(GLSLShaderInfo::extensions) / extSize;
@@ -82,9 +82,7 @@ void Shader::compileShader(const char *fileName) {
   compileShader(fileName, type);
 }
 
-string Shader::getExtension(const char *name) {
-  string nameStr(name);
-
+string Shader::getExtension(const std::string& nameStr) {
   size_t loc = nameStr.find_last_of('.');
   if (loc != string::npos) {
      return nameStr.substr(loc, string::npos);
@@ -92,7 +90,7 @@ string Shader::getExtension(const char *name) {
   return "";
 }
 
-void Shader::compileShader(const char *fileName, GLSLShader::Type type) {
+void Shader::compileShader(const std::string& fileName, GLSLShader::Type type) {
 
   if (!fileExists(fileName)) {
     string message = string("Shader: ") + fileName + " not found.";
@@ -117,56 +115,50 @@ void Shader::compileShader(const char *fileName, GLSLShader::Type type) {
   code << inFile.rdbuf();
   inFile.close();
 
-  compileShader(code.str(), type, fileName);
+  compileSource(code.str(), type);
 }
 
-void Shader::compileShader(const string &source,
-    GLSLShader::Type type, const char *fileName) {
+void Shader::compileSource(const string &source, GLSLShader::Type type) {
 
   if (handle <= 0) {
-        handle = glCreateProgram();
-        if (handle == 0) {
-            throw GLSLProgramException("Unable to create shader program.");
-        }
+    handle = glCreateProgram();
+    if (handle == 0) {
+       throw GLSLProgramException("Unable to create shader program.");
     }
+  }
 
-    GLuint shaderHandle = glCreateShader(type);
+  GLuint shaderHandle = glCreateShader(type);
 
-   const char *c_code = source.c_str();
-   glShaderSource(shaderHandle, 1, &c_code, NULL);
+  const char *c_code = source.c_str();
+  glShaderSource(shaderHandle, 1, &c_code, NULL);
 
-   // Compile the shader
-   glCompileShader(shaderHandle);
+  // Compile the shader
+  glCompileShader(shaderHandle);
 
-   // Check for errors
-   int result;
-   glGetShaderiv(shaderHandle, GL_COMPILE_STATUS, &result);
-   if (GL_FALSE == result) {
-      // Compile failed, get log
-      int length = 0;
-      string logString;
-      glGetShaderiv(shaderHandle, GL_INFO_LOG_LENGTH, &length);
-      if (length > 0) {
-        char *c_log = new char[length];
-        int written = 0;
-        glGetShaderInfoLog(shaderHandle, length, &written, c_log);
-        logString = c_log;
-        delete[] c_log;
-      }
-      string msg;
-      if (fileName) {
-        msg = string(fileName) + ": shader compliation failed\n";
-      } else {
-        msg = "Shader compilation failed.\n";
-      }
-      msg += logString;
+  // Check for errors
+  int result;
+  glGetShaderiv(shaderHandle, GL_COMPILE_STATUS, &result);
+  if (GL_FALSE == result) {
+    // Compile failed, get log
+    int length = 0;
+    string logString;
+    glGetShaderiv(shaderHandle, GL_INFO_LOG_LENGTH, &length);
+    if (length > 0) {
+      char *c_log = new char[length];
+      int written = 0;
+      glGetShaderInfoLog(shaderHandle, length, &written, c_log);
+      logString = c_log;
+      delete[] c_log;
+    }
+    string msg;
+    msg = "Shader compilation failed.\n";
+    msg += logString;
+    throw GLSLProgramException(msg);
 
-      throw GLSLProgramException(msg);
-
-   } else {
-      // Compile succeeded, attach shader
-      glAttachShader(handle, shaderHandle);
-   }
+  } else {
+    // Compile succeeded, attach shader
+    glAttachShader(handle, shaderHandle);
+  }
 }
 
 void Shader::link() {

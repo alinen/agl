@@ -15,19 +15,6 @@ using glm::mat3;
 using std::string;
 using std::vector;
 
-static void PrintShaderErrors(GLuint id, const std::string label) {
-  std::cerr << label << " failed\n";
-  GLint logLen;
-  glGetShaderiv(id, GL_INFO_LOG_LENGTH, &logLen);
-  if (logLen > 0) {
-    char* log = static_cast<char*>(malloc(logLen));
-    GLsizei written;
-    glGetShaderInfoLog(id, logLen, &written, log);
-    std::cerr << "Shader log: " << log << std::endl;
-    free(log);
-  }
-}
-
 Renderer::Renderer() {
   mSkybox = 0;
   _initialized = false;
@@ -40,6 +27,10 @@ Renderer::~Renderer() {
 void Renderer::cleanup() {
   delete mSkybox;
   mSkybox = 0;
+  for (auto it : _shaders) {
+    delete it.second; 
+  }
+  _shaders.clear();
   _initialized = false;
 }
 
@@ -79,21 +70,22 @@ void Renderer::initCubemap() {
     "../textures/sky/front.png",
   };
   mCubemap = loadCubemap(faces);
-  mCMShaderId = loadShader("../shaders/cubemap.vs", "../shaders/cubemap.fs");
+  loadShader("cubemap", "../shaders/cubemap.vs", "../shaders/cubemap.fs");
 }
 
 void Renderer::initMesh() {
-  mMShaderId = loadShader("../shaders/phong.vs", "../shaders/phong.fs");
+  loadShader("phong", "../shaders/phong.vs", "../shaders/phong.fs");
 
-  glUseProgram(mMShaderId);
-  glUniform1f(glGetUniformLocation(mMShaderId, "uGamma"), 0.8f);
-  glUniform3f(glGetUniformLocation(mMShaderId, "uMaterial.Ks"), 1.0, 1.0, 1.0);
-  glUniform3f(glGetUniformLocation(mMShaderId, "uMaterial.Kd"), 0.4, 0.6, 1.0);
-  glUniform3f(glGetUniformLocation(mMShaderId, "uMaterial.Ka"), 0.1, 0.1, 0.1);
-  glUniform1f(glGetUniformLocation(mMShaderId, "uMaterial.shininess"), 80.0);
-  glUniform4f(glGetUniformLocation(mMShaderId, "uLight.position"),
-      100.0, 100.0, 100.0, 1.0);
-  glUniform3f(glGetUniformLocation(mMShaderId, "uLight.color"), 1.0, 1.0, 1.0);
+  // Set default parameters
+  beginShader("phong");
+  setUniform("uGamma", 0.8f);
+  setUniform("uMaterial.Ks", 1.0f, 1.0f, 1.0f);
+  setUniform("uMaterial.Kd", 0.4f, 0.6f, 1.0f);
+  setUniform("uMaterial.Ka", 0.1f, 0.1f, 0.1f);
+  setUniform("uMaterial.shininess", 80.0f);
+  setUniform("uLight.position", 100.0f, 100.0f, 100.0f, 1.0f);
+  setUniform("uLight.color", 1.0f, 1.0f, 1.0f);
+  endShader();
 }
 
 void Renderer::initBillboards() {
@@ -118,7 +110,7 @@ void Renderer::initBillboards() {
   glBindBuffer(GL_ARRAY_BUFFER, mBBVboPosId);  // bind before setting data
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, static_cast<GLubyte*>(0));
 
-  mBBShaderId = loadShader(
+  loadShader("billboard", 
       "../shaders/billboard.vs",
       "../shaders/billboard.fs");
 }
@@ -155,18 +147,15 @@ void Renderer::lookAt(const vec3& lookfrom, const vec3& lookat) {
 void Renderer::begin(GLuint texIf, BlendMode mode) {
   assert(_initialized);
 
-  glUseProgram(mBBShaderId);
   blendMode(mode);
+  beginShader("billboard");
 
   mat4 mvp = mProjectionMatrix * mViewMatrix;
-  glUniformMatrix4fv(glGetUniformLocation(mBBShaderId, "uVP"),
-      1, GL_FALSE, &mvp[0][0]);
-  glUniform3f(glGetUniformLocation(mBBShaderId, "uCameraPos"),
-      mLookfrom[0], mLookfrom[1], mLookfrom[2]);
+  setUniform("uVP", mvp); 
+  setUniform("uCameraPos", mLookfrom);
 
   glBindTexture(GL_TEXTURE_2D, texIf);
-  GLuint locId = glGetUniformLocation(mBBShaderId, "image");
-  glUniform1i(locId, 0);
+  setUniform("image", 0);
 
   glBindVertexArray(mBBVaoId);
   glEnableVertexAttribArray(0);  // 0 -> Send VertexPositions to array #0
@@ -174,54 +163,118 @@ void Renderer::begin(GLuint texIf, BlendMode mode) {
 
 void Renderer::quad(const glm::vec3& pos, const glm::vec4& color, float size) {
   assert(_initialized);
-  glUniform3f(glGetUniformLocation(mBBShaderId, "uOffset"),
-      pos[0], pos[1], pos[2]);
-  glUniform4f(glGetUniformLocation(mBBShaderId, "uColor"),
-      color[0], color[1], color[2], color[3]);
-  glUniform1f(glGetUniformLocation(mBBShaderId, "uSize"), size);
+
+  setUniform("uOffset", pos);
+  setUniform("uColor", color);
+  setUniform("uSize", size);
 
   glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
 void Renderer::end() {
   assert(_initialized);
-  glUseProgram(0);
+  endShader();
 }
 
 void Renderer::skybox() {
   assert(_initialized);
   blendMode(DEFAULT);
-  glUseProgram(mCMShaderId);
+  beginShader("cubemap");
 
   glBindTexture(GL_TEXTURE_CUBE_MAP, mCubemap);
-  GLuint locId = glGetUniformLocation(mCMShaderId, "cubemap");
-  glUniform1i(locId, 1);
+  setUniform("cubemap", 1);
 
   mat4 mvp = mProjectionMatrix * mViewMatrix;
-  glUniformMatrix4fv(glGetUniformLocation(mCMShaderId, "uVP"),
-      1, GL_FALSE, &mvp[0][0]);
+  setUniform("uVP", mvp);
 
   mSkybox->render();
+  endShader();
 }
 
 void Renderer::mesh(const mat4& trs, const TriangleMesh& mesh) {
   assert(_initialized);
+
   blendMode(DEFAULT);
-  glUseProgram(mMShaderId);
+  beginShader("phong");
 
   // GLuint timeParamId = glGetUniformLocation(mMShaderId, "time");
-  GLuint mvpId = glGetUniformLocation(mMShaderId, "uMVP");
-  GLuint mvId = glGetUniformLocation(mMShaderId, "uMV");
-  GLuint nmvId = glGetUniformLocation(mMShaderId, "uNMV");
-
   mat4 mv = mViewMatrix * trs;
   mat4 mvp = mProjectionMatrix * mv;
   mat3 nmv = mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2]));
-  glUniformMatrix3fv(nmvId, 1, GL_FALSE, &nmv[0][0]);
-  glUniformMatrix4fv(mvId, 1, GL_FALSE, &mv[0][0]);
-  glUniformMatrix4fv(mvpId, 1, GL_FALSE, &mvp[0][0]);
+  setUniform("uMVP", mvp);  
+  setUniform("uMV", mv); 
+  setUniform("uNMV", nmv); 
 
   mesh.render();
+  endShader();
+}
+
+void Renderer::beginShader(const std::string& shaderName) {
+  assert(_shaders.count(shaderName) != 0);
+
+  _currentShader = _shaders[shaderName];
+  _currentShader->use(); 
+}
+
+void Renderer::endShader() {
+  glUseProgram(0);
+  _currentShader = nullptr;
+}
+
+void Renderer::setUniform(const char *name, float x, float y, float z) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name, x, y, z);
+}
+
+void Renderer::setUniform(const char *name, 
+    float x, float y, float z, float w) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name, glm::vec4(x, y, z, w));
+}
+
+void Renderer::setUniform(const char *name, const glm::vec2 &v) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name, v);
+}
+
+void Renderer::setUniform(const char *name, const glm::vec3 &v) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name, v);
+}
+
+void Renderer::setUniform(const char *name, const glm::vec4 &v) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name, v);
+}
+
+void Renderer::setUniform(const char *name, const glm::mat4 &m) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name, m);
+}
+
+void Renderer::setUniform(const char *name, const glm::mat3 &m) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name, m);
+}
+
+void Renderer::setUniform(const char *name, float val) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name, val);
+}
+
+void Renderer::setUniform(const char *name, int val) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name, val);
+}
+
+void Renderer::setUniform(const char *name, bool val) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name, val);
+}
+
+void Renderer::setUniform(const char *name, GLuint val) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name, val);
 }
 
 GLuint Renderer::loadCubemap(const vector<string>& cubeFaces) {
@@ -281,56 +334,16 @@ GLuint Renderer::loadTexture(const std::string& filename) {
   return texId;
 }
 
-std::string Renderer::loadShaderFromFile(const std::string& fileName) {
-  std::ifstream file(fileName);
-  if (!file) {
-    std::cout << "Cannot load file: " << fileName << std::endl;
-    return "";
-  }
+void Renderer::loadShader(const std::string& name, 
+    const std::string& vs, const std::string& fs) {
 
-  std::stringstream code;
-  code << file.rdbuf();
-  file.close();
+  Shader* shader = new Shader();
+  shader->compileShader(vs);
+  shader->compileShader(fs);
+  shader->link(); 
 
-  return code.str();
+  _shaders[name] = shader;
 }
 
-GLuint Renderer::loadShader(
-    const std::string& vertex, const std::string& fragment) {
-
-  GLint result;
-  std::string vertexShader = loadShaderFromFile(vertex);
-  const char* vertexShaderRaw = vertexShader.c_str();
-  GLuint vshaderId = glCreateShader(GL_VERTEX_SHADER);
-  glShaderSource(vshaderId, 1, &vertexShaderRaw, NULL);
-  glCompileShader(vshaderId);
-  glGetShaderiv(vshaderId, GL_COMPILE_STATUS, &result);
-  if (result == GL_FALSE) {
-    PrintShaderErrors(vshaderId, "Vertex shader: "+vertex);
-    return -1;
-  }
-
-  std::string fragmentShader = loadShaderFromFile(fragment);
-  const char* fragmentShaderRaw = fragmentShader.c_str();
-  GLuint fshaderId = glCreateShader(GL_FRAGMENT_SHADER);
-  glShaderSource(fshaderId, 1, &fragmentShaderRaw, NULL);
-  glCompileShader(fshaderId);
-  glGetShaderiv(fshaderId, GL_COMPILE_STATUS, &result);
-  if (result == GL_FALSE) {
-    PrintShaderErrors(fshaderId, "Fragment shader: "+fragment);
-    return -1;
-  }
-
-  GLuint shaderId = glCreateProgram();
-  glAttachShader(shaderId, vshaderId);
-  glAttachShader(shaderId, fshaderId);
-  glLinkProgram(shaderId);
-  glGetShaderiv(shaderId, GL_LINK_STATUS, &result);
-  if (result == GL_FALSE) {
-    PrintShaderErrors(shaderId, "Shader link");
-    return -1;
-  }
-  return shaderId;
-}
 }  // namespace agl
 
