@@ -1,16 +1,18 @@
-#ifndef SKYBOX_H
-#define SKYBOX_H
+// Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf)
 
-class SkyBox 
-{
-private:
-    unsigned int vaoHandle;
+#ifndef AGL_SKYBOX_H_
+#define AGL_SKYBOX_H_
 
-public:
-    SkyBox(int size);
+namespace agl {
 
-    void render() const;
+class SkyBox {
+ public:
+  explicit SkyBox(int size);
+  void render() const;
+
+ private:
+  unsigned int vaoHandle;
 };
 
-
-#endif // SKYBOX_H
+}  // namespace agl
+#endif  // AGL_SKYBOX_H_

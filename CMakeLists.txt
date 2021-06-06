@@ -45,7 +45,7 @@ elseif (APPLE)
     external/include
     /usr/local/include)
 
-  set(CORE ${GLFW} ${GL_LIB})
+  set(CORE agl ${GLFW} ${GL_LIB})
 
 elseif (UNIX)
 
@@ -72,22 +72,7 @@ endif()
 
 include_directories(${INCLUDE_DIRS})
 link_directories(${LIBRARY_DIRS})
-
-set(SOURCES 
-    agl/AGL.h
-    agl/AGLM.h
-    agl/AGLM.cpp
-    agl/image.h
-    agl/image.cpp
-    agl/renderer.h
-    agl/renderer.cpp
-    agl/triangleMesh.h
-    agl/triangleMesh.cpp
-    agl/mesh.h
-    agl/mesh.cpp
-    agl/skybox.h
-    agl/skybox.cpp
-    )
+add_subdirectory(agl)
 
 set(SHADERS
     shaders/cubemap.vs
@@ -97,5 +82,6 @@ set(SHADERS
     shaders/billboard.fs
     shaders/billboard.vs)
 
-add_executable(demo examples/simple-mesh/main.cpp ${SOURCES} ${SHADERS})
+add_executable(demo examples/hello-agl/main.cpp ${SHADERS})
 target_link_libraries(demo ${CORE})
+

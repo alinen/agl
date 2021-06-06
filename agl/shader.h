@@ -1,5 +1,7 @@
-// From OpenGL 4.0 Shading language cookbook (David Wolf 2011)
-#pragma once
+// Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf)
+
+#ifndef AGL_SHADER_H_
+#define AGL_SHADER_H_
 
 #ifdef WIN32
 #pragma warning( disable : 4290 )
@@ -21,7 +23,6 @@ public:
             std::runtime_error(msg) {}
 };
 
-namespace GLSLShader {
     enum GLSLShaderType {
         VERTEX = GL_VERTEX_SHADER,
         FRAGMENT = GL_FRAGMENT_SHADER,
@@ -30,7 +31,6 @@ namespace GLSLShader {
         TESS_EVALUATION = GL_TESS_EVALUATION_SHADER,
         COMPUTE = GL_COMPUTE_SHADER
     };
-};
 
 class Shader {
 private:
@@ -99,3 +99,5 @@ public:
 
     const char *getTypeString(GLenum type);
 };
+
+#endif  // AGL_SHADER_H_

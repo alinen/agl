@@ -1,21 +1,12 @@
+#file(GLOB SRC "*.h" "*.cpp") 
 set(SRC 
-   AFramework.cpp  
-   ARenderer.cpp  
-   ASphere.cpp
-   ACapsule.cpp
-   ATriangleMesh.cpp
-   ATorus.cpp
-   ATeapot.cpp
-   ACube.cpp
-   APlane.cpp
-   APyramid.cpp
-   ACylinder.cpp
-   ALinesMesh.cpp
-   AGLSLProgram.cpp
-   ACamera.cpp	  
-   AImage.cpp	  
-   ATexture.cpp	  
-   ASkeletonDrawer.cpp	  
-   )
-
-add_library(g3d STATIC ${SRC})
+  window.cpp
+  renderer.cpp
+  sphere.cpp
+  skybox.cpp
+  image.cpp
+  mesh.cpp
+  aglm.cpp
+  triangle_mesh.cpp
+  )
+add_library(agl STATIC ${SRC})
