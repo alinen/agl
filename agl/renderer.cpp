@@ -151,8 +151,8 @@ void Renderer::begin(GLuint texIf, BlendMode mode) {
   beginShader("billboard");
 
   mat4 mvp = mProjectionMatrix * mViewMatrix;
-  setUniform("uVP", mvp); 
-  setUniform("uCameraPos", mLookfrom);
+  setUniform("MVP", mvp); 
+  setUniform("CameraPos", mLookfrom);
 
   glBindTexture(GL_TEXTURE_2D, texIf);
   setUniform("image", 0);
@@ -164,9 +164,9 @@ void Renderer::begin(GLuint texIf, BlendMode mode) {
 void Renderer::quad(const glm::vec3& pos, const glm::vec4& color, float size) {
   assert(_initialized);
 
-  setUniform("uOffset", pos);
-  setUniform("uColor", color);
-  setUniform("uSize", size);
+  setUniform("Offset", pos);
+  setUniform("Color", color);
+  setUniform("Size", size);
 
   glDrawArrays(GL_TRIANGLES, 0, 6);
 }
@@ -198,12 +198,13 @@ void Renderer::mesh(const mat4& trs, const TriangleMesh& mesh) {
   beginShader("phong");
 
   // GLuint timeParamId = glGetUniformLocation(mMShaderId, "time");
+
   mat4 mv = mViewMatrix * trs;
   mat4 mvp = mProjectionMatrix * mv;
   mat3 nmv = mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2]));
-  setUniform("uMVP", mvp);  
-  setUniform("uMV", mv); 
-  setUniform("uNMV", nmv); 
+  setUniform("MVP", mvp);  
+  setUniform("ModelViewMatrix", mv); 
+  setUniform("NormalMatrix", nmv); 
 
   mesh.render();
   endShader();
@@ -338,9 +339,15 @@ void Renderer::loadShader(const std::string& name,
     const std::string& vs, const std::string& fs) {
 
   Shader* shader = new Shader();
+
+  std::cout << "Compiling: " << vs << std::endl;
   shader->compileShader(vs);
+
+  std::cout << "Compiling: " << fs << std::endl;
   shader->compileShader(fs);
+
   shader->link(); 
+  std::cout << "Loaded shader: " << name << std::endl;
 
   _shaders[name] = shader;
 }

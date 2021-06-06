@@ -18,16 +18,14 @@ enum BlendMode {DEFAULT, ADD, ALPHA};
 class Renderer {
  public:
   Renderer();
+  ~Renderer();
+
   void init();
   void cleanup();
   bool initialized() const;
 
-  ~Renderer();
-
   GLuint loadTexture(const std::string& imageName);
   GLuint loadCubemap(const std::vector<std::string>& imageNames);
-  void loadShader(const std::string& name, 
-      const std::string& vs, const std::string& fs);
 
   virtual void perspective(float fovRadians,
       float aspect, float near, float far);
@@ -36,6 +34,9 @@ class Renderer {
   virtual void lookAt(const glm::vec3& lookfrom, const glm::vec3& lookat);
 
   glm::vec3 cameraPosition() const;
+
+  void loadShader(const std::string& name, 
+      const std::string& vs, const std::string& fs);
 
   void beginShader(const std::string& shaderName); 
   void endShader();
@@ -55,7 +56,7 @@ class Renderer {
   // virtual void texture(GLuint textureId);  // NEW
   // virtual void color(const vec4& color);  // NEW
 
-  // draw many sprites
+  // draw sprites
   void begin(GLuint textureId, BlendMode mode);
   void quad(const glm::vec3& pos, const glm::vec4& color, float size);
   void end();  // reset draw state
