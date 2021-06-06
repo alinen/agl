@@ -50,7 +50,7 @@ void Renderer::init() {
   // setup default camera and projection
   float halfw = 1.0;
   float halfh = 1.0;
-  ortho(-halfw, halfw, -halfh, halfh, -2.0f, 2.0f);
+  ortho(-halfw, halfw, -halfh, halfh, -10.0f, 10.0f);
   lookAt(vec3(0, 0, 2), vec3(0, 0, 0));
 
   initBillboards();
