@@ -48,7 +48,7 @@ void main()
 {
    vec3 color = phongModel(position.xyz, normal);
    color = pow(color, vec3(uGamma));
-
    FragColor = vec4(color, 1.0);
+   //FragColor = vec4(1, 0, 0, 1);
 }
 
