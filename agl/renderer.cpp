@@ -3,7 +3,9 @@
 #include "agl/renderer.h"
 #include <fstream>
 #include <sstream>
+#include "agl/image.h"
 #include "agl/sphere.h"
+#include "agl/skybox.h"
 
 namespace agl {
 using glm::vec3;
@@ -28,7 +30,7 @@ static void PrintShaderErrors(GLuint id, const std::string label) {
 
 Renderer::Renderer() {
   mSkybox = 0;
-  initialized_ = false;
+  _initialized = false;
 }
 
 Renderer::~Renderer() {
@@ -38,11 +40,11 @@ Renderer::~Renderer() {
 void Renderer::cleanup() {
   delete mSkybox;
   mSkybox = 0;
-  initialized_ = false;
+  _initialized = false;
 }
 
 bool Renderer::initialized() const {
-  return initialized_;
+  return _initialized;
 }
 
 
@@ -54,6 +56,7 @@ void Renderer::init() {
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
 
+  // setup default camera and projection
   float halfw = 1.0;
   float halfh = 1.0;
   ortho(-halfw, halfw, -halfh, halfh, -2.0f, 2.0f);
@@ -62,7 +65,7 @@ void Renderer::init() {
   initBillboards();
   initCubemap();
   initMesh();
-  initialized_ = true;
+  _initialized = true;
 }
 
 void Renderer::initCubemap() {
@@ -81,6 +84,16 @@ void Renderer::initCubemap() {
 
 void Renderer::initMesh() {
   mMShaderId = loadShader("../shaders/phong.vs", "../shaders/phong.fs");
+
+  glUseProgram(mMShaderId);
+  glUniform1f(glGetUniformLocation(mMShaderId, "uGamma"), 0.8f);
+  glUniform3f(glGetUniformLocation(mMShaderId, "uMaterial.Ks"), 1.0, 1.0, 1.0);
+  glUniform3f(glGetUniformLocation(mMShaderId, "uMaterial.Kd"), 0.4, 0.6, 1.0);
+  glUniform3f(glGetUniformLocation(mMShaderId, "uMaterial.Ka"), 0.1, 0.1, 0.1);
+  glUniform1f(glGetUniformLocation(mMShaderId, "uMaterial.shininess"), 80.0);
+  glUniform4f(glGetUniformLocation(mMShaderId, "uLight.position"),
+      100.0, 100.0, 100.0, 1.0);
+  glUniform3f(glGetUniformLocation(mMShaderId, "uLight.color"), 1.0, 1.0, 1.0);
 }
 
 void Renderer::initBillboards() {
@@ -114,9 +127,11 @@ void Renderer::blendMode(BlendMode mode) {
   if (mode == ADD) {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);  // Additive blend
+
   } else if (mode == ALPHA) {
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  // Alpha blend
+
   } else {
     glDisable(GL_BLEND);
   }
@@ -138,7 +153,7 @@ void Renderer::lookAt(const vec3& lookfrom, const vec3& lookat) {
 }
 
 void Renderer::begin(GLuint texIf, BlendMode mode) {
-  assert(initialized_);
+  assert(_initialized);
 
   glUseProgram(mBBShaderId);
   blendMode(mode);
@@ -158,7 +173,7 @@ void Renderer::begin(GLuint texIf, BlendMode mode) {
 }
 
 void Renderer::quad(const glm::vec3& pos, const glm::vec4& color, float size) {
-  assert(initialized_);
+  assert(_initialized);
   glUniform3f(glGetUniformLocation(mBBShaderId, "uOffset"),
       pos[0], pos[1], pos[2]);
   glUniform4f(glGetUniformLocation(mBBShaderId, "uColor"),
@@ -169,12 +184,12 @@ void Renderer::quad(const glm::vec3& pos, const glm::vec4& color, float size) {
 }
 
 void Renderer::end() {
-  assert(initialized_);
+  assert(_initialized);
   glUseProgram(0);
 }
 
 void Renderer::skybox() {
-  assert(initialized_);
+  assert(_initialized);
   blendMode(DEFAULT);
   glUseProgram(mCMShaderId);
 
@@ -190,7 +205,7 @@ void Renderer::skybox() {
 }
 
 void Renderer::mesh(const mat4& trs, const TriangleMesh& mesh) {
-  assert(initialized_);
+  assert(_initialized);
   blendMode(DEFAULT);
   glUseProgram(mMShaderId);
 
@@ -198,15 +213,6 @@ void Renderer::mesh(const mat4& trs, const TriangleMesh& mesh) {
   GLuint mvpId = glGetUniformLocation(mMShaderId, "uMVP");
   GLuint mvId = glGetUniformLocation(mMShaderId, "uMV");
   GLuint nmvId = glGetUniformLocation(mMShaderId, "uNMV");
-
-  glUniform1f(glGetUniformLocation(mMShaderId, "uGamma"), 0.8f);
-  glUniform3f(glGetUniformLocation(mMShaderId, "uMaterial.Ks"), 1.0, 1.0, 1.0);
-  glUniform3f(glGetUniformLocation(mMShaderId, "uMaterial.Kd"), 0.4, 0.6, 1.0);
-  glUniform3f(glGetUniformLocation(mMShaderId, "uMaterial.Ka"), 0.1, 0.1, 0.1);
-  glUniform1f(glGetUniformLocation(mMShaderId, "uMaterial.shininess"), 80.0);
-  glUniform4f(glGetUniformLocation(mMShaderId, "uLight.position"),
-      100.0, 100.0, 100.0, 1.0);
-  glUniform3f(glGetUniformLocation(mMShaderId, "uLight.color"), 1.0, 1.0, 1.0);
 
   mat4 mv = mViewMatrix * trs;
   mat4 mvp = mProjectionMatrix * mv;

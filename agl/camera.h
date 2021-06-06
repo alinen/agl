@@ -3,7 +3,7 @@
 #ifndef AGL_CAMERA_H_
 #define AGL_CAMERA_H_
 
-#include "AGLM.h"
+#include "aglm.h"
 
 namespace agl {
 

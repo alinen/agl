@@ -5,11 +5,11 @@
 
 #include <vector>
 #include <string>
+#include <map>
 #include "agl/agl.h"
 #include "agl/aglm.h"
-#include "agl/image.h"
-#include "agl/skybox.h"
 #include "agl/triangle_mesh.h"
+#include "agl/shader.h"
 
 namespace agl {
 
@@ -57,7 +57,7 @@ class Renderer {
   virtual void end();  // reset draw state
 
   // draw a mesh
-  virtual void mesh(const glm::mat4& trs, const agl::TriangleMesh& m);
+  virtual void mesh(const glm::mat4& trs, const TriangleMesh& m);
 
   // draw the cubemap
   virtual void skybox();
@@ -71,8 +71,7 @@ class Renderer {
   std::string loadShaderFromFile(const std::string& fileName);
 
  protected:
-  float width_, height_;
-  bool initialized_;
+  bool _initialized;
 
   GLuint mBBShaderId;
   GLuint mBBVboPosId;  // quad rendering
@@ -80,7 +79,7 @@ class Renderer {
 
   GLuint mCMShaderId;  // skybox rendering
   GLuint mCubemap;  // skybox rendering
-  SkyBox* mSkybox;  // skybox rendering
+  class SkyBox* mSkybox;  // skybox rendering
 
   GLuint mMShaderId;  // main rendering style (phong-based shader)
 

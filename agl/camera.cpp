@@ -123,7 +123,7 @@ void Camera::orbitLeft(float scale) {
   orbit(mHeading, pitch());
 }
 
-void Camera::moveLeft(float scale)  // => move along v {
+void Camera::moveLeft(float scale) {  // => move along v
   move(-mSpeed * scale, 0.0, 0.0);
 }
 
@@ -132,7 +132,7 @@ void Camera::orbitRight(float scale) {
   orbit(mHeading, pitch());
 }
 
-void Camera::moveRight(float scale)  // => move along v {
+void Camera::moveRight(float scale) {  // => move along v
   move(mSpeed * scale, 0.0, 0.0);
 }
 
@@ -142,7 +142,7 @@ void Camera::orbitUp(float scale) {
   orbit(heading(), mPitch);
 }
 
-void Camera::moveUp(float scale)  // => move along +u {
+void Camera::moveUp(float scale) {  // => move along +u
   move(0.0, mSpeed * scale, 0.0);
 }
 
@@ -152,16 +152,16 @@ void Camera::orbitDown(float scale) {
   orbit(heading(), mPitch);
 }
 
-void Camera::moveDown(float scale)  // => move along -u {
+void Camera::moveDown(float scale) {  // => move along -u
   move(0.0, -mSpeed * scale, 0.0);
 }
 
-void Camera::moveForward(float scale)  // => move along -n {
+void Camera::moveForward(float scale) {  // => move along -n
   mRadius += -mSpeed * scale;  // Also "zoom" into radius
   orbit(heading(), pitch());
 }
 
-void Camera::moveBack(float scale)  // => move along n {
+void Camera::moveBack(float scale) {  // => move along n
   mRadius += mSpeed * scale;  // Also "zoom" out radius
   orbit(heading(), pitch());
 }
@@ -182,19 +182,19 @@ void Camera::turn(vec3& v1, vec3& v2, float amount) {
   v2 = vec3(nX, nY, nZ);
 }
 
-void Camera::turnLeft(float scale)  // rotate around u {
+void Camera::turnLeft(float scale) {  // rotate around u
   turn(mV, mN, -mTurnRate * scale);
 }
 
-void Camera::turnRight(float scale)  // rotate neg around u {
+void Camera::turnRight(float scale) {  // rotate neg around u
   turn(mV, mN, mTurnRate * scale);
 }
 
-void Camera::turnUp(float scale)  // rotate around v {
+void Camera::turnUp(float scale) {  // rotate around v
   turn(mN, mU, mTurnRate * scale);
 }
 
-void Camera::turnDown(float scale)  // rotate around v {
+void Camera::turnDown(float scale) {  // rotate around v
   turn(mN, mU, -mTurnRate * scale);
 }
 
@@ -223,15 +223,17 @@ void Camera::onMouseMotion(int pX, int pY) {
   bool moveLeftRight = abs(deltaX) > abs(deltaY);
   bool moveUpDown = !moveLeftRight;
 
-  if (mButtonState == GLFW_MOUSE_BUTTON_LEFT)  // Rotate {
+  if (mButtonState == GLFW_MOUSE_BUTTON_LEFT) {  // Rotate
     if (moveLeftRight && deltaX > 0) orbitLeft(deltaX);
     else if (moveLeftRight && deltaX < 0) orbitRight(-deltaX);
     else if (moveUpDown && deltaY > 0) orbitUp(deltaY);
     else if (moveUpDown && deltaY < 0) orbitDown(-deltaY);
-  } else if (mButtonState == GLFW_MOUSE_BUTTON_MIDDLE)  // Zoom {
+
+  } else if (mButtonState == GLFW_MOUSE_BUTTON_MIDDLE) {  // Zoom
     if (moveUpDown && deltaY > 0) moveForward(deltaY);
     else if (moveUpDown && deltaY < 0) moveBack(-deltaY);
-  } else if (mButtonState == GLFW_MOUSE_BUTTON_RIGHT)  // Pan {
+
+  } else if (mButtonState == GLFW_MOUSE_BUTTON_RIGHT) {  // Pan
     if (moveLeftRight && deltaX > 0) moveLeft(deltaX);
     else if (moveLeftRight && deltaX < 0) moveRight(-deltaX);
     else if (moveUpDown && deltaY > 0) moveUp(deltaY);
