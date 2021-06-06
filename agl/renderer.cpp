@@ -18,7 +18,7 @@ using std::string;
 using std::vector;
 
 Renderer::Renderer() {
-  mSkybox = 0;
+  _skybox = 0;
   _sphere = 0;
   _initialized = false;
 }
@@ -31,8 +31,8 @@ void Renderer::cleanup() {
   delete _sphere;
   _sphere = 0;
 
-  delete mSkybox;
-  mSkybox = 0;
+  delete _skybox;
+  _skybox = 0;
 
   for (auto it : _shaders) {
     delete it.second; 
@@ -70,7 +70,7 @@ void Renderer::init() {
 }
 
 void Renderer::initCubemap() {
-  mSkybox = new SkyBox(1);
+  _skybox = new SkyBox(1);
   loadShader("cubemap", "../shaders/cubemap.vs", "../shaders/cubemap.fs");
 }
 
@@ -79,13 +79,13 @@ void Renderer::initMesh() {
 
   // Set default parameters
   beginShader("phong");
-  setUniform("uGamma", 0.8f);
-  setUniform("uMaterial.Ks", 1.0f, 1.0f, 1.0f);
-  setUniform("uMaterial.Kd", 0.4f, 0.6f, 1.0f);
-  setUniform("uMaterial.Ka", 0.1f, 0.1f, 0.1f);
-  setUniform("uMaterial.shininess", 80.0f);
-  setUniform("uLight.position", 100.0f, 100.0f, 100.0f, 1.0f);
-  setUniform("uLight.color", 1.0f, 1.0f, 1.0f);
+  setUniform("Gamma", 0.8f);
+  setUniform("Material.Ks", 1.0f, 1.0f, 1.0f);
+  setUniform("Material.Kd", 0.4f, 0.6f, 1.0f);
+  setUniform("Material.Ka", 0.1f, 0.1f, 0.1f);
+  setUniform("Material.shininess", 80.0f);
+  setUniform("Light.position", 100.0f, 100.0f, 100.0f, 1.0f);
+  setUniform("Light.color", 1.0f, 1.0f, 1.0f);
   endShader();
 }
 
@@ -175,7 +175,7 @@ void Renderer::skybox(float size) {
 
   mat4 mvp = mProjectionMatrix * mViewMatrix * scale(mat4(1.0), vec3(size));
   setUniform("MVP", mvp);
-  mSkybox->render();
+  _skybox->render();
 }
 
 void Renderer::sphere() {

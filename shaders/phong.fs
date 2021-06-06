@@ -6,7 +6,7 @@ struct LightInfo
    vec3 color; 
 };
 
-struct Material
+struct MaterialInfo
 {
    vec3 Kd;
    vec3 Ka;
@@ -14,12 +14,12 @@ struct Material
    float shininess;
 };
 
-uniform LightInfo uLight; 
-uniform Material uMaterial;
-uniform float uGamma;
-uniform mat4 uMV;
-uniform mat4 uMVP;
-uniform mat3 uNMV;
+uniform LightInfo Light; 
+uniform MaterialInfo Material;
+uniform float Gamma;
+uniform mat4 ModelViewMatrix;
+uniform mat3 NormalMatrix;
+uniform mat4 MVP;
 
 in vec4 position;
 in vec3 normal;
@@ -28,18 +28,18 @@ out vec4 FragColor;
 
 vec3 phongModel(in vec3 ePos, in vec3 eNormal)
 {
-   float w = uLight.position.w; // 0 => directional light; 1 => point light
-   vec3 s = normalize(uLight.position.xyz - w * ePos);
+   float w = Light.position.w; // 0 => directional light; 1 => point light
+   vec3 s = normalize(Light.position.xyz - w * ePos);
    vec3 v = normalize(-ePos);
    vec3 h = normalize(reflect(s, eNormal));
 
-   vec3 ambient = uLight.color * uMaterial.Ka;
+   vec3 ambient = Light.color * Material.Ka;
 
    float angle = max( dot(s,eNormal), 0.0 ); 
-   vec3 diffuse = angle * uLight.color * uMaterial.Kd;
+   vec3 diffuse = angle * Light.color * Material.Kd;
 
    float base = max(dot(h, -v), 0.0);
-   vec3 spec = uLight.color * uMaterial.Ks * pow(base, uMaterial.shininess);
+   vec3 spec = Light.color * Material.Ks * pow(base, Material.shininess);
 
    return ambient + diffuse + spec;
 }
@@ -47,7 +47,7 @@ vec3 phongModel(in vec3 ePos, in vec3 eNormal)
 void main()
 {
    vec3 color = phongModel(position.xyz, normal);
-   color = pow(color, vec3(uGamma));
+   color = pow(color, vec3(Gamma));
    FragColor = vec4(color, 1.0);
    //FragColor = vec4(1, 0, 0, 1);
 }

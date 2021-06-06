@@ -1,15 +1,12 @@
 #include "agl/window.h"
 
-class MyWindow : public agl::Window
-{
-  void draw()
-  {
+class MyWindow : public agl::Window {
+  void draw() {
     renderer.sphere();
   }
 };
 
-int main()
-{
+int main() {
   MyWindow window;
   window.run();
 }

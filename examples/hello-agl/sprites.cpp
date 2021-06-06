@@ -1,14 +1,12 @@
 #include "agl/window.h"
-#include "agl/image.h"
 
 using namespace glm;
 using namespace agl;
 
 class MyWindow : public Window {
   void setup() {
-    Image img;
-    img.load("../textures/ParticleCloudWhite.png");
-    renderer.loadTexture("cloud", img, 0);
+    renderer.loadTexture("cloud", "../textures/ParticleCloudWhite.png", 0);
+    renderer.loadTexture("particle", "../textures/particle.png", 0);
     renderer.blendMode(ADD);
   }
 
@@ -17,6 +15,8 @@ class MyWindow : public Window {
     renderer.texture("image", "cloud");
     renderer.quad(vec3(-0.5f, 0.0f, 0.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), 0.25f);
     renderer.quad(vec3(0.5f, 0.0f, 0.0f), vec4(0.0f, 1.0f, 0.0f, 1.0f), 0.25f);
+
+    renderer.texture("image", "particle");
     renderer.quad(vec3(0.0f, 0.25f, 0.0f), vec4(0.0f, 0.0f, 1.0f, 1.0f), 0.25f);
     renderer.endShader();
   }

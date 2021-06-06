@@ -54,15 +54,17 @@ class Renderer {
   void setUniform(const std::string& name, GLuint val);
 
   // textures
-  void loadTexture(const std::string& name, const std::string& filename, int slot);
+  void loadTexture(const std::string& name, 
+      const std::string& filename, int slot);
   void loadTexture(const std::string& name, const Image& img, int slot);
-  void texture(const std::string& uniformName, const std::string& textureName);
 
   void loadCubemap(const std::string& name, const std::string& dir, int slot);
   void loadCubemap(const std::string& name, 
-        const std::vector<std::string>& names, int slot);
+      const std::vector<std::string>& names, int slot);
   void loadCubemap(const std::string& name, 
-        const std::vector<Image>& images, int slot);
+      const std::vector<Image>& images, int slot);
+
+  void texture(const std::string& uniformName, const std::string& textureName);
   void cubemap(const std::string& uniformName, const std::string& texName);
 
   // drawing - positioning
@@ -70,9 +72,7 @@ class Renderer {
   void blendMode(BlendMode mode);
   
   // draw sprites
-  void begin(GLuint textureId, BlendMode mode);
   void quad(const glm::vec3& pos, const glm::vec4& color, float size);
-  void end();  // reset draw state
 
   // draw a mesh
   void sphere();
@@ -86,15 +86,8 @@ class Renderer {
   virtual void initCubemap();
   virtual void initMesh();
 
-
  protected:
   bool _initialized;
-
-  GLuint mBBVboPosId;  // quad rendering
-  GLuint mBBVaoId;   // quad renderering
-
-  GLuint mCubemap;  // skybox rendering
-  class SkyBox* mSkybox;  // skybox rendering
 
   // textures
   struct Texture {
@@ -103,15 +96,22 @@ class Renderer {
   };
   std::map<std::string, Texture> _textures;
 
+  // shaders
   class Shader* _currentShader;
   std::map<std::string, class Shader*> _shaders;
 
+  // perspective and view 
   glm::mat4 mProjectionMatrix;
   glm::mat4 mViewMatrix;
   glm::vec3 mLookfrom;
 
   // default meshes
   class Sphere* _sphere; 
+  class SkyBox* _skybox; 
+
+  // Quad
+  GLuint mBBVboPosId; 
+  GLuint mBBVaoId;
 };
 
 }  // namespace agl
