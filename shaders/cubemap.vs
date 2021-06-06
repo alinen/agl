@@ -1,11 +1,11 @@
 #version 400
 
-layout (location = 0) in vec3 vPos;
+layout (location = 0) in vec3 vPosition;
 out vec3 ReflectDir;
-uniform mat4 uVP;
+uniform mat4 MVP;
 
 void main()
 {
-   ReflectDir = vPos;
-   gl_Position = uVP * vec4(vPos, 1.0);
+   ReflectDir = vPosition;
+   gl_Position = MVP * vec4(vPosition, 1.0);
 }

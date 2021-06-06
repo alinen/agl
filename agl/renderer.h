@@ -8,6 +8,7 @@
 #include <map>
 #include "agl/agl.h"
 #include "agl/aglm.h"
+#include "agl/image.h"
 #include "agl/triangle_mesh.h"
 
 namespace agl {
@@ -40,26 +41,33 @@ class Renderer {
   void beginShader(const std::string& shaderName); 
   void endShader();
 
-  void setUniform(const char *name, float x, float y, float z);
-  void setUniform(const char *name, float x, float y, float z, float w);
-  void setUniform(const char *name, const glm::vec2 &v);
-  void setUniform(const char *name, const glm::vec3 &v);
-  void setUniform(const char *name, const glm::vec4 &v);
-  void setUniform(const char *name, const glm::mat4 &m);
-  void setUniform(const char *name, const glm::mat3 &m);
-  void setUniform(const char *name, float val);
-  void setUniform(const char *name, int val);
-  void setUniform(const char *name, bool val);
-  void setUniform(const char *name, GLuint val);
+  void setUniform(const std::string& name, float x, float y, float z);
+  void setUniform(const std::string& name, float x, float y, float z, float w);
+  void setUniform(const std::string& name, const glm::vec2 &v);
+  void setUniform(const std::string& name, const glm::vec3 &v);
+  void setUniform(const std::string& name, const glm::vec4 &v);
+  void setUniform(const std::string& name, const glm::mat4 &m);
+  void setUniform(const std::string& name, const glm::mat3 &m);
+  void setUniform(const std::string& name, float val);
+  void setUniform(const std::string& name, int val);
+  void setUniform(const std::string& name, bool val);
+  void setUniform(const std::string& name, GLuint val);
 
   // textures
-  GLuint loadTexture(const std::string& imageName);
-  GLuint loadCubemap(const std::vector<std::string>& imageNames);
+  void loadTexture(const std::string& name, const std::string& filename, int slot);
+  void loadTexture(const std::string& name, const Image& img, int slot);
+  void texture(const std::string& uniformName, const std::string& textureName);
 
-  // virtual void texture(GLuint textureId);  // NEW
-  // virtual void color(const vec4& color);  // NEW
+  void loadCubemap(const std::string& name, const std::string& dir, int slot);
+  void loadCubemap(const std::string& name, 
+        const std::vector<std::string>& names, int slot);
+  void loadCubemap(const std::string& name, 
+        const std::vector<Image>& images, int slot);
+  void cubemap(const std::string& uniformName, const std::string& texName);
 
   // drawing - positioning
+  // drawing - settings
+  void blendMode(BlendMode mode);
   
   // draw sprites
   void begin(GLuint textureId, BlendMode mode);
@@ -71,14 +79,13 @@ class Renderer {
   void mesh(const glm::mat4& trs, const TriangleMesh& m);
 
   // draw the cubemap
-  void skybox();
+  void skybox(float size = 10.0);
 
  protected:
   virtual void initBillboards();
   virtual void initCubemap();
   virtual void initMesh();
 
-  virtual void blendMode(BlendMode mode);
 
  protected:
   bool _initialized;
@@ -88,6 +95,13 @@ class Renderer {
 
   GLuint mCubemap;  // skybox rendering
   class SkyBox* mSkybox;  // skybox rendering
+
+  // textures
+  struct Texture {
+    GLuint texId;
+    int slot;
+  };
+  std::map<std::string, Texture> _textures;
 
   class Shader* _currentShader;
   std::map<std::string, class Shader*> _shaders;

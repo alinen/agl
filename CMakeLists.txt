@@ -88,3 +88,5 @@ target_link_libraries(sphere ${CORE})
 add_executable(sprites examples/hello-agl/sprites.cpp ${SHADERS})
 target_link_libraries(sprites ${CORE})
 
+add_executable(cubemap examples/hello-agl/cubemap.cpp ${SHADERS})
+target_link_libraries(cubemap ${CORE})

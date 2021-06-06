@@ -38,6 +38,7 @@ void Renderer::cleanup() {
     delete it.second; 
   }
   _shaders.clear();
+  _textures.clear();
   _initialized = false;
 }
 
@@ -69,16 +70,7 @@ void Renderer::init() {
 }
 
 void Renderer::initCubemap() {
-  mSkybox = new SkyBox(10);
-  vector<string> faces = {
-    "../textures/sky/right.png",
-    "../textures/sky/left.png",
-    "../textures/sky/top.png",
-    "../textures/sky/bottom.png",
-    "../textures/sky/back.png",
-    "../textures/sky/front.png",
-  };
-  mCubemap = loadCubemap(faces);
+  mSkybox = new SkyBox(1);
   loadShader("cubemap", "../shaders/cubemap.vs", "../shaders/cubemap.fs");
 }
 
@@ -119,7 +111,7 @@ void Renderer::initBillboards() {
   glBindBuffer(GL_ARRAY_BUFFER, mBBVboPosId);  // bind before setting data
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, static_cast<GLubyte*>(0));
 
-  loadShader("billboard", 
+  loadShader("sprite", 
       "../shaders/billboard.vs",
       "../shaders/billboard.fs");
 }
@@ -153,25 +145,16 @@ void Renderer::lookAt(const vec3& lookfrom, const vec3& lookat) {
   mViewMatrix = glm::lookAt(lookfrom, lookat, vec3(0, 1, 0));
 }
 
-void Renderer::begin(GLuint texIf, BlendMode mode) {
-  assert(_initialized);
+void Renderer::texture(const std::string& uniformName, const std::string& textureName) {
+  assert(_textures.count(textureName) != 0);
 
-  blendMode(mode);
-  beginShader("billboard");
-
-  mat4 mvp = mProjectionMatrix * mViewMatrix;
-  setUniform("MVP", mvp); 
-  setUniform("CameraPos", mLookfrom);
-
-  glBindTexture(GL_TEXTURE_2D, texIf);
-  setUniform("image", 0);
-
-  glBindVertexArray(mBBVaoId);
-  glEnableVertexAttribArray(0);  // 0 -> Send VertexPositions to array #0
+  glBindTexture(GL_TEXTURE_2D, _textures[textureName].texId);
+  setUniform(uniformName, _textures[textureName].slot);
 }
 
 void Renderer::quad(const glm::vec3& pos, const glm::vec4& color, float size) {
   assert(_initialized);
+  assert(_currentShader == _shaders["sprite"]);
 
   setUniform("Offset", pos);
   setUniform("Color", color);
@@ -180,24 +163,19 @@ void Renderer::quad(const glm::vec3& pos, const glm::vec4& color, float size) {
   glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
-void Renderer::end() {
-  assert(_initialized);
-  endShader();
+void Renderer::cubemap(const std::string& uniformName, const std::string& textureName) {
+  assert(_textures.count(textureName) != 0);
+
+  glBindTexture(GL_TEXTURE_CUBE_MAP, _textures[textureName].texId);
+  setUniform(uniformName, _textures[textureName].slot);
 }
 
-void Renderer::skybox() {
+void Renderer::skybox(float size) {
   assert(_initialized);
-  blendMode(DEFAULT);
-  beginShader("cubemap");
 
-  glBindTexture(GL_TEXTURE_CUBE_MAP, mCubemap);
-  setUniform("cubemap", 1);
-
-  mat4 mvp = mProjectionMatrix * mViewMatrix;
-  setUniform("uVP", mvp);
-
+  mat4 mvp = mProjectionMatrix * mViewMatrix * scale(mat4(1.0), vec3(size));
+  setUniform("MVP", mvp);
   mSkybox->render();
-  endShader();
 }
 
 void Renderer::sphere() {
@@ -207,7 +185,6 @@ void Renderer::sphere() {
 void Renderer::mesh(const mat4& trs, const TriangleMesh& mesh) {
   assert(_initialized);
 
-  blendMode(DEFAULT);
   beginShader("phong");
 
   // GLuint timeParamId = glGetUniformLocation(mMShaderId, "time");
@@ -228,6 +205,13 @@ void Renderer::beginShader(const std::string& shaderName) {
 
   _currentShader = _shaders[shaderName];
   _currentShader->use(); 
+
+  if (shaderName == "sprite") {
+    mat4 mvp = mProjectionMatrix * mViewMatrix;
+    setUniform("MVP", mvp); 
+    setUniform("CameraPos", mLookfrom);
+    glBindVertexArray(mBBVaoId);
+  }
 }
 
 void Renderer::endShader() {
@@ -235,68 +219,98 @@ void Renderer::endShader() {
   _currentShader = nullptr;
 }
 
-void Renderer::setUniform(const char *name, float x, float y, float z) {
+void Renderer::setUniform(const std::string& name, float x, float y, float z) {
   assert(_currentShader != nullptr);
-  _currentShader->setUniform(name, x, y, z);
+  _currentShader->setUniform(name.c_str(), x, y, z);
 }
 
-void Renderer::setUniform(const char *name, 
+void Renderer::setUniform(const std::string& name, 
     float x, float y, float z, float w) {
   assert(_currentShader != nullptr);
-  _currentShader->setUniform(name, glm::vec4(x, y, z, w));
+  _currentShader->setUniform(name.c_str(), glm::vec4(x, y, z, w));
 }
 
-void Renderer::setUniform(const char *name, const glm::vec2 &v) {
+void Renderer::setUniform(const std::string& name, const glm::vec2 &v) {
   assert(_currentShader != nullptr);
-  _currentShader->setUniform(name, v);
+  _currentShader->setUniform(name.c_str(), v);
 }
 
-void Renderer::setUniform(const char *name, const glm::vec3 &v) {
+void Renderer::setUniform(const std::string& name, const glm::vec3 &v) {
   assert(_currentShader != nullptr);
-  _currentShader->setUniform(name, v);
+  _currentShader->setUniform(name.c_str(), v);
 }
 
-void Renderer::setUniform(const char *name, const glm::vec4 &v) {
+void Renderer::setUniform(const std::string& name, const glm::vec4 &v) {
   assert(_currentShader != nullptr);
-  _currentShader->setUniform(name, v);
+  _currentShader->setUniform(name.c_str(), v);
 }
 
-void Renderer::setUniform(const char *name, const glm::mat4 &m) {
+void Renderer::setUniform(const std::string& name, const glm::mat4 &m) {
   assert(_currentShader != nullptr);
-  _currentShader->setUniform(name, m);
+  _currentShader->setUniform(name.c_str(), m);
 }
 
-void Renderer::setUniform(const char *name, const glm::mat3 &m) {
+void Renderer::setUniform(const std::string& name, const glm::mat3 &m) {
   assert(_currentShader != nullptr);
-  _currentShader->setUniform(name, m);
+  _currentShader->setUniform(name.c_str(), m);
 }
 
-void Renderer::setUniform(const char *name, float val) {
+void Renderer::setUniform(const std::string& name, float val) {
   assert(_currentShader != nullptr);
-  _currentShader->setUniform(name, val);
+  _currentShader->setUniform(name.c_str(), val);
 }
 
-void Renderer::setUniform(const char *name, int val) {
+void Renderer::setUniform(const std::string& name, int val) {
   assert(_currentShader != nullptr);
-  _currentShader->setUniform(name, val);
+  _currentShader->setUniform(name.c_str(), val);
 }
 
-void Renderer::setUniform(const char *name, bool val) {
+void Renderer::setUniform(const std::string& name, bool val) {
   assert(_currentShader != nullptr);
-  _currentShader->setUniform(name, val);
+  _currentShader->setUniform(name.c_str(), val);
 }
 
-void Renderer::setUniform(const char *name, GLuint val) {
+void Renderer::setUniform(const std::string& name, GLuint val) {
   assert(_currentShader != nullptr);
-  _currentShader->setUniform(name, val);
+  _currentShader->setUniform(name.c_str(), val);
 }
 
-GLuint Renderer::loadCubemap(const vector<string>& cubeFaces) {
-  glEnable(GL_TEXTURE1);
-  glActiveTexture(GL_TEXTURE1);
-  GLuint texBackId;
-  glGenTextures(1, &texBackId);
-  glBindTexture(GL_TEXTURE_CUBE_MAP, texBackId);
+void Renderer::loadCubemap(const std::string& name, const string& dir, int slot) {
+  vector<string> faces = {
+      dir + "/right.png",
+      dir + "/left.png",
+      dir + "/top.png",
+      dir + "/bottom.png",
+      dir + "/back.png",
+      dir + "/front.png",
+  };
+  loadCubemap(name, faces, slot);
+}
+
+void Renderer::loadCubemap(const std::string& name, const vector<string>& faces, int slot) {
+  vector<Image> images;
+  for (string filename : faces) {
+      Image img;
+      img.load(filename);
+      images.push_back(img);
+  }
+  loadCubemap(name, images, slot);
+}
+
+void Renderer::loadCubemap(const std::string& name, const vector<Image>& faces, int slot) {
+  glEnable(GL_TEXTURE0 + slot);
+  glActiveTexture(GL_TEXTURE0 + slot);
+
+  GLuint texId;
+  if (_textures.count(name) == 0) {
+    glGenTextures(1, &texId);
+    Texture tex{texId, slot};
+    _textures[name] = tex;
+
+  } else {
+    texId = _textures[name].texId;
+  }
+  glBindTexture(GL_TEXTURE_CUBE_MAP, texId);
 
   GLuint targets[] = {
     GL_TEXTURE_CUBE_MAP_POSITIVE_X,
@@ -306,37 +320,38 @@ GLuint Renderer::loadCubemap(const vector<string>& cubeFaces) {
     GL_TEXTURE_CUBE_MAP_POSITIVE_Z,
     GL_TEXTURE_CUBE_MAP_NEGATIVE_Z};
 
-  for (int i = 0; i < cubeFaces.size(); i++) {
-    Image image;
-    image.load(cubeFaces[i]);
-
-    if (image.data()) {
+  for (int i = 0; i < faces.size(); i++) {
+    if (faces[i].data()) {
       glTexImage2D(targets[i],
-        0, GL_RGBA, image.width(), image.height(),
-        0, GL_RGBA, GL_UNSIGNED_BYTE, image.data());
-    } else {
-      std::cout << "Image not loaded " << cubeFaces[i] << std::endl;
-    }
+        0, GL_RGBA, faces[i].width(), faces[i].height(),
+        0, GL_RGBA, GL_UNSIGNED_BYTE, faces[i].data());
+    } 
   }
   glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
   glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
   glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-
-  return texBackId;
 }
 
+void Renderer::loadTexture(const std::string& name, const std::string& fileName, int slot) {
+  Image img;
+  img.load(fileName);
+  loadTexture(name, img, slot);
+}
 
-GLuint Renderer::loadTexture(const std::string& filename) {
-  Image image;
-  image.load(filename);
-
-  glEnable(GL_TEXTURE0);
-  glActiveTexture(GL_TEXTURE0);
+void Renderer::loadTexture(const std::string& name, const Image& image, int slot) {
+  glEnable(GL_TEXTURE0 + slot);
+  glActiveTexture(GL_TEXTURE0 + slot);
 
   GLuint texId;
-  glGenTextures(1, &texId);
+  if (_textures.count(name) == 0) {
+    glGenTextures(1, &texId);
+    _textures[name] = Texture{texId, slot};
+  } else {
+    texId = _textures[name].texId;
+  }
+
   glBindTexture(GL_TEXTURE_2D, texId);
   glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA8, image.width(), image.height());
   glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, image.width(), image.height(),
@@ -344,8 +359,6 @@ GLuint Renderer::loadTexture(const std::string& filename) {
 
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-  return texId;
 }
 
 void Renderer::loadShader(const std::string& name, 

@@ -26,7 +26,11 @@ Image::Image(int width, int height) :
 }
 
 Image::Image(const Image& orig) {
-  std::cout << "not implemented\n";
+  myWidth = orig.myWidth;
+  myHeight = orig.myHeight;
+  myLoaded = false;
+  myData = new unsigned char[4 * myWidth * myHeight];
+  memcpy(myData, orig.myData, sizeof(unsigned char) * myWidth * myHeight * 4);
 }
 
 Image& Image::operator=(const Image& orig) {
@@ -34,7 +38,13 @@ Image& Image::operator=(const Image& orig) {
     return *this;
   }
 
-  std::cout << "not implemented\n";
+  clear();
+
+  myWidth = orig.myWidth;
+  myHeight = orig.myHeight;
+  myLoaded = false;
+  myData = new unsigned char[4 * myWidth * myHeight];
+  memcpy(myData, orig.myData, sizeof(unsigned char) * myWidth * myHeight * 4);
   return *this;
 }
 
@@ -66,7 +76,7 @@ bool Image::load(const std::string& filename) {
 
 bool Image::save(const std::string& filename) const {
   int result = stbi_write_png(filename.c_str(), myWidth, myHeight,
-    4, (unsigned char*) myData, myWidth*3);
+    4, (unsigned char*) myData, myWidth*4);
   return (result == 1);
 }
 
