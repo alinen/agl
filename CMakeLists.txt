@@ -82,6 +82,9 @@ set(SHADERS
     shaders/billboard.fs
     shaders/billboard.vs)
 
-add_executable(demo examples/hello-agl/main.cpp ${SHADERS})
-target_link_libraries(demo ${CORE})
+add_executable(sphere examples/hello-agl/sphere.cpp ${SHADERS})
+target_link_libraries(sphere ${CORE})
+
+add_executable(sprites examples/hello-agl/sprites.cpp ${SHADERS})
+target_link_libraries(sprites ${CORE})
 

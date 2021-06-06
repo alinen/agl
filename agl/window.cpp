@@ -31,7 +31,7 @@ Window::Window(int width, int height) :
 
 Window::~Window() {
   delete sphere_;
-  renderer_.cleanup();
+  renderer.cleanup();
   glfwTerminate();
 }
 
@@ -127,7 +127,7 @@ void Window::init() {
   onResize(width, height);
 
   // Initialize openGL
-  renderer_.init();
+  renderer.init();
   sphere_ = new Sphere(0.5f, 48, 48);
 
   // mCamera = new ACamera();
@@ -139,7 +139,7 @@ void Window::setBackgroundColor(const vec3& c) {
 }
 
 void Window::sphere() {
-  renderer_.mesh(mat4(1.0), *sphere_);
+  renderer.mesh(mat4(1.0), *sphere_);
 }
 
 void Window::onMouseMotionCb(GLFWwindow* win, double pX, double pY) {

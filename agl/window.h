@@ -60,12 +60,14 @@ class Window {
   void onResize(int width, int height);
   void onScroll(float xoffset, float yoffset);
 
+ protected:
+  Renderer renderer;
+
  private:
   int windowWidth_, windowHeight_;
   float elapsedTime_;
   float dt_;
   struct GLFWwindow* window_ = 0;
-  Renderer renderer_;
   class Sphere* sphere_ = 0;
 };
 
