@@ -9,7 +9,6 @@
 #include "agl/agl.h"
 #include "agl/aglm.h"
 #include "agl/triangle_mesh.h"
-#include "agl/shader.h"
 
 namespace agl {
 
@@ -24,17 +23,17 @@ class Renderer {
   void cleanup();
   bool initialized() const;
 
-  GLuint loadTexture(const std::string& imageName);
-  GLuint loadCubemap(const std::vector<std::string>& imageNames);
-
+  // projection
   virtual void perspective(float fovRadians,
       float aspect, float near, float far);
   virtual void ortho(float minx, float maxx,
       float miny, float maxy, float minz, float maxz);
-  virtual void lookAt(const glm::vec3& lookfrom, const glm::vec3& lookat);
 
+  // camera (eye point)
+  virtual void lookAt(const glm::vec3& lookfrom, const glm::vec3& lookat);
   glm::vec3 cameraPosition() const;
 
+  // shader
   void loadShader(const std::string& name, 
       const std::string& vs, const std::string& fs);
 
@@ -53,15 +52,22 @@ class Renderer {
   void setUniform(const char *name, bool val);
   void setUniform(const char *name, GLuint val);
 
+  // textures
+  GLuint loadTexture(const std::string& imageName);
+  GLuint loadCubemap(const std::vector<std::string>& imageNames);
+
   // virtual void texture(GLuint textureId);  // NEW
   // virtual void color(const vec4& color);  // NEW
 
+  // drawing - positioning
+  
   // draw sprites
   void begin(GLuint textureId, BlendMode mode);
   void quad(const glm::vec3& pos, const glm::vec4& color, float size);
   void end();  // reset draw state
 
   // draw a mesh
+  void sphere();
   void mesh(const glm::mat4& trs, const TriangleMesh& m);
 
   // draw the cubemap
@@ -83,13 +89,16 @@ class Renderer {
   GLuint mCubemap;  // skybox rendering
   class SkyBox* mSkybox;  // skybox rendering
 
-  std::map<std::string, Shader*> _shaders;
-  Shader* _currentShader;
+  class Shader* _currentShader;
+  std::map<std::string, class Shader*> _shaders;
 
   glm::mat4 mProjectionMatrix;
   glm::mat4 mViewMatrix;
   glm::vec3 mLookfrom;
-};
-}  // namespace agl
 
+  // default meshes
+  class Sphere* _sphere; 
+};
+
+}  // namespace agl
 #endif  // AGL_RENDERER_H_

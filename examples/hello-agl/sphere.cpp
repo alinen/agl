@@ -4,7 +4,7 @@ class MyWindow : public agl::Window
 {
   void draw()
   {
-    sphere();
+    renderer.sphere();
   }
 };
 

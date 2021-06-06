@@ -41,7 +41,7 @@ class Window {
   float height() const;
   float width() const;
 
-  void sphere();
+  // rendering
   void setBackgroundColor(const glm::vec3& c);
 
  private:
@@ -68,7 +68,6 @@ class Window {
   float elapsedTime_;
   float dt_;
   struct GLFWwindow* window_ = 0;
-  class Sphere* sphere_ = 0;
 };
 
 }  // namespace agl

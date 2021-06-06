@@ -4,10 +4,12 @@
 #include <fstream>
 #include <sstream>
 #include "agl/image.h"
+#include "agl/shader.h"
 #include "agl/sphere.h"
 #include "agl/skybox.h"
 
 namespace agl {
+
 using glm::vec3;
 using glm::vec4;
 using glm::mat4;
@@ -17,6 +19,7 @@ using std::vector;
 
 Renderer::Renderer() {
   mSkybox = 0;
+  _sphere = 0;
   _initialized = false;
 }
 
@@ -25,8 +28,12 @@ Renderer::~Renderer() {
 }
 
 void Renderer::cleanup() {
+  delete _sphere;
+  _sphere = 0;
+
   delete mSkybox;
   mSkybox = 0;
+
   for (auto it : _shaders) {
     delete it.second; 
   }
@@ -56,6 +63,8 @@ void Renderer::init() {
   initBillboards();
   initCubemap();
   initMesh();
+
+  _sphere = new Sphere(0.5f, 48, 48);
   _initialized = true;
 }
 
@@ -189,6 +198,10 @@ void Renderer::skybox() {
 
   mSkybox->render();
   endShader();
+}
+
+void Renderer::sphere() {
+  mesh(mat4(1), *_sphere);
 }
 
 void Renderer::mesh(const mat4& trs, const TriangleMesh& mesh) {
