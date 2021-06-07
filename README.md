@@ -1,2 +1,3 @@
-# gentleGL
-Small, easy to use C++ openGL programing API 
+# easel-gl
+
+Small, easy to use C++ library for 3D drawing, based on openGL.
