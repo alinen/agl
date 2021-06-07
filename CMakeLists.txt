@@ -1,4 +1,4 @@
-project(CS312-Particles)
+project(AGL)
 cmake_minimum_required(VERSION 2.8.11)
 
 if (WIN32) # Include win64 platforms
@@ -11,7 +11,7 @@ if (WIN32) # Include win64 platforms
      ../../external/include )
 
   set(LIBRARY_DIRS
-    lib
+    agl
     ../../external/lib)
 
   set(CMAKE_CXX_STANDARD 11)
@@ -33,7 +33,7 @@ elseif (APPLE)
 
   set(CMAKE_MACOSX_RPATH 1)
   set(CMAKE_CXX_FLAGS "-Wall -Wno-deprecated-declarations -Wno-reorder-ctor -Wno-unused-variable -g -stdlib=libc++ -std=c++14")
-  set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
+  set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/agl)
   set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
   find_library(GL_LIB OpenGL)
   find_library(GLFW glfw)
@@ -50,7 +50,7 @@ elseif (APPLE)
 elseif (UNIX)
 
   set(CMAKE_CXX_FLAGS "-Wall -g -std=c++11 -Wno-comment")
-  set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
+  set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/agl)
   set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
   FIND_PACKAGE(OpenGL REQUIRED) 
@@ -63,7 +63,7 @@ elseif (UNIX)
     external/lib
     /usr/X11R6/lib
     /usr/local/lib
-    lib)
+    agl)
 
   add_definitions(-DUNIX)
   set(CORE GLEW glfw glut GL GLU X11)
