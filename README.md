@@ -37,11 +37,37 @@ Dependencies:
 * glfw
 * glew
 * glm
+* cmake
 
-**MacOS**
+*Windows*
 
-**Windows**
+On windows, use cmake to build either makefiles or a visual studio project. And then 
+build from there.
 
-**Ubuntu**
+From terminal (either git bash or powershell):
 
-## Demos/Experriments
+```
+agl $ mkdir build
+agl $ cd build
+agl/build $ cmake -G "Visual Studio 16 2019" ..
+agl/build $ start AGL.sln
+```
+After building all source, you can run either from visual studio or the command line:
+
+```
+agl/build $ ../bin/Debug/sphere.exe
+```
+
+*macOS*
+
+Open terminal to the directory containing this repository.
+
+```
+agl $ mkdir build
+agl $ cd build
+agl/build $ cmake ..
+agl/build $ make
+agl/build $ ../bin/sphere
+```
+
+## Demos
