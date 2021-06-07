@@ -46,6 +46,10 @@ const mat4& Camera::viewMatrix() const {
   return mCameraMatrix;
 }
 
+const vec3& Camera::look() const {
+  return mLook;
+}
+
 const vec3& Camera::position() const {
   return mEye;
 }

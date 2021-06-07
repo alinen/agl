@@ -54,6 +54,7 @@ vec3 Renderer::cameraPosition() const {
 void Renderer::init() {
   glEnable(GL_DEPTH_TEST);
   glEnable(GL_CULL_FACE);
+  glCullFace(GL_BACK);
 
   // setup default camera and projection
   float halfw = 1.0;
@@ -62,16 +63,12 @@ void Renderer::init() {
   lookAt(vec3(0, 0, 2), vec3(0, 0, 0));
 
   initBillboards();
-  initCubemap();
   initMesh();
+  loadShader("cubemap", "../shaders/cubemap.vs", "../shaders/cubemap.fs");
 
   _sphere = new Sphere(0.5f, 48, 48);
-  _initialized = true;
-}
-
-void Renderer::initCubemap() {
   _skybox = new SkyBox(1);
-  loadShader("cubemap", "../shaders/cubemap.vs", "../shaders/cubemap.fs");
+  _initialized = true;
 }
 
 void Renderer::initMesh() {
@@ -140,9 +137,9 @@ void Renderer::ortho(float minx, float maxx,
   mProjectionMatrix = glm::ortho(minx, maxx, miny, maxy, minz, maxz);
 }
 
-void Renderer::lookAt(const vec3& lookfrom, const vec3& lookat) {
+void Renderer::lookAt(const vec3& lookfrom, const vec3& lookat, const vec3& up) {
   mLookfrom = lookfrom;
-  mViewMatrix = glm::lookAt(lookfrom, lookat, vec3(0, 1, 0));
+  mViewMatrix = glm::lookAt(lookfrom, lookat, up);
 }
 
 void Renderer::texture(const std::string& uniformName, const std::string& textureName) {
@@ -172,8 +169,8 @@ void Renderer::cubemap(const std::string& uniformName, const std::string& textur
 
 void Renderer::skybox(float size) {
   assert(_initialized);
-
-  mat4 mvp = mProjectionMatrix * mViewMatrix * scale(mat4(1.0), vec3(size));
+  
+  mat4 mvp = mProjectionMatrix * mViewMatrix * glm::scale(mat4(1.0f), vec3(size));
   setUniform("MVP", mvp);
   _skybox->render();
 }
@@ -186,8 +183,6 @@ void Renderer::mesh(const mat4& trs, const TriangleMesh& mesh) {
   assert(_initialized);
 
   beginShader("phong");
-
-  // GLuint timeParamId = glGetUniformLocation(mMShaderId, "time");
 
   mat4 mv = mViewMatrix * trs;
   mat4 mvp = mProjectionMatrix * mv;

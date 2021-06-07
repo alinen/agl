@@ -7,6 +7,7 @@
 #include "agl/agl.h"
 #include "agl/aglm.h"
 #include "agl/renderer.h"
+#include "agl/camera.h"
 
 namespace agl {
 
@@ -67,9 +68,9 @@ class Window {
   int windowWidth_, windowHeight_;
   float elapsedTime_;
   float dt_;
+  Camera _camera;
   struct GLFWwindow* window_ = 0;
 };
 
 }  // namespace agl
-
 #endif  // AGL_WINDOW_H_

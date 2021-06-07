@@ -5,7 +5,7 @@ using namespace agl;
 
 class MyWindow : public Window {
   void setup() {
-    renderer.loadTexture("cloud", "../textures/ParticleCloudWhite.png", 0);
+    renderer.loadTexture("cloud", "../textures/cloud.png", 0);
     renderer.loadTexture("particle", "../textures/particle.png", 0);
     renderer.blendMode(ADD);
   }

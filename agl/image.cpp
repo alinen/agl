@@ -17,7 +17,7 @@ Image::Image() :
   myWidth(0),
   myHeight(0),
   myLoaded(false) {
-  stbi_set_flip_vertically_on_load(true);
+  stbi_set_flip_vertically_on_load(false);
 }
 
 Image::Image(int width, int height) :

@@ -31,7 +31,9 @@ class Renderer {
       float miny, float maxy, float minz, float maxz);
 
   // camera (eye point)
-  virtual void lookAt(const glm::vec3& lookfrom, const glm::vec3& lookat);
+  virtual void lookAt(const glm::vec3& lookfrom, 
+        const glm::vec3& lookat,
+        const glm::vec3& up = glm::vec3(0.0f, 1.0f, 0.0f));
   glm::vec3 cameraPosition() const;
 
   // shader
@@ -83,7 +85,6 @@ class Renderer {
 
  protected:
   virtual void initBillboards();
-  virtual void initCubemap();
   virtual void initMesh();
 
  protected:

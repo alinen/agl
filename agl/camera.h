@@ -26,6 +26,7 @@ class Camera {
   // Get camera state
   virtual const glm::mat4& viewMatrix() const;
   virtual const glm::vec3& position() const;
+  virtual const glm::vec3& look() const;
   virtual const glm::vec3& up() const;
   virtual const glm::vec3& backward() const;
   virtual const glm::vec3& right() const;

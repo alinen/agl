@@ -37,6 +37,7 @@ Window::~Window() {
 void Window::run() {
   if (!window_) return;  // window wasn't initialized
 
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   setup();  // user init
 
   while (!glfwWindowShouldClose(window_)) {
@@ -45,6 +46,7 @@ void Window::run() {
     elapsedTime_ = time;
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    renderer.lookAt(_camera.position(), _camera.look(), _camera.up());
     draw();  // user function
 
     glfwSwapBuffers(window_);
@@ -101,12 +103,12 @@ void Window::init() {
 
   // Set the GLFW window creation hints - these are optional
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
   glfwWindowHint(GLFW_SAMPLES, 4);  // Request 4x antialiasing
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-  window_ = glfwCreateWindow(windowWidth_, windowHeight_, "Gentle 3D", 0, 0);
+  window_ = glfwCreateWindow(windowWidth_, windowHeight_, "AGL Window", 0, 0);
   if (!window_) {
     fprintf(stderr, "ERROR: Cannot initialize GLFW window\n");
     glfwTerminate();
@@ -127,9 +129,8 @@ void Window::init() {
 
   // Initialize openGL
   renderer.init();
-
-  // mCamera = new ACamera();
-  // mCamera->set(glm::vec3(0.0, 0.0, 8.0));
+  _camera.set(vec3(0.0, 0.0, 2.0), vec3(0.0));  // todo: init based on view volume size
+  setBackgroundColor(vec3(0.0f));
 }
 
 void Window::setBackgroundColor(const vec3& c) {
@@ -141,7 +142,7 @@ void Window::onMouseMotionCb(GLFWwindow* win, double pX, double pY) {
 }
 
 void Window::onMouseMotion(int pX, int pY) {
-  // mCamera->onMouseMotion(pX, pY);
+  _camera.onMouseMotion(pX, pY);
   mouseMotion(pX, pY);  // user hook
 }
 
@@ -151,7 +152,8 @@ void Window::onMouseButtonCb(GLFWwindow* win,
 }
 
 void Window::onMouseButton(int button, int action, int mods) {
-  // mCamera->onMouseButton(button, action, mouseX(), mouseY());
+  _camera.onMouseButton(button, action, mouseX(), mouseY());
+
   if (action == GLFW_PRESS) {
     mousePress(button, mods);
   } else if (action == GLFW_RELEASE) {
@@ -174,7 +176,7 @@ void Window::onKeyboard(int key, int scancode, int action, int mods) {
     glfwSetWindowShouldClose(window_, GL_TRUE);
   }
 
-  // mCamera->onKeyboard(key, scancode, action, mods);
+  _camera.onKeyboard(key, scancode, action, mods);
   if (action == GLFW_PRESS) {
     keyDown(key, mods);
   } else if (action == GLFW_RELEASE) {
@@ -189,7 +191,7 @@ void Window::onScrollCb(GLFWwindow* win, double xoffset, double yoffset) {
 }
 
 void Window::onScroll(float xoffset, float yoffset) {
-  // mCamera->onScroll(xoffset, yoffset);
+  _camera.onScroll(xoffset, yoffset);
   scroll(xoffset, yoffset);  // user hook
 }
 
