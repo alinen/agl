@@ -31,28 +31,35 @@ todo: image
 
 ## How to build
 
-**Tools and dependencies**
+### Tools and dependencies
 
-To get started, you will need git and cmake. To build, you will also need to install GLEW, GLFW, and GLM.
+To get started, you will need a C++ development environment, git, cmake. To build, you will also need to several dependencies.
 
 * GLEW: Needed for accessing openGL 4.0 features
 * GLFW: Implements our window and user interaction events, such as mouse and keyboard 
 * GLM: Implements useful vector and matrix functionality for graphics
+* STB: Needed for loading images
+* GLTF: Needed for loading models
 
-On windows, the dependencies are included in this repository. For macOS, you will need to install a subset of them separately.
+**Windows**
 
-*Windows*
+On windows, you will need to have a C++ build environment, git and cmake installed.
+If you do not have a C++ compiler on windows, you can use the community version of visual studio. 
 
-On windows, you will need to have git and cmake installed.
+* Download and install [Visual Studio Community 2019](https://visualstudio.microsoft.com/vs/community/).
+
+*Important!!* During installation, select: Desktop development with C++ 
+
+<img src="https://github.com/BrynMawr-CS312-2021/cplusplus-beginners/blob/b7d59e351b6c491ca96020273d9a5cb2a59427d8/InstallMSVC.png" alt="InstallOptions" width="200"/>
 
 * [Download and install git](https://git-scm.com/download/win).
 * [Download and install cmake](https://github.com/Kitware/CMake/releases/download/v3.19.4/cmake-3.19.4-win64-x64.msi).
 
 The dependencies, such as GLEW, GLFW, and GLM, are included in this repository under /external.
 
-*macOS*
+**macOS**
 
-On macOS, you should have git and the clang C++ compiler from running `command xcode-select --install`. To install cmake, glew, and glfw, you can use brew. 
+On macOS, you should have git and a C++ compiler from running `command xcode-select --install`. To install cmake, glew, and glfw, you can use brew. 
 
 * `brew install cmake`
 * `brew install glew`
@@ -60,9 +67,19 @@ On macOS, you should have git and the clang C++ compiler from running `command x
 
 GLM is included with this repository but you can also install it [using the instructions here](http://macappstore.org/glm/). Other dependencies are included in /external.
 
-**Build and run**
+**Ubuntu**
 
-*Windows*
+On linux, you can install many of the necessary tools and dependencies using `apt-get`.
+
+* `sudo apt-get install cmake`
+* `sudo apt-get install git`
+* `brew install glfw3`
+
+todo
+
+### Compiling and running 
+
+**Windows**
 
 On windows, use cmake to build either makefiles or a visual studio project. And then 
 build from there.
@@ -75,13 +92,14 @@ agl $ cd build
 agl/build $ cmake -G "Visual Studio 16 2019" ..
 agl/build $ start AGL.sln
 ```
+
 After building all source, you can run either from visual studio or the command line:
 
 ```
 agl/build $ ../bin/Debug/sphere.exe
 ```
 
-*macOS*
+**macOS/Ubuntu**
 
 Open terminal to the directory containing this repository.
 
