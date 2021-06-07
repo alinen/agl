@@ -27,7 +27,8 @@ int main() {
 }
 ```
 
-todo: image
+<img src="docs/sphere.cpp.screenshot.png" alt="Sphere" width="200"/>
+
 
 ## How to build
 
