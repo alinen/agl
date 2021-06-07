@@ -1,6 +1,6 @@
-# agl
+# agl: A graphics library
 
-A graphics library. Small, easy to use C++ library for 3D drawing, based on openGL.
+Small, easy to use C++ library for 3D drawing, based on openGL.
 
 ## About
 
