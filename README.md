@@ -1,4 +1,4 @@
-# agl: A graphics library
+# A graphics library
 
 Small, easy to use C++ library for 3D drawing, based on openGL.
 
@@ -27,8 +27,7 @@ int main() {
 }
 ```
 
-<img src="docs/sphere.cpp.screenshot.png" alt="Sphere" width="200"/>
-
+![](docs/img/sphere.cpp.screenshot.png)
 
 ## How to build
 
@@ -51,7 +50,7 @@ If you do not have a C++ compiler on windows, you can use the community version 
 
 *Important!!* During installation, select: Desktop development with C++ 
 
-<img src="https://github.com/BrynMawr-CS312-2021/cplusplus-beginners/blob/b7d59e351b6c491ca96020273d9a5cb2a59427d8/InstallMSVC.png" alt="InstallOptions" width="200"/>
+<img src="https://raw.githubusercontent.com/BrynMawr-CS312-2021/cplusplus-beginners/b7d59e351b6c491ca96020273d9a5cb2a59427d8/InstallMSVC.png" alt="InstallOptions" width="200"/>
 
 * [Download and install git](https://git-scm.com/download/win).
 * [Download and install cmake](https://github.com/Kitware/CMake/releases/download/v3.19.4/cmake-3.19.4-win64-x64.msi).

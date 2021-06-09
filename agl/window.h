@@ -3,6 +3,7 @@
 #ifndef AGL_WINDOW_H_
 #define AGL_WINDOW_H_
 
+
 #include <map>
 #include "agl/agl.h"
 #include "agl/aglm.h"
@@ -11,8 +12,64 @@
 
 namespace agl {
 
+/**                                                                             
+ * Example class to demonstrate the features of the custom CSS.                 
+ *                                                                              
+ * @author jothepro                                                             
+ * @verbinclude sphere.cpp
+ *                                                                              
+ */      
 class Window {
  public:
+    /**                                                                         
+     * @brief brief summary                                                     
+     *                                                                          
+     * doxygen test documentation                                               
+     *                                                                          
+     * @param test this is the only parameter of this test function. It does nothing!
+     *                                                                          
+     * # Supported elements                                                     
+     *                                                                          
+     * These elements have been tested with the custom CSS.                     
+     *                                                                          
+     *                                                                          
+     * ## Lists                                                                 
+     *                                                                          
+     * - element 1                                                              
+     * - element 2                                                              
+     *                                                                          
+     * 1. element 1                                                             
+     *    ```                                                                   
+     *    code in lists                                                         
+     *    ```                                                                   
+     * 2. element 2                                                             
+     *                                                                          
+     * ## Quotes                                                                
+     *                                                                          
+     * > This is an **awesome** design...                                       
+     * >                                                                        
+     * > ...do you agree?                                                       
+     * *- jothepro*                                                             
+     *                                                          
+     * ## Code block                                                            
+     *                                                                          
+     * ```                                                                      
+     * code within md fences (```)                                              
+     * ```                                                                      
+     *                                                                          
+     * @code{.cpp}                                                              
+     * // code within @code block                                               
+     * if(true) {                                                               
+     *    auto example = std::make_shared<Example>(5);                          
+     *    example->test("test");                                                
+     * }                                                                        
+     *                                                                          
+     * @endcode                                                                 
+     *                                                                          
+     *     // code within indented code block                                   
+     *     auto test = std::shared_ptr<Example(5);                              
+     *                                                           
+     */
   explicit Window(int width = 600, int height = 600);
   virtual ~Window();
   void run();
