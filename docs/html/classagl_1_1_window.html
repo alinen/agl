@@ -93,17 +93,57 @@ $(document).ready(function(){initNavTree('classagl_1_1_window.html',''); initRes
 </div><!--header-->
 <div class="contents">
 
+<p>The window class manages the window and user input.  
+ <a href="classagl_1_1_window.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="window_8h_source.html">window.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3d1d0429f3739c546ca193180b5beaab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a3d1d0429f3739c546ca193180b5beaab">Window</a> (int width=600, int height=600)</td></tr>
-<tr class="memdesc:a3d1d0429f3739c546ca193180b5beaab"><td class="mdescLeft">&#160;</td><td class="mdescRight">brief summary <br  />
-  <a href="classagl_1_1_window.html#a3d1d0429f3739c546ca193180b5beaab">More...</a><br /></td></tr>
-<tr class="separator:a3d1d0429f3739c546ca193180b5beaab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a515991f708f8a46ef51cc1c4569e7f63"><td class="memItemLeft" align="right" valign="top"><a id="a515991f708f8a46ef51cc1c4569e7f63"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+<tr class="memitem:a9f879d75daee8046575408bfd409371a"><td class="memItemLeft" align="right" valign="top"><a id="a9f879d75daee8046575408bfd409371a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a9f879d75daee8046575408bfd409371a">Window</a> ()</td></tr>
+<tr class="memdesc:a9f879d75daee8046575408bfd409371a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Override this class to create a custom application. The default window is sized 500x500 and draws an empty (black) scene. </p><pre class="fragment">#include "agl/window.h"
+int main() {
+  agl::Window window;
+  window.run();
+}
+</pre><p>. <br /></td></tr>
+<tr class="separator:a9f879d75daee8046575408bfd409371a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515991f708f8a46ef51cc1c4569e7f63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63">run</a> ()</td></tr>
+<tr class="memdesc:a515991f708f8a46ef51cc1c4569e7f63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the window and starts the main application loop. </p><pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void setup() {
+    setSize(200,200);
+  }
+
+  void draw() {
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><p>.  <a href="classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63">More...</a><br /></td></tr>
 <tr class="separator:a515991f708f8a46ef51cc1c4569e7f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a527b5ff8261ce964d998f36c30b143c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a527b5ff8261ce964d998f36c30b143c0">screenshot</a> (const std::string &amp;filename)</td></tr>
+<tr class="memdesc:a527b5ff8261ce964d998f36c30b143c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the current screen image to a file </p><pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.sphere();
+    screenshot("sphere.png");
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><p>.  <a href="classagl_1_1_window.html#a527b5ff8261ce964d998f36c30b143c0">More...</a><br /></td></tr>
+<tr class="separator:a527b5ff8261ce964d998f36c30b143c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -161,9 +201,12 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>height</b> () const<
 <tr class="memitem:a3e503006b3680496fc2a31056dae0a9d"><td class="memItemLeft" align="right" valign="top"><a id="a3e503006b3680496fc2a31056dae0a9d"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>width</b> () const</td></tr>
 <tr class="separator:a3e503006b3680496fc2a31056dae0a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71fac4b7ba89709c5032996592f5f54d"><td class="memItemLeft" align="right" valign="top"><a id="a71fac4b7ba89709c5032996592f5f54d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setBackgroundColor</b> (const glm::vec3 &amp;c)</td></tr>
-<tr class="separator:a71fac4b7ba89709c5032996592f5f54d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f0da02c1b44582e174704d703fa2044"><td class="memItemLeft" align="right" valign="top"><a id="a1f0da02c1b44582e174704d703fa2044"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setSize</b> (int w, int h)</td></tr>
+<tr class="separator:a1f0da02c1b44582e174704d703fa2044"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af83bc964aede82c4fb09c3773eac8afe"><td class="memItemLeft" align="right" valign="top"><a id="af83bc964aede82c4fb09c3773eac8afe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>background</b> (const glm::vec3 &amp;color)</td></tr>
+<tr class="separator:af83bc964aede82c4fb09c3773eac8afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -172,10 +215,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a593c28c3c22169f861c99cf84adb4e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Example class to demonstrate the features of the custom CSS. <br  />
-</p>
-<dl class="section author"><dt>Author</dt><dd>jothepro <br  />
- <pre class="fragment">#include "agl/window.h"
+<div class="textblock"><p>The window class manages the window and user input. </p>
+<p>Override this class to create a custom application. </p><pre class="fragment">#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -187,93 +228,82 @@ int main() {
   MyWindow window;
   window.run();
 }
-</pre> </dd></dl>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a3d1d0429f3739c546ca193180b5beaab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d1d0429f3739c546ca193180b5beaab">&#9670;&nbsp;</a></span>Window()</h2>
+</pre> </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a515991f708f8a46ef51cc1c4569e7f63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515991f708f8a46ef51cc1c4569e7f63">&#9670;&nbsp;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">agl::Window::Window </td>
+          <td class="memname">void agl::Window::run </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>width</em> = <code>600</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>height</em> = <code>600</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>brief summary <br  />
- </p>
-<p>doxygen test documentation <br  />
-</p>
+<p>Opens the window and starts the main application loop. </p><pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void setup() {
+    setSize(200,200);
+  }
+
+  void draw() {
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><p>. </p>
+<p>This function should typically called from main after creating the <a class="el" href="classagl_1_1_window.html" title="The window class manages the window and user input.">Window</a> object. This function invokes the user's setup() function and then repeatedly calls the user's draw() function. This function returns when the user closes the window (via the escape key or close menu button) </p>
+
+</div>
+</div>
+<a id="a527b5ff8261ce964d998f36c30b143c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a527b5ff8261ce964d998f36c30b143c0">&#9670;&nbsp;</a></span>screenshot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool agl::Window::screenshot </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Save the current screen image to a file </p><pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.sphere();
+    screenshot("sphere.png");
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><p>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">test</td><td>this is the only parameter of this test function. It does nothing!</td></tr>
+    <tr><td class="paramname">filename</td><td>image file name (should be a .png file) </td></tr>
   </table>
   </dd>
 </dl>
-<h1><a class="anchor" id="autotoc_md0"></a>
-Supported elements</h1>
-<p>These elements have been tested with the custom CSS. <br  />
-</p>
-<h2><a class="anchor" id="autotoc_md1"></a>
-Lists</h2>
-<ul>
-<li>element 1 <br  />
-</li>
-<li>element 2 <br  />
-</li>
-</ul>
-<ol type="1">
-<li>element 1 <br  />
- <div class="fragment"><div class="line">code in lists                                                         </div>
-</div><!-- fragment --></li>
-<li>element 2 <br  />
-</li>
-</ol>
-<h2><a class="anchor" id="autotoc_md2"></a>
-Quotes</h2>
-<blockquote class="doxtable">
-<p>This is an <b>awesome</b> design... <br  />
-</p>
-<p>...do you agree? <br  />
- </p>
-</blockquote>
-<p><em>- jothepro</em> <br  />
-</p>
-<h2><a class="anchor" id="autotoc_md3"></a>
-Code block</h2>
-<div class="fragment"><div class="line">code within md fences (```)                                              </div>
-</div><!-- fragment --><div class="fragment"><div class="line"><span class="comment">// code within @code block                                               </span></div>
-<div class="line"><span class="keywordflow">if</span>(<span class="keyword">true</span>) {                                                               </div>
-<div class="line">   <span class="keyword">auto</span> example = std::make_shared&lt;Example&gt;(5);                          </div>
-<div class="line">   example-&gt;test(<span class="stringliteral">&quot;test&quot;</span>);                                                </div>
-<div class="line">}                                                                        </div>
-</div><!-- fragment --><p> <br  />
- </p><pre class="fragment">// code within indented code block                                   
-auto test = std::shared_ptr&lt;Example(5);                              
-</pre> 
+<dl class="section return"><dt>Returns</dt><dd>(bool) Returns false if the image cannot be saved; true otherwise</dd></dl>
+<p>Filenames should include the png file extension. <a class="el" href="classagl_1_1_image.html">Image</a> with relative paths will be written relative to the directory from which you run the executable. Images are saved in RGBA format. </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>

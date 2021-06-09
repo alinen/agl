@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('image_8h_source.html',''); initResizab
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;aglm.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;agl/aglm.h&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span>agl {</div>
 <div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="structagl_1_1_pixel.html">   12</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structagl_1_1_pixel.html">Pixel</a> {</div>
@@ -118,7 +118,7 @@ $(document).ready(function(){initNavTree('image_8h_source.html',''); initResizab
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <span class="keywordtype">bool</span> load(<span class="keyword">const</span> std::string&amp; filename);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="comment">// save the given filename</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">bool</span> save(<span class="keyword">const</span> std::string&amp; filename) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordtype">bool</span> save(<span class="keyword">const</span> std::string&amp; filename, <span class="keywordtype">bool</span> flip = <span class="keyword">true</span>) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">// return the current width</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">int</span> width()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> myWidth; }</div>
@@ -129,29 +129,32 @@ $(document).ready(function(){initNavTree('image_8h_source.html',''); initResizab
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="comment">// return the data</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* data()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> myData; }</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// Get the pixel at index (row, col)</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="structagl_1_1_pixel.html">Pixel</a> get(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="comment">// Replace image RGBA data</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">void</span> set(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* data);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="comment">// Get the pixel at index (row, col)</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">void</span> set(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keyword">const</span> <a class="code" href="structagl_1_1_pixel.html">Pixel</a>&amp; color);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <a class="code" href="structagl_1_1_pixel.html">Pixel</a> get(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">// Set a color with components in range [0, 1]</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">void</span> setVec4(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keyword">const</span> glm::vec4&amp; color);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">// Get the pixel at index (row, col)</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">void</span> set(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keyword">const</span> <a class="code" href="structagl_1_1_pixel.html">Pixel</a>&amp; color);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// Get a vec3 color</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  glm::vec4 getVec4(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// Set a color with components in range [0, 1]</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">void</span> setVec4(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col, <span class="keyword">const</span> glm::vec4&amp; color);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">void</span> clear();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="comment">// Get a vec3 color</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  glm::vec4 getVec4(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* myData;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> myWidth;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> myHeight;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordtype">bool</span> myLoaded;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}  <span class="comment">// namespace agl</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// AGL_IMAGE_H_</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">void</span> clear();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* myData;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> myWidth;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> myHeight;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">bool</span> myLoaded;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}  <span class="comment">// namespace agl</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// AGL_IMAGE_H_</span></div>
 <div class="ttc" id="aclassagl_1_1_image_html"><div class="ttname"><a href="classagl_1_1_image.html">agl::Image</a></div><div class="ttdef"><b>Definition:</b> image.h:19</div></div>
 <div class="ttc" id="astructagl_1_1_pixel_html"><div class="ttname"><a href="structagl_1_1_pixel.html">agl::Pixel</a></div><div class="ttdef"><b>Definition:</b> image.h:12</div></div>
 </div><!-- fragment --></div><!-- contents -->

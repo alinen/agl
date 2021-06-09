@@ -82,11 +82,11 @@ set(SHADERS
     shaders/billboard.fs
     shaders/billboard.vs)
 
-add_executable(sphere examples/sphere.cpp ${SHADERS})
-target_link_libraries(sphere ${CORE})
+file (GLOB_RECURSE EXAMPLES CONFIGURE_DEPENDS examples/*.cpp)
+foreach (example ${EXAMPLES})
+  get_filename_component(example_name ${example} NAME_WLE)
+  #message(${example_name})
+  add_executable(${example_name} ${example} ${SHADERS})
+  target_link_libraries(${example_name} ${CORE})
+endforeach()
 
-add_executable(sprites examples/sprites.cpp ${SHADERS})
-target_link_libraries(sprites ${CORE})
-
-add_executable(cubemap examples/cubemap.cpp ${SHADERS})
-target_link_libraries(cubemap ${CORE})

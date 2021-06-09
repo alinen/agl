@@ -21,9 +21,9 @@ static void error_callback(int error, const char* description) {
   fputs("\n", stderr);
 }
 
-Window::Window(int width, int height) :
-  windowWidth_(width),
-  windowHeight_(height),
+Window::Window() :
+  windowWidth_(500),
+  windowHeight_(500),
   elapsedTime_(0.0),
   dt_(-1.0) {
   init();
@@ -34,24 +34,59 @@ Window::~Window() {
   glfwTerminate();
 }
 
+void Window::background(const vec3& color) {
+  
+  glClearColor(color[0], color[1], color[2], 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
 void Window::run() {
   if (!window_) return;  // window wasn't initialized
 
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  setup();  // user init
+  background(vec3(0));
+  setup();
 
   while (!glfwWindowShouldClose(window_)) {
     float time = glfwGetTime();
     dt_ = time - elapsedTime_;
     elapsedTime_ = time;
 
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    background(vec3(0));
     renderer.lookAt(_camera.position(), _camera.look(), _camera.up());
     draw();  // user function
 
     glfwSwapBuffers(window_);
     glfwPollEvents();
   }
+}
+
+bool Window::screenshot(const std::string& filename) {
+  GLint viewport[4];
+  glGetIntegerv(GL_VIEWPORT, viewport);
+
+  int x = viewport[0];
+  int y = viewport[1];
+  int width = viewport[2];
+  int height = viewport[3];
+
+  size_t size = static_cast<size_t>(width * height * 4);
+  unsigned char *data = static_cast<unsigned char*>(malloc(size));
+
+  if (!data) {
+    return false;
+  }
+
+  glPixelStorei(GL_PACK_ALIGNMENT, 1);
+  glReadPixels(x, y, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
+
+  // Using Image introduces another copy but makes it easier to keep all 
+  // stb code referenced from a single file (needed for header-only include)
+  Image image;
+  image.set(width, height, data);
+  bool result = image.save(filename);
+
+  free(data);
+  return result;
 }
 
 float Window::height() const {
@@ -92,6 +127,11 @@ bool Window::mouseIsDown(int button) const {
   return (state == GLFW_PRESS);
 }
 
+void Window::setSize(int w, int h) {
+  if (windowWidth_ == w && windowHeight_ == h) return;
+  glfwSetWindowSize(window_, w, h);
+}
+
 void Window::init() {
   theInstance = this;
   glfwSetErrorCallback(error_callback);
@@ -129,12 +169,9 @@ void Window::init() {
 
   // Initialize openGL
   renderer.init();
-  _camera.set(vec3(0.0, 0.0, 2.0), vec3(0.0));  // todo: init based on view volume size
-  setBackgroundColor(vec3(0.0f));
-}
 
-void Window::setBackgroundColor(const vec3& c) {
-  glClearColor(c[0], c[1], c[2], 1.0f);
+  // ASN TODO: Init based on volume size
+  _camera.set(vec3(0.0, 0.0, 2.0), vec3(0.0));
 }
 
 void Window::onMouseMotionCb(GLFWwindow* win, double pX, double pY) {

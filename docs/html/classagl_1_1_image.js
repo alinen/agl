@@ -10,8 +10,9 @@ var classagl_1_1_image =
     [ "height", "classagl_1_1_image.html#aab7d25d00aef597c99940e13c368193c", null ],
     [ "load", "classagl_1_1_image.html#a91b3da0cadce1f573f2c90777c351773", null ],
     [ "operator=", "classagl_1_1_image.html#a14a1d01d8e85ae7131680f45b3e0fcc7", null ],
-    [ "save", "classagl_1_1_image.html#ac15eca069c6219e782cd7ac41065ae95", null ],
+    [ "save", "classagl_1_1_image.html#a04a0f31459797bd9b979a6c927833336", null ],
     [ "set", "classagl_1_1_image.html#a6b9f784dc80cc9af5fedc584bc17697d", null ],
+    [ "set", "classagl_1_1_image.html#ab1a8e69eab00bc964664043012c48c47", null ],
     [ "setVec4", "classagl_1_1_image.html#a42f1ca252e4c9db613df1a98b06e04f2", null ],
     [ "width", "classagl_1_1_image.html#ae74be8fbbecd9221095357519300b2dd", null ]
 ];

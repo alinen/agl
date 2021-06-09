@@ -52,6 +52,16 @@ Image::~Image() {
   clear();
 }
 
+void Image::set(int width, int height, unsigned char* data) {
+  clear();
+
+  myWidth = width;
+  myHeight = height;
+  myLoaded = false;
+  myData = new unsigned char[4 * myWidth * myHeight];
+  memcpy(myData, data, sizeof(unsigned char) * myWidth * myHeight * 4);
+}
+
 void Image::clear() {
   if (myLoaded) {
     stbi_image_free(myData);
@@ -74,7 +84,8 @@ bool Image::load(const std::string& filename) {
 }
 
 
-bool Image::save(const std::string& filename) const {
+bool Image::save(const std::string& filename, bool flip) const {
+  stbi_flip_vertically_on_write(flip);
   int result = stbi_write_png(filename.c_str(), myWidth, myHeight,
     4, (unsigned char*) myData, myWidth*4);
   return (result == 1);

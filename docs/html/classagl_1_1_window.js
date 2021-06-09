@@ -1,7 +1,8 @@
 var classagl_1_1_window =
 [
-    [ "Window", "classagl_1_1_window.html#a3d1d0429f3739c546ca193180b5beaab", null ],
+    [ "Window", "classagl_1_1_window.html#a9f879d75daee8046575408bfd409371a", null ],
     [ "~Window", "classagl_1_1_window.html#a15ca0e0305b2bb353838c371cfb792cc", null ],
+    [ "background", "classagl_1_1_window.html#af83bc964aede82c4fb09c3773eac8afe", null ],
     [ "draw", "classagl_1_1_window.html#a7d441a93bddc77472fdd987893e92547", null ],
     [ "dt", "classagl_1_1_window.html#a209448b74595e0e9b5084a0913d83315", null ],
     [ "elapsedTime", "classagl_1_1_window.html#a38e7f3ee34cc520b1fc18cce5653728c", null ],
@@ -17,8 +18,9 @@ var classagl_1_1_window =
     [ "mouseX", "classagl_1_1_window.html#a0864a84646e07cfab964f841f52a0d42", null ],
     [ "mouseY", "classagl_1_1_window.html#a1b174bbcc9eed654c49e8c7796f609f4", null ],
     [ "run", "classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63", null ],
+    [ "screenshot", "classagl_1_1_window.html#a527b5ff8261ce964d998f36c30b143c0", null ],
     [ "scroll", "classagl_1_1_window.html#ab7f3507e47c1ae6fdf8c6f6e829177ba", null ],
-    [ "setBackgroundColor", "classagl_1_1_window.html#a71fac4b7ba89709c5032996592f5f54d", null ],
+    [ "setSize", "classagl_1_1_window.html#a1f0da02c1b44582e174704d703fa2044", null ],
     [ "setup", "classagl_1_1_window.html#a784f44c53b5e22fcda1004ad9d2955f7", null ],
     [ "update", "classagl_1_1_window.html#a3fc2113ac4d6b890e285551449231732", null ],
     [ "width", "classagl_1_1_window.html#a3e503006b3680496fc2a31056dae0a9d", null ],

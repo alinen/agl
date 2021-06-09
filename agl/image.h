@@ -6,7 +6,7 @@
 
 #include <iostream>
 #include <string>
-#include "aglm.h"
+#include "agl/aglm.h"
 
 namespace agl {
 struct Pixel {
@@ -29,7 +29,7 @@ class Image {
   bool load(const std::string& filename);
 
   // save the given filename
-  bool save(const std::string& filename) const;
+  bool save(const std::string& filename, bool flip = true) const;
 
   // return the current width
   inline int width() const { return myWidth; }
@@ -39,6 +39,9 @@ class Image {
 
   // return the data
   inline unsigned char* data() const { return myData; }
+
+  // Replace image RGBA data
+  void set(int width, int height, unsigned char* data);
 
   // Get the pixel at index (row, col)
   Pixel get(int row, int col) const;

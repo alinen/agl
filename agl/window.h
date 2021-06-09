@@ -4,6 +4,7 @@
 #define AGL_WINDOW_H_
 
 
+#include <string>
 #include <map>
 #include "agl/agl.h"
 #include "agl/aglm.h"
@@ -12,67 +13,45 @@
 
 namespace agl {
 
-/**                                                                             
- * Example class to demonstrate the features of the custom CSS.                 
- *                                                                              
- * @author jothepro                                                             
+/**
+ * @brief The window class manages the window and user input.
+ * 
+ * Override this class to create a custom application.
  * @verbinclude sphere.cpp
- *                                                                              
- */      
+ */ 
 class Window {
  public:
-    /**                                                                         
-     * @brief brief summary                                                     
-     *                                                                          
-     * doxygen test documentation                                               
-     *                                                                          
-     * @param test this is the only parameter of this test function. It does nothing!
-     *                                                                          
-     * # Supported elements                                                     
-     *                                                                          
-     * These elements have been tested with the custom CSS.                     
-     *                                                                          
-     *                                                                          
-     * ## Lists                                                                 
-     *                                                                          
-     * - element 1                                                              
-     * - element 2                                                              
-     *                                                                          
-     * 1. element 1                                                             
-     *    ```                                                                   
-     *    code in lists                                                         
-     *    ```                                                                   
-     * 2. element 2                                                             
-     *                                                                          
-     * ## Quotes                                                                
-     *                                                                          
-     * > This is an **awesome** design...                                       
-     * >                                                                        
-     * > ...do you agree?                                                       
-     * *- jothepro*                                                             
-     *                                                          
-     * ## Code block                                                            
-     *                                                                          
-     * ```                                                                      
-     * code within md fences (```)                                              
-     * ```                                                                      
-     *                                                                          
-     * @code{.cpp}                                                              
-     * // code within @code block                                               
-     * if(true) {                                                               
-     *    auto example = std::make_shared<Example>(5);                          
-     *    example->test("test");                                                
-     * }                                                                        
-     *                                                                          
-     * @endcode                                                                 
-     *                                                                          
-     *     // code within indented code block                                   
-     *     auto test = std::shared_ptr<Example(5);                              
-     *                                                           
-     */
-  explicit Window(int width = 600, int height = 600);
+  /**
+   * @brief Constructor.
+   * Override this class to create a custom application.
+   * The default window is sized 500x500 and draws an empty (black) scene.
+   * @verbinclude empty.cpp
+   */
+  Window();
   virtual ~Window();
+
+  /**
+   * @brief Opens the window and starts the main application loop.
+   * @verbinclude run.cpp
+   *
+   * This function should typically called from main after creating the Window
+   * object. This function invokes the user's setup() function and then 
+   * repeatedly calls the user's draw() function. This function returns when 
+   * the user closes the window (via the escape key or close menu button)
+   */
   void run();
+
+  /**
+   * @brief Save the current screen image to a file 
+   * @verbinclude screenshot.cpp
+   * @param filename image file name (should be a .png file)
+   * @return (bool) Returns false if the image cannot be saved; true otherwise
+   *
+   * Filenames should include the png file extension. 
+   * Image with relative paths will be written relative to the directory
+   * from which you run the executable. Images are saved in RGBA format.
+   */
+  bool screenshot(const std::string& filename);
 
  protected:
   // Overridable user interface
@@ -98,9 +77,8 @@ class Window {
   float elapsedTime() const;  // amount of time since start (can be reset)
   float height() const;
   float width() const;
-
-  // rendering
-  void setBackgroundColor(const glm::vec3& c);
+  void setSize(int w, int h);
+  void background(const glm::vec3& color);
 
  private:
   void init();
