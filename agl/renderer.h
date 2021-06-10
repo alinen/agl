@@ -1,9 +1,10 @@
-// Copyright 2020, Savvy Sine, alinen
+// copyright 2020, savvy_sine, alinen
 
 #ifndef AGL_RENDERER_H_
 #define AGL_RENDERER_H_
 
 #include <vector>
+#include <list>
 #include <string>
 #include <map>
 #include "agl/agl.h"
@@ -70,6 +71,14 @@ class Renderer {
   void cubemap(const std::string& uniformName, const std::string& texName);
 
   // drawing - positioning
+  void push();
+  void pop();
+  void identity();
+  void scale(const glm::vec3& xyz);
+  void translate(const glm::vec3& xyz);
+  void rotate(float angleRad, const glm::vec3& axis);
+  void transform(const glm::mat4& trs);
+
   // drawing - settings
   void blendMode(BlendMode mode);
   
@@ -78,7 +87,14 @@ class Renderer {
 
   // draw a mesh
   void sphere();
-  void mesh(const glm::mat4& trs, const TriangleMesh& m);
+  void cone();
+  void cube();
+  void teapot();
+  void plane();
+  void cylinder();
+  void capsule();
+  void torus();
+  void mesh(const TriangleMesh& m);
 
   // draw the cubemap
   void skybox(float size = 10.0);
@@ -101,12 +117,23 @@ class Renderer {
   class Shader* _currentShader;
   std::map<std::string, class Shader*> _shaders;
 
+  // matrix stack
+  std::list<glm::mat4> _stack;
+  glm::mat4 _trs;
+
   // perspective and view 
   glm::mat4 mProjectionMatrix;
   glm::mat4 mViewMatrix;
   glm::vec3 mLookfrom;
 
   // default meshes
+  class Cube* _cube; 
+  class Cylinder* _cone; 
+  class Capsule* _capsule; 
+  class Cylinder* _cylinder; 
+  class Teapot* _teapot; 
+  class Torus* _torus; 
+  class Plane* _plane; 
   class Sphere* _sphere; 
   class SkyBox* _skybox; 
 

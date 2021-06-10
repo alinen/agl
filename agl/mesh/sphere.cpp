@@ -1,6 +1,6 @@
 // Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf)
 
-#include "agl/sphere.h"
+#include "agl/mesh/sphere.h"
 
 #include <cstdio>
 #include <cmath>

@@ -1,5 +1,5 @@
-// Copyright, Savvy Sine, alinen, 2021
-// Class for loading images (uses stdb_image)
+// Copyright 2021, savvy_sine, alinen
+// Class for loading, modifying, and saving RGBA images 
 
 #ifndef AGL_IMAGE_H_
 #define AGL_IMAGE_H_

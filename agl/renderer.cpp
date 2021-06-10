@@ -1,12 +1,18 @@
-// Copyright 2020, Savvy Sine, aline
+// copyright 2020, savvy_sine, aline
 
 #include "agl/renderer.h"
 #include <fstream>
 #include <sstream>
 #include "agl/image.h"
 #include "agl/shader.h"
-#include "agl/sphere.h"
-#include "agl/skybox.h"
+#include "agl/mesh/sphere.h"
+#include "agl/mesh/cube.h"
+#include "agl/mesh/cylinder.h"
+#include "agl/mesh/capsule.h"
+#include "agl/mesh/teapot.h"
+#include "agl/mesh/torus.h"
+#include "agl/mesh/plane.h"
+#include "agl/mesh/skybox.h"
 
 namespace agl {
 
@@ -28,10 +34,24 @@ Renderer::~Renderer() {
 }
 
 void Renderer::cleanup() {
+  delete _cube;
+  delete _cone;
+  delete _capsule;
+  delete _cylinder;
+  delete _teapot;
+  delete _torus;
+  delete _plane;
   delete _sphere;
-  _sphere = 0;
-
   delete _skybox;
+
+  _cube = 0;
+  _cone = 0;
+  _capsule = 0;
+  _cylinder = 0;
+  _teapot = 0;
+  _torus = 0;
+  _plane = 0;
+  _sphere = 0;
   _skybox = 0;
 
   for (auto it : _shaders) {
@@ -66,8 +86,16 @@ void Renderer::init() {
   initMesh();
   loadShader("cubemap", "../shaders/cubemap.vs", "../shaders/cubemap.fs");
 
-  _sphere = new Sphere(0.5f, 48, 48);
+  _cube = new Cube(1.0f);
+  _cone = new Cylinder(1.0f, 0.01, 1, 8);
+  _capsule = new Capsule(0.25, 0.5, 20, 20);
+  _cylinder = new Cylinder(1.0, 1.0, 8.0);
+  _teapot = new Teapot(13, mat4(1.0));
+  _torus = new Torus(0.5, 0.25, 20, 20);
+  _plane = new Plane(1.0, 1.0, 1.0, 1.0); 
+  _sphere = new Sphere(0.5f, 20, 20);
   _skybox = new SkyBox(1);
+  _trs = mat4(1.0);
   _initialized = true;
 }
 
@@ -175,16 +203,74 @@ void Renderer::skybox(float size) {
   _skybox->render();
 }
 
-void Renderer::sphere() {
-  mesh(mat4(1), *_sphere);
+void Renderer::push() {
+  _stack.push_front(_trs);
 }
 
-void Renderer::mesh(const mat4& trs, const TriangleMesh& mesh) {
+void Renderer::pop() {
+  if (_stack.size() == 0) return;
+  _trs = _stack.front();
+  _stack.pop_front();
+}
+
+void Renderer::identity() {
+  _trs = mat4(1.0); 
+}
+
+void Renderer::scale(const vec3& xyz) {
+  _trs = _trs * glm::scale(mat4(1.0), xyz); 
+}
+
+void Renderer::translate(const vec3& xyz) {
+  _trs = _trs * glm::translate(mat4(1.0), xyz); 
+}
+
+void Renderer::rotate(float angleRad, const vec3& axis) {
+  _trs = _trs * glm::rotate(mat4(1.0), angleRad, axis); 
+}
+
+void Renderer::transform(const glm::mat4& trs) {
+  _trs = _trs * trs;
+}
+
+void Renderer::teapot() {
+  mesh(*_teapot);
+}
+
+void Renderer::plane() {
+  mesh(*_plane);
+}
+
+void Renderer::cylinder() {
+  mesh(*_cylinder);
+}
+
+void Renderer::capsule() {
+  mesh(*_capsule);
+}
+
+void Renderer::torus() {
+  mesh(*_torus);
+}
+
+void Renderer::cone() {
+  mesh(*_cone);
+}
+
+void Renderer::cube() {
+  mesh(*_cube);
+}
+
+void Renderer::sphere() {
+  mesh(*_sphere);
+}
+
+void Renderer::mesh(const TriangleMesh& mesh) {
   assert(_initialized);
 
   beginShader("phong");
 
-  mat4 mv = mViewMatrix * trs;
+  mat4 mv = mViewMatrix * _trs;
   mat4 mvp = mProjectionMatrix * mv;
   mat3 nmv = mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2]));
   setUniform("MVP", mvp);  

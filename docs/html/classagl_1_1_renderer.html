@@ -185,6 +185,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>texture</b> (const st
 <tr class="memitem:aeec174923d2fd2f7e5d5f8dae017b930"><td class="memItemLeft" align="right" valign="top"><a id="aeec174923d2fd2f7e5d5f8dae017b930"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>cubemap</b> (const std::string &amp;uniformName, const std::string &amp;texName)</td></tr>
 <tr class="separator:aeec174923d2fd2f7e5d5f8dae017b930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeab5ce86e5b7b4259598371ce413d02c"><td class="memItemLeft" align="right" valign="top"><a id="aeab5ce86e5b7b4259598371ce413d02c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>push</b> ()</td></tr>
+<tr class="separator:aeab5ce86e5b7b4259598371ce413d02c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac10ec0fbd366473c2decd1fb59b512aa"><td class="memItemLeft" align="right" valign="top"><a id="ac10ec0fbd366473c2decd1fb59b512aa"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>pop</b> ()</td></tr>
+<tr class="separator:ac10ec0fbd366473c2decd1fb59b512aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08999004bf88bfaee4bd79a8d1b34227"><td class="memItemLeft" align="right" valign="top"><a id="a08999004bf88bfaee4bd79a8d1b34227"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>identity</b> ()</td></tr>
+<tr class="separator:a08999004bf88bfaee4bd79a8d1b34227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a23688f12b6ddfa97e86fe4db8f4683"><td class="memItemLeft" align="right" valign="top"><a id="a5a23688f12b6ddfa97e86fe4db8f4683"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>scale</b> (const glm::vec3 &amp;xyz)</td></tr>
+<tr class="separator:a5a23688f12b6ddfa97e86fe4db8f4683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea9dca966b0d88c31ec0af359904b0a9"><td class="memItemLeft" align="right" valign="top"><a id="aea9dca966b0d88c31ec0af359904b0a9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>translate</b> (const glm::vec3 &amp;xyz)</td></tr>
+<tr class="separator:aea9dca966b0d88c31ec0af359904b0a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e80dd438494f9adc980a6c595ea35a2"><td class="memItemLeft" align="right" valign="top"><a id="a2e80dd438494f9adc980a6c595ea35a2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate</b> (float angleRad, const glm::vec3 &amp;axis)</td></tr>
+<tr class="separator:a2e80dd438494f9adc980a6c595ea35a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c4a406f8aff214722b4f6a706d37588"><td class="memItemLeft" align="right" valign="top"><a id="a0c4a406f8aff214722b4f6a706d37588"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>transform</b> (const glm::mat4 &amp;trs)</td></tr>
+<tr class="separator:a0c4a406f8aff214722b4f6a706d37588"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93afebe2360a3a99de0e1bde2ad32d90"><td class="memItemLeft" align="right" valign="top"><a id="a93afebe2360a3a99de0e1bde2ad32d90"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>blendMode</b> (BlendMode mode)</td></tr>
 <tr class="separator:a93afebe2360a3a99de0e1bde2ad32d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,9 +215,30 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>quad</b> (const glm::
 <tr class="memitem:aee2f70c93e3c660bd260d9241c533355"><td class="memItemLeft" align="right" valign="top"><a id="aee2f70c93e3c660bd260d9241c533355"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>sphere</b> ()</td></tr>
 <tr class="separator:aee2f70c93e3c660bd260d9241c533355"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1189ac17b054e5e0da58a4d57b2eb231"><td class="memItemLeft" align="right" valign="top"><a id="a1189ac17b054e5e0da58a4d57b2eb231"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mesh</b> (const glm::mat4 &amp;trs, const <a class="el" href="classagl_1_1_triangle_mesh.html">TriangleMesh</a> &amp;m)</td></tr>
-<tr class="separator:a1189ac17b054e5e0da58a4d57b2eb231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad89b62b5cc46a08be9924cdb5443185a"><td class="memItemLeft" align="right" valign="top"><a id="ad89b62b5cc46a08be9924cdb5443185a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>cone</b> ()</td></tr>
+<tr class="separator:ad89b62b5cc46a08be9924cdb5443185a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fe650ead13556a59095e4cd8cd61c82"><td class="memItemLeft" align="right" valign="top"><a id="a3fe650ead13556a59095e4cd8cd61c82"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>cube</b> ()</td></tr>
+<tr class="separator:a3fe650ead13556a59095e4cd8cd61c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a945598f63b1c97b98c1cb505575a489c"><td class="memItemLeft" align="right" valign="top"><a id="a945598f63b1c97b98c1cb505575a489c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>teapot</b> ()</td></tr>
+<tr class="separator:a945598f63b1c97b98c1cb505575a489c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a544696fbcc45bab239dbc3c9adbf72d5"><td class="memItemLeft" align="right" valign="top"><a id="a544696fbcc45bab239dbc3c9adbf72d5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>plane</b> ()</td></tr>
+<tr class="separator:a544696fbcc45bab239dbc3c9adbf72d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad94a4f3d85add8f3d9b8620425cbbd5b"><td class="memItemLeft" align="right" valign="top"><a id="ad94a4f3d85add8f3d9b8620425cbbd5b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>cylinder</b> ()</td></tr>
+<tr class="separator:ad94a4f3d85add8f3d9b8620425cbbd5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1a30a6b1412a317d07a0bea28aebda5"><td class="memItemLeft" align="right" valign="top"><a id="aa1a30a6b1412a317d07a0bea28aebda5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>capsule</b> ()</td></tr>
+<tr class="separator:aa1a30a6b1412a317d07a0bea28aebda5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf67c53f8f33a8f7fd0e1082781607e9"><td class="memItemLeft" align="right" valign="top"><a id="acf67c53f8f33a8f7fd0e1082781607e9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>torus</b> ()</td></tr>
+<tr class="separator:acf67c53f8f33a8f7fd0e1082781607e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed808cf5b13ec7a7a4a9465816163d73"><td class="memItemLeft" align="right" valign="top"><a id="aed808cf5b13ec7a7a4a9465816163d73"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>mesh</b> (const <a class="el" href="classagl_1_1_triangle_mesh.html">TriangleMesh</a> &amp;m)</td></tr>
+<tr class="separator:aed808cf5b13ec7a7a4a9465816163d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa9c3890ff91416793183e32abcf0614"><td class="memItemLeft" align="right" valign="top"><a id="afa9c3890ff91416793183e32abcf0614"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>skybox</b> (float size=10.0)</td></tr>
 <tr class="separator:afa9c3890ff91416793183e32abcf0614"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -224,6 +266,12 @@ class <a class="el" href="classagl_1_1_shader.html">Shader</a> *&#160;</td><td c
 <tr class="memitem:ac1815480c13ea96ceb3f32dd9040aad0"><td class="memItemLeft" align="right" valign="top"><a id="ac1815480c13ea96ceb3f32dd9040aad0"></a>
 std::map&lt; std::string, class <a class="el" href="classagl_1_1_shader.html">Shader</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_shaders</b></td></tr>
 <tr class="separator:ac1815480c13ea96ceb3f32dd9040aad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1b17fd09560193a56fbe6531db69bef"><td class="memItemLeft" align="right" valign="top"><a id="ab1b17fd09560193a56fbe6531db69bef"></a>
+std::list&lt; glm::mat4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_stack</b></td></tr>
+<tr class="separator:ab1b17fd09560193a56fbe6531db69bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a780e092769de8ccbe8b4cc9cbee234e1"><td class="memItemLeft" align="right" valign="top"><a id="a780e092769de8ccbe8b4cc9cbee234e1"></a>
+glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>_trs</b></td></tr>
+<tr class="separator:a780e092769de8ccbe8b4cc9cbee234e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af98ce7cdd6a89c3e3e62e0f31644c7b9"><td class="memItemLeft" align="right" valign="top"><a id="af98ce7cdd6a89c3e3e62e0f31644c7b9"></a>
 glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>mProjectionMatrix</b></td></tr>
 <tr class="separator:af98ce7cdd6a89c3e3e62e0f31644c7b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -233,6 +281,27 @@ glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>mViewMatrix</b><
 <tr class="memitem:ac8b3a5a7e779ae9d095bce8dddba5a71"><td class="memItemLeft" align="right" valign="top"><a id="ac8b3a5a7e779ae9d095bce8dddba5a71"></a>
 glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>mLookfrom</b></td></tr>
 <tr class="separator:ac8b3a5a7e779ae9d095bce8dddba5a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51507bd442ea9521b854e70b302380b6"><td class="memItemLeft" align="right" valign="top"><a id="a51507bd442ea9521b854e70b302380b6"></a>
+class <a class="el" href="classagl_1_1_cube.html">Cube</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_cube</b></td></tr>
+<tr class="separator:a51507bd442ea9521b854e70b302380b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaa99b1d7bcdf7cd097e518907892b03"><td class="memItemLeft" align="right" valign="top"><a id="afaa99b1d7bcdf7cd097e518907892b03"></a>
+class <a class="el" href="classagl_1_1_cylinder.html">Cylinder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_cone</b></td></tr>
+<tr class="separator:afaa99b1d7bcdf7cd097e518907892b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad5d9f97f68407d216b16623b5d474ba"><td class="memItemLeft" align="right" valign="top"><a id="aad5d9f97f68407d216b16623b5d474ba"></a>
+class <a class="el" href="classagl_1_1_capsule.html">Capsule</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_capsule</b></td></tr>
+<tr class="separator:aad5d9f97f68407d216b16623b5d474ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a453a73d44e796aba49f2e994325d6eec"><td class="memItemLeft" align="right" valign="top"><a id="a453a73d44e796aba49f2e994325d6eec"></a>
+class <a class="el" href="classagl_1_1_cylinder.html">Cylinder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_cylinder</b></td></tr>
+<tr class="separator:a453a73d44e796aba49f2e994325d6eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03385d0e473adececcb20243b40e7c39"><td class="memItemLeft" align="right" valign="top"><a id="a03385d0e473adececcb20243b40e7c39"></a>
+class <a class="el" href="classagl_1_1_teapot.html">Teapot</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_teapot</b></td></tr>
+<tr class="separator:a03385d0e473adececcb20243b40e7c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62489b6e883bdd394caf046ba163db73"><td class="memItemLeft" align="right" valign="top"><a id="a62489b6e883bdd394caf046ba163db73"></a>
+class <a class="el" href="classagl_1_1_torus.html">Torus</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_torus</b></td></tr>
+<tr class="separator:a62489b6e883bdd394caf046ba163db73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae595a0e71287c85a3a0eaf35854ae07c"><td class="memItemLeft" align="right" valign="top"><a id="ae595a0e71287c85a3a0eaf35854ae07c"></a>
+class <a class="el" href="classagl_1_1_plane.html">Plane</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_plane</b></td></tr>
+<tr class="separator:ae595a0e71287c85a3a0eaf35854ae07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0c12353ffff9743600d34ccd39164a8"><td class="memItemLeft" align="right" valign="top"><a id="ad0c12353ffff9743600d34ccd39164a8"></a>
 class <a class="el" href="classagl_1_1_sphere.html">Sphere</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_sphere</b></td></tr>
 <tr class="separator:ad0c12353ffff9743600d34ccd39164a8"><td class="memSeparator" colspan="2">&#160;</td></tr>

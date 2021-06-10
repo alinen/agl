@@ -1,10 +1,9 @@
-// Copyright 2020, Savvy Sine, alinen
+// copyright 2020, savvy_sine, alinen
 
 #include "agl/window.h"
 #include <string>
 #include <algorithm>
 #include <glm/gtc/matrix_transform.hpp>
-#include "agl/sphere.h"
 
 namespace agl {
 
@@ -53,6 +52,7 @@ void Window::run() {
 
     background(vec3(0));
     renderer.lookAt(_camera.position(), _camera.look(), _camera.up());
+    renderer.identity();
     draw();  // user function
 
     glfwSwapBuffers(window_);

@@ -1,6 +1,6 @@
 // Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf)
 
-#include "agl/skybox.h"
+#include "agl/mesh/skybox.h"
 #include "agl/agl.h"
 
 namespace agl {
