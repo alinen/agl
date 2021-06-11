@@ -1,7 +1,7 @@
 // copyright 2019, savvy_sine, Aline Normoyle
 
-#ifndef AGL_CAPSULE_H_
-#define AGL_CAPSULE_H_
+#ifndef AGL_MESH_CAPSULE_H_
+#define AGL_MESH_CAPSULE_H_
 
 #include "agl/triangle_mesh.h"
 
@@ -13,4 +13,4 @@ class Capsule : public TriangleMesh {
 };
 
 }  // namespace agl
-#endif  // AGL_CAPSULE_H_
+#endif  // AGL_MESH_CAPSULE_H_

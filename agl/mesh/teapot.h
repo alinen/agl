@@ -1,7 +1,7 @@
 // Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 
-#ifndef AGL_TEAPOT_H_
-#define AGL_TEAPOT_H_
+#ifndef AGL_MESH_TEAPOT_H_
+#define AGL_MESH_TEAPOT_H_
 
 #include "agl/triangle_mesh.h"
 #include <glm/glm.hpp>
@@ -42,6 +42,8 @@ class Teapot : public TriangleMesh
   glm::vec3 evaluateNormal(int gridU, int gridV, std::vector<GLfloat>& B, 
       std::vector<GLfloat> & dB, glm::vec3 patch[][4]);
 
+  void fitUnitBox(std::vector<GLfloat>& p, std::vector<GLfloat>& n);
+
   void moveLid(int grid, std::vector<GLfloat>& p, 
       const glm::mat4& lidTransform);
 
@@ -50,4 +52,4 @@ class Teapot : public TriangleMesh
 };
 
 }  // namespace agl
-#endif  // AGL_TEAPOT_H_
+#endif  // AGL_MESH_TEAPOT_H_

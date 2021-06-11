@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['heading_311',['heading',['../classagl_1_1_camera.html#a79de89bc33599eac33c2a57cace699f1',1,'agl::Camera']]],
-  ['height_312',['height',['../classagl_1_1_image.html#aab7d25d00aef597c99940e13c368193c',1,'agl::Image::height()'],['../classagl_1_1_window.html#accb878c65569507a83594a369064df36',1,'agl::Window::height()']]]
+  ['perspective_71',['perspective',['../classagl_1_1_renderer.html#a634eb6dcb6be2328a406aa419797df25',1,'agl::Renderer']]],
+  ['plane_72',['plane',['../classagl_1_1_renderer.html#a544696fbcc45bab239dbc3c9adbf72d5',1,'agl::Renderer']]]
 ];

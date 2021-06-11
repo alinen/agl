@@ -1,8 +1,7 @@
-// Copyright 2020, Savvy Sine, alinen
+// Copyright 2020, Savvy Sine, Aline Normoyle
 
 #ifndef AGL_WINDOW_H_
 #define AGL_WINDOW_H_
-
 
 #include <string>
 #include <map>
@@ -14,7 +13,7 @@
 namespace agl {
 
 /**
- * @brief The window class manages the window and user input.
+ * @brief Manages the window and user input.
  * 
  * Override this class to create a custom application.
  * @verbinclude sphere.cpp

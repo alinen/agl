@@ -86,105 +86,116 @@ $(document).ready(function(){initNavTree('classagl_1_1_renderer.html',''); initR
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classagl_1_1_renderer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">agl::Renderer Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> class draws meshes to the screen using shaders.  
+ <a href="classagl_1_1_renderer.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="renderer_8h_source.html">renderer.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structagl_1_1_renderer_1_1_texture.html">Texture</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af59f739bbc2ae0747eb724ca98fc2f75"><td class="memItemLeft" align="right" valign="top"><a id="af59f739bbc2ae0747eb724ca98fc2f75"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()</td></tr>
+<tr class="memitem:af59f739bbc2ae0747eb724ca98fc2f75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#af59f739bbc2ae0747eb724ca98fc2f75">init</a> ()</td></tr>
+<tr class="memdesc:af59f739bbc2ae0747eb724ca98fc2f75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize this class for drawing.  <a href="classagl_1_1_renderer.html#af59f739bbc2ae0747eb724ca98fc2f75">More...</a><br /></td></tr>
 <tr class="separator:af59f739bbc2ae0747eb724ca98fc2f75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b59de70a62373a92ec74c83ade4e210"><td class="memItemLeft" align="right" valign="top"><a id="a9b59de70a62373a92ec74c83ade4e210"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>cleanup</b> ()</td></tr>
+<tr class="memitem:a9b59de70a62373a92ec74c83ade4e210"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a9b59de70a62373a92ec74c83ade4e210">cleanup</a> ()</td></tr>
+<tr class="memdesc:a9b59de70a62373a92ec74c83ade4e210"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cleanup all resources used for drawing.  <a href="classagl_1_1_renderer.html#a9b59de70a62373a92ec74c83ade4e210">More...</a><br /></td></tr>
 <tr class="separator:a9b59de70a62373a92ec74c83ade4e210"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfbb2d42960b288878ebf394f9e65770"><td class="memItemLeft" align="right" valign="top"><a id="acfbb2d42960b288878ebf394f9e65770"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>initialized</b> () const</td></tr>
+<tr class="memitem:acfbb2d42960b288878ebf394f9e65770"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#acfbb2d42960b288878ebf394f9e65770">initialized</a> () const</td></tr>
+<tr class="memdesc:acfbb2d42960b288878ebf394f9e65770"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> is ready for drawing.  <a href="classagl_1_1_renderer.html#acfbb2d42960b288878ebf394f9e65770">More...</a><br /></td></tr>
 <tr class="separator:acfbb2d42960b288878ebf394f9e65770"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a634eb6dcb6be2328a406aa419797df25"><td class="memItemLeft" align="right" valign="top"><a id="a634eb6dcb6be2328a406aa419797df25"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>perspective</b> (float fovRadians, float aspect, float near, float far)</td></tr>
+<tr class="memitem:a93afebe2360a3a99de0e1bde2ad32d90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a93afebe2360a3a99de0e1bde2ad32d90">blendMode</a> (BlendMode mode)</td></tr>
+<tr class="memdesc:a93afebe2360a3a99de0e1bde2ad32d90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode for combining colors when drawing.  <a href="classagl_1_1_renderer.html#a93afebe2360a3a99de0e1bde2ad32d90">More...</a><br /></td></tr>
+<tr class="separator:a93afebe2360a3a99de0e1bde2ad32d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Projections and view</div></td></tr>
+<tr class="memitem:a634eb6dcb6be2328a406aa419797df25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a634eb6dcb6be2328a406aa419797df25">perspective</a> (float fovRadians, float aspect, float near, float far)</td></tr>
+<tr class="memdesc:a634eb6dcb6be2328a406aa419797df25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current projection to a perspective view.  <a href="classagl_1_1_renderer.html#a634eb6dcb6be2328a406aa419797df25">More...</a><br /></td></tr>
 <tr class="separator:a634eb6dcb6be2328a406aa419797df25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea4f94741b90f0c91c2846ffef5f2e31"><td class="memItemLeft" align="right" valign="top"><a id="aea4f94741b90f0c91c2846ffef5f2e31"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>ortho</b> (float minx, float maxx, float miny, float maxy, float minz, float maxz)</td></tr>
+<tr class="memitem:aea4f94741b90f0c91c2846ffef5f2e31"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#aea4f94741b90f0c91c2846ffef5f2e31">ortho</a> (float minx, float maxx, float miny, float maxy, float minz, float maxz)</td></tr>
+<tr class="memdesc:aea4f94741b90f0c91c2846ffef5f2e31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current projection to an orthographic view.  <a href="classagl_1_1_renderer.html#aea4f94741b90f0c91c2846ffef5f2e31">More...</a><br /></td></tr>
 <tr class="separator:aea4f94741b90f0c91c2846ffef5f2e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ec93bbf6fc34ba1692331218fd1c104"><td class="memItemLeft" align="right" valign="top"><a id="a6ec93bbf6fc34ba1692331218fd1c104"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>lookAt</b> (const glm::vec3 &amp;lookfrom, const glm::vec3 &amp;lookat, const glm::vec3 &amp;up=glm::vec3(0.0f, 1.0f, 0.0f))</td></tr>
+<tr class="memitem:a6ec93bbf6fc34ba1692331218fd1c104"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a6ec93bbf6fc34ba1692331218fd1c104">lookAt</a> (const glm::vec3 &amp;lookfrom, const glm::vec3 &amp;lookat, const glm::vec3 &amp;up=glm::vec3(0.0f, 1.0f, 0.0f))</td></tr>
+<tr class="memdesc:a6ec93bbf6fc34ba1692331218fd1c104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the camera position and orientation.  <a href="classagl_1_1_renderer.html#a6ec93bbf6fc34ba1692331218fd1c104">More...</a><br /></td></tr>
 <tr class="separator:a6ec93bbf6fc34ba1692331218fd1c104"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ea0048baff9497d280adb4e3927880b"><td class="memItemLeft" align="right" valign="top"><a id="a4ea0048baff9497d280adb4e3927880b"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>cameraPosition</b> () const</td></tr>
+<tr class="memitem:a4ea0048baff9497d280adb4e3927880b"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a4ea0048baff9497d280adb4e3927880b">cameraPosition</a> () const</td></tr>
+<tr class="memdesc:a4ea0048baff9497d280adb4e3927880b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current camera position.  <a href="classagl_1_1_renderer.html#a4ea0048baff9497d280adb4e3927880b">More...</a><br /></td></tr>
 <tr class="separator:a4ea0048baff9497d280adb4e3927880b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a580e7feab0c2c29815b9c4b364b4b8"><td class="memItemLeft" align="right" valign="top"><a id="a4a580e7feab0c2c29815b9c4b364b4b8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadShader</b> (const std::string &amp;name, const std::string &amp;vs, const std::string &amp;fs)</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Shaders</div></td></tr>
+<tr class="memitem:a4a580e7feab0c2c29815b9c4b364b4b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8">loadShader</a> (const std::string &amp;name, const std::string &amp;vs, const std::string &amp;fs)</td></tr>
+<tr class="memdesc:a4a580e7feab0c2c29815b9c4b364b4b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a GLSL shader from files.  <a href="classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8">More...</a><br /></td></tr>
 <tr class="separator:a4a580e7feab0c2c29815b9c4b364b4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a219ab8aaf5d0bb109bbd1bbbf567f78d"><td class="memItemLeft" align="right" valign="top"><a id="a219ab8aaf5d0bb109bbd1bbbf567f78d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>beginShader</b> (const std::string &amp;shaderName)</td></tr>
+<tr class="memitem:a219ab8aaf5d0bb109bbd1bbbf567f78d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">beginShader</a> (const std::string &amp;shaderName)</td></tr>
+<tr class="memdesc:a219ab8aaf5d0bb109bbd1bbbf567f78d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set active shader to use for rendering.  <a href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">More...</a><br /></td></tr>
 <tr class="separator:a219ab8aaf5d0bb109bbd1bbbf567f78d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21af4885a9fe659b6515e07bee758374"><td class="memItemLeft" align="right" valign="top"><a id="a21af4885a9fe659b6515e07bee758374"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>endShader</b> ()</td></tr>
+<tr class="memitem:a21af4885a9fe659b6515e07bee758374"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">endShader</a> ()</td></tr>
+<tr class="memdesc:a21af4885a9fe659b6515e07bee758374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear active shader to use for rendering.  <a href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">More...</a><br /></td></tr>
 <tr class="separator:a21af4885a9fe659b6515e07bee758374"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af59ab1ce370cf7b6951bd4b0f39f212e"><td class="memItemLeft" align="right" valign="top"><a id="af59ab1ce370cf7b6951bd4b0f39f212e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (const std::string &amp;name, float x, float y, float z)</td></tr>
+<tr class="memitem:af59ab1ce370cf7b6951bd4b0f39f212e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#af59ab1ce370cf7b6951bd4b0f39f212e">setUniform</a> (const std::string &amp;name, float x, float y, float z)</td></tr>
+<tr class="memdesc:af59ab1ce370cf7b6951bd4b0f39f212e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#af59ab1ce370cf7b6951bd4b0f39f212e">More...</a><br /></td></tr>
 <tr class="separator:af59ab1ce370cf7b6951bd4b0f39f212e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66e7c746443ec1d11ad127f83ba870c5"><td class="memItemLeft" align="right" valign="top"><a id="a66e7c746443ec1d11ad127f83ba870c5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (const std::string &amp;name, float x, float y, float z, float w)</td></tr>
+<tr class="memitem:a66e7c746443ec1d11ad127f83ba870c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a66e7c746443ec1d11ad127f83ba870c5">setUniform</a> (const std::string &amp;name, float x, float y, float z, float w)</td></tr>
+<tr class="memdesc:a66e7c746443ec1d11ad127f83ba870c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#a66e7c746443ec1d11ad127f83ba870c5">More...</a><br /></td></tr>
 <tr class="separator:a66e7c746443ec1d11ad127f83ba870c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a582fc93af2778c83dd65c2b7afc5acfb"><td class="memItemLeft" align="right" valign="top"><a id="a582fc93af2778c83dd65c2b7afc5acfb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (const std::string &amp;name, const glm::vec2 &amp;v)</td></tr>
+<tr class="memitem:a582fc93af2778c83dd65c2b7afc5acfb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a582fc93af2778c83dd65c2b7afc5acfb">setUniform</a> (const std::string &amp;name, const glm::vec2 &amp;v)</td></tr>
+<tr class="memdesc:a582fc93af2778c83dd65c2b7afc5acfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#a582fc93af2778c83dd65c2b7afc5acfb">More...</a><br /></td></tr>
 <tr class="separator:a582fc93af2778c83dd65c2b7afc5acfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bf09bd96e6b8315bd4397436749bb0a"><td class="memItemLeft" align="right" valign="top"><a id="a7bf09bd96e6b8315bd4397436749bb0a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (const std::string &amp;name, const glm::vec3 &amp;v)</td></tr>
+<tr class="memitem:a7bf09bd96e6b8315bd4397436749bb0a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a7bf09bd96e6b8315bd4397436749bb0a">setUniform</a> (const std::string &amp;name, const glm::vec3 &amp;v)</td></tr>
+<tr class="memdesc:a7bf09bd96e6b8315bd4397436749bb0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#a7bf09bd96e6b8315bd4397436749bb0a">More...</a><br /></td></tr>
 <tr class="separator:a7bf09bd96e6b8315bd4397436749bb0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a2423125e617c1096ddc9dd76dd0c4b"><td class="memItemLeft" align="right" valign="top"><a id="a6a2423125e617c1096ddc9dd76dd0c4b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (const std::string &amp;name, const glm::vec4 &amp;v)</td></tr>
+<tr class="memitem:a6a2423125e617c1096ddc9dd76dd0c4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a6a2423125e617c1096ddc9dd76dd0c4b">setUniform</a> (const std::string &amp;name, const glm::vec4 &amp;v)</td></tr>
+<tr class="memdesc:a6a2423125e617c1096ddc9dd76dd0c4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#a6a2423125e617c1096ddc9dd76dd0c4b">More...</a><br /></td></tr>
 <tr class="separator:a6a2423125e617c1096ddc9dd76dd0c4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67b5312ca401a1063d564a663c1c74c3"><td class="memItemLeft" align="right" valign="top"><a id="a67b5312ca401a1063d564a663c1c74c3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (const std::string &amp;name, const glm::mat4 &amp;m)</td></tr>
+<tr class="memitem:a67b5312ca401a1063d564a663c1c74c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a67b5312ca401a1063d564a663c1c74c3">setUniform</a> (const std::string &amp;name, const glm::mat4 &amp;m)</td></tr>
+<tr class="memdesc:a67b5312ca401a1063d564a663c1c74c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#a67b5312ca401a1063d564a663c1c74c3">More...</a><br /></td></tr>
 <tr class="separator:a67b5312ca401a1063d564a663c1c74c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81cb2d116dbd162003c7568088f88370"><td class="memItemLeft" align="right" valign="top"><a id="a81cb2d116dbd162003c7568088f88370"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (const std::string &amp;name, const glm::mat3 &amp;m)</td></tr>
+<tr class="memitem:a81cb2d116dbd162003c7568088f88370"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a81cb2d116dbd162003c7568088f88370">setUniform</a> (const std::string &amp;name, const glm::mat3 &amp;m)</td></tr>
+<tr class="memdesc:a81cb2d116dbd162003c7568088f88370"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#a81cb2d116dbd162003c7568088f88370">More...</a><br /></td></tr>
 <tr class="separator:a81cb2d116dbd162003c7568088f88370"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a133e7aff9f2a0ef2614d6a04a14cf809"><td class="memItemLeft" align="right" valign="top"><a id="a133e7aff9f2a0ef2614d6a04a14cf809"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (const std::string &amp;name, float val)</td></tr>
+<tr class="memitem:a133e7aff9f2a0ef2614d6a04a14cf809"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a133e7aff9f2a0ef2614d6a04a14cf809">setUniform</a> (const std::string &amp;name, float val)</td></tr>
+<tr class="memdesc:a133e7aff9f2a0ef2614d6a04a14cf809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#a133e7aff9f2a0ef2614d6a04a14cf809">More...</a><br /></td></tr>
 <tr class="separator:a133e7aff9f2a0ef2614d6a04a14cf809"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92dcd15e00f7f7611034a361999fb4fd"><td class="memItemLeft" align="right" valign="top"><a id="a92dcd15e00f7f7611034a361999fb4fd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (const std::string &amp;name, int val)</td></tr>
+<tr class="memitem:a92dcd15e00f7f7611034a361999fb4fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a92dcd15e00f7f7611034a361999fb4fd">setUniform</a> (const std::string &amp;name, int val)</td></tr>
+<tr class="memdesc:a92dcd15e00f7f7611034a361999fb4fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#a92dcd15e00f7f7611034a361999fb4fd">More...</a><br /></td></tr>
 <tr class="separator:a92dcd15e00f7f7611034a361999fb4fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a257300a6fa0fbb3fdee92b242dd002d8"><td class="memItemLeft" align="right" valign="top"><a id="a257300a6fa0fbb3fdee92b242dd002d8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (const std::string &amp;name, bool val)</td></tr>
+<tr class="memitem:a257300a6fa0fbb3fdee92b242dd002d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a257300a6fa0fbb3fdee92b242dd002d8">setUniform</a> (const std::string &amp;name, bool val)</td></tr>
+<tr class="memdesc:a257300a6fa0fbb3fdee92b242dd002d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#a257300a6fa0fbb3fdee92b242dd002d8">More...</a><br /></td></tr>
 <tr class="separator:a257300a6fa0fbb3fdee92b242dd002d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f3e1d788b14f778b4435cf2f943d75a"><td class="memItemLeft" align="right" valign="top"><a id="a7f3e1d788b14f778b4435cf2f943d75a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setUniform</b> (const std::string &amp;name, GLuint val)</td></tr>
+<tr class="memitem:a7f3e1d788b14f778b4435cf2f943d75a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a7f3e1d788b14f778b4435cf2f943d75a">setUniform</a> (const std::string &amp;name, GLuint val)</td></tr>
+<tr class="memdesc:a7f3e1d788b14f778b4435cf2f943d75a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#a7f3e1d788b14f778b4435cf2f943d75a">More...</a><br /></td></tr>
 <tr class="separator:a7f3e1d788b14f778b4435cf2f943d75a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d56b6bdbeb5d3a4e679a3ddb899db7f"><td class="memItemLeft" align="right" valign="top"><a id="a8d56b6bdbeb5d3a4e679a3ddb899db7f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadTexture</b> (const std::string &amp;name, const std::string &amp;filename, int slot)</td></tr>
+<tr class="memitem:a669b3b37fa93e010c4d7b3b9016523bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a669b3b37fa93e010c4d7b3b9016523bb">texture</a> (const std::string &amp;uniformName, const std::string &amp;textureName)</td></tr>
+<tr class="memdesc:a669b3b37fa93e010c4d7b3b9016523bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform sampler parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#a669b3b37fa93e010c4d7b3b9016523bb">More...</a><br /></td></tr>
+<tr class="separator:a669b3b37fa93e010c4d7b3b9016523bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeec174923d2fd2f7e5d5f8dae017b930"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#aeec174923d2fd2f7e5d5f8dae017b930">cubemap</a> (const std::string &amp;uniformName, const std::string &amp;texName)</td></tr>
+<tr class="memdesc:aeec174923d2fd2f7e5d5f8dae017b930"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform sampler parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#aeec174923d2fd2f7e5d5f8dae017b930">More...</a><br /></td></tr>
+<tr class="separator:aeec174923d2fd2f7e5d5f8dae017b930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Loading textures</div></td></tr>
+<tr><td colspan="2"><div class="groupText"><p>Textures should typically be loaded from setup() </p>
+</div></td></tr>
+<tr class="memitem:a8d56b6bdbeb5d3a4e679a3ddb899db7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a8d56b6bdbeb5d3a4e679a3ddb899db7f">loadTexture</a> (const std::string &amp;name, const std::string &amp;filename, int slot)</td></tr>
+<tr class="memdesc:a8d56b6bdbeb5d3a4e679a3ddb899db7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a texture from a file.  <a href="classagl_1_1_renderer.html#a8d56b6bdbeb5d3a4e679a3ddb899db7f">More...</a><br /></td></tr>
 <tr class="separator:a8d56b6bdbeb5d3a4e679a3ddb899db7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50067c8743a6f0a672ed666bf3b28af7"><td class="memItemLeft" align="right" valign="top"><a id="a50067c8743a6f0a672ed666bf3b28af7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadTexture</b> (const std::string &amp;name, const <a class="el" href="classagl_1_1_image.html">Image</a> &amp;img, int slot)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a50067c8743a6f0a672ed666bf3b28af7">loadTexture</a> (const std::string &amp;name, const <a class="el" href="classagl_1_1_image.html">Image</a> &amp;img, int slot)</td></tr>
+<tr class="memdesc:a50067c8743a6f0a672ed666bf3b28af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a texture from an <a class="el" href="classagl_1_1_image.html" title="Implements loading, modifying, and saving RGBA images.">Image</a>. <br /></td></tr>
 <tr class="separator:a50067c8743a6f0a672ed666bf3b28af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abda4b08760e08aa30afed9f8a9e5b45c"><td class="memItemLeft" align="right" valign="top"><a id="abda4b08760e08aa30afed9f8a9e5b45c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadCubemap</b> (const std::string &amp;name, const std::string &amp;dir, int slot)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#abda4b08760e08aa30afed9f8a9e5b45c">loadCubemap</a> (const std::string &amp;name, const std::string &amp;dir, int slot)</td></tr>
+<tr class="memdesc:abda4b08760e08aa30afed9f8a9e5b45c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a cube map. <br /></td></tr>
 <tr class="separator:abda4b08760e08aa30afed9f8a9e5b45c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25df953af2c8b6a9c5c53c157022f2f3"><td class="memItemLeft" align="right" valign="top"><a id="a25df953af2c8b6a9c5c53c157022f2f3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadCubemap</b> (const std::string &amp;name, const std::vector&lt; std::string &gt; &amp;names, int slot)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a25df953af2c8b6a9c5c53c157022f2f3">loadCubemap</a> (const std::string &amp;name, const std::vector&lt; std::string &gt; &amp;names, int slot)</td></tr>
+<tr class="memdesc:a25df953af2c8b6a9c5c53c157022f2f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a cube map. <br /></td></tr>
 <tr class="separator:a25df953af2c8b6a9c5c53c157022f2f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af87fda1afd7cdb18daa4043e155c2e12"><td class="memItemLeft" align="right" valign="top"><a id="af87fda1afd7cdb18daa4043e155c2e12"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>loadCubemap</b> (const std::string &amp;name, const std::vector&lt; <a class="el" href="classagl_1_1_image.html">Image</a> &gt; &amp;images, int slot)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#af87fda1afd7cdb18daa4043e155c2e12">loadCubemap</a> (const std::string &amp;name, const std::vector&lt; <a class="el" href="classagl_1_1_image.html">Image</a> &gt; &amp;images, int slot)</td></tr>
+<tr class="memdesc:af87fda1afd7cdb18daa4043e155c2e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a cube map. <br /></td></tr>
 <tr class="separator:af87fda1afd7cdb18daa4043e155c2e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a669b3b37fa93e010c4d7b3b9016523bb"><td class="memItemLeft" align="right" valign="top"><a id="a669b3b37fa93e010c4d7b3b9016523bb"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>texture</b> (const std::string &amp;uniformName, const std::string &amp;textureName)</td></tr>
-<tr class="separator:a669b3b37fa93e010c4d7b3b9016523bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeec174923d2fd2f7e5d5f8dae017b930"><td class="memItemLeft" align="right" valign="top"><a id="aeec174923d2fd2f7e5d5f8dae017b930"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>cubemap</b> (const std::string &amp;uniformName, const std::string &amp;texName)</td></tr>
-<tr class="separator:aeec174923d2fd2f7e5d5f8dae017b930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Positioning</div></td></tr>
 <tr class="memitem:aeab5ce86e5b7b4259598371ce413d02c"><td class="memItemLeft" align="right" valign="top"><a id="aeab5ce86e5b7b4259598371ce413d02c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>push</b> ()</td></tr>
 <tr class="separator:aeab5ce86e5b7b4259598371ce413d02c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,115 +217,1388 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate</b> (float ang
 <tr class="memitem:a0c4a406f8aff214722b4f6a706d37588"><td class="memItemLeft" align="right" valign="top"><a id="a0c4a406f8aff214722b4f6a706d37588"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>transform</b> (const glm::mat4 &amp;trs)</td></tr>
 <tr class="separator:a0c4a406f8aff214722b4f6a706d37588"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93afebe2360a3a99de0e1bde2ad32d90"><td class="memItemLeft" align="right" valign="top"><a id="a93afebe2360a3a99de0e1bde2ad32d90"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>blendMode</b> (BlendMode mode)</td></tr>
-<tr class="separator:a93afebe2360a3a99de0e1bde2ad32d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a296c9ab776cd28fd296aa565d8a5ff4e"><td class="memItemLeft" align="right" valign="top"><a id="a296c9ab776cd28fd296aa565d8a5ff4e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>quad</b> (const glm::vec3 &amp;pos, const glm::vec4 &amp;color, float size)</td></tr>
-<tr class="separator:a296c9ab776cd28fd296aa565d8a5ff4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee2f70c93e3c660bd260d9241c533355"><td class="memItemLeft" align="right" valign="top"><a id="aee2f70c93e3c660bd260d9241c533355"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>sphere</b> ()</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Drawing meshes</div></td></tr>
+<tr class="memitem:a9059620a6ebc876e27ca0feb347cdfc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a9059620a6ebc876e27ca0feb347cdfc6">sprite</a> (const glm::vec3 &amp;pos, const glm::vec4 &amp;color, float size)</td></tr>
+<tr class="memdesc:a9059620a6ebc876e27ca0feb347cdfc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a sprite using a point billboard.  <a href="classagl_1_1_renderer.html#a9059620a6ebc876e27ca0feb347cdfc6">More...</a><br /></td></tr>
+<tr class="separator:a9059620a6ebc876e27ca0feb347cdfc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee2f70c93e3c660bd260d9241c533355"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#aee2f70c93e3c660bd260d9241c533355">sphere</a> ()</td></tr>
+<tr class="memdesc:aee2f70c93e3c660bd260d9241c533355"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a sphere centered at the origin with radius 0.5.  <a href="classagl_1_1_renderer.html#aee2f70c93e3c660bd260d9241c533355">More...</a><br /></td></tr>
 <tr class="separator:aee2f70c93e3c660bd260d9241c533355"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad89b62b5cc46a08be9924cdb5443185a"><td class="memItemLeft" align="right" valign="top"><a id="ad89b62b5cc46a08be9924cdb5443185a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>cone</b> ()</td></tr>
-<tr class="separator:ad89b62b5cc46a08be9924cdb5443185a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fe650ead13556a59095e4cd8cd61c82"><td class="memItemLeft" align="right" valign="top"><a id="a3fe650ead13556a59095e4cd8cd61c82"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>cube</b> ()</td></tr>
+<tr class="memitem:a3fe650ead13556a59095e4cd8cd61c82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a3fe650ead13556a59095e4cd8cd61c82">cube</a> ()</td></tr>
+<tr class="memdesc:a3fe650ead13556a59095e4cd8cd61c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a cube centered at the origin with width, height, and depth equal to 1.0.  <a href="classagl_1_1_renderer.html#a3fe650ead13556a59095e4cd8cd61c82">More...</a><br /></td></tr>
 <tr class="separator:a3fe650ead13556a59095e4cd8cd61c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad89b62b5cc46a08be9924cdb5443185a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#ad89b62b5cc46a08be9924cdb5443185a">cone</a> ()</td></tr>
+<tr class="memdesc:ad89b62b5cc46a08be9924cdb5443185a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a cone centered at the origin, with the tip towards +Z.  <a href="classagl_1_1_renderer.html#ad89b62b5cc46a08be9924cdb5443185a">More...</a><br /></td></tr>
+<tr class="separator:ad89b62b5cc46a08be9924cdb5443185a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a945598f63b1c97b98c1cb505575a489c"><td class="memItemLeft" align="right" valign="top"><a id="a945598f63b1c97b98c1cb505575a489c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>teapot</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a945598f63b1c97b98c1cb505575a489c">teapot</a> ()</td></tr>
+<tr class="memdesc:a945598f63b1c97b98c1cb505575a489c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a teapot with largest side with width 1. <br /></td></tr>
 <tr class="separator:a945598f63b1c97b98c1cb505575a489c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a544696fbcc45bab239dbc3c9adbf72d5"><td class="memItemLeft" align="right" valign="top"><a id="a544696fbcc45bab239dbc3c9adbf72d5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>plane</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a544696fbcc45bab239dbc3c9adbf72d5">plane</a> ()</td></tr>
+<tr class="memdesc:a544696fbcc45bab239dbc3c9adbf72d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a plane. <br /></td></tr>
 <tr class="separator:a544696fbcc45bab239dbc3c9adbf72d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad94a4f3d85add8f3d9b8620425cbbd5b"><td class="memItemLeft" align="right" valign="top"><a id="ad94a4f3d85add8f3d9b8620425cbbd5b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>cylinder</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#ad94a4f3d85add8f3d9b8620425cbbd5b">cylinder</a> ()</td></tr>
+<tr class="memdesc:ad94a4f3d85add8f3d9b8620425cbbd5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a teapot with largest side with width 1. <br /></td></tr>
 <tr class="separator:ad94a4f3d85add8f3d9b8620425cbbd5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1a30a6b1412a317d07a0bea28aebda5"><td class="memItemLeft" align="right" valign="top"><a id="aa1a30a6b1412a317d07a0bea28aebda5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>capsule</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#aa1a30a6b1412a317d07a0bea28aebda5">capsule</a> ()</td></tr>
+<tr class="memdesc:aa1a30a6b1412a317d07a0bea28aebda5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a capsule with endpoints at (0,0,0) and (0,0,1). The cap radius is 0.25 and the width is 0.5. <br /></td></tr>
 <tr class="separator:aa1a30a6b1412a317d07a0bea28aebda5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf67c53f8f33a8f7fd0e1082781607e9"><td class="memItemLeft" align="right" valign="top"><a id="acf67c53f8f33a8f7fd0e1082781607e9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>torus</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#acf67c53f8f33a8f7fd0e1082781607e9">torus</a> ()</td></tr>
+<tr class="memdesc:acf67c53f8f33a8f7fd0e1082781607e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a torus. <br /></td></tr>
 <tr class="separator:acf67c53f8f33a8f7fd0e1082781607e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed808cf5b13ec7a7a4a9465816163d73"><td class="memItemLeft" align="right" valign="top"><a id="aed808cf5b13ec7a7a4a9465816163d73"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>mesh</b> (const <a class="el" href="classagl_1_1_triangle_mesh.html">TriangleMesh</a> &amp;m)</td></tr>
-<tr class="separator:aed808cf5b13ec7a7a4a9465816163d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa9c3890ff91416793183e32abcf0614"><td class="memItemLeft" align="right" valign="top"><a id="afa9c3890ff91416793183e32abcf0614"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>skybox</b> (float size=10.0)</td></tr>
+<tr class="memitem:afa9c3890ff91416793183e32abcf0614"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#afa9c3890ff91416793183e32abcf0614">skybox</a> (float size=10.0)</td></tr>
+<tr class="memdesc:afa9c3890ff91416793183e32abcf0614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a skybox (typically with a cubemap)  <a href="classagl_1_1_renderer.html#afa9c3890ff91416793183e32abcf0614">More...</a><br /></td></tr>
 <tr class="separator:afa9c3890ff91416793183e32abcf0614"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:ae80cda5118f8f1cb26776a5159be5f64"><td class="memItemLeft" align="right" valign="top"><a id="ae80cda5118f8f1cb26776a5159be5f64"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>initBillboards</b> ()</td></tr>
-<tr class="separator:ae80cda5118f8f1cb26776a5159be5f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6082f5a9c8d54e6f7bddf15e92e5ed14"><td class="memItemLeft" align="right" valign="top"><a id="a6082f5a9c8d54e6f7bddf15e92e5ed14"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>initMesh</b> ()</td></tr>
-<tr class="separator:a6082f5a9c8d54e6f7bddf15e92e5ed14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:abc096e25366c9fae9c9eedf95a4ace91"><td class="memItemLeft" align="right" valign="top"><a id="abc096e25366c9fae9c9eedf95a4ace91"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_initialized</b></td></tr>
-<tr class="separator:abc096e25366c9fae9c9eedf95a4ace91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a691480c165808fe7718847f436bb65b3"><td class="memItemLeft" align="right" valign="top"><a id="a691480c165808fe7718847f436bb65b3"></a>
-std::map&lt; std::string, <a class="el" href="structagl_1_1_renderer_1_1_texture.html">Texture</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_textures</b></td></tr>
-<tr class="separator:a691480c165808fe7718847f436bb65b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ebddef43202f4c69aeaad894e028f87"><td class="memItemLeft" align="right" valign="top"><a id="a1ebddef43202f4c69aeaad894e028f87"></a>
-class <a class="el" href="classagl_1_1_shader.html">Shader</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_currentShader</b></td></tr>
-<tr class="separator:a1ebddef43202f4c69aeaad894e028f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1815480c13ea96ceb3f32dd9040aad0"><td class="memItemLeft" align="right" valign="top"><a id="ac1815480c13ea96ceb3f32dd9040aad0"></a>
-std::map&lt; std::string, class <a class="el" href="classagl_1_1_shader.html">Shader</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_shaders</b></td></tr>
-<tr class="separator:ac1815480c13ea96ceb3f32dd9040aad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1b17fd09560193a56fbe6531db69bef"><td class="memItemLeft" align="right" valign="top"><a id="ab1b17fd09560193a56fbe6531db69bef"></a>
-std::list&lt; glm::mat4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_stack</b></td></tr>
-<tr class="separator:ab1b17fd09560193a56fbe6531db69bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a780e092769de8ccbe8b4cc9cbee234e1"><td class="memItemLeft" align="right" valign="top"><a id="a780e092769de8ccbe8b4cc9cbee234e1"></a>
-glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>_trs</b></td></tr>
-<tr class="separator:a780e092769de8ccbe8b4cc9cbee234e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af98ce7cdd6a89c3e3e62e0f31644c7b9"><td class="memItemLeft" align="right" valign="top"><a id="af98ce7cdd6a89c3e3e62e0f31644c7b9"></a>
-glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>mProjectionMatrix</b></td></tr>
-<tr class="separator:af98ce7cdd6a89c3e3e62e0f31644c7b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83845348ffdf71fe9b38980ea23989c5"><td class="memItemLeft" align="right" valign="top"><a id="a83845348ffdf71fe9b38980ea23989c5"></a>
-glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><b>mViewMatrix</b></td></tr>
-<tr class="separator:a83845348ffdf71fe9b38980ea23989c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8b3a5a7e779ae9d095bce8dddba5a71"><td class="memItemLeft" align="right" valign="top"><a id="ac8b3a5a7e779ae9d095bce8dddba5a71"></a>
-glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><b>mLookfrom</b></td></tr>
-<tr class="separator:ac8b3a5a7e779ae9d095bce8dddba5a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51507bd442ea9521b854e70b302380b6"><td class="memItemLeft" align="right" valign="top"><a id="a51507bd442ea9521b854e70b302380b6"></a>
-class <a class="el" href="classagl_1_1_cube.html">Cube</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_cube</b></td></tr>
-<tr class="separator:a51507bd442ea9521b854e70b302380b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaa99b1d7bcdf7cd097e518907892b03"><td class="memItemLeft" align="right" valign="top"><a id="afaa99b1d7bcdf7cd097e518907892b03"></a>
-class <a class="el" href="classagl_1_1_cylinder.html">Cylinder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_cone</b></td></tr>
-<tr class="separator:afaa99b1d7bcdf7cd097e518907892b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad5d9f97f68407d216b16623b5d474ba"><td class="memItemLeft" align="right" valign="top"><a id="aad5d9f97f68407d216b16623b5d474ba"></a>
-class <a class="el" href="classagl_1_1_capsule.html">Capsule</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_capsule</b></td></tr>
-<tr class="separator:aad5d9f97f68407d216b16623b5d474ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a453a73d44e796aba49f2e994325d6eec"><td class="memItemLeft" align="right" valign="top"><a id="a453a73d44e796aba49f2e994325d6eec"></a>
-class <a class="el" href="classagl_1_1_cylinder.html">Cylinder</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_cylinder</b></td></tr>
-<tr class="separator:a453a73d44e796aba49f2e994325d6eec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03385d0e473adececcb20243b40e7c39"><td class="memItemLeft" align="right" valign="top"><a id="a03385d0e473adececcb20243b40e7c39"></a>
-class <a class="el" href="classagl_1_1_teapot.html">Teapot</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_teapot</b></td></tr>
-<tr class="separator:a03385d0e473adececcb20243b40e7c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62489b6e883bdd394caf046ba163db73"><td class="memItemLeft" align="right" valign="top"><a id="a62489b6e883bdd394caf046ba163db73"></a>
-class <a class="el" href="classagl_1_1_torus.html">Torus</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_torus</b></td></tr>
-<tr class="separator:a62489b6e883bdd394caf046ba163db73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae595a0e71287c85a3a0eaf35854ae07c"><td class="memItemLeft" align="right" valign="top"><a id="ae595a0e71287c85a3a0eaf35854ae07c"></a>
-class <a class="el" href="classagl_1_1_plane.html">Plane</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_plane</b></td></tr>
-<tr class="separator:ae595a0e71287c85a3a0eaf35854ae07c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0c12353ffff9743600d34ccd39164a8"><td class="memItemLeft" align="right" valign="top"><a id="ad0c12353ffff9743600d34ccd39164a8"></a>
-class <a class="el" href="classagl_1_1_sphere.html">Sphere</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_sphere</b></td></tr>
-<tr class="separator:ad0c12353ffff9743600d34ccd39164a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee0e0d019ccd2c5fdfcf8a1a889169c2"><td class="memItemLeft" align="right" valign="top"><a id="aee0e0d019ccd2c5fdfcf8a1a889169c2"></a>
-class <a class="el" href="classagl_1_1_sky_box.html">SkyBox</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_skybox</b></td></tr>
-<tr class="separator:aee0e0d019ccd2c5fdfcf8a1a889169c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57870ce0cea42068c8e730f5da6681de"><td class="memItemLeft" align="right" valign="top"><a id="a57870ce0cea42068c8e730f5da6681de"></a>
-GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>mBBVboPosId</b></td></tr>
-<tr class="separator:a57870ce0cea42068c8e730f5da6681de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef6e2931ae4ed4dc3ae286c90b91ec38"><td class="memItemLeft" align="right" valign="top"><a id="aef6e2931ae4ed4dc3ae286c90b91ec38"></a>
-GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>mBBVaoId</b></td></tr>
-<tr class="separator:aef6e2931ae4ed4dc3ae286c90b91ec38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed808cf5b13ec7a7a4a9465816163d73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#aed808cf5b13ec7a7a4a9465816163d73">mesh</a> (const <a class="el" href="classagl_1_1_triangle_mesh.html">TriangleMesh</a> &amp;m)</td></tr>
+<tr class="memdesc:aed808cf5b13ec7a7a4a9465816163d73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a custom (indexed) mesh.  <a href="classagl_1_1_renderer.html#aed808cf5b13ec7a7a4a9465816163d73">More...</a><br /></td></tr>
+<tr class="separator:aed808cf5b13ec7a7a4a9465816163d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> class draws meshes to the screen using shaders. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a219ab8aaf5d0bb109bbd1bbbf567f78d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a219ab8aaf5d0bb109bbd1bbbf567f78d">&#9670;&nbsp;</a></span>beginShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::beginShader </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>shaderName</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set active shader to use for rendering. </p>
+<p>One shadr must always be enabled for drawing to work. By default, "phong" is enabled. The shader needs to be already loaded (in setup) using <code>loadShader</code> The renderer automatically loads shaders for "phong", "sprites", and "cubemap".</p>
+<p>Usage </p><div class="fragment"><div class="line"><a class="code" href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">beginShader</a>(<span class="stringliteral">&quot;myShader&quot;</span>);</div>
+<div class="line"><span class="comment">// draw primitives</span></div>
+<div class="line"><a class="code" href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">endShader</a>();</div>
+<div class="ttc" id="aclassagl_1_1_renderer_html_a219ab8aaf5d0bb109bbd1bbbf567f78d"><div class="ttname"><a href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">agl::Renderer::beginShader</a></div><div class="ttdeci">void beginShader(const std::string &amp;shaderName)</div><div class="ttdoc">Set active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:284</div></div>
+<div class="ttc" id="aclassagl_1_1_renderer_html_a21af4885a9fe659b6515e07bee758374"><div class="ttname"><a href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">agl::Renderer::endShader</a></div><div class="ttdeci">void endShader()</div><div class="ttdoc">Clear active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:298</div></div>
+</div><!-- fragment --> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8" title="Load a GLSL shader from files.">loadShader</a> <br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="a93afebe2360a3a99de0e1bde2ad32d90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93afebe2360a3a99de0e1bde2ad32d90">&#9670;&nbsp;</a></span>blendMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::blendMode </td>
+          <td>(</td>
+          <td class="paramtype">BlendMode&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mode for combining colors when drawing. </p>
+<p>The alpha component controls how colors will be combined based on the current mode. Transparent objects should be drawn back to front in relation to the camera.</p>
+<ul>
+<li><em>DEFAULT</em> Ignore alpha and draw all objects as opaque</li>
+<li><em>ADD</em> Add colors using formula: cSrc + c * c.alpha</li>
+<li><em>ALPHA</em> Blend colors using formula: cSrc * alpha + c * (1 - c.alpha) <pre class="fragment">#include "agl/window.h"
+
+using namespace glm;
+using namespace agl;
+
+class MyWindow : public Window {
+  void setup() {
+    renderer.loadTexture("cloud", "../textures/cloud.png", 0);
+    renderer.loadTexture("particle", "../textures/particle.png", 0);
+    renderer.blendMode(ADD);
+  }
+
+  void draw() {
+    renderer.beginShader("sprite");
+    renderer.texture("image", "cloud");
+    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), vec4(0.0f, 1.0f, 0.0f, 1.0f), 0.25f);
+
+    renderer.texture("image", "particle");
+    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), vec4(0.0f, 0.0f, 1.0f, 1.0f), 0.25f);
+    renderer.endShader();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> </li>
+</ul>
+
+</div>
+</div>
+<a id="a4ea0048baff9497d280adb4e3927880b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ea0048baff9497d280adb4e3927880b">&#9670;&nbsp;</a></span>cameraPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vec3 agl::Renderer::cameraPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the current camera position. </p>
+<dl class="section return"><dt>Returns</dt><dd>The current position of the camera </dd></dl>
+
+</div>
+</div>
+<a id="a9b59de70a62373a92ec74c83ade4e210"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b59de70a62373a92ec74c83ade4e210">&#9670;&nbsp;</a></span>cleanup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::cleanup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cleanup all resources used for drawing. </p>
+<p>This method must be called before any draw or shader calls. <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> calls this method automatically. Users should not call this method. </p>
+
+</div>
+</div>
+<a id="ad89b62b5cc46a08be9924cdb5443185a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad89b62b5cc46a08be9924cdb5443185a">&#9670;&nbsp;</a></span>cone()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::cone </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a cone centered at the origin, with the tip towards +Z. </p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    float angleRad = elapsedTime(); // angle is in radians
+    renderer.rotate(angleRad, glm::vec3(0.707f, 0.707f, 0.0f));
+    renderer.cube();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a3fe650ead13556a59095e4cd8cd61c82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3fe650ead13556a59095e4cd8cd61c82">&#9670;&nbsp;</a></span>cube()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::cube </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a cube centered at the origin with width, height, and depth equal to 1.0. </p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    float angleRad = elapsedTime(); // angle is in radians
+    renderer.rotate(angleRad, glm::vec3(0.707f, 0.707f, 0.0f));
+    renderer.cube();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="aeec174923d2fd2f7e5d5f8dae017b930"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeec174923d2fd2f7e5d5f8dae017b930">&#9670;&nbsp;</a></span>cubemap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::cubemap </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>uniformName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>texName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform sampler parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. The cubemap should already be loaded. The textureName should match the key given when the texture is loaded.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#abda4b08760e08aa30afed9f8a9e5b45c" title="Load a cube map.">loadCubemap</a> <pre class="fragment">// Copyright (c) 2020, savvy sine, Aline Normoyle, alinen
+// Visualize a cubemap texture using the skybox primitive
+
+#include "agl/window.h"
+
+class MyWindow : public agl::Window
+{
+  void setup() {
+    renderer.loadCubemap("cubemap", "../textures/sea", 0);
+    renderer.perspective(glm::radians&lt;float&gt;(60.0f), 1.0f, 0.1f, 100.0f);
+  }  
+  void draw()
+  {
+    renderer.beginShader("cubemap");
+    renderer.skybox(10);
+    renderer.endShader();
+  }
+};
+
+int main()
+{
+  MyWindow window;
+  window.run();
+}
+</pre> </dd></dl>
+
+</div>
+</div>
+<a id="a21af4885a9fe659b6515e07bee758374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21af4885a9fe659b6515e07bee758374">&#9670;&nbsp;</a></span>endShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::endShader </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear active shader to use for rendering. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d" title="Set active shader to use for rendering.">beginShader</a> </dd></dl>
+
+</div>
+</div>
+<a id="af59f739bbc2ae0747eb724ca98fc2f75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af59f739bbc2ae0747eb724ca98fc2f75">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize this class for drawing. </p>
+<p>This method must be called before any draw or shader calls. <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> calls this method automatically. Users should not call this method. </p>
+
+</div>
+</div>
+<a id="acfbb2d42960b288878ebf394f9e65770"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfbb2d42960b288878ebf394f9e65770">&#9670;&nbsp;</a></span>initialized()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool agl::Renderer::initialized </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return whether the <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> is ready for drawing. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns true if initialized; false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a4a580e7feab0c2c29815b9c4b364b4b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a580e7feab0c2c29815b9c4b364b4b8">&#9670;&nbsp;</a></span>loadShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::loadShader </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>vs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>fs</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load a GLSL shader from files. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>A nickname for the shader to be used in <a class="el" href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d" title="Set active shader to use for rendering.">beginShader()</a> </td></tr>
+    <tr><td class="paramname">vs</td><td>The vertex shader file name </td></tr>
+    <tr><td class="paramname">vs</td><td>The fragment shader file name</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Shaders should be loaded in setup() The default shader is "phong". The renderer automatically loads shaders for "phong", "sprites", and "cubemap". Paths are relative to the directory from which you run your application. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d" title="Set active shader to use for rendering.">beginShader</a> </dd></dl>
+
+</div>
+</div>
+<a id="a8d56b6bdbeb5d3a4e679a3ddb899db7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d56b6bdbeb5d3a4e679a3ddb899db7f">&#9670;&nbsp;</a></span>loadTexture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::loadTexture </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slot</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load a texture from a file. </p>
+<pre class="fragment">#include "agl/window.h"
+
+using namespace glm;
+using namespace agl;
+
+class MyWindow : public Window {
+  void setup() {
+    renderer.loadTexture("cloud", "../textures/cloud.png", 0);
+    renderer.loadTexture("particle", "../textures/particle.png", 0);
+    renderer.blendMode(ADD);
+  }
+
+  void draw() {
+    renderer.beginShader("sprite");
+    renderer.texture("image", "cloud");
+    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), vec4(0.0f, 1.0f, 0.0f, 1.0f), 0.25f);
+
+    renderer.texture("image", "particle");
+    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), vec4(0.0f, 0.0f, 1.0f, 1.0f), 0.25f);
+    renderer.endShader();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a6ec93bbf6fc34ba1692331218fd1c104"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ec93bbf6fc34ba1692331218fd1c104">&#9670;&nbsp;</a></span>lookAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::lookAt </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>lookfrom</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>lookat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>up</em> = <code>glm::vec3(0.0f,&#160;1.0f,&#160;0.0f)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the camera position and orientation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lookfrom</td><td>The position of the camera (default is vec3(0,0,2)) </td></tr>
+    <tr><td class="paramname">lookat</td><td>The target the camera is facing (default is vec3(0,0,0)) </td></tr>
+    <tr><td class="paramname">up</td><td>The "up" direction of the camera (typically vec3(0,1,0))</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>The current shader should define the following uniform variables</p>
+<ul>
+<li><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform</li>
+<li><em>uniform mat4 ModelViewMatrix</em> A 4x4 matrix containing the product of view * modelTransform</li>
+<li><em>uniform mat4 NormalMatrix</em> A 3x3 matrix for transforming normals. </li>
+</ul>
+
+</div>
+</div>
+<a id="aed808cf5b13ec7a7a4a9465816163d73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed808cf5b13ec7a7a4a9465816163d73">&#9670;&nbsp;</a></span>mesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::mesh </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classagl_1_1_triangle_mesh.html">TriangleMesh</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a custom (indexed) mesh. </p>
+<p>Meshes can be loaded from a file or created procedurally. Subclasses of leMesh should minimally define positions, normals, and indices. Texture (UV) coordinates and tangents may also be defined. </p>
+
+</div>
+</div>
+<a id="aea4f94741b90f0c91c2846ffef5f2e31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea4f94741b90f0c91c2846ffef5f2e31">&#9670;&nbsp;</a></span>ortho()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::ortho </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>minx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>miny</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>minz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the current projection to an orthographic view. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minx</td><td>The left side of the projection </td></tr>
+    <tr><td class="paramname">maxx</td><td>The right side of the projection </td></tr>
+    <tr><td class="paramname">miny</td><td>The bottom side of the projection </td></tr>
+    <tr><td class="paramname">maxy</td><td>The top side of the projection </td></tr>
+    <tr><td class="paramname">minz</td><td>The back side of the projection </td></tr>
+    <tr><td class="paramname">maxz</td><td>The front side of the projection</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>An orthographic projection maintains parallel lines. All objects maintain their size regardless of distance to the camera. Only objects within the extents of the orthographic cuboid volume will be drawn.</p>
+<p>The current * shader should define the following uniform variables</p>
+<p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform </p>
+
+</div>
+</div>
+<a id="a634eb6dcb6be2328a406aa419797df25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a634eb6dcb6be2328a406aa419797df25">&#9670;&nbsp;</a></span>perspective()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::perspective </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fovRadians</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>aspect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>near</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>far</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the current projection to a perspective view. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fovRadians</td><td>The field of view </td></tr>
+    <tr><td class="paramname">aspect</td><td>The aspect ratio (width divided by height) of the screen </td></tr>
+    <tr><td class="paramname">near</td><td>The distance to the near plane from the camera </td></tr>
+    <tr><td class="paramname">far</td><td>The distance to the far plane from the camera</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Perspective projections foreshorten objects should that closer objects are larger than further objects. Only objects within the view volume will be drawn. For example, objects a distance further from the <em>far</em> plane will not be visible. <br  />
+</p>
+<p>The current shader should define the following uniform variables</p>
+<p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform </p>
+
+</div>
+</div>
+<a id="a257300a6fa0fbb3fdee92b242dd002d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a257300a6fa0fbb3fdee92b242dd002d8">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[1/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    // Set main color in shaders/phong.fs
+    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a81cb2d116dbd162003c7568088f88370"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81cb2d116dbd162003c7568088f88370">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[2/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::mat3 &amp;&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    // Set main color in shaders/phong.fs
+    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a67b5312ca401a1063d564a663c1c74c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67b5312ca401a1063d564a663c1c74c3">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[3/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::mat4 &amp;&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    // Set main color in shaders/phong.fs
+    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a582fc93af2778c83dd65c2b7afc5acfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a582fc93af2778c83dd65c2b7afc5acfb">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[4/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec2 &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    // Set main color in shaders/phong.fs
+    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a7bf09bd96e6b8315bd4397436749bb0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bf09bd96e6b8315bd4397436749bb0a">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[5/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    // Set main color in shaders/phong.fs
+    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a6a2423125e617c1096ddc9dd76dd0c4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a2423125e617c1096ddc9dd76dd0c4b">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[6/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec4 &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    // Set main color in shaders/phong.fs
+    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a133e7aff9f2a0ef2614d6a04a14cf809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a133e7aff9f2a0ef2614d6a04a14cf809">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[7/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    // Set main color in shaders/phong.fs
+    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="af59ab1ce370cf7b6951bd4b0f39f212e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af59ab1ce370cf7b6951bd4b0f39f212e">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[8/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    // Set main color in shaders/phong.fs
+    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a66e7c746443ec1d11ad127f83ba870c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66e7c746443ec1d11ad127f83ba870c5">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[9/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    // Set main color in shaders/phong.fs
+    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a7f3e1d788b14f778b4435cf2f943d75a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f3e1d788b14f778b4435cf2f943d75a">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[10/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GLuint&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    // Set main color in shaders/phong.fs
+    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a92dcd15e00f7f7611034a361999fb4fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92dcd15e00f7f7611034a361999fb4fd">&#9670;&nbsp;</a></span>setUniform() <span class="overload">[11/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::setUniform </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>val</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    // Set main color in shaders/phong.fs
+    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="afa9c3890ff91416793183e32abcf0614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa9c3890ff91416793183e32abcf0614">&#9670;&nbsp;</a></span>skybox()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::skybox </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>size</em> = <code>10.0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a skybox (typically with a cubemap) </p>
+<pre class="fragment">// Copyright (c) 2020, savvy sine, Aline Normoyle, alinen
+// Visualize a cubemap texture using the skybox primitive
+
+#include "agl/window.h"
+
+class MyWindow : public agl::Window
+{
+  void setup() {
+    renderer.loadCubemap("cubemap", "../textures/sea", 0);
+    renderer.perspective(glm::radians&lt;float&gt;(60.0f), 1.0f, 0.1f, 100.0f);
+  }  
+  void draw()
+  {
+    renderer.beginShader("cubemap");
+    renderer.skybox(10);
+    renderer.endShader();
+  }
+};
+
+int main()
+{
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="aee2f70c93e3c660bd260d9241c533355"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee2f70c93e3c660bd260d9241c533355">&#9670;&nbsp;</a></span>sphere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::sphere </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a sphere centered at the origin with radius 0.5. </p>
+<pre class="fragment">#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a9059620a6ebc876e27ca0feb347cdfc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9059620a6ebc876e27ca0feb347cdfc6">&#9670;&nbsp;</a></span>sprite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::sprite </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>pos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec4 &amp;&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a sprite using a point billboard. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pos</td><td>The location of the center of the sprite </td></tr>
+    <tr><td class="paramname">color</td><td>The color of the sprite </td></tr>
+    <tr><td class="paramname">size</td><td>The size (width/height) of the billboard</td></tr>
+  </table>
+  </dd>
+</dl>
+<pre class="fragment">#include "agl/window.h"
+
+using namespace glm;
+using namespace agl;
+
+class MyWindow : public Window {
+  void setup() {
+    renderer.loadTexture("cloud", "../textures/cloud.png", 0);
+    renderer.loadTexture("particle", "../textures/particle.png", 0);
+    renderer.blendMode(ADD);
+  }
+
+  void draw() {
+    renderer.beginShader("sprite");
+    renderer.texture("image", "cloud");
+    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), vec4(0.0f, 1.0f, 0.0f, 1.0f), 0.25f);
+
+    renderer.texture("image", "particle");
+    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), vec4(0.0f, 0.0f, 1.0f, 1.0f), 0.25f);
+    renderer.endShader();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a669b3b37fa93e010c4d7b3b9016523bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a669b3b37fa93e010c4d7b3b9016523bb">&#9670;&nbsp;</a></span>texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::texture </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>uniformName</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>textureName</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a uniform sampler parameter in the currently active shader. </p>
+<p>The name should match the name of the uniform parameter. The texture should already be loaded. The textureName should match the key given when the texture is loaded.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a8d56b6bdbeb5d3a4e679a3ddb899db7f" title="Load a texture from a file.">loadTexture</a> <pre class="fragment">#include "agl/window.h"
+
+using namespace glm;
+using namespace agl;
+
+class MyWindow : public Window {
+  void setup() {
+    renderer.loadTexture("cloud", "../textures/cloud.png", 0);
+    renderer.loadTexture("particle", "../textures/particle.png", 0);
+    renderer.blendMode(ADD);
+  }
+
+  void draw() {
+    renderer.beginShader("sprite");
+    renderer.texture("image", "cloud");
+    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), vec4(0.0f, 1.0f, 0.0f, 1.0f), 0.25f);
+
+    renderer.texture("image", "particle");
+    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), vec4(0.0f, 0.0f, 1.0f, 1.0f), 0.25f);
+    renderer.endShader();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>agl/<a class="el" href="renderer_8h_source.html">renderer.h</a></li>
 <li>agl/renderer.cpp</li>

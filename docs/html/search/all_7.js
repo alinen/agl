@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['teapot_16',['Teapot',['../classagl_1_1_teapot.html',1,'agl']]],
-  ['teapotdata_17',['TeapotData',['../namespace_teapot_data.html',1,'']]],
-  ['texture_18',['Texture',['../structagl_1_1_renderer_1_1_texture.html',1,'agl::Renderer']]],
-  ['torus_19',['Torus',['../classagl_1_1_torus.html',1,'agl']]],
-  ['trianglemesh_20',['TriangleMesh',['../classagl_1_1_triangle_mesh.html',1,'agl']]]
+  ['operator_3c_3c_21',['operator&lt;&lt;',['../aglm_8h.html#ac48b43e1b892d72964007a40dc611efc',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::mat4 &amp;m):&#160;aglm.cpp'],['../aglm_8h.html#af391f797845c27bb26c2baa5e947149e',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::mat3 &amp;m):&#160;aglm.cpp'],['../aglm_8h.html#a01a892ebf0a9439910f2cf110da1da84',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec3 &amp;v):&#160;aglm.cpp'],['../aglm_8h.html#aa2767b20226401ae617af326d421f529',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec4 &amp;v):&#160;aglm.cpp'],['../aglm_8h.html#aebfe6edcabf2878c2f278c0964fc98bc',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec2 &amp;v):&#160;aglm.cpp']]],
+  ['ortho_22',['ortho',['../classagl_1_1_renderer.html#aea4f94741b90f0c91c2846ffef5f2e31',1,'agl::Renderer']]]
 ];

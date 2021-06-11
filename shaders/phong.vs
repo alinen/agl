@@ -12,9 +12,9 @@ out vec3 normal;
 
 void main()
 {
-   position = ModelViewMatrix * vec4( vPositions, 1.0);
-   normal = normalize( NormalMatrix * vNormals);
-   gl_Position = MVP * vec4(vPositions, 1.0);
+  position = ModelViewMatrix * vec4( vPositions, 1.0);
+  normal = normalize( NormalMatrix * vNormals);
+  gl_Position = MVP * vec4(vPositions, 1.0);
 }
 
 

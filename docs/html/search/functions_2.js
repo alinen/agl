@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['window_43',['Window',['../classagl_1_1_window.html#a9f879d75daee8046575408bfd409371a',1,'agl::Window']]]
+  ['endshader_61',['endShader',['../classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374',1,'agl::Renderer']]]
 ];

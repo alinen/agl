@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('classagl_1_1_window.html',''); initRes
 </div><!--header-->
 <div class="contents">
 
-<p>The window class manages the window and user input.  
+<p>Manages the window and user input.  
  <a href="classagl_1_1_window.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="window_8h_source.html">window.h</a>&gt;</code></p>
@@ -215,7 +215,7 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a593c28c3c22169f861c99cf84adb4e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The window class manages the window and user input. </p>
+<div class="textblock"><p>Manages the window and user input. </p>
 <p>Override this class to create a custom application. </p><pre class="fragment">#include "agl/window.h"
 
 class MyWindow : public agl::Window {
@@ -261,7 +261,7 @@ int main() {
   window.run();
 }
 </pre><p>. </p>
-<p>This function should typically called from main after creating the <a class="el" href="classagl_1_1_window.html" title="The window class manages the window and user input.">Window</a> object. This function invokes the user's setup() function and then repeatedly calls the user's draw() function. This function returns when the user closes the window (via the escape key or close menu button) </p>
+<p>This function should typically called from main after creating the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> object. This function invokes the user's setup() function and then repeatedly calls the user's draw() function. This function returns when the user closes the window (via the escape key or close menu button) </p>
 
 </div>
 </div>
@@ -302,7 +302,7 @@ int main() {
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>(bool) Returns false if the image cannot be saved; true otherwise</dd></dl>
-<p>Filenames should include the png file extension. <a class="el" href="classagl_1_1_image.html">Image</a> with relative paths will be written relative to the directory from which you run the executable. Images are saved in RGBA format. </p>
+<p>Filenames should include the png file extension. <a class="el" href="classagl_1_1_image.html" title="Implements loading, modifying, and saving RGBA images.">Image</a> with relative paths will be written relative to the directory from which you run the executable. Images are saved in RGBA format. </p>
 
 </div>
 </div>

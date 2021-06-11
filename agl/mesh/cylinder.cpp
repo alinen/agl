@@ -1,5 +1,8 @@
+// Copyright 2018, Savvy Sine, Aline Normoyle
+
 #include "agl/mesh/cylinder.h"
 #include <iostream>
+#include <vector>
 #include <cmath>
 #include "agl/aglm.h"
 
@@ -14,12 +17,12 @@ Cylinder::Cylinder(float r1, float r2, float len, GLuint nSlices) {
 }
 
 void Cylinder::computeMesh(float r1, float r2, float len, GLuint nSlices) {
-  int nVerts = (nSlices+1) * 2 + nSlices * 2; 
+  int nVerts = (nSlices+1) * 2 + nSlices * 2;
 
   // num top triangles = nSlices
   // num bottom triangles = nSlices
   // num side triangles = nSlices * 2
-  int elements = (nSlices) * 4 * 3; 
+  int elements = (nSlices) * 4 * 3;
 
   // Verts
   std::vector<GLfloat> p(3 * nVerts);
@@ -33,16 +36,16 @@ void Cylinder::computeMesh(float r1, float r2, float len, GLuint nSlices) {
   // Generate positions and normals
   GLfloat theta;
   GLfloat thetaFac = glm::two_pi<float>() / nSlices;
-  GLfloat hLen = 0.5 * len; 
+  GLfloat hLen = 0.5 * len;
   GLuint offsets[4] = {
     0,
     nSlices+1,
     (nSlices+1)*2 - 1,
     (nSlices+1)*2 + nSlices - 1
-  }; 
+  };
 
   GLuint idx = 0, tIdx = 0;
-  for( GLuint i = 0; i <= nSlices; i++) {
+  for (GLuint i = 0; i <= nSlices; i++) {
     if (i == 0) {
       for (GLuint j = 0; j < 2; j++) {
         int offset = offsets[j];
@@ -51,8 +54,8 @@ void Cylinder::computeMesh(float r1, float r2, float len, GLuint nSlices) {
         p[idx+1+3*offset] = 0.0;
         p[idx+2+3*offset] = z;
 
-        n[idx+0+3*offset] = 0.0; 
-        n[idx+1+3*offset] = 0.0; 
+        n[idx+0+3*offset] = 0.0;
+        n[idx+1+3*offset] = 0.0;
         n[idx+2+3*offset] = j % 2 == 0? -1.0 : 1.0;
 
         tex[tIdx+0+2*offset] = 0.0;
@@ -69,14 +72,14 @@ void Cylinder::computeMesh(float r1, float r2, float len, GLuint nSlices) {
         int offset = offsets[j];
         float z = j % 2 == 0? -hLen : hLen;
         float r = j % 2 == 0? r1 : r2;
-        float t = (z+hLen)/len; 
+        float t = (z+hLen)/len;
 
         p[idx+0+3*offset] = r * nx;
         p[idx+1+3*offset] = r * ny;
         p[idx+2+3*offset] = z;
 
         n[idx+0+3*offset] = j < 2? 0.0 : nx;
-        n[idx+1+3*offset] = j < 2? 0.0 : ny; // todo: fix normal
+        n[idx+1+3*offset] = j < 2? 0.0 : ny;  // todo: fix normal
         n[idx+2+3*offset] = j < 2? (j % 2 == 0? -1.0 : 1.0) : 0.0;
 
         tex[tIdx+0+2*offset] = s;
@@ -90,14 +93,14 @@ void Cylinder::computeMesh(float r1, float r2, float len, GLuint nSlices) {
 
   // Generate the element list
   idx = 0;
-  for( GLuint i = 0; i < nSlices; i++) {
-    el[idx+0] = 0; 
-    el[idx+1] = (i+1) % (nSlices) + 1; 
-    el[idx+2] = (i+1); 
+  for (GLuint i = 0; i < nSlices; i++) {
+    el[idx+0] = 0;
+    el[idx+1] = (i+1) % (nSlices) + 1;
+    el[idx+2] = (i+1);
 
-    el[idx+0+3*nSlices] = el[idx+0] + offsets[1]; 
-    el[idx+1+3*nSlices] = el[idx+2] + offsets[1]; 
-    el[idx+2+3*nSlices] = el[idx+1] + offsets[1]; 
+    el[idx+0+3*nSlices] = el[idx+0] + offsets[1];
+    el[idx+1+3*nSlices] = el[idx+2] + offsets[1];
+    el[idx+2+3*nSlices] = el[idx+1] + offsets[1];
 
     idx += 3;
   }
@@ -105,7 +108,7 @@ void Cylinder::computeMesh(float r1, float r2, float len, GLuint nSlices) {
 
   int offset = nSlices * 2 + 2;
   idx = (nSlices)*2*3;
-  for( GLuint i = 0; i < nSlices; i++) {
+  for (GLuint i = 0; i < nSlices; i++) {
     int back1 = i + offset;
     int back2 = (i+1) % nSlices + offset;
 

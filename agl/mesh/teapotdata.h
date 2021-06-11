@@ -1,5 +1,6 @@
 // Copyright (c) Mark J. Kilgard, 1994.
-#pragma once
+#ifndef AGL_MESH_TEAPOTDATA_H_
+#define AGL_MESH_TEAPOTDATA_H_
 
 /**
 (c) Copyright 1993, Silicon Graphics, Inc.
@@ -200,3 +201,4 @@ static float cpdata[][3] =
 };
 
 }
+#endif  // AGL_MESH_TEAPOTDATA_H_

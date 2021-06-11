@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['camera_1',['Camera',['../classagl_1_1_camera.html',1,'agl']]],
-  ['capsule_2',['Capsule',['../classagl_1_1_capsule.html',1,'agl']]],
-  ['cube_3',['Cube',['../classagl_1_1_cube.html',1,'agl']]],
-  ['cylinder_4',['Cylinder',['../classagl_1_1_cylinder.html',1,'agl']]]
+  ['beginshader_2',['beginShader',['../classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d',1,'agl::Renderer']]],
+  ['blendmode_3',['blendMode',['../classagl_1_1_renderer.html#a93afebe2360a3a99de0e1bde2ad32d90',1,'agl::Renderer']]]
 ];

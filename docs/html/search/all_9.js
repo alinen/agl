@@ -1,13 +1,12 @@
 var searchData=
 [
-  ['image_67',['Image',['../classagl_1_1_image.html',1,'agl::Image'],['../classagl_1_1_image.html#a7bee487209947e530bdcdb8054561187',1,'agl::Image::Image()'],['../classagl_1_1_image.html#a17593a3ef1cd9145324c41d05d67ac0f',1,'agl::Image::Image(int width, int height)'],['../classagl_1_1_image.html#a9241ae79191c7979a05b66ba4195a0c2',1,'agl::Image::Image(const Image &amp;orig)']]],
-  ['image_2ecpp_68',['image.cpp',['../image_8cpp.html',1,'']]],
-  ['image_2eh_69',['image.h',['../image_8h.html',1,'']]],
-  ['init_70',['init',['../classagl_1_1_renderer.html#af59f739bbc2ae0747eb724ca98fc2f75',1,'agl::Renderer::init()'],['../classagl_1_1_window.html#af099ba51ebe9582aec0ffb20f206766a',1,'agl::Window::init()']]],
-  ['initbillboards_71',['initBillboards',['../classagl_1_1_renderer.html#ae80cda5118f8f1cb26776a5159be5f64',1,'agl::Renderer']]],
-  ['initbuffers_72',['initBuffers',['../classagl_1_1_triangle_mesh.html#ae9ee5a5fa32b1b7756b4d407f4182202',1,'agl::TriangleMesh']]],
-  ['initialized_73',['initialized',['../classagl_1_1_renderer.html#acfbb2d42960b288878ebf394f9e65770',1,'agl::Renderer']]],
-  ['initializegui_74',['initializeGui',['../classagl_1_1_window.html#a0eb2df49304c1169750162b983f6a8bf',1,'agl::Window']]],
-  ['initmesh_75',['initMesh',['../classagl_1_1_renderer.html#a6082f5a9c8d54e6f7bddf15e92e5ed14',1,'agl::Renderer']]],
-  ['islinked_76',['isLinked',['../classagl_1_1_shader.html#af043e454935d06a4d8155635a4b6a3e3',1,'agl::Shader']]]
+  ['random_26',['random',['../aglm_8h.html#aa04bffe547f6f0e4643ae0e5810d695a',1,'agl::random()'],['../aglm_8h.html#a040c74acb39f137ae2f962dfccaa5b9f',1,'agl::random(float min, float max)']]],
+  ['randomhemisphere_27',['randomHemisphere',['../aglm_8h.html#a937ad0795b3a3ff55eedfae486d160db',1,'agl']]],
+  ['randomunitcube_28',['randomUnitCube',['../aglm_8h.html#a4e2e22be803e7c06707800915a94f70b',1,'agl']]],
+  ['randomunitdisk_29',['randomUnitDisk',['../aglm_8h.html#ab0329368ebbf0374db2ed9c620f4228e',1,'agl']]],
+  ['randomunitsphere_30',['randomUnitSphere',['../aglm_8h.html#a37c9f25aa62ce390e51c7d7687ec76e1',1,'agl']]],
+  ['randomunitsquare_31',['randomUnitSquare',['../aglm_8h.html#a23402ff2f46aa52669ebea581fe9c02e',1,'agl']]],
+  ['randomunitvector_32',['randomUnitVector',['../aglm_8h.html#a8e61df3e1fa0a251528d11fead2d83d5',1,'agl']]],
+  ['renderer_33',['Renderer',['../classagl_1_1_renderer.html',1,'agl']]],
+  ['run_34',['run',['../classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63',1,'agl::Window']]]
 ];

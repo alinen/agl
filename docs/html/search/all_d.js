@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nverts_133',['nVerts',['../classagl_1_1_triangle_mesh.html#af3327c078cabe96a51aa15d9f45bd536',1,'agl::TriangleMesh']]]
+  ['window_47',['Window',['../classagl_1_1_window.html',1,'agl::Window'],['../classagl_1_1_window.html#a9f879d75daee8046575408bfd409371a',1,'agl::Window::Window()']]]
 ];

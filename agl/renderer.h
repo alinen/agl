@@ -14,63 +14,289 @@
 
 namespace agl {
 
-enum BlendMode {DEFAULT, ADD, ALPHA};
+/**
+ * @brief Mode for combining colors when drawing
+ * 
+ * The alpha component controls how colors will be combined based on the
+ * current mode
+ * 
+ * * *DEFAULT* Ignore alpha and draw all objects as opaque
+ * * *ADD* Add colors using formula: cSrc + c * c.alpha
+ * * *ALPHA* Blend colors using formula: cSrc * alpha + c * (1 - c.alpha)
+ * @verbinclude sprites.cpp
+ */ 
+enum BlendMode {
+  DEFAULT, 
+  ADD, 
+  ALPHA};
 
+/**
+ * @brief The Renderer class draws meshes to the screen using shaders
+ */ 
 class Renderer {
  public:
-  Renderer();
-  ~Renderer();
 
+  Renderer();
+  virtual ~Renderer();
+
+  /**
+   * @brief Initialize this class for drawing. 
+   *
+   * This method must be called before any draw or shader calls.
+   * Window calls this method automatically. Users should not call this method.
+   */
   void init();
+
+  /**
+   * @brief Cleanup all resources used for drawing.
+   *
+   * This method must be called before any draw or shader calls.
+   * Window calls this method automatically. Users should not call this method.
+   */
   void cleanup();
+
+  /**
+   * @brief Return whether the Renderer is ready for drawing
+   * @return Returns true if initialized; false otherwise
+   */
   bool initialized() const;
 
-  // projection
-  virtual void perspective(float fovRadians,
+  /** @name Projections and view 
+   */
+  ///@{
+  /**
+   * @brief Set the current projection to a perspective view
+   * @param fovRadians The field of view
+   * @param aspect The aspect ratio (width divided by height) of the screen
+   * @param near The distance to the near plane from the camera
+   * @param far The distance to the far plane from the camera
+   * 
+   * Perspective projections foreshorten objects should that closer objects are
+   * larger than further objects.  Only objects within the view volume will be
+   * drawn.  For example, objects a distance further from the *far* plane will
+   * not be visible.  
+   *
+   * The current shader should define the following uniform
+   * variables
+   *
+   * *uniform mat4 MVP* A 4x4 matrix containing the product of projection *
+   * view * modelTransform
+   */
+  void perspective(float fovRadians,
       float aspect, float near, float far);
-  virtual void ortho(float minx, float maxx,
+
+  /**
+   * @brief Set the current projection to an orthographic view
+   * @param minx The left side of the projection
+   * @param maxx The right side of the projection
+   * @param miny The bottom side of the projection
+   * @param maxy The top side of the projection
+   * @param minz The back side of the projection
+   * @param maxz The front side of the projection
+   * 
+   * An orthographic projection maintains parallel lines. All objects maintain
+   * their size regardless of distance to the camera. Only objects within the 
+   * extents of the orthographic cuboid volume will be drawn.
+   *
+   * The current * shader should define the following uniform variables
+   *
+   * *uniform mat4 MVP* A 4x4 matrix containing the product of projection *
+   * view * modelTransform
+   */
+  void ortho(float minx, float maxx,
       float miny, float maxy, float minz, float maxz);
 
-  // camera (eye point)
-  virtual void lookAt(const glm::vec3& lookfrom, 
+  /**
+   * @brief Set the camera position and orientation
+   * @param lookfrom The position of the camera (default is vec3(0,0,2))
+   * @param lookat The target the camera is facing (default is vec3(0,0,0))
+   * @param up The "up" direction of the camera (typically vec3(0,1,0))
+   * 
+   * The current shader should define the following uniform variables
+   *
+   * - *uniform mat4 MVP* A 4x4 matrix containing the product of projection *
+   * view * modelTransform
+   * - *uniform mat4 ModelViewMatrix* A 4x4 matrix containing the product of 
+   * view * modelTransform
+   * - *uniform mat4 NormalMatrix* A 3x3 matrix for transforming normals.
+   */
+  void lookAt(const glm::vec3& lookfrom, 
         const glm::vec3& lookat,
         const glm::vec3& up = glm::vec3(0.0f, 1.0f, 0.0f));
-  glm::vec3 cameraPosition() const;
 
-  // shader
+  /**
+   * @brief Get the current camera position
+   * @returns The current position of the camera
+   */
+  glm::vec3 cameraPosition() const;
+  ///@}
+
+  /** @name Shaders
+   */
+  ///@{
+  /**
+   * @brief Load a GLSL shader from files
+   * @param name A nickname for the shader to be used in beginShader()
+   * @param vs The vertex shader file name
+   * @param vs The fragment shader file name
+   *
+   * Shaders should be loaded in setup() The default shader is "phong". The
+   * renderer automatically loads shaders for "phong", "sprites", and
+   * "cubemap". Paths are relative to the directory from which you run your 
+   * application.
+   * @see beginShader 
+   */
   void loadShader(const std::string& name, 
       const std::string& vs, const std::string& fs);
 
+  /**
+   * @brief Set active shader to use for rendering. 
+   *
+   * One shadr must always be enabled for drawing to work. By default, "phong"
+   * is enabled.  The shader needs to be already loaded (in setup) using
+   * `loadShader` The renderer automatically loads shaders for "phong",
+   * "sprites", and "cubemap".
+   * 
+   * Usage
+   * ```
+   * beginShader("myShader");
+   * // draw primitives
+   * endShader();
+   * ```
+   * @see loadShader  
+   */ 
   void beginShader(const std::string& shaderName); 
+
+  /**
+   * @brief Clear active shader to use for rendering. 
+   * 
+   * @see beginShader
+   */
   void endShader();
 
+  /**
+   * @brief Set a uniform parameter in the currently active shader 
+   * 
+   * The name should match the name of the uniform parameter. Overrides
+   * correspond to different uniform variable types (which should also match).
+   *
+   * @verbinclude uniforms.cpp
+   */ 
   void setUniform(const std::string& name, float x, float y, float z);
+
+  /**
+   * @copydoc setUniform(const std::string&,float,float,float)
+   */
   void setUniform(const std::string& name, float x, float y, float z, float w);
+
+  /**
+   * @copydoc setUniform(const std::string&,float,float,float)
+   */
   void setUniform(const std::string& name, const glm::vec2 &v);
+
+  /**
+   * @copydoc setUniform(const std::string&,float,float,float)
+   */
   void setUniform(const std::string& name, const glm::vec3 &v);
+
+  /**
+   * @copydoc setUniform(const std::string&,float,float,float)
+   */
   void setUniform(const std::string& name, const glm::vec4 &v);
+
+  /**
+   * @copydoc setUniform(const std::string&,float,float,float)
+   */
   void setUniform(const std::string& name, const glm::mat4 &m);
+
+  /**
+   * @copydoc setUniform(const std::string&,float,float,float)
+   */
   void setUniform(const std::string& name, const glm::mat3 &m);
+
+  /**
+   * @copydoc setUniform(const std::string&,float,float,float)
+   */
   void setUniform(const std::string& name, float val);
+
+  /**
+   * @copydoc setUniform(const std::string&,float,float,float)
+   */
   void setUniform(const std::string& name, int val);
+
+  /**
+   * @copydoc setUniform(const std::string&,float,float,float)
+   */
   void setUniform(const std::string& name, bool val);
+
+  /**
+   * @copydoc setUniform(const std::string&,float,float,float)
+   */
   void setUniform(const std::string& name, GLuint val);
 
-  // textures
-  void loadTexture(const std::string& name, 
-      const std::string& filename, int slot);
-  void loadTexture(const std::string& name, const Image& img, int slot);
-
-  void loadCubemap(const std::string& name, const std::string& dir, int slot);
-  void loadCubemap(const std::string& name, 
-      const std::vector<std::string>& names, int slot);
-  void loadCubemap(const std::string& name, 
-      const std::vector<Image>& images, int slot);
-
+  /**
+   * @brief Set a uniform sampler parameter in the currently active shader 
+   * 
+   * The name should match the name of the uniform parameter. The texture
+   * should already be loaded. The textureName should match the key given when
+   * the texture is loaded.
+   *
+   * @see loadTexture
+   * @verbinclude sprites.cpp
+   */ 
   void texture(const std::string& uniformName, const std::string& textureName);
+
+  /**
+   * @brief Set a uniform sampler parameter in the currently active shader 
+   * 
+   * The name should match the name of the uniform parameter. The cubemap
+   * should already be loaded. The textureName should match the key given when
+   * the texture is loaded.
+   *
+   * @see loadCubemap
+   * @verbinclude cubemap.cpp
+   */ 
   void cubemap(const std::string& uniformName, const std::string& texName);
 
+  /** @name Loading textures
+   * @brief Textures should typically be loaded from setup()
+   */
+  ///@{
+  /**
+   * @brief Load a texture from a file
+   * 
+   * @verbinclude sprites.cpp
+   */ 
+  void loadTexture(const std::string& name, 
+      const std::string& filename, int slot);
+
+  /**
+   * @brief Load a texture from an Image
+   */ 
+  void loadTexture(const std::string& name, const Image& img, int slot);
+
+  /**
+   * @brief Load a cube map
+   */ 
+  void loadCubemap(const std::string& name, const std::string& dir, int slot);
+
+  /**
+   * @brief Load a cube map
+   */ 
+  void loadCubemap(const std::string& name, 
+      const std::vector<std::string>& names, int slot);
+
+  /**
+   * @brief Load a cube map
+   */ 
+  void loadCubemap(const std::string& name, 
+      const std::vector<Image>& images, int slot);
+  ///@}
+
   // drawing - positioning
+  /** @name Positioning
+   */
+  ///@{
   void push();
   void pop();
   void identity();
@@ -78,32 +304,112 @@ class Renderer {
   void translate(const glm::vec3& xyz);
   void rotate(float angleRad, const glm::vec3& axis);
   void transform(const glm::mat4& trs);
+  ///@}
 
-  // drawing - settings
+  /**
+   * @brief Mode for combining colors when drawing
+   * 
+   * The alpha component controls how colors will be combined based on the
+   * current mode. Transparent objects should be drawn back to front in 
+   * relation to the camera.
+   * 
+   * * *DEFAULT* Ignore alpha and draw all objects as opaque
+   * * *ADD* Add colors using formula: cSrc + c * c.alpha
+   * * *ALPHA* Blend colors using formula: cSrc * alpha + c * (1 - c.alpha)
+   * @verbinclude sprites.cpp
+   */ 
   void blendMode(BlendMode mode);
   
-  // draw sprites
-  void quad(const glm::vec3& pos, const glm::vec4& color, float size);
+  /** @name Drawing meshes
+   */ 
+  ///@{
+  /**
+   * @brief Draws a sprite using a point billboard
+   * @param pos The location of the center of the sprite
+   * @param color The color of the sprite 
+   * @param size The size (width/height) of the billboard
+   * 
+   * @verbinclude sprites.cpp
+   */ 
+  void sprite(const glm::vec3& pos, const glm::vec4& color, float size);
 
-  // draw a mesh
+  /**
+   * @brief Draws a sphere centered at the origin with radius 0.5
+   *
+   * @verbinclude sphere.cpp
+   */ 
   void sphere();
-  void cone();
-  void cube();
-  void teapot();
-  void plane();
-  void cylinder();
-  void capsule();
-  void torus();
-  void mesh(const TriangleMesh& m);
 
-  // draw the cubemap
+  /** 
+   * @brief Draws a cube centered at the origin with width, height, and depth
+   * equal to 1.0
+   *
+   * @verbinclude rotate.cpp
+   */ 
+  void cube();
+
+  /** 
+   * @brief Draws a cone centered at the origin, with the tip towards +Z
+   *
+   * @verbinclude rotate.cpp
+   */ 
+  void cone();
+
+  /** 
+   * @brief Draws a teapot with largest side with width 1
+   *
+   */ 
+  void teapot();
+
+  /** 
+   * @brief Draws a plane
+   *
+   */ 
+  void plane();
+
+  /** 
+   * @brief Draws a teapot with largest side with width 1
+   *
+   */ 
+  void cylinder();
+
+  /** 
+   * @brief Draws a capsule with endpoints at (0,0,0) and (0,0,1). 
+   * The cap radius is 0.25 and the width is 0.5.
+   *
+   */ 
+  void capsule();
+
+  /** 
+   * @brief Draws a torus
+   *
+   */ 
+  void torus();
+
+  /** 
+   * @brief Draws a skybox (typically with a cubemap)
+   *
+   * @verbinclude cubemap.cpp
+   */ 
   void skybox(float size = 10.0);
 
- protected:
-  virtual void initBillboards();
-  virtual void initMesh();
+  /** 
+   * @brief Draws a custom (indexed) mesh
+   *
+   * Meshes can be loaded from a file or created procedurally. 
+   * Subclasses of leMesh should minimally define positions, normals, and
+   * indices. Texture (UV) coordinates and tangents may also be defined. 
+   *
+   * 
+   */ 
+  void mesh(const TriangleMesh& m);
+  ///@}
 
- protected:
+ private:
+  void initBillboards();
+  void initMesh();
+
+ private:
   bool _initialized;
 
   // textures

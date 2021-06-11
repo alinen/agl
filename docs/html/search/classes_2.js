@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['image_27',['Image',['../classagl_1_1_image.html',1,'agl']]]
+  ['pixel_47',['Pixel',['../structagl_1_1_pixel.html',1,'agl']]]
 ];

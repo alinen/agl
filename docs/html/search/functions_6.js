@@ -1,11 +1,5 @@
 var searchData=
 [
-  ['get_303',['get',['../classagl_1_1_image.html#ad33261452bd09c5ff6da4fa047434cda',1,'agl::Image']]],
-  ['getextension_304',['getExtension',['../classagl_1_1_shader.html#a05f727ead33e0b636d23683a8159ada6',1,'agl::Shader']]],
-  ['gethandle_305',['getHandle',['../classagl_1_1_shader.html#a353a3d0dd0e560dc662010b0d2bb1b93',1,'agl::Shader']]],
-  ['gettypestring_306',['getTypeString',['../classagl_1_1_shader.html#a2f2abd2f4c6bd3681c1034c7eb7ec3af',1,'agl::Shader']]],
-  ['getuniformlocation_307',['getUniformLocation',['../classagl_1_1_shader.html#aff3fd0087a0f34f420c3ed5542b8271e',1,'agl::Shader']]],
-  ['getvao_308',['getVao',['../classagl_1_1_triangle_mesh.html#a8c0597191940e74aaaeac45793615ff4',1,'agl::TriangleMesh']]],
-  ['getvec4_309',['getVec4',['../classagl_1_1_image.html#a6a93a876c6053498c5cf7ae4889721ca',1,'agl::Image']]],
-  ['glslprogramexception_310',['GLSLProgramException',['../classagl_1_1_g_l_s_l_program_exception.html#aa984fa7eb5e54cd534a04fa2db588427',1,'agl::GLSLProgramException']]]
+  ['operator_3c_3c_69',['operator&lt;&lt;',['../aglm_8h.html#ac48b43e1b892d72964007a40dc611efc',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::mat4 &amp;m):&#160;aglm.cpp'],['../aglm_8h.html#af391f797845c27bb26c2baa5e947149e',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::mat3 &amp;m):&#160;aglm.cpp'],['../aglm_8h.html#a01a892ebf0a9439910f2cf110da1da84',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec3 &amp;v):&#160;aglm.cpp'],['../aglm_8h.html#aa2767b20226401ae617af326d421f529',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec4 &amp;v):&#160;aglm.cpp'],['../aglm_8h.html#aebfe6edcabf2878c2f278c0964fc98bc',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec2 &amp;v):&#160;aglm.cpp']]],
+  ['ortho_70',['ortho',['../classagl_1_1_renderer.html#aea4f94741b90f0c91c2846ffef5f2e31',1,'agl::Renderer']]]
 ];

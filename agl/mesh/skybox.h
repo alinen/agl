@@ -1,7 +1,7 @@
 // Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf)
 
-#ifndef AGL_SKYBOX_H_
-#define AGL_SKYBOX_H_
+#ifndef AGL_MESH_SKYBOX_H_
+#define AGL_MESH_SKYBOX_H_
 
 namespace agl {
 
@@ -15,4 +15,4 @@ class SkyBox {
 };
 
 }  // namespace agl
-#endif  // AGL_SKYBOX_H_
+#endif  // AGL_MESH_SKYBOX_H_

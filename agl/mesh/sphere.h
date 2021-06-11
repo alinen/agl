@@ -1,7 +1,7 @@
 // Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf)
 
-#ifndef AGL_SPHERE_H_
-#define AGL_SPHERE_H_
+#ifndef AGL_MESH_SPHERE_H_
+#define AGL_MESH_SPHERE_H_
 
 #include "agl/triangle_mesh.h"
 
@@ -13,4 +13,4 @@ class Sphere : public TriangleMesh {
 };
 
 }  // namespace agl
-#endif  // AGL_SPHERE_H_
+#endif  // AGL_MESH_SPHERE_H_

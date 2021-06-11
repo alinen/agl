@@ -1,9 +1,8 @@
 #include "agl/mesh/teapot.h"
+#include <cstdio>
+#include "agl/aglm.h"
 #include "agl/mesh/teapotdata.h"
 
-#include <cstdio>
-
-#include <glm/gtc/matrix_transform.hpp>
 using glm::vec3;
 using glm::mat4;
 using glm::mat3;
@@ -13,17 +12,56 @@ namespace agl {
 
 Teapot::Teapot(int grid, const mat4 & lidTransform)
 {
-    int verts = 32 * (grid + 1) * (grid + 1);
-    int faces = grid * grid * 32;
-    std::vector<GLfloat> p( verts * 3 );
-    std::vector<GLfloat> n( verts * 3 );
-    std::vector<GLfloat> tc( verts * 2 );
-    std::vector<GLuint> el( faces * 6 );
+  int verts = 32 * (grid + 1) * (grid + 1);
+  int faces = grid * grid * 32;
+  std::vector<GLfloat> p( verts * 3 );
+  std::vector<GLfloat> n( verts * 3 );
+  std::vector<GLfloat> tc( verts * 2 );
+  std::vector<GLuint> el( faces * 6 );
 
-    generatePatches( p, n, tc, el, grid );
-    moveLid(grid, p, lidTransform);
+  generatePatches( p, n, tc, el, grid );
+  moveLid(grid, p, lidTransform);
+  fitUnitBox(p, n);
+  initBuffers(&el, &p, &n, &tc);
+}
 
-    initBuffers(&el, &p, &n, &tc);
+void Teapot::fitUnitBox(std::vector<GLfloat>& p, std::vector<GLfloat>& n) {
+  vec3 min, max;
+  for (int i = 0; i < p.size(); i += 3) {
+    float x = p[i+0]; 
+    float y = p[i+1]; 
+    float z = p[i+2]; 
+    if (i == 0) {
+      min = vec3(x, y, z);
+      max = min;
+    }
+    if (x < min[0]) min[0] = x;
+    if (y < min[1]) min[1] = y;
+    if (z < min[2]) min[2] = z;
+
+    if (x > max[0]) max[0] = x;
+    if (y > max[1]) max[1] = y;
+    if (z > max[2]) max[2] = z;
+  }
+
+  vec3 center = 0.5f * (max + min);
+  vec3 bounds = (max - min);
+  float scale = std::max(std::max(bounds[0], bounds[1]), bounds[2]);
+  mat3 R = mat3(glm::angleAxis(glm::half_pi<float>(), vec3(-1, 0, 0))); 
+
+  for (int i = 0; i < p.size(); i += 3) {
+    vec3 pos = R * (vec3(p[i], p[i+1], p[i+2]) - center) / scale;
+    vec3 nor = R * vec3(n[i], n[i+1], n[i+2]);
+
+    p[i+0] = pos[0]; 
+    p[i+1] = pos[1]; 
+    p[i+2] = pos[2]; 
+
+    n[i+0] = nor[0]; 
+    n[i+1] = nor[1]; 
+    n[i+2] = nor[2]; 
+  }
+
 }
 
 void Teapot::generatePatches(
@@ -33,32 +71,32 @@ void Teapot::generatePatches(
         std::vector<GLuint> & el,
         int grid)
 {
-    std::vector<GLfloat> B(4*(grid+1));  // Pre-computed Bernstein basis functions
-    std::vector<GLfloat> dB(4*(grid+1)); // Pre-computed derivitives of basis functions
+  std::vector<GLfloat> B(4*(grid+1));  // Pre-computed Bernstein basis functions
+  std::vector<GLfloat> dB(4*(grid+1)); // Pre-computed derivitives of basis functions
 
-    int idx = 0, elIndex = 0, tcIndex = 0;
+  int idx = 0, elIndex = 0, tcIndex = 0;
 
-    // Pre-compute the basis functions  (Bernstein polynomials)
-    // and their derivatives
-    computeBasisFunctions(B, dB, grid);
+  // Pre-compute the basis functions  (Bernstein polynomials)
+  // and their derivatives
+  computeBasisFunctions(B, dB, grid);
 
-    // Build each patch
-    // The rim
-    buildPatchReflect(0, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
-    // The body
-    buildPatchReflect(1, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
-    buildPatchReflect(2, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
-    // The lid
-    buildPatchReflect(3, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
-    buildPatchReflect(4, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
-    // The bottom
-    buildPatchReflect(5, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
-    // The handle
-    buildPatchReflect(6, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, false, true);
-    buildPatchReflect(7, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, false, true);
-    // The spout
-    buildPatchReflect(8, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, false, true);
-    buildPatchReflect(9, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, false, true);
+  // Build each patch
+  // The rim
+  buildPatchReflect(0, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
+  // The body
+  buildPatchReflect(1, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
+  buildPatchReflect(2, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
+  // The lid
+  buildPatchReflect(3, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
+  buildPatchReflect(4, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
+  // The bottom
+  buildPatchReflect(5, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, true, true);
+  // The handle
+  buildPatchReflect(6, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, false, true);
+  buildPatchReflect(7, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, false, true);
+  // The spout
+  buildPatchReflect(8, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, false, true);
+  buildPatchReflect(9, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, false, true);
 }
 
 void Teapot::moveLid(int grid, std::vector<GLfloat> & p, const mat4 & lidTransform) {

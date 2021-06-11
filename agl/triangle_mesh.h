@@ -6,6 +6,13 @@
 #include "agl/agl.h"
 
 namespace agl {
+
+/**
+ * @brief Base class for indexed meshes
+ * 
+ * Override this class to create your own meshes.
+ * @verbinclude undulate.cpp
+ */
 class TriangleMesh {
  public:
   virtual ~TriangleMesh();

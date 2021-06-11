@@ -1,5 +1,4 @@
-// Copyright 2021, savvy_sine, alinen
-// Class for loading, modifying, and saving RGBA images 
+// Copyright 2021, Savvy Sine, alinen
 
 #ifndef AGL_IMAGE_H_
 #define AGL_IMAGE_H_
@@ -9,6 +8,12 @@
 #include "agl/aglm.h"
 
 namespace agl {
+
+/**
+ * @brief Holder for a RGBA color
+ * 
+ * @see Image
+ */
 struct Pixel {
     unsigned char r;
     unsigned char g;
@@ -16,6 +21,9 @@ struct Pixel {
     unsigned char a;
 };
 
+/**
+ * @brief Implements loading, modifying, and saving RGBA images
+ */
 class Image {
  public:
   Image();

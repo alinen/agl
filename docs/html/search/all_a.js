@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['keydown_77',['keyDown',['../classagl_1_1_window.html#a45d8a8a6207565627d5d523eebb003cd',1,'agl::Window']]],
-  ['keyisdown_78',['keyIsDown',['../classagl_1_1_window.html#a3e3d0b63688529e3d1a3fc9d7c4e1a08',1,'agl::Window']]],
-  ['keyup_79',['keyUp',['../classagl_1_1_window.html#a022bd571eae1add76f1f06b4e4a4e8a3',1,'agl::Window']]],
-  ['kinfinity_80',['kINFINITY',['../aglm_8h.html#ae7a7ee34e87e486257cdac247ac0444e',1,'aglm.h']]],
-  ['kpi_81',['kPI',['../aglm_8h.html#ae17551ac45baed1050bee50f98a8a700',1,'aglm.h']]]
+  ['screenshot_35',['screenshot',['../classagl_1_1_window.html#a527b5ff8261ce964d998f36c30b143c0',1,'agl::Window']]],
+  ['setuniform_36',['setUniform',['../classagl_1_1_renderer.html#af59ab1ce370cf7b6951bd4b0f39f212e',1,'agl::Renderer::setUniform(const std::string &amp;name, float x, float y, float z)'],['../classagl_1_1_renderer.html#a66e7c746443ec1d11ad127f83ba870c5',1,'agl::Renderer::setUniform(const std::string &amp;name, float x, float y, float z, float w)'],['../classagl_1_1_renderer.html#a582fc93af2778c83dd65c2b7afc5acfb',1,'agl::Renderer::setUniform(const std::string &amp;name, const glm::vec2 &amp;v)'],['../classagl_1_1_renderer.html#a7bf09bd96e6b8315bd4397436749bb0a',1,'agl::Renderer::setUniform(const std::string &amp;name, const glm::vec3 &amp;v)'],['../classagl_1_1_renderer.html#a6a2423125e617c1096ddc9dd76dd0c4b',1,'agl::Renderer::setUniform(const std::string &amp;name, const glm::vec4 &amp;v)'],['../classagl_1_1_renderer.html#a67b5312ca401a1063d564a663c1c74c3',1,'agl::Renderer::setUniform(const std::string &amp;name, const glm::mat4 &amp;m)'],['../classagl_1_1_renderer.html#a81cb2d116dbd162003c7568088f88370',1,'agl::Renderer::setUniform(const std::string &amp;name, const glm::mat3 &amp;m)'],['../classagl_1_1_renderer.html#a133e7aff9f2a0ef2614d6a04a14cf809',1,'agl::Renderer::setUniform(const std::string &amp;name, float val)'],['../classagl_1_1_renderer.html#a92dcd15e00f7f7611034a361999fb4fd',1,'agl::Renderer::setUniform(const std::string &amp;name, int val)'],['../classagl_1_1_renderer.html#a257300a6fa0fbb3fdee92b242dd002d8',1,'agl::Renderer::setUniform(const std::string &amp;name, bool val)'],['../classagl_1_1_renderer.html#a7f3e1d788b14f778b4435cf2f943d75a',1,'agl::Renderer::setUniform(const std::string &amp;name, GLuint val)']]],
+  ['skybox_37',['skybox',['../classagl_1_1_renderer.html#afa9c3890ff91416793183e32abcf0614',1,'agl::Renderer']]],
+  ['sphere_38',['sphere',['../classagl_1_1_renderer.html#aee2f70c93e3c660bd260d9241c533355',1,'agl::Renderer']]],
+  ['sprite_39',['sprite',['../classagl_1_1_renderer.html#a9059620a6ebc876e27ca0feb347cdfc6',1,'agl::Renderer']]]
 ];

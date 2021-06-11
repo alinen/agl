@@ -35,10 +35,16 @@ var NAVTREE =
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ]
+      ] ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ]
       ] ]
     ] ]
   ] ]
@@ -46,8 +52,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"structagl_1_1_pixel.html#acda84a825b45a6be22b866519f93d2ab"
+"agl_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

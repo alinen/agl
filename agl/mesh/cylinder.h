@@ -1,7 +1,7 @@
 // Copyright 2019, Savvy Sine, Aline Normoyle
 
-#ifndef AGL_CYLINDER_H_
-#define AGL_CYLINDER_H_
+#ifndef AGL_MESH_CYLINDER_H_
+#define AGL_MESH_CYLINDER_H_
 
 #include "agl/triangle_mesh.h"
 
@@ -17,4 +17,4 @@ class Cylinder : public TriangleMesh {
 };
 
 }  // namespace agl
-#endif  // AGL_CYLINDER_H_
+#endif  // AGL_MESH_CYLINDER_H_

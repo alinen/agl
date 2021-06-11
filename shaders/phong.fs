@@ -28,27 +28,25 @@ out vec4 FragColor;
 
 vec3 phongModel(in vec3 ePos, in vec3 eNormal)
 {
-   float w = Light.position.w; // 0 => directional light; 1 => point light
-   vec3 s = normalize(Light.position.xyz - w * ePos);
-   vec3 v = normalize(-ePos);
-   vec3 h = normalize(reflect(s, eNormal));
+  float w = Light.position.w; // 0 => directional light; 1 => point light
+  vec3 s = normalize(Light.position.xyz - w * ePos);
+  vec3 v = normalize(-ePos);
+  vec3 h = normalize(reflect(s, eNormal));
 
-   vec3 ambient = Light.color * Material.Ka;
+  vec3 ambient = Light.color * Material.Ka;
 
-   float angle = max( dot(s,eNormal), 0.0 ); 
-   vec3 diffuse = angle * Light.color * Material.Kd;
+  float angle = max( dot(s,eNormal), 0.0 ); 
+  vec3 diffuse = angle * Light.color * Material.Kd;
 
-   float base = max(dot(h, -v), 0.0);
-   vec3 spec = Light.color * Material.Ks * pow(base, Material.shininess);
+  float base = max(dot(h, -v), 0.0);
+  vec3 spec = Light.color * Material.Ks * pow(base, Material.shininess);
 
-   return ambient + diffuse + spec;
+  return ambient + diffuse + spec;
 }
 
 void main()
 {
-   vec3 color = phongModel(position.xyz, normal);
-   color = pow(color, vec3(Gamma));
-   FragColor = vec4(color, 1.0);
-   //FragColor = vec4(1, 0, 0, 1);
+  vec3 color = phongModel(position.xyz, normal);
+  color = pow(color, vec3(Gamma));
+  FragColor = vec4(color, 1.0);
 }
-

@@ -177,7 +177,7 @@ void Renderer::texture(const std::string& uniformName, const std::string& textur
   setUniform(uniformName, _textures[textureName].slot);
 }
 
-void Renderer::quad(const glm::vec3& pos, const glm::vec4& color, float size) {
+void Renderer::sprite(const glm::vec3& pos, const glm::vec4& color, float size) {
   assert(_initialized);
   assert(_currentShader == _shaders["sprite"]);
 

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['data_293',['data',['../classagl_1_1_image.html#abb02de241db7b09610a3d30653b99821',1,'agl::Image']]],
-  ['deletebuffers_294',['deleteBuffers',['../classagl_1_1_triangle_mesh.html#a3c5f693bed51cd0b042f4f85160c596c',1,'agl::TriangleMesh']]],
-  ['draw_295',['draw',['../classagl_1_1_window.html#a7d441a93bddc77472fdd987893e92547',1,'agl::Window']]],
-  ['dt_296',['dt',['../classagl_1_1_window.html#a209448b74595e0e9b5084a0913d83315',1,'agl::Window']]]
+  ['init_62',['init',['../classagl_1_1_renderer.html#af59f739bbc2ae0747eb724ca98fc2f75',1,'agl::Renderer']]],
+  ['initialized_63',['initialized',['../classagl_1_1_renderer.html#acfbb2d42960b288878ebf394f9e65770',1,'agl::Renderer']]]
 ];

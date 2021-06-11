@@ -7,6 +7,9 @@
 
 namespace agl {
 
+/**
+ * @brief Implements orbit and pan camera movement
+ */
 class Camera {
  public:
   Camera();
