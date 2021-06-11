@@ -1,9 +1,9 @@
-// Copyright 2009-2020, Savvy Sine, alinen, Aline Normoyle
+// Copyright 2009-2020, Savvy Sine, Aline Normoyle
 
 #ifndef AGL_CAMERA_H_
 #define AGL_CAMERA_H_
 
-#include "aglm.h"
+#include "agl/aglm.h"
 
 namespace agl {
 
@@ -20,8 +20,8 @@ class Camera {
 
   // Initialize the camera with gluLookAt parameters
   virtual void set(const glm::vec3& eyepos,
-                   const glm::vec3& look = glm::vec3(0,0,0),
-                   const glm::vec3& up = glm::vec3(0,1,0));
+                   const glm::vec3& look = glm::vec3(0, 0, 0),
+                   const glm::vec3& up = glm::vec3(0, 1, 0));
 
   // Set camera parameters to fit the given view volume
   virtual void frameVolume(const glm::vec3& pos, const glm::vec3& dim);
@@ -67,7 +67,7 @@ class Camera {
   float moveSpeed() const;
 
  protected:
-  virtual void turn(glm::vec3& v, glm::vec3& n, float amount);
+  virtual void turn(glm::vec3* v, glm::vec3* n, float amount);
   virtual void move(float dU, float dV, float dN);
   virtual void orbit(float h, float p);
   virtual void reset();

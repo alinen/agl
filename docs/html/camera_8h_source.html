@@ -87,12 +87,12 @@ $(document).ready(function(){initNavTree('camera_8h_source.html',''); initResiza
 <div class="title">camera.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Copyright 2009-2020, Savvy Sine, alinen, Aline Normoyle</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Copyright 2009-2020, Savvy Sine, Aline Normoyle</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef AGL_CAMERA_H_</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define AGL_CAMERA_H_</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="aglm_8h.html">aglm.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="aglm_8h.html">agl/aglm.h</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>agl {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
@@ -106,8 +106,8 @@ $(document).ready(function(){initNavTree('camera_8h_source.html',''); initResiza
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="comment">// Initialize the camera with gluLookAt parameters</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> set(<span class="keyword">const</span> glm::vec3&amp; eyepos,</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                   <span class="keyword">const</span> glm::vec3&amp; look = glm::vec3(0,0,0),</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                   <span class="keyword">const</span> glm::vec3&amp; up = glm::vec3(0,1,0));</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                   <span class="keyword">const</span> glm::vec3&amp; look = glm::vec3(0, 0, 0),</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                   <span class="keyword">const</span> glm::vec3&amp; up = glm::vec3(0, 1, 0));</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="comment">// Set camera parameters to fit the given view volume</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> frameVolume(<span class="keyword">const</span> glm::vec3&amp; pos, <span class="keyword">const</span> glm::vec3&amp; dim);</div>
@@ -153,7 +153,7 @@ $(document).ready(function(){initNavTree('camera_8h_source.html',''); initResiza
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordtype">float</span> moveSpeed() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> turn(glm::vec3&amp; v, glm::vec3&amp; n, <span class="keywordtype">float</span> amount);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> turn(glm::vec3* v, glm::vec3* n, <span class="keywordtype">float</span> amount);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> move(<span class="keywordtype">float</span> dU, <span class="keywordtype">float</span> dV, <span class="keywordtype">float</span> dN);</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> orbit(<span class="keywordtype">float</span> h, <span class="keywordtype">float</span> p);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> reset();</div>

@@ -1,3 +1,5 @@
+// Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf)
+
 #include "agl/shader.h"
 #include <sys/stat.h>
 #include <fstream>
@@ -16,21 +18,20 @@ struct ShaderFileExtension {
   GLSLShader::Type type;
 };
 
-struct ShaderFileExtension extensions[] =
-{
-  {".vs",   GLSLShader::VERTEX},
+struct ShaderFileExtension extensions[] = {
+  {".vs",  GLSLShader::VERTEX},
   {".vert", GLSLShader::VERTEX},
-  {".gs",   GLSLShader::GEOMETRY},
+  {".gs",  GLSLShader::GEOMETRY},
   {".geom", GLSLShader::GEOMETRY},
   {".tcs",  GLSLShader::TESS_CONTROL},
   {".tes",  GLSLShader::TESS_EVALUATION},
-  {".fs",   GLSLShader::FRAGMENT},
+  {".fs",  GLSLShader::FRAGMENT},
   {".frag", GLSLShader::FRAGMENT},
 #ifndef __APPLE__
-  {".cs",   GLSLShader::COMPUTE}
+  {".cs",  GLSLShader::COMPUTE}
 #endif
 };
-}
+}  // namespace GLSLShaderInfo
 
 Shader::Shader() : handle(0), linked(false) {}
 
@@ -46,17 +47,16 @@ Shader::~Shader() {
   glGetAttachedShaders(handle, numShaders, NULL, shaderNames);
 
   // Delete the shaders
-  for (int i = 0; i < numShaders; i++)
+  for (int i = 0; i < numShaders; i++) {
     glDeleteShader(shaderNames[i]);
+  }
 
   // Delete the program
   glDeleteProgram(handle);
-
   delete[] shaderNames;
 }
 
 void Shader::compileShader(const std::string& fileName) {
-
   int extSize = sizeof(GLSLShaderInfo::ShaderFileExtension);
   int numExts = sizeof(GLSLShaderInfo::extensions) / extSize;
 
@@ -65,11 +65,11 @@ void Shader::compileShader(const std::string& fileName) {
   GLSLShader::Type type = GLSLShader::VERTEX;
   bool matchFound = false;
   for (int i = 0; i < numExts; i++) {
-     if (ext == GLSLShaderInfo::extensions[i].ext) {
-        matchFound = true;
-        type = GLSLShaderInfo::extensions[i].type;
-        break;
-     }
+    if (ext == GLSLShaderInfo::extensions[i].ext) {
+      matchFound = true;
+      type = GLSLShaderInfo::extensions[i].type;
+      break;
+    }
   }
 
   // If we didn't find a match, throw an exception
@@ -85,13 +85,12 @@ void Shader::compileShader(const std::string& fileName) {
 string Shader::getExtension(const std::string& nameStr) {
   size_t loc = nameStr.find_last_of('.');
   if (loc != string::npos) {
-     return nameStr.substr(loc, string::npos);
+    return nameStr.substr(loc, string::npos);
   }
   return "";
 }
 
 void Shader::compileShader(const std::string& fileName, GLSLShader::Type type) {
-
   if (!fileExists(fileName)) {
     string message = string("Shader: ") + fileName + " not found.";
     throw GLSLProgramException(message);
@@ -119,11 +118,10 @@ void Shader::compileShader(const std::string& fileName, GLSLShader::Type type) {
 }
 
 void Shader::compileSource(const string &source, GLSLShader::Type type) {
-
   if (handle <= 0) {
     handle = glCreateProgram();
     if (handle == 0) {
-       throw GLSLProgramException("Unable to create shader program.");
+      throw GLSLProgramException("Unable to create shader program.");
     }
   }
 
@@ -162,90 +160,94 @@ void Shader::compileSource(const string &source, GLSLShader::Type type) {
 }
 
 void Shader::link() {
-   if (linked) return;
-   if (handle <= 0)
-      throw GLSLProgramException("Program has not been compiled.");
+  if (linked) return;
+  if (handle <= 0) {
+    throw GLSLProgramException("Program has not been compiled.");
+  }
 
-   glLinkProgram(handle);
+  glLinkProgram(handle);
 
-   int status = 0;
-   glGetProgramiv(handle, GL_LINK_STATUS, &status);
-   if (GL_FALSE == status) {
-      // Store log and return false
-      int length = 0;
-      string logString;
+  int status = 0;
+  glGetProgramiv(handle, GL_LINK_STATUS, &status);
+  if (GL_FALSE == status) {
+    // Store log and return false
+    int length = 0;
+    string logString;
 
-      glGetProgramiv(handle, GL_INFO_LOG_LENGTH, &length);
+    glGetProgramiv(handle, GL_INFO_LOG_LENGTH, &length);
 
-      if (length > 0) {
-        char *c_log = new char[length];
-        int written = 0;
-        glGetProgramInfoLog(handle, length, &written, c_log);
-        logString = c_log;
-        delete[] c_log;
-      }
+    if (length > 0) {
+      char *c_log = new char[length];
+      int written = 0;
+      glGetProgramInfoLog(handle, length, &written, c_log);
+      logString = c_log;
+      delete[] c_log;
+    }
 
-      throw GLSLProgramException(string("Program link failed:\n") + logString);
-   } else {
-      findUniformLocations();
-      linked = true;
-   }
+    throw GLSLProgramException(string("Program link failed:\n") + logString);
+  } else {
+    findUniformLocations();
+    linked = true;
+  }
 }
 
 void Shader::findUniformLocations() {
-   uniformLocations.clear();
+  uniformLocations.clear();
 
-   GLint numUniforms = 0;
+  GLint numUniforms = 0;
 #ifdef __APPLE__
-   // For OpenGL 4.1, use glGetActiveUniform
-   GLint maxLen;
-   GLchar *name;
+  // For OpenGL 4.1, use glGetActiveUniform
+  GLint maxLen;
+  GLchar *name;
 
-   glGetProgramiv(handle, GL_ACTIVE_UNIFORM_MAX_LENGTH, &maxLen);
-   glGetProgramiv(handle, GL_ACTIVE_UNIFORMS, &numUniforms);
+  glGetProgramiv(handle, GL_ACTIVE_UNIFORM_MAX_LENGTH, &maxLen);
+  glGetProgramiv(handle, GL_ACTIVE_UNIFORMS, &numUniforms);
 
-   name = new GLchar[maxLen];
-   for (GLuint i = 0; i < numUniforms; ++i) {
-      GLint size;
-      GLenum type;
-      GLsizei written;
-      glGetActiveUniform(handle, i, maxLen, &written, &size, &type, name);
-      GLint location = glGetUniformLocation(handle, name);
-      uniformLocations[name] = glGetUniformLocation(handle, name);
-   }
-   delete[] name;
+  name = new GLchar[maxLen];
+  for (GLuint i = 0; i < numUniforms; ++i) {
+    GLint size;
+    GLenum type;
+    GLsizei written;
+    glGetActiveUniform(handle, i, maxLen, &written, &size, &type, name);
+    GLint location = glGetUniformLocation(handle, name);
+    uniformLocations[name] = glGetUniformLocation(handle, name);
+  }
+  delete[] name;
 #else
-   // For OpenGL 4.3 and above, use glGetProgramResource
-   glGetProgramInterfaceiv( handle, GL_UNIFORM, GL_ACTIVE_RESOURCES, &numUniforms);
+  // For OpenGL 4.3 and above, use glGetProgramResource
+  glGetProgramInterfaceiv(handle, GL_UNIFORM,
+    GL_ACTIVE_RESOURCES, &numUniforms);
 
-   GLenum properties[] = {GL_NAME_LENGTH, GL_TYPE, GL_LOCATION, GL_BLOCK_INDEX};
+  GLenum properties[] = {GL_NAME_LENGTH, GL_TYPE, GL_LOCATION, GL_BLOCK_INDEX};
 
-   for( GLint i = 0; i < numUniforms; ++i ) {
+  for (GLint i = 0; i < numUniforms; ++i) {
     GLint results[4];
-    glGetProgramResourceiv(handle, GL_UNIFORM, i, 4, properties, 4, NULL, results);
+    glGetProgramResourceiv(handle, GL_UNIFORM,
+        i, 4, properties, 4, NULL, results);
 
-    if( results[3] != -1 ) continue;  // Skip uniforms in blocks
+    if (results[3] != -1) continue;  // Skip uniforms in blocks
     GLint nameBufSize = results[0] + 1;
     char * name = new char[nameBufSize];
     glGetProgramResourceName(handle, GL_UNIFORM, i, nameBufSize, NULL, name);
     uniformLocations[name] = results[2];
     delete [] name;
-   }
+  }
 #endif
 }
 
 void Shader::use() {
-   if (handle <= 0 || (!linked))
-      throw GLSLProgramException("Shader has not been linked");
-   glUseProgram(handle);
+  if (handle <= 0 || (!linked)) {
+    throw GLSLProgramException("Shader has not been linked");
+  }
+  glUseProgram(handle);
 }
 
 int Shader::getHandle() {
-   return handle;
+  return handle;
 }
 
 bool Shader::isLinked() {
-   return linked;
+  return linked;
 }
 
 void Shader::bindAttribLocation(GLuint location, const char *name) {
@@ -321,31 +323,33 @@ void Shader::printActiveUniforms() {
   printf("Active uniforms:\n");
   printf("------------------------------------------------\n");
   for (GLuint i = 0; i < nUniforms; ++i) {
-     glGetActiveUniform(handle, i, maxLen, &written, &size, &type, name);
-     location = glGetUniformLocation(handle, name);
-     printf(" %-5d %s (%s)\n", location, name, getTypeString(type));
+    glGetActiveUniform(handle, i, maxLen, &written, &size, &type, name);
+    location = glGetUniformLocation(handle, name);
+    printf(" %-5d %s (%s)\n", location, name, getTypeString(type));
   }
 
   delete[] name;
 #else
   // For OpenGL 4.3 and above, use glGetProgramResource
   GLint numUniforms = 0;
-  glGetProgramInterfaceiv( handle, GL_UNIFORM, GL_ACTIVE_RESOURCES, &numUniforms);
+  glGetProgramInterfaceiv(handle,
+      GL_UNIFORM, GL_ACTIVE_RESOURCES, &numUniforms);
 
   GLenum properties[] = {GL_NAME_LENGTH, GL_TYPE, GL_LOCATION, GL_BLOCK_INDEX};
 
   printf("Active uniforms:\n");
-  for( int i = 0; i < numUniforms; ++i ) {
+  for (int i = 0; i < numUniforms; ++i) {
     GLint results[4];
-    glGetProgramResourceiv(handle, GL_UNIFORM, i, 4, properties, 4, NULL, results);
+    glGetProgramResourceiv(handle, GL_UNIFORM,
+        i, 4, properties, 4, NULL, results);
 
-    if( results[3] != -1 ) continue;  // Skip uniforms in blocks
+    if (results[3] != -1) continue;  // Skip uniforms in blocks
     GLint nameBufSize = results[0] + 1;
     char * name = new char[nameBufSize];
     glGetProgramResourceName(handle, GL_UNIFORM, i, nameBufSize, NULL, name);
     printf("%-5d %s (%s)\n", results[2], name, getTypeString(results[1]));
     delete [] name;
-   }
+  }
 #endif
 }
 
@@ -364,61 +368,69 @@ void Shader::printActiveUniformBlocks() {
   printf("Active Uniform blocks: \n");
   printf("------------------------------------------------\n");
   for (GLuint i = 0; i < nBlocks; i++) {
-     glGetActiveUniformBlockName(handle, i, maxLength, &written, name);
-     glGetActiveUniformBlockiv(handle, i, GL_UNIFORM_BLOCK_BINDING, &binding);
-     printf("Uniform block \"%s\" (%d):\n", name, binding);
+    glGetActiveUniformBlockName(handle, i, maxLength, &written, name);
+    glGetActiveUniformBlockiv(handle, i, GL_UNIFORM_BLOCK_BINDING, &binding);
+    printf("Uniform block \"%s\" (%d):\n", name, binding);
 
-     GLint nUnis;
-     glGetActiveUniformBlockiv(handle, i, GL_UNIFORM_BLOCK_ACTIVE_UNIFORMS, &nUnis);
-     GLint *unifIndexes = new GLint[nUnis];
-     glGetActiveUniformBlockiv(handle, i, GL_UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES, unifIndexes);
+    GLint nUnis;
+    glGetActiveUniformBlockiv(handle,
+        i, GL_UNIFORM_BLOCK_ACTIVE_UNIFORMS, &nUnis);
+    GLint *unifIndexes = new GLint[nUnis];
+    glGetActiveUniformBlockiv(handle,
+        i, GL_UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES, unifIndexes);
 
-     for (int unif = 0; unif < nUnis; ++unif) {
-        GLuint uniIndex = unifIndexes[unif];
-        GLint size;
-        GLenum type;
+    for (int unif = 0; unif < nUnis; ++unif) {
+      GLuint uniIndex = unifIndexes[unif];
+      GLint size;
+      GLenum type;
 
-        glGetActiveUniform(handle, uniIndex, maxUniLen, &written, &size, &type, uniName);
-        printf("   %s (%s)\n", name, getTypeString(type));
-     }
+      glGetActiveUniform(handle, uniIndex, maxUniLen,
+          &written, &size, &type, uniName);
+      printf("  %s (%s)\n", name, getTypeString(type));
+    }
 
-     delete[] unifIndexes;
+    delete[] unifIndexes;
   }
   delete[] name;
   delete[] uniName;
 #else
   GLint numBlocks = 0;
 
-  glGetProgramInterfaceiv(handle, GL_UNIFORM_BLOCK, GL_ACTIVE_RESOURCES, &numBlocks);
+  glGetProgramInterfaceiv(handle,
+      GL_UNIFORM_BLOCK, GL_ACTIVE_RESOURCES, &numBlocks);
   GLenum blockProps[] = {GL_NUM_ACTIVE_VARIABLES, GL_NAME_LENGTH};
   GLenum blockIndex[] = {GL_ACTIVE_VARIABLES};
   GLenum props[] = {GL_NAME_LENGTH, GL_TYPE, GL_BLOCK_INDEX};
 
-  for(int block = 0; block < numBlocks; ++block) {
+  for (int block = 0; block < numBlocks; ++block) {
     GLint blockInfo[2];
-    glGetProgramResourceiv(handle, GL_UNIFORM_BLOCK, block, 2, blockProps, 2, NULL, blockInfo);
+    glGetProgramResourceiv(handle,
+        GL_UNIFORM_BLOCK, block, 2, blockProps, 2, NULL, blockInfo);
     GLint numUnis = blockInfo[0];
 
     char * blockName = new char[blockInfo[1]+1];
-    glGetProgramResourceName(handle, GL_UNIFORM_BLOCK, block, blockInfo[1]+1, NULL, blockName);
+    glGetProgramResourceName(handle,
+        GL_UNIFORM_BLOCK, block, blockInfo[1]+1, NULL, blockName);
     printf("Uniform block \"%s\":\n", blockName);
     delete [] blockName;
 
     GLint * unifIndexes = new GLint[numUnis];
-    glGetProgramResourceiv(handle, GL_UNIFORM_BLOCK, block, 1, blockIndex, numUnis, NULL, unifIndexes);
+    glGetProgramResourceiv(handle,
+        GL_UNIFORM_BLOCK, block, 1, blockIndex, numUnis, NULL, unifIndexes);
 
-    for( int unif = 0; unif < numUnis; ++unif ) {
-     GLint uniIndex = unifIndexes[unif];
-     GLint results[3];
-     glGetProgramResourceiv(handle, GL_UNIFORM, uniIndex, 3, props, 3, NULL, results);
+    for (int unif = 0; unif < numUnis; ++unif) {
+      GLint uniIndex = unifIndexes[unif];
+      GLint results[3];
+      glGetProgramResourceiv(handle,
+          GL_UNIFORM, uniIndex, 3, props, 3, NULL, results);
 
-     GLint nameBufSize = results[0] + 1;
-     char * name = new char[nameBufSize];
-     glGetProgramResourceName(handle, GL_UNIFORM, uniIndex, nameBufSize, NULL, name);
-     printf("   %s (%s)\n", name, getTypeString(results[1]));
-     delete [] name;
+      GLint nameBufSize = results[0] + 1;
+      char * name = new char[nameBufSize];
+      glGetProgramResourceName(handle,
+          GL_UNIFORM, uniIndex, nameBufSize, NULL, name);
+      printf("  %s (%s)\n", name, getTypeString(results[1]));
+      delete [] name;
     }
-
     delete [] unifIndexes;
   }
 #endif
@@ -438,26 +450,29 @@ void Shader::printActiveAttribs() {
   printf("Active Attributes: \n");
   printf("------------------------------------------------\n");
   for (int i = 0; i < nAttribs; i++) {
-     glGetActiveAttrib(handle, i, maxLength, &written, &size, &type, name);
-     location = glGetAttribLocation(handle, name);
-     printf(" %-5d %s (%s)\n", location, name, getTypeString(type));
+    glGetActiveAttrib(handle, i, maxLength, &written, &size, &type, name);
+    location = glGetAttribLocation(handle, name);
+    printf(" %-5d %s (%s)\n", location, name, getTypeString(type));
   }
   delete[] name;
 #else
   // >= OpenGL 4.3, use glGetProgramResource
   GLint numAttribs;
-  glGetProgramInterfaceiv( handle, GL_PROGRAM_INPUT, GL_ACTIVE_RESOURCES, &numAttribs);
+  glGetProgramInterfaceiv(handle,
+      GL_PROGRAM_INPUT, GL_ACTIVE_RESOURCES, &numAttribs);
 
   GLenum properties[] = {GL_NAME_LENGTH, GL_TYPE, GL_LOCATION};
 
   printf("Active attributes:\n");
-  for( int i = 0; i < numAttribs; ++i ) {
+  for (int i = 0; i < numAttribs; ++i) {
     GLint results[3];
-    glGetProgramResourceiv(handle, GL_PROGRAM_INPUT, i, 3, properties, 3, NULL, results);
+    glGetProgramResourceiv(handle,
+        GL_PROGRAM_INPUT, i, 3, properties, 3, NULL, results);
 
     GLint nameBufSize = results[0] + 1;
     char * name = new char[nameBufSize];
-    glGetProgramResourceName(handle, GL_PROGRAM_INPUT, i, nameBufSize, NULL, name);
+    glGetProgramResourceName(handle,
+        GL_PROGRAM_INPUT, i, nameBufSize, NULL, name);
     printf("%-5d %s (%s)\n", results[2], name, getTypeString(results[1]));
     delete [] name;
   }
@@ -468,66 +483,66 @@ const char *Shader::getTypeString(GLenum type) {
   // There are many more types than are covered here, but
   // these are the most common in these examples.
   switch (type) {
-     case GL_FLOAT:
-        return "float";
-     case GL_FLOAT_VEC2:
-        return "vec2";
-     case GL_FLOAT_VEC3:
-        return "vec3";
-     case GL_FLOAT_VEC4:
-        return "vec4";
-     case GL_DOUBLE:
-        return "double";
-     case GL_INT:
-        return "int";
-     case GL_UNSIGNED_INT:
-        return "unsigned int";
-     case GL_BOOL:
-        return "bool";
-     case GL_FLOAT_MAT2:
-        return "mat2";
-     case GL_FLOAT_MAT3:
-        return "mat3";
-     case GL_FLOAT_MAT4:
-        return "mat4";
-     default:
-        return "?";
+    case GL_FLOAT:
+      return "float";
+    case GL_FLOAT_VEC2:
+      return "vec2";
+    case GL_FLOAT_VEC3:
+      return "vec3";
+    case GL_FLOAT_VEC4:
+      return "vec4";
+    case GL_DOUBLE:
+      return "double";
+    case GL_INT:
+      return "int";
+    case GL_UNSIGNED_INT:
+      return "unsigned int";
+    case GL_BOOL:
+      return "bool";
+    case GL_FLOAT_MAT2:
+      return "mat2";
+    case GL_FLOAT_MAT3:
+      return "mat3";
+    case GL_FLOAT_MAT4:
+      return "mat4";
+    default:
+      return "?";
   }
 }
 
 void Shader::validate() {
-   if (!isLinked())
-      throw GLSLProgramException("Program is not linked");
+  if (!isLinked()) {
+    throw GLSLProgramException("Program is not linked");
+  }
+  GLint status;
+  glValidateProgram(handle);
+  glGetProgramiv(handle, GL_VALIDATE_STATUS, &status);
 
-   GLint status;
-   glValidateProgram(handle);
-   glGetProgramiv(handle, GL_VALIDATE_STATUS, &status);
+  if (GL_FALSE == status) {
+    // Store log and return false
+    int length = 0;
+    string logString;
 
-   if (GL_FALSE == status) {
-      // Store log and return false
-      int length = 0;
-      string logString;
+    glGetProgramiv(handle, GL_INFO_LOG_LENGTH, &length);
 
-      glGetProgramiv(handle, GL_INFO_LOG_LENGTH, &length);
+    if (length > 0) {
+      char *c_log = new char[length];
+      int written = 0;
+      glGetProgramInfoLog(handle, length, &written, c_log);
+      logString = c_log;
+      delete[] c_log;
+    }
 
-      if (length > 0) {
-        char *c_log = new char[length];
-        int written = 0;
-        glGetProgramInfoLog(handle, length, &written, c_log);
-        logString = c_log;
-        delete[] c_log;
-      }
-
-      throw GLSLProgramException(
-          string("Program failed to validate\n") + logString);
-   }
+    throw GLSLProgramException(
+       string("Program failed to validate\n") + logString);
+  }
 }
 
 int Shader::getUniformLocation(const char *name) {
-   auto pos = uniformLocations.find(name);
+  auto pos = uniformLocations.find(name);
 
-   if (pos == uniformLocations.end()) {
-      uniformLocations[name] = glGetUniformLocation(handle, name);
+  if (pos == uniformLocations.end()) {
+    uniformLocations[name] = glGetUniformLocation(handle, name);
   }
 
   return uniformLocations[name];

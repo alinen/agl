@@ -23,7 +23,7 @@ Torus::Torus(GLfloat outerRadius, GLfloat innerRadius,
 
   // Generate the vertex data
   float ringFactor = glm::two_pi<float>() / nrings;
-  loat sideFactor = glm::two_pi<float>() / nsides;
+  float sideFactor = glm::two_pi<float>() / nsides;
   int idx = 0, tidx = 0;
   for (GLuint ring = 0; ring <= nrings; ring++) {
     float u = ring * ringFactor;

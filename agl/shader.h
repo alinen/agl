@@ -4,7 +4,7 @@
 #define AGL_SHADER_H_
 
 #ifdef WIN32
-#pragma warning( disable : 4290 )
+#pragma warning(disable : 4290)
 #endif
 
 #include <string>
@@ -13,13 +13,12 @@
 #include "agl/agl.h"
 #include "agl/aglm.h"
 
-namespace agl 
-{
+namespace agl {
 
 class GLSLProgramException : public std::runtime_error {
  public:
-   GLSLProgramException(const std::string &msg) :
-       std::runtime_error(msg) {}
+  explicit GLSLProgramException(const std::string &msg) :
+      std::runtime_error(msg) {}
 };
 
 namespace GLSLShader {
@@ -33,7 +32,7 @@ namespace GLSLShader {
     COMPUTE = GL_COMPUTE_SHADER
   #endif
   };
-}
+}  // namespace GLSLShader
 
 class Shader {
  public:

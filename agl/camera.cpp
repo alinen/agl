@@ -79,7 +79,7 @@ void Camera::_set(const vec3& eyepos, const vec3& look, const vec3& up) {
   mN = eyepos - look;
   mV = cross(up, mN);
   mU = cross(mN, mV);
-  mRadius = length(mN); // cache this distance
+  mRadius = length(mN);  // cache this distance
 
   mU = normalize(mU);
   mV = normalize(mV);
@@ -103,12 +103,12 @@ void Camera::move(float dV, float dU, float dN) {
 }
 
 void Camera::orbit(float h, float p) {
-  //printf("PITCH: %f\n", p);
-  //printf("HEADING: %f\n", h);
-  //printf("RADIUS: %f\n", mRadius);
+  // printf("PITCH: %f\n", p);
+  // printf("HEADING: %f\n", h);
+  // printf("RADIUS: %f\n", mRadius);
 
-  vec3 rotatePt; // Calculate new location around sphere having mRadius
-  if (mUp == vec3(0,1,0)) {
+  vec3 rotatePt;  // Calculate new location around sphere having mRadius
+  if (mUp == vec3(0, 1, 0)) {
      // Y UP
      rotatePt[0] = mRadius*cos(h)*cos(p);
      rotatePt[1] = mRadius*sin(p);
@@ -142,7 +142,7 @@ void Camera::moveRight(float scale) {  // => move along v
 
 void Camera::orbitUp(float scale) {
   mPitch = mPitch + mTurnRate * scale;
-  //mPitch = std::min<float>(-0.1, mPitch + mTurnRate * scale);
+  // mPitch = std::min<float>(-0.1, mPitch + mTurnRate * scale);
   orbit(heading(), mPitch);
 }
 
@@ -152,7 +152,7 @@ void Camera::moveUp(float scale) {  // => move along +u
 
 void Camera::orbitDown(float scale) {
   mPitch = mPitch - mTurnRate * scale;
-  //mPitch = std::max<float>(-M_PI / 2.0 + 0.01, mPitch - mTurnRate * scale);
+  // mPitch = std::max<float>(-M_PI / 2.0 + 0.01, mPitch - mTurnRate * scale);
   orbit(heading(), mPitch);
 }
 
@@ -170,36 +170,36 @@ void Camera::moveBack(float scale) {  // => move along n
   orbit(heading(), pitch());
 }
 
-void Camera::turn(vec3& v1, vec3& v2, float amount) {
+void Camera::turn(vec3* v1, vec3* v2, float amount) {
   double cosTheta = cos(amount);
   double sinTheta = sin(amount);
 
-  float vX =  cosTheta*v1[0] + sinTheta*v2[0];
-  float vY =  cosTheta*v1[1] + sinTheta*v2[1];
-  float vZ =  cosTheta*v1[2] + sinTheta*v2[2];
+  float vX =  cosTheta * v1->x + sinTheta * v2->x;
+  float vY =  cosTheta * v1->y + sinTheta * v2->y;
+  float vZ =  cosTheta * v1->z + sinTheta * v2->z;
 
-  float nX = -sinTheta*v1[0] + cosTheta*v2[0];
-  float nY = -sinTheta*v1[1] + cosTheta*v2[1];
-  float nZ = -sinTheta*v1[2] + cosTheta*v2[2];
+  float nX = -sinTheta * v1->x + cosTheta * v2->x;
+  float nY = -sinTheta * v1->y + cosTheta * v2->y;
+  float nZ = -sinTheta * v1->z + cosTheta * v2->z;
 
-  v1 = vec3(vX, vY, vZ);
-  v2 = vec3(nX, nY, nZ);
+  *v1 = vec3(vX, vY, vZ);
+  *v2 = vec3(nX, nY, nZ);
 }
 
 void Camera::turnLeft(float scale) {  // rotate around u
-  turn(mV, mN, -mTurnRate * scale);
+  turn(&mV, &mN, -mTurnRate * scale);
 }
 
 void Camera::turnRight(float scale) {  // rotate neg around u
-  turn(mV, mN, mTurnRate * scale);
+  turn(&mV, &mN, mTurnRate * scale);
 }
 
 void Camera::turnUp(float scale) {  // rotate around v
-  turn(mN, mU, mTurnRate * scale);
+  turn(&mN, &mU, mTurnRate * scale);
 }
 
 void Camera::turnDown(float scale) {  // rotate around v
-  turn(mN, mU, -mTurnRate * scale);
+  turn(&mN, &mU, -mTurnRate * scale);
 }
 
 void Camera::setTurnRate(float rate) {
@@ -256,8 +256,11 @@ void Camera::onMouseButton(int pButton, int pState, int x, int y) {
 }
 
 void Camera::onScroll(float dx, float dy) {
-  if (dy > 0) moveForward(dy * 10.0);
-  else moveBack(-dy * 10.0);
+  if (dy > 0) {
+    moveForward(dy * 10.0);
+  } else {
+    moveBack(-dy * 10.0);
+  }
 }
 
 void Camera::onKeyboard(int pKey, int scancode, int action, int mods) {
@@ -267,8 +270,7 @@ void Camera::onKeyboard(int pKey, int scancode, int action, int mods) {
   // AN TODO frameVolume(vec3(0.0), vec3(100,200,100));
 }
 
-void Camera::frameVolume(const vec3& pos, const vec3& dim)
-{
+void Camera::frameVolume(const vec3& pos, const vec3& dim) {
   double w = dim[0];
   double h = dim[1];
   double d = dim[2];
@@ -277,14 +279,21 @@ void Camera::frameVolume(const vec3& pos, const vec3& dim)
   double dist;
   if (d > h) {
     mUp = vec3(0, 0.0, 1.0);
-    if (w > d) dist = w*0.5 / tan(angle);  // aspect is 1, so i can do this
-    else dist = d*0.5 / tan(angle);
+    if (w > d) {
+      dist = w*0.5 / tan(angle);  // aspect is 1, so i can do this
+    } else {
+      dist = d*0.5 / tan(angle);
+    }
     mEye = mEye + pos;
     mLook = pos + vec3(0, 0.0, d*0.75);
+
   } else {
     mUp = vec3(0, 1.0, 0.0);
-    if (w > h) dist = w*0.5 / tan(angle);  // aspect is 1, so i can do this
-    else dist = h*0.5 / tan(angle);
+    if (w > h) {
+      dist = w*0.5 / tan(angle);  // aspect is 1, so i can do this
+    } else {
+      dist = h*0.5 / tan(angle);
+    }
     mEye = vec3(-(dist + d), h*0.1, (dist + d));
     mEye = mEye + pos;
     mLook = pos + vec3(0, h*0.5, 0);

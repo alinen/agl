@@ -34,7 +34,6 @@ Window::~Window() {
 }
 
 void Window::background(const vec3& color) {
-  
   glClearColor(color[0], color[1], color[2], 1.0f);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
@@ -79,7 +78,7 @@ bool Window::screenshot(const std::string& filename) {
   glPixelStorei(GL_PACK_ALIGNMENT, 1);
   glReadPixels(x, y, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
 
-  // Using Image introduces another copy but makes it easier to keep all 
+  // Using Image introduces another copy but makes it easier to keep all
   // stb code referenced from a single file (needed for header-only include)
   Image image;
   image.set(width, height, data);

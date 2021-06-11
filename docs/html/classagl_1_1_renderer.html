@@ -281,10 +281,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Usage </p><div class="fragment"><div class="line"><a class="code" href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">beginShader</a>(<span class="stringliteral">&quot;myShader&quot;</span>);</div>
 <div class="line"><span class="comment">// draw primitives</span></div>
 <div class="line"><a class="code" href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">endShader</a>();</div>
-<div class="ttc" id="aclassagl_1_1_renderer_html_a219ab8aaf5d0bb109bbd1bbbf567f78d"><div class="ttname"><a href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">agl::Renderer::beginShader</a></div><div class="ttdeci">void beginShader(const std::string &amp;shaderName)</div><div class="ttdoc">Set active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:284</div></div>
-<div class="ttc" id="aclassagl_1_1_renderer_html_a21af4885a9fe659b6515e07bee758374"><div class="ttname"><a href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">agl::Renderer::endShader</a></div><div class="ttdeci">void endShader()</div><div class="ttdoc">Clear active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:298</div></div>
-</div><!-- fragment --> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8" title="Load a GLSL shader from files.">loadShader</a> <br  />
- </dd></dl>
+<div class="ttc" id="aclassagl_1_1_renderer_html_a219ab8aaf5d0bb109bbd1bbbf567f78d"><div class="ttname"><a href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">agl::Renderer::beginShader</a></div><div class="ttdeci">void beginShader(const std::string &amp;shaderName)</div><div class="ttdoc">Set active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:289</div></div>
+<div class="ttc" id="aclassagl_1_1_renderer_html_a21af4885a9fe659b6515e07bee758374"><div class="ttname"><a href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">agl::Renderer::endShader</a></div><div class="ttdeci">void endShader()</div><div class="ttdoc">Clear active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:303</div></div>
+</div><!-- fragment --> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8" title="Load a GLSL shader from files.">loadShader</a> </dd></dl>
 
 </div>
 </div>
@@ -860,8 +859,7 @@ int main() {
   </table>
   </dd>
 </dl>
-<p>Perspective projections foreshorten objects should that closer objects are larger than further objects. Only objects within the view volume will be drawn. For example, objects a distance further from the <em>far</em> plane will not be visible. <br  />
-</p>
+<p>Perspective projections foreshorten objects should that closer objects are larger than further objects. Only objects within the view volume will be drawn. For example, objects a distance further from the <em>far</em> plane will not be visible.</p>
 <p>The current shader should define the following uniform variables</p>
 <p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform </p>
 

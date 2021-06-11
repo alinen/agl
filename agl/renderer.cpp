@@ -1,4 +1,4 @@
-// copyright 2020, savvy_sine, aline
+// Copyright 2020, Savvy Sine, Aline Normoyle
 
 #include "agl/renderer.h"
 #include <fstream>
@@ -55,7 +55,7 @@ void Renderer::cleanup() {
   _skybox = 0;
 
   for (auto it : _shaders) {
-    delete it.second; 
+    delete it.second;
   }
   _shaders.clear();
   _textures.clear();
@@ -92,7 +92,7 @@ void Renderer::init() {
   _cylinder = new Cylinder(1.0, 1.0, 8.0);
   _teapot = new Teapot(13, mat4(1.0));
   _torus = new Torus(0.5, 0.25, 20, 20);
-  _plane = new Plane(1.0, 1.0, 1.0, 1.0); 
+  _plane = new Plane(1.0, 1.0, 1.0, 1.0);
   _sphere = new Sphere(0.5f, 20, 20);
   _skybox = new SkyBox(1);
   _trs = mat4(1.0);
@@ -136,7 +136,7 @@ void Renderer::initBillboards() {
   glBindBuffer(GL_ARRAY_BUFFER, mBBVboPosId);  // bind before setting data
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, static_cast<GLubyte*>(0));
 
-  loadShader("sprite", 
+  loadShader("sprite",
       "../shaders/billboard.vs",
       "../shaders/billboard.fs");
 }
@@ -165,19 +165,22 @@ void Renderer::ortho(float minx, float maxx,
   mProjectionMatrix = glm::ortho(minx, maxx, miny, maxy, minz, maxz);
 }
 
-void Renderer::lookAt(const vec3& lookfrom, const vec3& lookat, const vec3& up) {
+void Renderer::lookAt(const vec3& lookfrom,
+    const vec3& lookat, const vec3& up) {
   mLookfrom = lookfrom;
   mViewMatrix = glm::lookAt(lookfrom, lookat, up);
 }
 
-void Renderer::texture(const std::string& uniformName, const std::string& textureName) {
+void Renderer::texture(const std::string& uniformName,
+    const std::string& textureName) {
   assert(_textures.count(textureName) != 0);
 
   glBindTexture(GL_TEXTURE_2D, _textures[textureName].texId);
   setUniform(uniformName, _textures[textureName].slot);
 }
 
-void Renderer::sprite(const glm::vec3& pos, const glm::vec4& color, float size) {
+void Renderer::sprite(const glm::vec3& pos,
+    const glm::vec4& color, float size) {
   assert(_initialized);
   assert(_currentShader == _shaders["sprite"]);
 
@@ -188,7 +191,8 @@ void Renderer::sprite(const glm::vec3& pos, const glm::vec4& color, float size) 
   glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
-void Renderer::cubemap(const std::string& uniformName, const std::string& textureName) {
+void Renderer::cubemap(const std::string& uniformName,
+    const std::string& textureName) {
   assert(_textures.count(textureName) != 0);
 
   glBindTexture(GL_TEXTURE_CUBE_MAP, _textures[textureName].texId);
@@ -197,8 +201,9 @@ void Renderer::cubemap(const std::string& uniformName, const std::string& textur
 
 void Renderer::skybox(float size) {
   assert(_initialized);
-  
-  mat4 mvp = mProjectionMatrix * mViewMatrix * glm::scale(mat4(1.0f), vec3(size));
+
+  mat4 s = glm::scale(mat4(1.0f), vec3(size));
+  mat4 mvp = mProjectionMatrix * mViewMatrix * s;
   setUniform("MVP", mvp);
   _skybox->render();
 }
@@ -214,19 +219,19 @@ void Renderer::pop() {
 }
 
 void Renderer::identity() {
-  _trs = mat4(1.0); 
+  _trs = mat4(1.0);
 }
 
 void Renderer::scale(const vec3& xyz) {
-  _trs = _trs * glm::scale(mat4(1.0), xyz); 
+  _trs = _trs * glm::scale(mat4(1.0), xyz);
 }
 
 void Renderer::translate(const vec3& xyz) {
-  _trs = _trs * glm::translate(mat4(1.0), xyz); 
+  _trs = _trs * glm::translate(mat4(1.0), xyz);
 }
 
 void Renderer::rotate(float angleRad, const vec3& axis) {
-  _trs = _trs * glm::rotate(mat4(1.0), angleRad, axis); 
+  _trs = _trs * glm::rotate(mat4(1.0), angleRad, axis);
 }
 
 void Renderer::transform(const glm::mat4& trs) {
@@ -273,9 +278,9 @@ void Renderer::mesh(const TriangleMesh& mesh) {
   mat4 mv = mViewMatrix * _trs;
   mat4 mvp = mProjectionMatrix * mv;
   mat3 nmv = mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2]));
-  setUniform("MVP", mvp);  
-  setUniform("ModelViewMatrix", mv); 
-  setUniform("NormalMatrix", nmv); 
+  setUniform("MVP", mvp);
+  setUniform("ModelViewMatrix", mv);
+  setUniform("NormalMatrix", nmv);
 
   mesh.render();
   endShader();
@@ -285,11 +290,11 @@ void Renderer::beginShader(const std::string& shaderName) {
   assert(_shaders.count(shaderName) != 0);
 
   _currentShader = _shaders[shaderName];
-  _currentShader->use(); 
+  _currentShader->use();
 
   if (shaderName == "sprite") {
     mat4 mvp = mProjectionMatrix * mViewMatrix;
-    setUniform("MVP", mvp); 
+    setUniform("MVP", mvp);
     setUniform("CameraPos", mLookfrom);
     glBindVertexArray(mBBVaoId);
   }
@@ -305,7 +310,7 @@ void Renderer::setUniform(const std::string& name, float x, float y, float z) {
   _currentShader->setUniform(name.c_str(), x, y, z);
 }
 
-void Renderer::setUniform(const std::string& name, 
+void Renderer::setUniform(const std::string& name,
     float x, float y, float z, float w) {
   assert(_currentShader != nullptr);
   _currentShader->setUniform(name.c_str(), glm::vec4(x, y, z, w));
@@ -356,7 +361,8 @@ void Renderer::setUniform(const std::string& name, GLuint val) {
   _currentShader->setUniform(name.c_str(), val);
 }
 
-void Renderer::loadCubemap(const std::string& name, const string& dir, int slot) {
+void Renderer::loadCubemap(const std::string& name,
+    const string& dir, int slot) {
   vector<string> faces = {
       dir + "/right.png",
       dir + "/left.png",
@@ -368,7 +374,8 @@ void Renderer::loadCubemap(const std::string& name, const string& dir, int slot)
   loadCubemap(name, faces, slot);
 }
 
-void Renderer::loadCubemap(const std::string& name, const vector<string>& faces, int slot) {
+void Renderer::loadCubemap(const std::string& name,
+    const vector<string>& faces, int slot) {
   vector<Image> images;
   for (string filename : faces) {
       Image img;
@@ -378,7 +385,8 @@ void Renderer::loadCubemap(const std::string& name, const vector<string>& faces,
   loadCubemap(name, images, slot);
 }
 
-void Renderer::loadCubemap(const std::string& name, const vector<Image>& faces, int slot) {
+void Renderer::loadCubemap(const std::string& name,
+    const vector<Image>& faces, int slot) {
   glEnable(GL_TEXTURE0 + slot);
   glActiveTexture(GL_TEXTURE0 + slot);
 
@@ -406,7 +414,7 @@ void Renderer::loadCubemap(const std::string& name, const vector<Image>& faces, 
       glTexImage2D(targets[i],
         0, GL_RGBA, faces[i].width(), faces[i].height(),
         0, GL_RGBA, GL_UNSIGNED_BYTE, faces[i].data());
-    } 
+    }
   }
   glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -415,13 +423,15 @@ void Renderer::loadCubemap(const std::string& name, const vector<Image>& faces, 
   glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 }
 
-void Renderer::loadTexture(const std::string& name, const std::string& fileName, int slot) {
+void Renderer::loadTexture(const std::string& name,
+    const std::string& fileName, int slot) {
   Image img;
   img.load(fileName);
   loadTexture(name, img, slot);
 }
 
-void Renderer::loadTexture(const std::string& name, const Image& image, int slot) {
+void Renderer::loadTexture(const std::string& name,
+    const Image& image, int slot) {
   glEnable(GL_TEXTURE0 + slot);
   glActiveTexture(GL_TEXTURE0 + slot);
 
@@ -442,7 +452,7 @@ void Renderer::loadTexture(const std::string& name, const Image& image, int slot
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 }
 
-void Renderer::loadShader(const std::string& name, 
+void Renderer::loadShader(const std::string& name,
     const std::string& vs, const std::string& fs) {
 
   Shader* shader = new Shader();
@@ -453,7 +463,7 @@ void Renderer::loadShader(const std::string& name,
   std::cout << "Compiling: " << fs << std::endl;
   shader->compileShader(fs);
 
-  shader->link(); 
+  shader->link();
   std::cout << "Loaded shader: " << name << std::endl;
 
   _shaders[name] = shader;

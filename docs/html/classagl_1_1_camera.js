@@ -32,7 +32,7 @@ var classagl_1_1_camera =
     [ "set", "classagl_1_1_camera.html#a11328cc244e4b907a4051b9762efb247", null ],
     [ "setMoveSpeed", "classagl_1_1_camera.html#a538524bdaae51f529c8e637ad552f120", null ],
     [ "setTurnRate", "classagl_1_1_camera.html#ade64f75ae62ea59728da3d5515d2715f", null ],
-    [ "turn", "classagl_1_1_camera.html#a3d2d614dab41b281aa2c092d84e499f7", null ],
+    [ "turn", "classagl_1_1_camera.html#a9fcfd42051944f16bc3d7eaba8af7007", null ],
     [ "turnDown", "classagl_1_1_camera.html#a9e64ab0ad8e486e40cc3637b9abcb60a", null ],
     [ "turnLeft", "classagl_1_1_camera.html#a2c744d4f33c5e102b2e20f3e5b6f4b6a", null ],
     [ "turnRate", "classagl_1_1_camera.html#a6176387ab087d87455bf322379758189", null ],
