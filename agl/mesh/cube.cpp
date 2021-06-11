@@ -1,10 +1,11 @@
+// Copyright 2020, Savvy Sine, Aline Normoyle
 #include "agl/mesh/cube.h"
 #include <cstdio>
+#include <vector>
 
 namespace agl {
 
-Cube::Cube(GLfloat side)
-{
+Cube::Cube(GLfloat side) {
   GLfloat side2 = side / 2.0f;
 
   std::vector<GLfloat> p = {
@@ -76,15 +77,15 @@ Cube::Cube(GLfloat side)
   };
 
   std::vector<GLuint> el = {
-    0,1,2,0,2,3,
-    4,5,6,4,6,7,
-    8,9,10,8,10,11,
-    12,13,14,12,14,15,
-    16,17,18,16,18,19,
-    20,21,22,20,22,23
+    0, 1, 2, 0, 2, 3,
+    4, 5, 6, 4, 6, 7,
+    8, 9, 10, 8, 10, 11,
+    12, 13, 14, 12, 14, 15,
+    16, 17, 18, 16, 18, 19,
+    20, 21, 22, 20, 22, 23
   };
 
   initBuffers(&el, &p, &n, &tex);
 }
 
-}  // namespace glm
+}  // namespace agl

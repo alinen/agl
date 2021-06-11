@@ -1,3 +1,4 @@
+// Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 #include "agl/mesh/teapot.h"
 #include <cstdio>
 #include "agl/aglm.h"
