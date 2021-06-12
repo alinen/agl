@@ -105,9 +105,9 @@ void Renderer::initMesh() {
   // Set default parameters
   beginShader("phong");
   setUniform("Gamma", 0.8f);
-  setUniform("Material.Ks", 1.0f, 1.0f, 1.0f);
-  setUniform("Material.Kd", 0.4f, 0.6f, 1.0f);
-  setUniform("Material.Ka", 0.1f, 0.1f, 0.1f);
+  setUniform("Material.specular", 1.0f, 1.0f, 1.0f);
+  setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
+  setUniform("Material.ambient", 0.1f, 0.1f, 0.1f);
   setUniform("Material.shininess", 80.0f);
   setUniform("Light.position", 100.0f, 100.0f, 100.0f, 1.0f);
   setUniform("Light.color", 1.0f, 1.0f, 1.0f);

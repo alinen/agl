@@ -50,8 +50,10 @@ void Window::run() {
     elapsedTime_ = time;
 
     background(vec3(0));
+    renderer.beginShader("phong");
     renderer.lookAt(_camera.position(), _camera.look(), _camera.up());
     renderer.identity();
+
     draw();  // user function
 
     glfwSwapBuffers(window_);

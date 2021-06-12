@@ -399,11 +399,28 @@ int main() {
 <p>Draws a cone centered at the origin, with the tip towards +Z. </p>
 <pre class="fragment">#include "agl/window.h"
 
+using glm::vec3;
+using glm::vec4;
+using glm::mat3;
+using glm::mat4;
+
 class MyWindow : public agl::Window {
   void draw() {
-    float angleRad = elapsedTime(); // angle is in radians
-    renderer.rotate(angleRad, glm::vec3(0.707f, 0.707f, 0.0f));
-    renderer.cube();
+   
+    // point forward direction of cone towards n
+    // and shift base of cone to (0, 0, 0)
+    vec3 n(1, 1, 0);
+    vec3 z = normalize(n);
+    vec3 x = glm::cross(vec3(0,1,0), z);
+    vec3 y = glm::cross(z, x);
+
+    mat4 T(vec4(x, 0), 
+           vec4(y, 0),
+           vec4(z, 0),
+           vec4(0.25, 0.25, 0, 1));
+
+    renderer.transform(T);
+    renderer.cone();
   }
 };
 
@@ -897,8 +914,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set main color in shaders/phong.fs
-    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to red
+    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
     renderer.sphere();
   }
 };
@@ -942,8 +959,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set main color in shaders/phong.fs
-    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to red
+    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
     renderer.sphere();
   }
 };
@@ -987,8 +1004,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set main color in shaders/phong.fs
-    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to red
+    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
     renderer.sphere();
   }
 };
@@ -1032,8 +1049,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set main color in shaders/phong.fs
-    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to red
+    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
     renderer.sphere();
   }
 };
@@ -1077,8 +1094,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set main color in shaders/phong.fs
-    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to red
+    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
     renderer.sphere();
   }
 };
@@ -1122,8 +1139,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set main color in shaders/phong.fs
-    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to red
+    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
     renderer.sphere();
   }
 };
@@ -1167,8 +1184,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set main color in shaders/phong.fs
-    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to red
+    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
     renderer.sphere();
   }
 };
@@ -1224,8 +1241,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set main color in shaders/phong.fs
-    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to red
+    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
     renderer.sphere();
   }
 };
@@ -1287,8 +1304,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set main color in shaders/phong.fs
-    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to red
+    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
     renderer.sphere();
   }
 };
@@ -1332,8 +1349,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set main color in shaders/phong.fs
-    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to red
+    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
     renderer.sphere();
   }
 };
@@ -1377,8 +1394,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set main color in shaders/phong.fs
-    renderer.setUniform("Material.Kd", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to red
+    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
     renderer.sphere();
   }
 };
