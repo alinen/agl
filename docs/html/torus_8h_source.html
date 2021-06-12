@@ -89,23 +89,32 @@ $(document).ready(function(){initNavTree('torus_8h_source.html',''); initResizab
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf 2011)</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef AGL_TORUS_H_</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define AGL_TORUS_H_</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef AGL_MESH_TORUS_H_</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define AGL_MESH_TORUS_H_</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;agl/triangle_mesh.h&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>agl {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classagl_1_1_torus.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classagl_1_1_torus.html">Torus</a> : <span class="keyword">public</span> <a class="code" href="classagl_1_1_triangle_mesh.html">TriangleMesh</a> {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <a class="code" href="classagl_1_1_torus.html">Torus</a>(GLfloat outerRadius, GLfloat innerRadius, </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;      GLuint nsides, GLuint nrings);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;};</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}  <span class="comment">// namespace agl</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// AGL_TORUS_H_</span></div>
-<div class="ttc" id="aclassagl_1_1_torus_html"><div class="ttname"><a href="classagl_1_1_torus.html">agl::Torus</a></div><div class="ttdef"><b>Definition:</b> torus.h:10</div></div>
-<div class="ttc" id="aclassagl_1_1_triangle_mesh_html"><div class="ttname"><a href="classagl_1_1_triangle_mesh.html">agl::TriangleMesh</a></div><div class="ttdef"><b>Definition:</b> triangle_mesh.h:9</div></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classagl_1_1_torus.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classagl_1_1_torus.html">Torus</a> : <span class="keyword">public</span> <a class="code" href="classagl_1_1_triangle_mesh.html">TriangleMesh</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <a class="code" href="classagl_1_1_torus.html#aa9117e9aa496f0b78cdd8c6953f2a0fa">Torus</a>(GLfloat outerRadius, GLfloat innerRadius,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      GLuint nsides, GLuint nrings);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  <span class="keywordtype">void</span> init() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  GLfloat _outerRadius;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  GLfloat _innerRadius;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  GLuint _nsides;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  GLuint _nrings;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}  <span class="comment">// namespace agl</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif  </span><span class="comment">// AGL_MESH_TORUS_H_</span></div>
+<div class="ttc" id="aclassagl_1_1_torus_html"><div class="ttname"><a href="classagl_1_1_torus.html">agl::Torus</a></div><div class="ttdoc">Draw a torus mesh.</div><div class="ttdef"><b>Definition:</b> torus.h:13</div></div>
+<div class="ttc" id="aclassagl_1_1_torus_html_aa9117e9aa496f0b78cdd8c6953f2a0fa"><div class="ttname"><a href="classagl_1_1_torus.html#aa9117e9aa496f0b78cdd8c6953f2a0fa">agl::Torus::Torus</a></div><div class="ttdeci">Torus(GLfloat outerRadius, GLfloat innerRadius, GLuint nsides, GLuint nrings)</div><div class="ttdoc">Create a torus mesh.</div><div class="ttdef"><b>Definition:</b> torus.cpp:10</div></div>
+<div class="ttc" id="aclassagl_1_1_triangle_mesh_html"><div class="ttname"><a href="classagl_1_1_triangle_mesh.html">agl::TriangleMesh</a></div><div class="ttdoc">Base class for indexed triangle meshes.</div><div class="ttdef"><b>Definition:</b> triangle_mesh.h:16</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

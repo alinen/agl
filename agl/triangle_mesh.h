@@ -1,4 +1,4 @@
-// Copyright, 2011, OpenGL 4.0 Shading language cookbook (David Wolf)
+// Copyright, 2020, Savvy Sine, Aline Normoyle
 #ifndef AGL_TRIANGLE_MESH_H_
 #define AGL_TRIANGLE_MESH_H_
 
@@ -8,7 +8,7 @@
 namespace agl {
 
 /**
- * @brief Base class for indexed meshes
+ * @brief Base class for indexed triangle meshes
  * 
  * Override this class to create your own meshes.
  * @verbinclude undulate.cpp
@@ -17,15 +17,17 @@ class TriangleMesh {
  public:
   virtual ~TriangleMesh();
   virtual void render() const;
-  GLuint getVao() const { return vao; }
+  GLuint getVao() const { return _vao; }
 
  protected:
-  GLuint nVerts;    // Number of vertices
-  GLuint vao;       // The Vertex Array Object
+  GLuint _nVerts = 0;    // Number of vertices
+  GLuint _vao = 0;       // The Vertex Array Object
+  bool _initialized = false;
 
   // Vertex buffers
   std::vector<GLuint> buffers;
 
+  virtual void init() = 0;
   virtual void initBuffers(
     std::vector<GLuint>* indices,
     std::vector<GLfloat>* points,

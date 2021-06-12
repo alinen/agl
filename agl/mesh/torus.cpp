@@ -1,6 +1,6 @@
 // Copyright 2020, Savvy Sine, Aline Normoyle
 #include "agl/mesh/torus.h"
-#include <cstdio>
+#include <iostream>
 #include <vector>
 #include <cmath>
 #include <glm/gtc/constants.hpp>
@@ -9,8 +9,16 @@ namespace agl {
 
 Torus::Torus(GLfloat outerRadius, GLfloat innerRadius,
     GLuint nsides, GLuint nrings) {
-  GLuint faces = nsides * nrings;
-  int nVerts  = nsides * (nrings+1);  // One extra ring to duplicate first ring
+  _outerRadius = outerRadius;
+  _innerRadius = innerRadius;
+  _nsides = nsides;
+  _nrings = nrings;
+}
+
+void Torus::init() {
+  // From OpenGL 4.0 Shading language cookbook (David Wolf 2011)
+  GLuint faces = _nsides * _nrings;
+  int nVerts  = _nsides * (_nrings+1);  // One extra to duplicate first ring
 
   // Points
   std::vector<GLfloat> p(3 * nVerts);
@@ -22,21 +30,21 @@ Torus::Torus(GLfloat outerRadius, GLfloat innerRadius,
   std::vector<GLuint> el(6 * faces);
 
   // Generate the vertex data
-  float ringFactor = glm::two_pi<float>() / nrings;
-  float sideFactor = glm::two_pi<float>() / nsides;
+  float ringFactor = glm::two_pi<float>() / _nrings;
+  float sideFactor = glm::two_pi<float>() / _nsides;
   int idx = 0, tidx = 0;
-  for (GLuint ring = 0; ring <= nrings; ring++) {
+  for (GLuint ring = 0; ring <= _nrings; ring++) {
     float u = ring * ringFactor;
     float cu = cos(u);
     float su = sin(u);
-    for (GLuint side = 0; side < nsides; side++) {
+    for (GLuint side = 0; side < _nsides; side++) {
       float v = side * sideFactor;
       float cv = cos(v);
       float sv = sin(v);
-      float r = (outerRadius + innerRadius * cv);
+      float r = (_outerRadius + _innerRadius * cv);
       p[idx] = r * cu;
       p[idx + 1] = r * su;
-      p[idx + 2] = innerRadius * sv;
+      p[idx + 2] = _innerRadius * sv;
       n[idx] = cv * cu * r;
       n[idx + 1] = cv * su * r;
       n[idx + 2] = sv * r;
@@ -55,11 +63,11 @@ Torus::Torus(GLfloat outerRadius, GLfloat innerRadius,
   }
 
   idx = 0;
-  for (GLuint ring = 0; ring < nrings; ring++) {
-     GLuint ringStart = ring * nsides;
-     GLuint nextRingStart = (ring + 1) * nsides;
-     for (GLuint side = 0; side < nsides; side++) {
-       int nextSide = (side+1) % nsides;
+  for (GLuint ring = 0; ring < _nrings; ring++) {
+     GLuint ringStart = ring * _nsides;
+     GLuint nextRingStart = (ring + 1) * _nsides;
+     for (GLuint side = 0; side < _nsides; side++) {
+       int nextSide = (side+1) % _nsides;
        // The quad
        el[idx] = (ringStart + side);
        el[idx+1] = (nextRingStart + side);

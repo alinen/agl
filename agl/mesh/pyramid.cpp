@@ -7,7 +7,12 @@
 namespace agl {
 
 Pyramid::Pyramid(float size, float len) {
-  GLfloat side2 = size / 2.0f;
+  _base = size;
+  _height = len;
+}
+
+void Pyramid::init() {
+  GLfloat side2 = _base / 2.0f;
 
   std::vector<GLfloat> p = {
     -side2, -side2, 0.0,  // 0
@@ -15,19 +20,19 @@ Pyramid::Pyramid(float size, float len) {
      side2,  side2, 0.0,  // 2
     -side2,  side2, 0.0,  // 3
 
-       0.0,    0.0, len,
+       0.0,    0.0, _height,
      side2,  side2, 0.0,  // 2
     -side2,  side2, 0.0,  // 3
 
-       0.0,    0.0, len,
+       0.0,    0.0, _height,
      side2, -side2, 0.0,  // 1
      side2,  side2, 0.0,  // 2
 
-       0.0,    0.0, len,
+       0.0,    0.0, _height,
     -side2, -side2, 0.0,  // 0
      side2, -side2, 0.0,  // 1
 
-       0.0,    0.0, len,
+       0.0,    0.0, _height,
     -side2,  side2, 0.0,  // 3
     -side2, -side2, 0.0   // 0
   };
@@ -37,7 +42,7 @@ Pyramid::Pyramid(float size, float len) {
     glm::vec3(side2, -side2, 0.0),  // 1
     glm::vec3(side2,  side2, 0.0),  // 2
     glm::vec3(-side2, side2, 0.0),  // 3
-    glm::vec3(0.0, 0.0, len)
+    glm::vec3(0.0, 0.0, _height)
   };
 
   glm::vec3 triNormals[4];

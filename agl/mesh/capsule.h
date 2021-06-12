@@ -7,9 +7,19 @@
 
 namespace agl {
 
+/**
+ * @brief Draw a capsule mesh
+ */ 
 class Capsule : public TriangleMesh {
  public:
   Capsule(float rad, float length, GLuint sl, GLuint st);
+  void init() override;
+
+ private:
+  float _radius;
+  float _length;
+  GLuint _nSlices;
+  GLuint _nStacks;
 };
 
 }  // namespace agl

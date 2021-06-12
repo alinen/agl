@@ -9,11 +9,21 @@
 namespace agl {
 
 Cylinder::Cylinder(float r, float len, GLuint nSlices) {
-  computeMesh(r, r, len, nSlices);
+  _r1 = r;
+  _r2 = r;
+  _length = len;
+  _nSlices = nSlices;
 }
 
 Cylinder::Cylinder(float r1, float r2, float len, GLuint nSlices) {
-  computeMesh(r1, r2, len, nSlices);
+  _r1 = r1;
+  _r2 = r2;
+  _length = len;
+  _nSlices = nSlices;
+}
+
+void Cylinder::init() {
+  computeMesh(_r1, _r2, _length, _nSlices);
 }
 
 void Cylinder::computeMesh(float r1, float r2, float len, GLuint nSlices) {

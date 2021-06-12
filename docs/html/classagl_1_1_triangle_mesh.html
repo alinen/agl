@@ -89,11 +89,11 @@ $(document).ready(function(){initNavTree('classagl_1_1_triangle_mesh.html',''); 
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classagl_1_1_triangle_mesh-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">agl::TriangleMesh Class Reference</div>  </div>
+<div class="title">agl::TriangleMesh Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Base class for indexed meshes.  
+<p>Base class for indexed triangle meshes.  
  <a href="classagl_1_1_triangle_mesh.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="triangle__mesh_8h_source.html">triangle_mesh.h</a>&gt;</code></p>
@@ -109,6 +109,9 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>getVao</b> () const
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:a457ade3ea5f14622394c6edc9a2b1b9a"><td class="memItemLeft" align="right" valign="top"><a id="a457ade3ea5f14622394c6edc9a2b1b9a"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()=0</td></tr>
+<tr class="separator:a457ade3ea5f14622394c6edc9a2b1b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9ee5a5fa32b1b7756b4d407f4182202"><td class="memItemLeft" align="right" valign="top"><a id="ae9ee5a5fa32b1b7756b4d407f4182202"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>initBuffers</b> (std::vector&lt; GLuint &gt; *indices, std::vector&lt; GLfloat &gt; *points, std::vector&lt; GLfloat &gt; *normals, std::vector&lt; GLfloat &gt; *texCoords=nullptr, std::vector&lt; GLfloat &gt; *tangents=nullptr)</td></tr>
 <tr class="separator:ae9ee5a5fa32b1b7756b4d407f4182202"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -118,18 +121,21 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteBuffers
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:af3327c078cabe96a51aa15d9f45bd536"><td class="memItemLeft" align="right" valign="top"><a id="af3327c078cabe96a51aa15d9f45bd536"></a>
-GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>nVerts</b></td></tr>
-<tr class="separator:af3327c078cabe96a51aa15d9f45bd536"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a675dd10c4d6b11b8705a88257c083a06"><td class="memItemLeft" align="right" valign="top"><a id="a675dd10c4d6b11b8705a88257c083a06"></a>
-GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>vao</b></td></tr>
-<tr class="separator:a675dd10c4d6b11b8705a88257c083a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ba40b043a79ab11fa03ce077318d559"><td class="memItemLeft" align="right" valign="top"><a id="a5ba40b043a79ab11fa03ce077318d559"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_nVerts</b> = 0</td></tr>
+<tr class="separator:a5ba40b043a79ab11fa03ce077318d559"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a071e0a3ef6e50f236337943789a9cf69"><td class="memItemLeft" align="right" valign="top"><a id="a071e0a3ef6e50f236337943789a9cf69"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_vao</b> = 0</td></tr>
+<tr class="separator:a071e0a3ef6e50f236337943789a9cf69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d366fcc77b3988811274f137458ad58"><td class="memItemLeft" align="right" valign="top"><a id="a4d366fcc77b3988811274f137458ad58"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_initialized</b> = false</td></tr>
+<tr class="separator:a4d366fcc77b3988811274f137458ad58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac716b85602f7f77380930a183ee6b60b"><td class="memItemLeft" align="right" valign="top"><a id="ac716b85602f7f77380930a183ee6b60b"></a>
 std::vector&lt; GLuint &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>buffers</b></td></tr>
 <tr class="separator:ac716b85602f7f77380930a183ee6b60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Base class for indexed meshes. </p>
+<div class="textblock"><p>Base class for indexed triangle meshes. </p>
 <p>Override this class to create your own meshes. </p><pre class="fragment"></pre> </div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>agl/<a class="el" href="triangle__mesh_8h_source.html">triangle_mesh.h</a></li>
 <li>agl/triangle_mesh.cpp</li>

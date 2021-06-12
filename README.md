@@ -4,7 +4,9 @@ Small, easy to use C++ library for 3D drawing, based on openGL.
 
 ## About
 
-The goal of this project is to create an api that makes it easy to write 3D graphics demos in C++. This library supports my teaching and research (and so the api still changes frequently!). The design goals of this project are:
+The goal of this project is to create an api that makes it easy to write 3D
+graphics demos in C++. This library supports my teaching and research (and so
+the api still changes frequently!). The design goals of this project are:
 
 * To make common tasks easy, e.g. drawing primitives, loading textures, defining shaders
 * To make less common tasks possible
@@ -33,7 +35,8 @@ int main() {
 
 ### Tools and dependencies
 
-To get started, you will need a C++ development environment, git, cmake. To build, you will also need to several dependencies.
+To get started, you will need a C++ development environment, git, cmake. To
+build, you will also need to several dependencies.
 
 * GLEW: Needed for accessing openGL 4.0 features
 * GLFW: Implements our window and user interaction events, such as mouse and keyboard 
@@ -111,4 +114,3 @@ agl/build $ make
 agl/build $ ../bin/sphere
 ```
 
-## Demos

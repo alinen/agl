@@ -90,12 +90,20 @@ $(document).ready(function(){initNavTree('classagl_1_1_plane.html',''); initResi
 <div class="title">agl::Plane Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Draw a plane mesh.  
+ <a href="classagl_1_1_plane.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="plane_8h_source.html">plane.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abf51c706fd12808f12d2fa4a787cb3a6"><td class="memItemLeft" align="right" valign="top"><a id="abf51c706fd12808f12d2fa4a787cb3a6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Plane</b> (float xsize, float zsize, int xdivs, int zdivs, float smax=1.0f, float tmax=1.0f)</td></tr>
 <tr class="separator:abf51c706fd12808f12d2fa4a787cb3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b75f222b8f04b20c199ee37cc412f09"><td class="memItemLeft" align="right" valign="top"><a id="a4b75f222b8f04b20c199ee37cc412f09"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> () override</td></tr>
+<tr class="separator:a4b75f222b8f04b20c199ee37cc412f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classagl_1_1_triangle_mesh"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classagl_1_1_triangle_mesh')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classagl_1_1_triangle_mesh.html">agl::TriangleMesh</a></td></tr>
 <tr class="memitem:aea98e6052c68cb432d63080cd9622958 inherit pub_methods_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="aea98e6052c68cb432d63080cd9622958"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> () const</td></tr>
@@ -114,17 +122,22 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>initBuffers</
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteBuffers</b> ()</td></tr>
 <tr class="separator:a3c5f693bed51cd0b042f4f85160c596c inherit pro_methods_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classagl_1_1_triangle_mesh"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classagl_1_1_triangle_mesh')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classagl_1_1_triangle_mesh.html">agl::TriangleMesh</a></td></tr>
-<tr class="memitem:af3327c078cabe96a51aa15d9f45bd536 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="af3327c078cabe96a51aa15d9f45bd536"></a>
-GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>nVerts</b></td></tr>
-<tr class="separator:af3327c078cabe96a51aa15d9f45bd536 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a675dd10c4d6b11b8705a88257c083a06 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="a675dd10c4d6b11b8705a88257c083a06"></a>
-GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>vao</b></td></tr>
-<tr class="separator:a675dd10c4d6b11b8705a88257c083a06 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ba40b043a79ab11fa03ce077318d559 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="a5ba40b043a79ab11fa03ce077318d559"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_nVerts</b> = 0</td></tr>
+<tr class="separator:a5ba40b043a79ab11fa03ce077318d559 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a071e0a3ef6e50f236337943789a9cf69 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="a071e0a3ef6e50f236337943789a9cf69"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_vao</b> = 0</td></tr>
+<tr class="separator:a071e0a3ef6e50f236337943789a9cf69 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d366fcc77b3988811274f137458ad58 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="a4d366fcc77b3988811274f137458ad58"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_initialized</b> = false</td></tr>
+<tr class="separator:a4d366fcc77b3988811274f137458ad58 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac716b85602f7f77380930a183ee6b60b inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="ac716b85602f7f77380930a183ee6b60b"></a>
 std::vector&lt; GLuint &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>buffers</b></td></tr>
 <tr class="separator:ac716b85602f7f77380930a183ee6b60b inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Draw a plane mesh. </p>
+</div><hr/>The documentation for this class was generated from the following files:<ul>
 <li>agl/mesh/<a class="el" href="plane_8h_source.html">plane.h</a></li>
 <li>agl/mesh/plane.cpp</li>
 </ul>

@@ -7,13 +7,22 @@
 
 namespace agl {
 
+/**
+ * @brief Draw a cylinder mesh
+ */ 
 class Cylinder : public TriangleMesh {
  public:
   Cylinder(float rad, float len, GLuint sl);
   Cylinder(float rad1, float rad2, float len, GLuint sl);
+  void init() override;
 
- protected:
+ private:
   void computeMesh(float rad1, float rad2, float len, GLuint sl);
+
+  float _r1;
+  float _r2;
+  float _length;
+  float _nSlices;
 };
 
 }  // namespace agl

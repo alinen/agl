@@ -6,6 +6,11 @@
 namespace agl {
 
 Cube::Cube(GLfloat side) {
+  _size = side;
+}
+
+void Cube::init() {
+  GLfloat side = _size;
   GLfloat side2 = side / 2.0f;
 
   std::vector<GLfloat> p = {

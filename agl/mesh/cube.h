@@ -7,9 +7,16 @@
 
 namespace agl {
 
+/**
+ * @brief Draw a cube mesh
+ */ 
 class Cube : public agl::TriangleMesh {
  public:
   explicit Cube(GLfloat size = 1.0f);
+
+ private:
+  void init() override;
+  GLfloat _size;
 };
 
 }  // namespace agl

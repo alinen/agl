@@ -11,17 +11,21 @@ using glm::vec4;
 
 namespace agl {
 
-Teapot::Teapot(int grid, const mat4 & lidTransform)
-{
-  int verts = 32 * (grid + 1) * (grid + 1);
-  int faces = grid * grid * 32;
+Teapot::Teapot(int grid, const mat4 & lidTransform) {
+  _grid = grid;
+  _lidTransform = lidTransform;
+}
+
+void Teapot::init() {
+  int verts = 32 * (_grid + 1) * (_grid + 1);
+  int faces = _grid * _grid * 32;
   std::vector<GLfloat> p( verts * 3 );
   std::vector<GLfloat> n( verts * 3 );
   std::vector<GLfloat> tc( verts * 2 );
   std::vector<GLuint> el( faces * 6 );
 
-  generatePatches( p, n, tc, el, grid );
-  moveLid(grid, p, lidTransform);
+  generatePatches( p, n, tc, el, _grid );
+  moveLid(_grid, p, _lidTransform);
   fitUnitBox(p, n);
   initBuffers(&el, &p, &n, &tc);
 }

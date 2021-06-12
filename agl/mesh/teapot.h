@@ -1,4 +1,5 @@
-// Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf 2011)
+// Copyright 2020,  Savvy Sine, Aline Normoyle
+// Based on: OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 
 #ifndef AGL_MESH_TEAPOT_H_
 #define AGL_MESH_TEAPOT_H_
@@ -9,9 +10,30 @@
 
 namespace agl {
 
+/**
+ * @brief Draw a teapot mesh
+ */ 
 class Teapot : public TriangleMesh
 {
+ public:
+  /**
+   * @brief Create a Teapot mesh
+   * @param grid Smoothing level for generating the mesh from bezie patches
+   * @lidTranform Transform for changing the position of the teapot lid
+   * with respect to the main teapot
+   * 
+   * Use the renderer to draw a teapot with default settings. 
+   * Create a new teapot to create teapot with different settings. 
+   * 
+   * @see Renderer::teapot()
+   */
+  Teapot(int grid, const glm::mat4& lidTransform);
+  void init() override;
+
  private:
+  int _grid;
+  glm::mat4 _lidTransform;
+
   void generatePatches(std::vector<GLfloat> & p,
                        std::vector<GLfloat> & n,
                        std::vector<GLfloat> & tc,
@@ -47,8 +69,6 @@ class Teapot : public TriangleMesh
   void moveLid(int grid, std::vector<GLfloat>& p, 
       const glm::mat4& lidTransform);
 
- public:
-  Teapot(int grid, const glm::mat4& lidTransform);
 };
 
 }  // namespace agl

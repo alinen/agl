@@ -7,9 +7,19 @@
 
 namespace agl {
 
+/**
+ * @brief Draw a sphere mesh
+ */ 
 class Sphere : public TriangleMesh {
  public:
   Sphere(float rad, GLuint sl, GLuint st);
+
+ private:
+  void init() override;
+
+  float _radius;
+  GLuint _nSlices;
+  GLuint _nStacks;
 };
 
 }  // namespace agl

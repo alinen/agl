@@ -1,5 +1,6 @@
-// Copyright, 2011, OpenGL 4.0 Shading language cookbook (David Wolf)
+// Copyright, 2020, Savvy Sine, Aline Normoyle
 #include "agl/triangle_mesh.h"
+#include <iostream>
 
 namespace agl {
 
@@ -10,12 +11,19 @@ void TriangleMesh::initBuffers(
   std::vector<GLfloat> * texCoords,
   std::vector<GLfloat> * tangents
 ) {
+  if (_initialized) return;
+
   // Must have data for indices, points, and normals
-  if (indices == nullptr || points == nullptr || normals == nullptr)
+  if (indices == nullptr || points == nullptr || normals == nullptr) {
+    std::cout <<
+        "initBuffers: indices, points, and normals should not be null\n";
     return;
+  }
 
-  nVerts = (GLuint)indices->size();
+  _initialized = true;
+  _nVerts = (GLuint)indices->size();
 
+  // From OpenGL 4.0 Shading language cookbook (David Wolf)
   GLuint indexBuf = 0, posBuf = 0, normBuf = 0, tcBuf = 0, tangentBuf = 0;
   glGenBuffers(1, &indexBuf);
   buffers.push_back(indexBuf);
@@ -51,8 +59,8 @@ void TriangleMesh::initBuffers(
         tangents->size() * sizeof(GLfloat), tangents->data(), GL_STATIC_DRAW);
   }
 
-  glGenVertexArrays(1, &vao);
-  glBindVertexArray(vao);
+  glGenVertexArrays(1, &_vao);
+  glBindVertexArray(_vao);
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuf);
 
@@ -83,10 +91,11 @@ void TriangleMesh::initBuffers(
 }
 
 void TriangleMesh::render() const {
-  if (vao == 0) return;
+  if (!_initialized) const_cast<TriangleMesh*>(this)->init();
+  if (_vao == 0) return;
 
-  glBindVertexArray(vao);
-  glDrawElements(GL_TRIANGLES, nVerts, GL_UNSIGNED_INT, 0);
+  glBindVertexArray(_vao);
+  glDrawElements(GL_TRIANGLES, _nVerts, GL_UNSIGNED_INT, 0);
   glBindVertexArray(0);
 }
 
@@ -100,9 +109,9 @@ void TriangleMesh::deleteBuffers() {
     buffers.clear();
   }
 
-  if (vao != 0) {
-    glDeleteVertexArrays(1, &vao);
-    vao = 0;
+  if (_vao != 0) {
+    glDeleteVertexArrays(1, &_vao);
+    _vao = 0;
   }
 }
 }  //  namespace agl

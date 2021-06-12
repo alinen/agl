@@ -6,5 +6,5 @@ add_custom_command(
   POST_BUILD
   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
   COMMAND doxygen Doxyfile
-  COMMAND python3 cpplint.py ${SRC}
+  COMMAND python3 cpplint.py --quiet ${SRC}
   VERBATIM)

@@ -7,10 +7,22 @@
 
 namespace agl {
 
+/**
+ * @brief Draw a plane mesh
+ */ 
 class Plane : public TriangleMesh {
  public:
   Plane(float xsize, float zsize, int xdivs, int zdivs,
       float smax = 1.0f, float tmax = 1.0f);
+  void init() override;
+
+ private:
+  float _xsize;
+  float _zsize;
+  int _xdivs;
+  int _zdivs;
+  float _smax;
+  float _tmax;
 };
 
 }  // namespace agl

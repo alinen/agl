@@ -7,9 +7,17 @@
 
 namespace agl {
 
+/**
+ * @brief Draw a pyramid mesh
+ */ 
 class Pyramid : public TriangleMesh {
  public:
   Pyramid(float base, float height);
+  void init() override;
+
+ private:
+  float _base;
+  float _height;
 };
 
 }  // namespace agl

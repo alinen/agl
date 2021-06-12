@@ -30,11 +30,11 @@ var NAVTREE =
       [ "How to build", "index.html#autotoc_md2", [
         [ "Tools and dependencies", "index.html#autotoc_md3", null ],
         [ "Compiling and running", "index.html#autotoc_md4", null ]
-      ] ],
-      [ "Demos", "index.html#autotoc_md5", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ]
