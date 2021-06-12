@@ -97,6 +97,8 @@ void Renderer::init() {
   _skybox = new SkyBox(1);
   _trs = mat4(1.0);
   _initialized = true;
+
+  beginShader("phong");  // phong is default
 }
 
 void Renderer::initMesh() {
@@ -182,12 +184,15 @@ void Renderer::texture(const std::string& uniformName,
 void Renderer::sprite(const glm::vec3& pos,
     const glm::vec4& color, float size) {
   assert(_initialized);
-  assert(_currentShader == _shaders["sprite"]);
 
+  mat4 mvp = mProjectionMatrix * mViewMatrix;
+  setUniform("MVP", mvp);
+  setUniform("CameraPos", mLookfrom);
   setUniform("Offset", pos);
   setUniform("Color", color);
   setUniform("Size", size);
 
+  glBindVertexArray(mBBVaoId);
   glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
@@ -273,36 +278,30 @@ void Renderer::sphere() {
 void Renderer::mesh(const TriangleMesh& mesh) {
   assert(_initialized);
 
-  beginShader("phong");
-
   mat4 mv = mViewMatrix * _trs;
   mat4 mvp = mProjectionMatrix * mv;
   mat3 nmv = mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2]));
+
   setUniform("MVP", mvp);
   setUniform("ModelViewMatrix", mv);
   setUniform("NormalMatrix", nmv);
 
   mesh.render();
-  endShader();
 }
 
 void Renderer::beginShader(const std::string& shaderName) {
   assert(_shaders.count(shaderName) != 0);
 
+  _shaderStack.push_front(_currentShader);
   _currentShader = _shaders[shaderName];
   _currentShader->use();
-
-  if (shaderName == "sprite") {
-    mat4 mvp = mProjectionMatrix * mViewMatrix;
-    setUniform("MVP", mvp);
-    setUniform("CameraPos", mLookfrom);
-    glBindVertexArray(mBBVaoId);
-  }
 }
 
 void Renderer::endShader() {
-  glUseProgram(0);
-  _currentShader = nullptr;
+  assert(_shaderStack.size() > 0);
+
+  _currentShader = _shaderStack.front();
+  _shaderStack.pop_front();
 }
 
 void Renderer::setUniform(const std::string& name, float x, float y, float z) {

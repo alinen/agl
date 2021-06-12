@@ -421,6 +421,7 @@ class Renderer {
   // shaders
   class Shader* _currentShader;
   std::map<std::string, class Shader*> _shaders;
+  std::list<Shader*> _shaderStack;
 
   // matrix stack
   std::list<glm::mat4> _stack;
