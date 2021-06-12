@@ -1,4 +1,3 @@
-// Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 #include "agl/mesh/teapot.h"
 #include <cstdio>
 #include "agl/aglm.h"
@@ -17,6 +16,7 @@ Teapot::Teapot(int grid, const mat4 & lidTransform) {
 }
 
 void Teapot::init() {
+  // From: OpenGL 4.0 Shading language cookbook (David Wolf 2011)
   int verts = 32 * (_grid + 1) * (_grid + 1);
   int faces = _grid * _grid * 32;
   std::vector<GLfloat> p( verts * 3 );
@@ -69,6 +69,7 @@ void Teapot::fitUnitBox(std::vector<GLfloat>& p, std::vector<GLfloat>& n) {
 
 }
 
+// From: OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 void Teapot::generatePatches(
         std::vector<GLfloat> & p,
         std::vector<GLfloat> & n,
@@ -104,6 +105,7 @@ void Teapot::generatePatches(
   buildPatchReflect(9, B, dB, p, n, tc, el, idx, elIndex, tcIndex, grid, false, true);
 }
 
+// From: OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 void Teapot::moveLid(int grid, std::vector<GLfloat> & p, const mat4 & lidTransform) {
 
     int start = 3 * 12 * (grid+1) * (grid+1);
@@ -119,6 +121,7 @@ void Teapot::moveLid(int grid, std::vector<GLfloat> & p, const mat4 & lidTransfo
     }
 }
 
+// From: OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 void Teapot::buildPatchReflect(int patchNum,
                                std::vector<GLfloat> & B, std::vector<GLfloat> & dB,
                                std::vector<GLfloat> & v, std::vector<GLfloat> & n,
@@ -160,6 +163,7 @@ void Teapot::buildPatchReflect(int patchNum,
     }
 }
 
+// From: OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 void Teapot::buildPatch(vec3 patch[][4],
                         std::vector<GLfloat> & B, std::vector<GLfloat> & dB,
                         std::vector<GLfloat> & v, std::vector<GLfloat> & n,
@@ -214,6 +218,7 @@ void Teapot::buildPatch(vec3 patch[][4],
     }
 }
 
+// From: OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 void Teapot::getPatch( int patchNum, vec3 patch[][4], bool reverseV )
 {
     for( int u = 0; u < 4; u++) {          // Loop in u direction
@@ -235,6 +240,7 @@ void Teapot::getPatch( int patchNum, vec3 patch[][4], bool reverseV )
     }
 }
 
+// From: OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 void Teapot::computeBasisFunctions( std::vector<GLfloat> & B, std::vector<GLfloat> & dB, int grid ) {
     float inc = 1.0f / grid;
     for( int i = 0; i <= grid; i++ )
@@ -257,6 +263,7 @@ void Teapot::computeBasisFunctions( std::vector<GLfloat> & B, std::vector<GLfloa
 }
 
 
+// From: OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 vec3 Teapot::evaluate( int gridU, int gridV, std::vector<GLfloat> & B, vec3 patch[][4] )
 {
     vec3 p(0.0f,0.0f,0.0f);
@@ -268,6 +275,7 @@ vec3 Teapot::evaluate( int gridU, int gridV, std::vector<GLfloat> & B, vec3 patc
     return p;
 }
 
+// From: OpenGL 4.0 Shading language cookbook (David Wolf 2011)
 vec3 Teapot::evaluateNormal( int gridU, int gridV, std::vector<GLfloat> & B, std::vector<GLfloat> & dB, vec3 patch[][4] )
 {
     vec3 du(0.0f,0.0f,0.0f);

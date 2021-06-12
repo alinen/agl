@@ -1,4 +1,4 @@
-// Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf)
+// Copyright 2020,  Savvy Sine, Aline Normoyle
 
 #include "agl/mesh/sphere.h"
 
@@ -16,6 +16,7 @@ Sphere::Sphere(float radius, GLuint nSlices, GLuint nStacks) {
 }
 
 void Sphere::init() {
+  // From: OpenGL 4.0 Shading language cookbook (David Wolf)
   int nVerts = (_nSlices+1) * (_nStacks + 1);
   int elements = (_nSlices * 2 * (_nStacks-1) ) * 3;
 

@@ -17,6 +17,7 @@ Plane::Plane(float xsize, float zsize,
 }
 
 void Plane::init() {
+  // From: OpenGL 4.0 Shading language cookbook (David Wolf 2011)
   std::vector<GLfloat> p(3 * (_xdivs + 1) * (_zdivs + 1));
   std::vector<GLfloat> n(3 * (_xdivs + 1) * (_zdivs + 1));
   std::vector<GLfloat> tex(2 * (_xdivs + 1) * (_zdivs + 1));

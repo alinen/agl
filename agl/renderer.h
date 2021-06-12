@@ -350,7 +350,7 @@ class Renderer {
   /**
    * @brief Draws a cone centered at the origin, with the tip towards +Z
    *
-   * @verbinclude rotate.cpp
+   * @verbinclude transform.cpp
    */
   void cone();
 

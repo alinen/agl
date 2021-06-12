@@ -1,4 +1,4 @@
-// Copyright 2011, OpenGL 4.0 Shading language cookbook (David Wolf)
+// Copyright 2020, Savvy Sine, Aline Normoyle
 
 #ifndef AGL_MESH_SPHERE_H_
 #define AGL_MESH_SPHERE_H_
