@@ -19,15 +19,16 @@ class Teapot : public TriangleMesh
   /**
    * @brief Create a Teapot mesh
    * @param grid Smoothing level for generating the mesh from bezie patches
-   * @lidTranform Transform for changing the position of the teapot lid
-   * with respect to the main teapot
+   * @param lidTranform Change the position of the teapot lid
    * 
    * Use the renderer to draw a teapot with default settings. 
-   * Create a new teapot to create teapot with different settings. 
+   * Create a new teapot to create a teapot mesh with different settings. 
    * 
    * @see Renderer::teapot()
    */
   Teapot(int grid, const glm::mat4& lidTransform);
+
+ protected:
   void init() override;
 
  private:

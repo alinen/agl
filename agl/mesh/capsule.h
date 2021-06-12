@@ -13,6 +13,8 @@ namespace agl {
 class Capsule : public TriangleMesh {
  public:
   Capsule(float rad, float length, GLuint sl, GLuint st);
+
+ protected:
   void init() override;
 
  private:

@@ -27,6 +27,7 @@ class Torus : public TriangleMesh {
   Torus(GLfloat outerRadius, GLfloat innerRadius,
       GLuint nsides, GLuint nrings);
 
+ protected:
   void init() override;
 
  private:

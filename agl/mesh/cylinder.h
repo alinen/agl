@@ -14,6 +14,8 @@ class Cylinder : public TriangleMesh {
  public:
   Cylinder(float rad, float len, GLuint sl);
   Cylinder(float rad1, float rad2, float len, GLuint sl);
+
+ protected:
   void init() override;
 
  private:

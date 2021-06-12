@@ -14,9 +14,10 @@ class Sphere : public TriangleMesh {
  public:
   Sphere(float rad, GLuint sl, GLuint st);
 
- private:
+ protected:
   void init() override;
 
+ private:
   float _radius;
   GLuint _nSlices;
   GLuint _nStacks;

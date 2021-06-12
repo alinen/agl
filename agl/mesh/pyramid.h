@@ -13,6 +13,8 @@ namespace agl {
 class Pyramid : public TriangleMesh {
  public:
   Pyramid(float base, float height);
+
+ protected:
   void init() override;
 
  private:

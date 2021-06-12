@@ -14,8 +14,10 @@ class Cube : public agl::TriangleMesh {
  public:
   explicit Cube(GLfloat size = 1.0f);
 
- private:
+ protected:
   void init() override;
+
+ private:
   GLfloat _size;
 };
 
