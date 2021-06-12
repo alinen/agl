@@ -24,8 +24,16 @@ using std::string;
 using std::vector;
 
 Renderer::Renderer() {
-  _skybox = 0;
+  _cube = 0;
+  _cone = 0;
+  _capsule = 0;
+  _cylinder = 0;
+  _teapot = 0;
+  _torus = 0;
+  _plane = 0;
   _sphere = 0;
+  _skybox = 0;
+  _currentShader = 0;
   _initialized = false;
 }
 
@@ -302,6 +310,13 @@ void Renderer::endShader() {
 
   _currentShader = _shaderStack.front();
   _shaderStack.pop_front();
+
+  if (_currentShader != nullptr) {
+    _currentShader->use();
+
+  } else {
+    glUseProgram(0);
+  }
 }
 
 void Renderer::setUniform(const std::string& name, float x, float y, float z) {
