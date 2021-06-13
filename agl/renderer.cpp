@@ -77,7 +77,7 @@ bool Renderer::initialized() const {
 
 
 vec3 Renderer::cameraPosition() const {
-  return mLookfrom;
+  return _lookfrom;
 }
 
 void Renderer::init() {
@@ -178,18 +178,18 @@ void Renderer::blendMode(BlendMode mode) {
 
 void Renderer::perspective(float fovRadians,
     float aspect, float near, float far) {
-  mProjectionMatrix = glm::perspective(fovRadians, aspect, near, far);
+  _projectionMatrix = glm::perspective(fovRadians, aspect, near, far);
 }
 
 void Renderer::ortho(float minx, float maxx,
     float miny, float maxy, float minz, float maxz) {
-  mProjectionMatrix = glm::ortho(minx, maxx, miny, maxy, minz, maxz);
+  _projectionMatrix = glm::ortho(minx, maxx, miny, maxy, minz, maxz);
 }
 
 void Renderer::lookAt(const vec3& lookfrom,
     const vec3& lookat, const vec3& up) {
-  mLookfrom = lookfrom;
-  mViewMatrix = glm::lookAt(lookfrom, lookat, up);
+  _lookfrom = lookfrom;
+  _viewMatrix = glm::lookAt(lookfrom, lookat, up);
 }
 
 void Renderer::texture(const std::string& uniformName,
@@ -204,9 +204,9 @@ void Renderer::sprite(const glm::vec3& pos,
     const glm::vec4& color, float size) {
   assert(_initialized);
 
-  mat4 mvp = mProjectionMatrix * mViewMatrix;
+  mat4 mvp = _projectionMatrix * _viewMatrix;
   setUniform("MVP", mvp);
-  setUniform("CameraPos", mLookfrom);
+  setUniform("CameraPos", _lookfrom);
   setUniform("Offset", pos);
   setUniform("Color", color);
   setUniform("Size", size);
@@ -227,7 +227,7 @@ void Renderer::skybox(float size) {
   assert(_initialized);
 
   mat4 s = glm::scale(mat4(1.0f), vec3(size));
-  mat4 mvp = mProjectionMatrix * mViewMatrix * s;
+  mat4 mvp = _projectionMatrix * _viewMatrix * s;
   setUniform("MVP", mvp);
   _skybox->render();
 }
@@ -297,8 +297,8 @@ void Renderer::sphere() {
 void Renderer::mesh(const TriangleMesh& mesh) {
   assert(_initialized);
 
-  mat4 mv = mViewMatrix * _trs;
-  mat4 mvp = mProjectionMatrix * mv;
+  mat4 mv = _viewMatrix * _trs;
+  mat4 mvp = _projectionMatrix * mv;
   mat3 nmv = mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2]));
 
   setUniform("MVP", mvp);

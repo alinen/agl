@@ -134,9 +134,24 @@ class Renderer {
 
   /**
    * @brief Get the current camera position
-   * @returns The current position of the camera
+   *
+   * @verbinclude confetti.cpp
    */
   glm::vec3 cameraPosition() const;
+
+  /**
+   * @brief Get the current projection matrix
+   *
+   * @verbinclude select_drag.cpp
+   */
+  glm::mat4 projectionMatrix() const { return _projectionMatrix; }
+
+  /**
+   * @brief Get the current view matrix
+   *
+   * @verbinclude select_drag.cpp
+   */
+  glm::mat4 viewMatrix() const { return _viewMatrix; }
   ///@}
 
   /** @name Shaders
@@ -437,9 +452,9 @@ class Renderer {
   glm::mat4 _trs;
 
   // perspective and view
-  glm::mat4 mProjectionMatrix;
-  glm::mat4 mViewMatrix;
-  glm::vec3 mLookfrom;
+  glm::mat4 _projectionMatrix;
+  glm::mat4 _viewMatrix;
+  glm::vec3 _lookfrom;
 
   // default meshes
   class Cube* _cube;

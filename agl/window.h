@@ -85,13 +85,15 @@ class Window {
 
   /**
    * @brief Override this method to respond to mouse movement
-   * @param x The current x position (in screen coordinates, a value between 0
-   * and width)
-   * @param y The current y position (in screen coordinates, a value between 0
-   * and height)
+   * @param x The current x position
+   * @param y The current y position
+   * @param dx The change in x since the last mouse event (in pixels)
+   * @param dy The change in y since the last mouse event (in pixels)
    *
+   * Screen coordinates are in pixels. x values are always between 0 and width.
+   * y values are always between 0 and height.
    */
-  virtual void mouseMotion(int x, int y) {}
+  virtual void mouseMotion(int x, int y, int dx, int dy) {}
 
   /**
    * @brief Override this method to respond to mouse press (button down)
@@ -99,10 +101,18 @@ class Window {
    * @param mods Modifiers that are pressed (e.g. shift, control, etc)
    *
    * @ref https://www.glfw.org/docs/latest/input_guide.html
-   * @see mouseRelease(int, int)
+   * @see mouseUp(int, int)
    * @see mouseIsDown(int)
    */
-  virtual void mousePress(int button, int mods) {}
+  virtual void mouseDown(int button, int mods) {}
+
+  /**
+   * @brief Override this method to respond to mouse press (button up)
+   *
+   * @see mouseDown(int, int)
+   * @see mouseIsDown(int)
+   */
+  virtual void mouseUp(int button, int mods) {}
 
   /**
    * @brief Override this method to respond to scrolling the middle mouse
@@ -113,14 +123,6 @@ class Window {
    * @verbinclude plane.cpp
    */
   virtual void scroll(float dx, float dy) {}
-
-  /**
-   * @brief Override this method to respond to mouse press (button up)
-   *
-   * @see mousePress(int, int)
-   * @see mouseIsDown(int)
-   */
-  virtual void mouseRelease(int button, int mods) {}
 
   /**
    * @brief Override this method to respond to key presses (button up)
@@ -171,14 +173,9 @@ class Window {
   bool mouseIsDown(int button) const;
 
   /** 
-   * @brief Return the current mouse x position (in screen coordinates)
+   * @brief Return the current mouse position (in screen coordinates)
    */
-  int mouseX() const;
-
-  /** 
-   * @brief Return the current mouse y position (in screen coordinates)
-   */
-  int mouseY() const;
+  glm::vec2 mousePosition() const;
 
   /** 
    * @brief Return the amount of time since the previous frame (in seconds)
@@ -275,7 +272,7 @@ class Window {
    * @brief Returns true if the camera controls are active; false otherwise
    * @see Camera
    */
-  inline bool getCameraEnabled() const { return _cameraEnabled; }
+  inline bool cameraEnabled() const { return _cameraEnabled; }
 
   /**
    * @brief Set whether the window's camera controls are active
@@ -308,6 +305,7 @@ class Window {
   int _windowWidth, _windowHeight;
   float _elapsedTime;
   float _dt;
+  float _lastx, _lasty;
   bool _cameraEnabled;
   glm::vec3 _backgroundColor;
   struct GLFWwindow* _window = 0;

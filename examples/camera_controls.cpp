@@ -13,8 +13,8 @@ class MyWindow : public agl::Window {
 
   void keyUp(int key, int mods) {
     if (key == 'C') {
-      std::cout << "Toggle camera controls " << getCameraEnabled() << std::endl;
-      setCameraEnabled(!getCameraEnabled());
+      std::cout << "Toggle camera controls " << cameraEnabled() << std::endl;
+      setCameraEnabled(!cameraEnabled());
     }
   }
 };

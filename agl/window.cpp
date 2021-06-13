@@ -26,6 +26,7 @@ Window::Window() :
   _backgroundColor(0.0f),
   _elapsedTime(0.0),
   _cameraEnabled(true),
+  _lastx(0), _lasty(0),
   _dt(-1.0) {
   init();
 }
@@ -120,7 +121,7 @@ void Window::run() {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    if (getCameraEnabled()) {
+    if (cameraEnabled()) {
       renderer.lookAt(camera.position(), camera.look(), camera.up());
     }
     renderer.identity();
@@ -177,16 +178,10 @@ float Window::elapsedTime() const {
   return _elapsedTime;
 }
 
-int Window::mouseX() const {
+glm::vec2 Window::mousePosition() const {
   double xpos, ypos;
   glfwGetCursorPos(_window, &xpos, &ypos);
-  return xpos;
-}
-
-int Window::mouseY() const {
-  double xpos, ypos;
-  glfwGetCursorPos(_window, &xpos, &ypos);
-  return ypos;
+  return glm::vec2(static_cast<float>(xpos), static_cast<float>(ypos));
 }
 
 bool Window::keyIsDown(int key) const {
@@ -201,7 +196,7 @@ bool Window::mouseIsDown(int button) const {
 
 void Window::setWindowSize(int w, int h) {
   if (_windowWidth == w && _windowHeight == h) return;
-  glfwSetWindowSize(_window, w, h);
+  glfwSetWindowSize(_window, w, h);  // should indirectly set _windowWidth, etc
 }
 
 void Window::init() {
@@ -234,11 +229,6 @@ void Window::init() {
   glfwSetCursorPosCallback(_window, Window::onMouseMotionCb);
   glfwSetScrollCallback(_window, Window::onScrollCb);
 
-  // check that os doesn't override window size
-  int width, height;
-  glfwGetFramebufferSize(_window, &width, &height);
-  onResize(width, height);
-
   // Initialize openGL and set default values
   renderer.init();
   camera.set(vec3(0.0, 0.0, 2.0), vec3(0.0));
@@ -249,10 +239,14 @@ void Window::onMouseMotionCb(GLFWwindow* win, double pX, double pY) {
 }
 
 void Window::onMouseMotion(int pX, int pY) {
-  if (getCameraEnabled()) {
+  if (cameraEnabled()) {
     camera.onMouseMotion(pX, pY);
   }
-  mouseMotion(pX, pY);  // user hook
+
+  glm::vec2 mousePos = mousePosition();
+  int dx = mousePos.x - _lastx;
+  int dy = mousePos.y - _lasty;
+  mouseMotion(pX, pY, dx, dy);  // user hook
 }
 
 void Window::onMouseButtonCb(GLFWwindow* win,
@@ -261,19 +255,22 @@ void Window::onMouseButtonCb(GLFWwindow* win,
 }
 
 void Window::onMouseButton(int button, int action, int mods) {
-  if (getCameraEnabled()) {
-    camera.onMouseButton(button, action, mouseX(), mouseY());
+  double xpos, ypos;
+  glfwGetCursorPos(_window, &xpos, &ypos);
+
+  if (cameraEnabled()) {
+    camera.onMouseButton(button, action, xpos, ypos);
   }
 
   if (action == GLFW_PRESS) {
-    mousePress(button, mods);
+    _lastx = xpos;
+    _lasty = xpos;
+    mouseDown(button, mods);
 
   } else if (action == GLFW_RELEASE) {
-    mouseRelease(button, mods);
+    mouseUp(button, mods);
   }
 
-  double xpos, ypos;
-  glfwGetCursorPos(_window, &xpos, &ypos);
   onMouseMotion(static_cast<float>(xpos), static_cast<float>(ypos));
 }
 
@@ -288,7 +285,7 @@ void Window::onKeyboard(int key, int scancode, int action, int mods) {
     glfwSetWindowShouldClose(_window, GL_TRUE);
   }
 
-  if (getCameraEnabled()) {
+  if (cameraEnabled()) {
     camera.onKeyboard(key, scancode, action, mods);
   }
 
@@ -306,7 +303,7 @@ void Window::onScrollCb(GLFWwindow* win, double xoffset, double yoffset) {
 }
 
 void Window::onScroll(float xoffset, float yoffset) {
-  if (getCameraEnabled()) {
+  if (cameraEnabled()) {
     camera.onScroll(xoffset, yoffset);
   }
   scroll(xoffset, yoffset);  // user hook
