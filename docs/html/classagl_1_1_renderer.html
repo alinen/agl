@@ -124,6 +124,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4ea0048baff9497d280adb4e3927880b"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a4ea0048baff9497d280adb4e3927880b">cameraPosition</a> () const</td></tr>
 <tr class="memdesc:a4ea0048baff9497d280adb4e3927880b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current camera position.  <a href="classagl_1_1_renderer.html#a4ea0048baff9497d280adb4e3927880b">More...</a><br /></td></tr>
 <tr class="separator:a4ea0048baff9497d280adb4e3927880b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb2da73ef50d1311e6befcf9684b95ad"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#abb2da73ef50d1311e6befcf9684b95ad">projectionMatrix</a> () const</td></tr>
+<tr class="memdesc:abb2da73ef50d1311e6befcf9684b95ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current projection matrix.  <a href="classagl_1_1_renderer.html#abb2da73ef50d1311e6befcf9684b95ad">More...</a><br /></td></tr>
+<tr class="separator:abb2da73ef50d1311e6befcf9684b95ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefebd1baa0fca49a247f35ba245cd833"><td class="memItemLeft" align="right" valign="top">glm::mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#aefebd1baa0fca49a247f35ba245cd833">viewMatrix</a> () const</td></tr>
+<tr class="memdesc:aefebd1baa0fca49a247f35ba245cd833"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current view matrix.  <a href="classagl_1_1_renderer.html#aefebd1baa0fca49a247f35ba245cd833">More...</a><br /></td></tr>
+<tr class="separator:aefebd1baa0fca49a247f35ba245cd833"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Shaders</div></td></tr>
 <tr class="memitem:a4a580e7feab0c2c29815b9c4b364b4b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8">loadShader</a> (const std::string &amp;name, const std::string &amp;vs, const std::string &amp;fs)</td></tr>
 <tr class="memdesc:a4a580e7feab0c2c29815b9c4b364b4b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load a GLSL shader from files.  <a href="classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8">More...</a><br /></td></tr>
@@ -357,8 +363,55 @@ int main() {
 </div><div class="memdoc">
 
 <p>Get the current camera position. </p>
-<dl class="section return"><dt>Returns</dt><dd>The current position of the camera </dd></dl>
+<pre class="fragment">#include "agl/window.h"
 
+using namespace glm;
+using namespace agl;
+
+class MyWindow : public Window {
+  void setup() {
+    renderer.loadTexture("particle", "../textures/particle.png", 0);
+    renderer.texture("image", "particle");
+    renderer.blendMode(ADD);
+
+    _particles.push_back(
+        Particle{
+          vec3(-0.5f, 0.0f, 0.0f), 
+          vec4(1.0f, 0.0f, 0.0f, 1.0f)
+    });
+    _particles.push_back(
+        Particle{
+          vec3(0.5f, 0.0f, 0.0f), 
+          vec4(0.0f, 1.0f, 0.0f, 1.0f)
+    });
+    _particles.push_back(
+        Particle{
+          vec3(0.0f, 0.25f, 0.0f),
+          vec4(0.0f, 0.0f, 1.0f, 1.0f)
+    });
+  }
+
+  void draw() {
+    renderer.beginShader("sprite");
+    for (int i = 0; i &lt; _particles.size(); i++) {
+      renderer.sprite(_particles[i].pos, _particles[i].color, 0.25f);
+    }
+    renderer.endShader();
+  }
+
+ private:
+  struct Particle {
+    vec3 pos;
+    vec4 color;
+  };
+  std::vector&lt;Particle&gt; _particles;
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
 </div>
 </div>
 <a id="a9b59de70a62373a92ec74c83ade4e210"></a>
@@ -883,6 +936,120 @@ int main() {
 <p>The current shader should define the following uniform variables</p>
 <p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform </p>
 
+</div>
+</div>
+<a id="abb2da73ef50d1311e6befcf9684b95ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb2da73ef50d1311e6befcf9684b95ad">&#9670;&nbsp;</a></span>projectionMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::mat4 agl::Renderer::projectionMatrix </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current projection matrix. </p>
+<pre class="fragment">#include "agl/window.h"
+#include &lt;vector&gt;
+
+using namespace glm;
+using namespace agl;
+
+class MyWindow : public Window {
+  void setup() {
+    setCameraEnabled(false); // distance orbit camera
+    renderer.loadTexture("particle", "../textures/particle.png", 0);
+    renderer.blendMode(ADD);
+    _particlePos = vec3(0.0f);
+    _lastParticlePos = _particlePos;
+  }
+
+  void draw() {
+    renderer.beginShader("sprite");
+    renderer.texture("image", "particle");
+    renderer.sprite(_particlePos, _color, 0.5f);
+    renderer.endShader();
+  }
+
+  void mouseMotion(int x, int y, int dx, int dy) {
+    if (_selected)
+    {
+      // convert movement into an amount to change the particle (in world space)
+      vec2 screenDir(dx, -dy);                                                  
+      vec2 ndcDir = (2.0f * screenDir / vec2(width(), height()));                   
+
+      mat4 projection = renderer.projectionMatrix();
+      mat4 view = renderer.viewMatrix();
+      vec3 lookfrom = renderer.cameraPosition();
+                                                                                
+      vec3 pDir = vec3(ndcDir, 0.0);                                            
+      mat4 PV = projection * view;                                  
+      vec3 wDir = vec3(inverse(PV) * vec4(pDir, 0.0));                          
+      vec3 delta = wDir * length(_lastParticlePos - lookfrom)/1.0f;              
+      std::cout &lt;&lt; delta &lt;&lt; " " &lt;&lt; ndcDir &lt;&lt; std::endl;
+                                                                                
+      _particlePos = _lastParticlePos + delta;                                    
+    }
+  }
+
+  void mouseDown(int button, int mods) {
+    vec2 mousePos = mousePosition();
+    std::cout &lt;&lt; mousePos &lt;&lt; std::endl;
+
+    // Convert the particle position to screen coords                         
+    mat4 projection = renderer.projectionMatrix();
+    mat4 view = renderer.viewMatrix();
+
+    vec4 projectedPos = projection * view * vec4(_particlePos, 1.0);
+    vec3 ndcPos = vec3(projectedPos) / projectedPos.w;                        
+
+    vec2 screenPos = (vec2(ndcPos) + vec2(1.0)) * 0.5f;
+    screenPos = screenPos * vec2(width(), height()); 
+                                                                                
+    // flip y coordinate because positive Y goes down instead of up           
+    screenPos.y = height() - screenPos.y;                                       
+    std::cout &lt;&lt; screenPos &lt;&lt; " " &lt;&lt; width() &lt;&lt; std::endl;
+                                                                                
+    if (length(screenPos - mousePos) &lt; _threshold)                   
+    {                                                                         
+      std::cout &lt;&lt; "here!\n";
+      _color = vec4(1, 1, 0, 1);
+      _selected = true;
+      _lastParticlePos = _particlePos;                                         
+    }                                                                         
+  } 
+
+  void mouseUp(int button, int mods) {
+    _color = vec4(0, 0, 1, 1);
+    _selected = false;
+  } 
+
+ private:
+  vec3 _particlePos;
+  vec3 _lastParticlePos;
+  vec4 _color = vec4(0, 0, 1, 1);
+  bool _selected = false;
+  float _threshold = 10;
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
 </div>
 </div>
 <a id="a257300a6fa0fbb3fdee92b242dd002d8"></a>
@@ -1615,6 +1782,120 @@ int main() {
 }
 </pre> </dd></dl>
 
+</div>
+</div>
+<a id="aefebd1baa0fca49a247f35ba245cd833"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefebd1baa0fca49a247f35ba245cd833">&#9670;&nbsp;</a></span>viewMatrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::mat4 agl::Renderer::viewMatrix </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current view matrix. </p>
+<pre class="fragment">#include "agl/window.h"
+#include &lt;vector&gt;
+
+using namespace glm;
+using namespace agl;
+
+class MyWindow : public Window {
+  void setup() {
+    setCameraEnabled(false); // distance orbit camera
+    renderer.loadTexture("particle", "../textures/particle.png", 0);
+    renderer.blendMode(ADD);
+    _particlePos = vec3(0.0f);
+    _lastParticlePos = _particlePos;
+  }
+
+  void draw() {
+    renderer.beginShader("sprite");
+    renderer.texture("image", "particle");
+    renderer.sprite(_particlePos, _color, 0.5f);
+    renderer.endShader();
+  }
+
+  void mouseMotion(int x, int y, int dx, int dy) {
+    if (_selected)
+    {
+      // convert movement into an amount to change the particle (in world space)
+      vec2 screenDir(dx, -dy);                                                  
+      vec2 ndcDir = (2.0f * screenDir / vec2(width(), height()));                   
+
+      mat4 projection = renderer.projectionMatrix();
+      mat4 view = renderer.viewMatrix();
+      vec3 lookfrom = renderer.cameraPosition();
+                                                                                
+      vec3 pDir = vec3(ndcDir, 0.0);                                            
+      mat4 PV = projection * view;                                  
+      vec3 wDir = vec3(inverse(PV) * vec4(pDir, 0.0));                          
+      vec3 delta = wDir * length(_lastParticlePos - lookfrom)/1.0f;              
+      std::cout &lt;&lt; delta &lt;&lt; " " &lt;&lt; ndcDir &lt;&lt; std::endl;
+                                                                                
+      _particlePos = _lastParticlePos + delta;                                    
+    }
+  }
+
+  void mouseDown(int button, int mods) {
+    vec2 mousePos = mousePosition();
+    std::cout &lt;&lt; mousePos &lt;&lt; std::endl;
+
+    // Convert the particle position to screen coords                         
+    mat4 projection = renderer.projectionMatrix();
+    mat4 view = renderer.viewMatrix();
+
+    vec4 projectedPos = projection * view * vec4(_particlePos, 1.0);
+    vec3 ndcPos = vec3(projectedPos) / projectedPos.w;                        
+
+    vec2 screenPos = (vec2(ndcPos) + vec2(1.0)) * 0.5f;
+    screenPos = screenPos * vec2(width(), height()); 
+                                                                                
+    // flip y coordinate because positive Y goes down instead of up           
+    screenPos.y = height() - screenPos.y;                                       
+    std::cout &lt;&lt; screenPos &lt;&lt; " " &lt;&lt; width() &lt;&lt; std::endl;
+                                                                                
+    if (length(screenPos - mousePos) &lt; _threshold)                   
+    {                                                                         
+      std::cout &lt;&lt; "here!\n";
+      _color = vec4(1, 1, 0, 1);
+      _selected = true;
+      _lastParticlePos = _particlePos;                                         
+    }                                                                         
+  } 
+
+  void mouseUp(int button, int mods) {
+    _color = vec4(0, 0, 1, 1);
+    _selected = false;
+  } 
+
+ private:
+  vec3 _particlePos;
+  vec3 _lastParticlePos;
+  vec4 _color = vec4(0, 0, 1, 1);
+  bool _selected = false;
+  float _threshold = 10;
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['init_109',['init',['../classagl_1_1_renderer.html#af59f739bbc2ae0747eb724ca98fc2f75',1,'agl::Renderer']]],
-  ['initialized_110',['initialized',['../classagl_1_1_renderer.html#acfbb2d42960b288878ebf394f9e65770',1,'agl::Renderer']]]
+  ['keydown_113',['keyDown',['../classagl_1_1_window.html#a45d8a8a6207565627d5d523eebb003cd',1,'agl::Window']]],
+  ['keyisdown_114',['keyIsDown',['../classagl_1_1_window.html#a3e3d0b63688529e3d1a3fc9d7c4e1a08',1,'agl::Window']]],
+  ['keyup_115',['keyUp',['../classagl_1_1_window.html#a022bd571eae1add76f1f06b4e4a4e8a3',1,'agl::Window']]]
 ];

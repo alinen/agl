@@ -27,6 +27,7 @@ var classagl_1_1_renderer =
     [ "perspective", "classagl_1_1_renderer.html#a634eb6dcb6be2328a406aa419797df25", null ],
     [ "plane", "classagl_1_1_renderer.html#a544696fbcc45bab239dbc3c9adbf72d5", null ],
     [ "pop", "classagl_1_1_renderer.html#ac10ec0fbd366473c2decd1fb59b512aa", null ],
+    [ "projectionMatrix", "classagl_1_1_renderer.html#abb2da73ef50d1311e6befcf9684b95ad", null ],
     [ "push", "classagl_1_1_renderer.html#aeab5ce86e5b7b4259598371ce413d02c", null ],
     [ "rotate", "classagl_1_1_renderer.html#a2e80dd438494f9adc980a6c595ea35a2", null ],
     [ "scale", "classagl_1_1_renderer.html#a5a23688f12b6ddfa97e86fe4db8f4683", null ],
@@ -48,5 +49,6 @@ var classagl_1_1_renderer =
     [ "texture", "classagl_1_1_renderer.html#a669b3b37fa93e010c4d7b3b9016523bb", null ],
     [ "torus", "classagl_1_1_renderer.html#acf67c53f8f33a8f7fd0e1082781607e9", null ],
     [ "transform", "classagl_1_1_renderer.html#a0c4a406f8aff214722b4f6a706d37588", null ],
-    [ "translate", "classagl_1_1_renderer.html#aea9dca966b0d88c31ec0af359904b0a9", null ]
+    [ "translate", "classagl_1_1_renderer.html#aea9dca966b0d88c31ec0af359904b0a9", null ],
+    [ "viewMatrix", "classagl_1_1_renderer.html#aefebd1baa0fca49a247f35ba245cd833", null ]
 ];
