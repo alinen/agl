@@ -202,7 +202,9 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages the window and user input. </p>
-<p>Override this class to create a custom application. </p><pre class="fragment">#include "agl/window.h"
+<p>Override this class to create a custom application. </p><pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -231,7 +233,9 @@ int main() {
 </div><div class="memdoc">
 
 <p>Constructor. </p>
-<p>Override this class to create a custom application. The default window is sized 500x500 and draws an empty (black) scene. </p><pre class="fragment">#include "agl/window.h"
+<p>Override this class to create a custom application. The default window is sized 500x500 and draws an empty (black) scene. </p><pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 int main() {
   agl::Window window;
   window.run();
@@ -321,7 +325,9 @@ int main() {
 </div><div class="memdoc">
 
 <p>Override this method to draw. </p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 using glm::vec2;
 using glm::vec3;
@@ -501,7 +507,8 @@ int main() {
   </table>
   </dd>
 </dl>
-<p><a href="https://www.glfw.org/docs/latest/group__keys.html">https://www.glfw.org/docs/latest/group__keys.html</a> </p><pre class="fragment">#include "agl/window.h"
+<p><a href="https://www.glfw.org/docs/latest/group__keys.html">https://www.glfw.org/docs/latest/group__keys.html</a> </p><pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+#include "agl/window.h"
 
 using glm::vec3;
 class MyWindow : public agl::Window {
@@ -921,11 +928,13 @@ mouseIsDown(int) </dd></dl>
 </div><div class="memdoc">
 
 <p>Opens the window and starts the main application loop. </p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void setup() {
-    setWindowSize(200,200);
+    setWindowSize(200, 200);
   }
 
   void draw() {
@@ -958,7 +967,9 @@ int main() {
 </div><div class="memdoc">
 
 <p>Save the current screen image to a file. </p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void setup() {
@@ -1024,7 +1035,9 @@ int main() {
   </table>
   </dd>
 </dl>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 using glm::vec2;
 using glm::vec3;
@@ -1113,7 +1126,9 @@ int main() {
 
 <p>Override this method to perform setup before the main application loop. </p>
 <p>Use this method to load textures, load meshes, set the window size, and initialize the projection and view.</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 using glm::vec2;
 using glm::vec3;

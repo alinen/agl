@@ -96,9 +96,9 @@ void Renderer::init() {
   loadShader("cubemap", "../shaders/cubemap.vs", "../shaders/cubemap.fs");
 
   _cube = new Cube(1.0f);
-  _cone = new Cylinder(1.0f, 0.01, 1, 8);
+  _cone = new Cylinder(0.5f, 0.01, 1, 40);
   _capsule = new Capsule(0.25, 0.5, 40, 40);
-  _cylinder = new Cylinder(1.0, 1.0, 40.0);
+  _cylinder = new Cylinder(0.5, 1.0, 40.0);
   _teapot = new Teapot(13, mat4(1.0));
   _torus = new Torus(0.5, 0.25, 40, 40);
   _plane = new Plane(1.0, 1.0, 1.0, 1.0);

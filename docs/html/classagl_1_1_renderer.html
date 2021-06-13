@@ -314,28 +314,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <ul>
 <li><em>DEFAULT</em> Ignore alpha and draw all objects as opaque</li>
 <li><em>ADD</em> Add colors using formula: cSrc + c * c.alpha</li>
-<li><em>ALPHA</em> Blend colors using formula: cSrc * alpha + c * (1 - c.alpha) <pre class="fragment">#include "agl/window.h"
+<li><em>ALPHA</em> Blend colors using formula: cSrc * alpha + c * (1 - c.alpha) <pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
 
-using namespace glm;
-using namespace agl;
+#include "agl/window.h"
 
-class MyWindow : public Window {
+using glm::vec3;
+
+class MyWindow : public agl::Window {
   void setup() {
     renderer.loadTexture("cloud", "../textures/cloud.png", 0);
     renderer.loadTexture("particle", "../textures/particle.png", 0);
-    renderer.blendMode(ADD);
+    renderer.blendMode(agl::ADD);
   }
 
   void draw() {
     renderer.beginShader("sprite");
     renderer.texture("image", "cloud");
-    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), 0.25f);
-    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), vec4(0.0f, 1.0f, 0.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), red, 0.25f);
+    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), green, 0.25f);
 
     renderer.texture("image", "particle");
-    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), vec4(0.0f, 0.0f, 1.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), blue, 0.25f);
     renderer.endShader();
   }
+
+  const glm::vec4 red = glm::vec4(1, 0, 0, 1);
+  const glm::vec4 green = glm::vec4(0, 1, 0, 1);
+  const glm::vec4 blue = glm::vec4(0, 0, 1, 1);
 };
 
 int main() {
@@ -363,55 +368,7 @@ int main() {
 </div><div class="memdoc">
 
 <p>Get the current camera position. </p>
-<pre class="fragment">#include "agl/window.h"
-
-using namespace glm;
-using namespace agl;
-
-class MyWindow : public Window {
-  void setup() {
-    renderer.loadTexture("particle", "../textures/particle.png", 0);
-    renderer.texture("image", "particle");
-    renderer.blendMode(ADD);
-
-    _particles.push_back(
-        Particle{
-          vec3(-0.5f, 0.0f, 0.0f), 
-          vec4(1.0f, 0.0f, 0.0f, 1.0f)
-    });
-    _particles.push_back(
-        Particle{
-          vec3(0.5f, 0.0f, 0.0f), 
-          vec4(0.0f, 1.0f, 0.0f, 1.0f)
-    });
-    _particles.push_back(
-        Particle{
-          vec3(0.0f, 0.25f, 0.0f),
-          vec4(0.0f, 0.0f, 1.0f, 1.0f)
-    });
-  }
-
-  void draw() {
-    renderer.beginShader("sprite");
-    for (int i = 0; i &lt; _particles.size(); i++) {
-      renderer.sprite(_particles[i].pos, _particles[i].color, 0.25f);
-    }
-    renderer.endShader();
-  }
-
- private:
-  struct Particle {
-    vec3 pos;
-    vec4 color;
-  };
-  std::vector&lt;Particle&gt; _particles;
-};
-
-int main() {
-  MyWindow window;
-  window.run();
-}
-</pre> 
+<pre class="fragment"></pre> 
 </div>
 </div>
 <a id="a9b59de70a62373a92ec74c83ade4e210"></a>
@@ -450,7 +407,9 @@ int main() {
 </div><div class="memdoc">
 
 <p>Draws a cone centered at the origin, with the tip towards +Z. </p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 using glm::vec3;
 using glm::vec4;
@@ -459,15 +418,14 @@ using glm::mat4;
 
 class MyWindow : public agl::Window {
   void draw() {
-   
     // point forward direction of cone towards n
     // and shift base of cone to (0, 0, 0)
     vec3 n(1, 1, 0);
     vec3 z = normalize(n);
-    vec3 x = glm::cross(vec3(0,1,0), z);
+    vec3 x = glm::cross(vec3(0, 1, 0), z);
     vec3 y = glm::cross(z, x);
 
-    mat4 T(vec4(x, 0), 
+    mat4 T(vec4(x, 0),
            vec4(y, 0),
            vec4(z, 0),
            vec4(0.25, 0.25, 0, 1));
@@ -500,11 +458,13 @@ int main() {
 </div><div class="memdoc">
 
 <p>Draws a cube centered at the origin with width, height, and depth equal to 1.0. </p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
-    float angleRad = elapsedTime(); // angle is in radians
+    float angleRad = elapsedTime();  // angle is in radians
     renderer.rotate(angleRad, glm::vec3(0.707f, 0.707f, 0.0f));
     renderer.cube();
   }
@@ -545,27 +505,25 @@ int main() {
 
 <p>Set a uniform sampler parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. The cubemap should already be loaded. The textureName should match the key given when the texture is loaded.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#abda4b08760e08aa30afed9f8a9e5b45c" title="Load a cube map.">loadCubemap</a> <pre class="fragment">// Copyright (c) 2020, savvy sine, Aline Normoyle, alinen
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#abda4b08760e08aa30afed9f8a9e5b45c" title="Load a cube map.">loadCubemap</a> <pre class="fragment">// Copyright (c) 2020, Savvy Sine, Aline Normoyle
 // Visualize a cubemap texture using the skybox primitive
 
 #include "agl/window.h"
 
-class MyWindow : public agl::Window
-{
+class MyWindow : public agl::Window {
   void setup() {
     renderer.loadCubemap("cubemap", "../textures/sea", 0);
     perspective(glm::radians&lt;float&gt;(60.0f), 1.0f, 0.1f, 100.0f);
-  }  
-  void draw()
-  {
+  }
+
+  void draw() {
     renderer.beginShader("cubemap");
     renderer.skybox(10);
     renderer.endShader();
   }
 };
 
-int main()
-{
+int main() {
   MyWindow window;
   window.run();
 }
@@ -711,28 +669,33 @@ int main()
 </div><div class="memdoc">
 
 <p>Load a texture from a file. </p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
 
-using namespace glm;
-using namespace agl;
+#include "agl/window.h"
 
-class MyWindow : public Window {
+using glm::vec3;
+
+class MyWindow : public agl::Window {
   void setup() {
     renderer.loadTexture("cloud", "../textures/cloud.png", 0);
     renderer.loadTexture("particle", "../textures/particle.png", 0);
-    renderer.blendMode(ADD);
+    renderer.blendMode(agl::ADD);
   }
 
   void draw() {
     renderer.beginShader("sprite");
     renderer.texture("image", "cloud");
-    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), 0.25f);
-    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), vec4(0.0f, 1.0f, 0.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), red, 0.25f);
+    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), green, 0.25f);
 
     renderer.texture("image", "particle");
-    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), vec4(0.0f, 0.0f, 1.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), blue, 0.25f);
     renderer.endShader();
   }
+
+  const glm::vec4 red = glm::vec4(1, 0, 0, 1);
+  const glm::vec4 green = glm::vec4(0, 1, 0, 1);
+  const glm::vec4 blue = glm::vec4(0, 0, 1, 1);
 };
 
 int main() {
@@ -962,17 +925,21 @@ int main() {
 </div><div class="memdoc">
 
 <p>Get the current projection matrix. </p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
 #include &lt;vector&gt;
+#include "agl/window.h"
 
-using namespace glm;
-using namespace agl;
+using glm::vec2;
+using glm::vec3;
+using glm::vec4;
+using glm::mat4;
 
-class MyWindow : public Window {
+class MyWindow : public agl::Window {
   void setup() {
-    setCameraEnabled(false); // distance orbit camera
+    setCameraEnabled(false);  // distance orbit camera
     renderer.loadTexture("particle", "../textures/particle.png", 0);
-    renderer.blendMode(ADD);
+    renderer.blendMode(agl::ADD);
     _particlePos = vec3(0.0f);
     _lastParticlePos = _particlePos;
   }
@@ -985,57 +952,50 @@ class MyWindow : public Window {
   }
 
   void mouseMotion(int x, int y, int dx, int dy) {
-    if (_selected)
-    {
+    if (_selected) {
       // convert movement into an amount to change the particle (in world space)
-      vec2 screenDir(dx, -dy);                                                  
-      vec2 ndcDir = (2.0f * screenDir / vec2(width(), height()));                   
+      vec2 screenDir(dx, -dy);
+      vec2 ndcDir = (2.0f * screenDir / vec2(width(), height()));
 
       mat4 projection = renderer.projectionMatrix();
       mat4 view = renderer.viewMatrix();
       vec3 lookfrom = renderer.cameraPosition();
-                                                                                
-      vec3 pDir = vec3(ndcDir, 0.0);                                            
-      mat4 PV = projection * view;                                  
-      vec3 wDir = vec3(inverse(PV) * vec4(pDir, 0.0));                          
-      vec3 delta = wDir * length(_lastParticlePos - lookfrom)/1.0f;              
-      std::cout &lt;&lt; delta &lt;&lt; " " &lt;&lt; ndcDir &lt;&lt; std::endl;
-                                                                                
-      _particlePos = _lastParticlePos + delta;                                    
+
+      vec3 pDir = vec3(ndcDir, 0.0);
+      mat4 PV = projection * view;
+      vec3 delta = vec3(inverse(PV) * vec4(pDir, 0.0));
+
+      _particlePos = _lastParticlePos + delta;
     }
   }
 
   void mouseDown(int button, int mods) {
     vec2 mousePos = mousePosition();
-    std::cout &lt;&lt; mousePos &lt;&lt; std::endl;
 
-    // Convert the particle position to screen coords                         
+    // Convert the particle position to screen coords
     mat4 projection = renderer.projectionMatrix();
     mat4 view = renderer.viewMatrix();
 
     vec4 projectedPos = projection * view * vec4(_particlePos, 1.0);
-    vec3 ndcPos = vec3(projectedPos) / projectedPos.w;                        
+    vec3 ndcPos = vec3(projectedPos) / projectedPos.w;
 
     vec2 screenPos = (vec2(ndcPos) + vec2(1.0)) * 0.5f;
-    screenPos = screenPos * vec2(width(), height()); 
-                                                                                
-    // flip y coordinate because positive Y goes down instead of up           
-    screenPos.y = height() - screenPos.y;                                       
-    std::cout &lt;&lt; screenPos &lt;&lt; " " &lt;&lt; width() &lt;&lt; std::endl;
-                                                                                
-    if (length(screenPos - mousePos) &lt; _threshold)                   
-    {                                                                         
-      std::cout &lt;&lt; "here!\n";
+    screenPos = screenPos * vec2(width(), height());
+
+    // flip y coordinate because positive Y goes down instead of up
+    screenPos.y = height() - screenPos.y;
+
+    if (length(screenPos - mousePos) &lt; _threshold) {
       _color = vec4(1, 1, 0, 1);
       _selected = true;
-      _lastParticlePos = _particlePos;                                         
-    }                                                                         
-  } 
+      _lastParticlePos = _particlePos;
+    }
+  }
 
   void mouseUp(int button, int mods) {
     _color = vec4(0, 0, 1, 1);
     _selected = false;
-  } 
+  }
 
  private:
   vec3 _particlePos;
@@ -1080,7 +1040,9 @@ int main() {
 
 <p>Set a uniform parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1125,7 +1087,9 @@ int main() {
 
 <p>Set a uniform parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1170,7 +1134,9 @@ int main() {
 
 <p>Set a uniform parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1215,7 +1181,9 @@ int main() {
 
 <p>Set a uniform parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1260,7 +1228,9 @@ int main() {
 
 <p>Set a uniform parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1305,7 +1275,9 @@ int main() {
 
 <p>Set a uniform parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1350,7 +1322,9 @@ int main() {
 
 <p>Set a uniform parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1407,7 +1381,9 @@ int main() {
 
 <p>Set a uniform parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1470,7 +1446,9 @@ int main() {
 
 <p>Set a uniform parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1515,7 +1493,9 @@ int main() {
 
 <p>Set a uniform parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1560,7 +1540,9 @@ int main() {
 
 <p>Set a uniform parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. Overrides correspond to different uniform variable types (which should also match).</p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1594,27 +1576,25 @@ int main() {
 </div><div class="memdoc">
 
 <p>Draws a skybox (typically with a cubemap) </p>
-<pre class="fragment">// Copyright (c) 2020, savvy sine, Aline Normoyle, alinen
+<pre class="fragment">// Copyright (c) 2020, Savvy Sine, Aline Normoyle
 // Visualize a cubemap texture using the skybox primitive
 
 #include "agl/window.h"
 
-class MyWindow : public agl::Window
-{
+class MyWindow : public agl::Window {
   void setup() {
     renderer.loadCubemap("cubemap", "../textures/sea", 0);
     perspective(glm::radians&lt;float&gt;(60.0f), 1.0f, 0.1f, 100.0f);
-  }  
-  void draw()
-  {
+  }
+
+  void draw() {
     renderer.beginShader("cubemap");
     renderer.skybox(10);
     renderer.endShader();
   }
 };
 
-int main()
-{
+int main() {
   MyWindow window;
   window.run();
 }
@@ -1637,7 +1617,9 @@ int main()
 </div><div class="memdoc">
 
 <p>Draws a sphere centered at the origin with radius 0.5. </p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void draw() {
@@ -1693,28 +1675,33 @@ int main() {
   </table>
   </dd>
 </dl>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
 
-using namespace glm;
-using namespace agl;
+#include "agl/window.h"
 
-class MyWindow : public Window {
+using glm::vec3;
+
+class MyWindow : public agl::Window {
   void setup() {
     renderer.loadTexture("cloud", "../textures/cloud.png", 0);
     renderer.loadTexture("particle", "../textures/particle.png", 0);
-    renderer.blendMode(ADD);
+    renderer.blendMode(agl::ADD);
   }
 
   void draw() {
     renderer.beginShader("sprite");
     renderer.texture("image", "cloud");
-    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), 0.25f);
-    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), vec4(0.0f, 1.0f, 0.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), red, 0.25f);
+    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), green, 0.25f);
 
     renderer.texture("image", "particle");
-    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), vec4(0.0f, 0.0f, 1.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), blue, 0.25f);
     renderer.endShader();
   }
+
+  const glm::vec4 red = glm::vec4(1, 0, 0, 1);
+  const glm::vec4 green = glm::vec4(0, 1, 0, 1);
+  const glm::vec4 blue = glm::vec4(0, 0, 1, 1);
 };
 
 int main() {
@@ -1752,28 +1739,33 @@ int main() {
 
 <p>Set a uniform sampler parameter in the currently active shader. </p>
 <p>The name should match the name of the uniform parameter. The texture should already be loaded. The textureName should match the key given when the texture is loaded.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a8d56b6bdbeb5d3a4e679a3ddb899db7f" title="Load a texture from a file.">loadTexture</a> <pre class="fragment">#include "agl/window.h"
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a8d56b6bdbeb5d3a4e679a3ddb899db7f" title="Load a texture from a file.">loadTexture</a> <pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
 
-using namespace glm;
-using namespace agl;
+#include "agl/window.h"
 
-class MyWindow : public Window {
+using glm::vec3;
+
+class MyWindow : public agl::Window {
   void setup() {
     renderer.loadTexture("cloud", "../textures/cloud.png", 0);
     renderer.loadTexture("particle", "../textures/particle.png", 0);
-    renderer.blendMode(ADD);
+    renderer.blendMode(agl::ADD);
   }
 
   void draw() {
     renderer.beginShader("sprite");
     renderer.texture("image", "cloud");
-    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), vec4(1.0f, 0.0f, 0.0f, 1.0f), 0.25f);
-    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), vec4(0.0f, 1.0f, 0.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), red, 0.25f);
+    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), green, 0.25f);
 
     renderer.texture("image", "particle");
-    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), vec4(0.0f, 0.0f, 1.0f, 1.0f), 0.25f);
+    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), blue, 0.25f);
     renderer.endShader();
   }
+
+  const glm::vec4 red = glm::vec4(1, 0, 0, 1);
+  const glm::vec4 green = glm::vec4(0, 1, 0, 1);
+  const glm::vec4 blue = glm::vec4(0, 0, 1, 1);
 };
 
 int main() {
@@ -1808,17 +1800,21 @@ int main() {
 </div><div class="memdoc">
 
 <p>Get the current view matrix. </p>
-<pre class="fragment">#include "agl/window.h"
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
 #include &lt;vector&gt;
+#include "agl/window.h"
 
-using namespace glm;
-using namespace agl;
+using glm::vec2;
+using glm::vec3;
+using glm::vec4;
+using glm::mat4;
 
-class MyWindow : public Window {
+class MyWindow : public agl::Window {
   void setup() {
-    setCameraEnabled(false); // distance orbit camera
+    setCameraEnabled(false);  // distance orbit camera
     renderer.loadTexture("particle", "../textures/particle.png", 0);
-    renderer.blendMode(ADD);
+    renderer.blendMode(agl::ADD);
     _particlePos = vec3(0.0f);
     _lastParticlePos = _particlePos;
   }
@@ -1831,57 +1827,50 @@ class MyWindow : public Window {
   }
 
   void mouseMotion(int x, int y, int dx, int dy) {
-    if (_selected)
-    {
+    if (_selected) {
       // convert movement into an amount to change the particle (in world space)
-      vec2 screenDir(dx, -dy);                                                  
-      vec2 ndcDir = (2.0f * screenDir / vec2(width(), height()));                   
+      vec2 screenDir(dx, -dy);
+      vec2 ndcDir = (2.0f * screenDir / vec2(width(), height()));
 
       mat4 projection = renderer.projectionMatrix();
       mat4 view = renderer.viewMatrix();
       vec3 lookfrom = renderer.cameraPosition();
-                                                                                
-      vec3 pDir = vec3(ndcDir, 0.0);                                            
-      mat4 PV = projection * view;                                  
-      vec3 wDir = vec3(inverse(PV) * vec4(pDir, 0.0));                          
-      vec3 delta = wDir * length(_lastParticlePos - lookfrom)/1.0f;              
-      std::cout &lt;&lt; delta &lt;&lt; " " &lt;&lt; ndcDir &lt;&lt; std::endl;
-                                                                                
-      _particlePos = _lastParticlePos + delta;                                    
+
+      vec3 pDir = vec3(ndcDir, 0.0);
+      mat4 PV = projection * view;
+      vec3 delta = vec3(inverse(PV) * vec4(pDir, 0.0));
+
+      _particlePos = _lastParticlePos + delta;
     }
   }
 
   void mouseDown(int button, int mods) {
     vec2 mousePos = mousePosition();
-    std::cout &lt;&lt; mousePos &lt;&lt; std::endl;
 
-    // Convert the particle position to screen coords                         
+    // Convert the particle position to screen coords
     mat4 projection = renderer.projectionMatrix();
     mat4 view = renderer.viewMatrix();
 
     vec4 projectedPos = projection * view * vec4(_particlePos, 1.0);
-    vec3 ndcPos = vec3(projectedPos) / projectedPos.w;                        
+    vec3 ndcPos = vec3(projectedPos) / projectedPos.w;
 
     vec2 screenPos = (vec2(ndcPos) + vec2(1.0)) * 0.5f;
-    screenPos = screenPos * vec2(width(), height()); 
-                                                                                
-    // flip y coordinate because positive Y goes down instead of up           
-    screenPos.y = height() - screenPos.y;                                       
-    std::cout &lt;&lt; screenPos &lt;&lt; " " &lt;&lt; width() &lt;&lt; std::endl;
-                                                                                
-    if (length(screenPos - mousePos) &lt; _threshold)                   
-    {                                                                         
-      std::cout &lt;&lt; "here!\n";
+    screenPos = screenPos * vec2(width(), height());
+
+    // flip y coordinate because positive Y goes down instead of up
+    screenPos.y = height() - screenPos.y;
+
+    if (length(screenPos - mousePos) &lt; _threshold) {
       _color = vec4(1, 1, 0, 1);
       _selected = true;
-      _lastParticlePos = _particlePos;                                         
-    }                                                                         
-  } 
+      _lastParticlePos = _particlePos;
+    }
+  }
 
   void mouseUp(int button, int mods) {
     _color = vec4(0, 0, 1, 1);
     _selected = false;
-  } 
+  }
 
  private:
   vec3 _particlePos;
