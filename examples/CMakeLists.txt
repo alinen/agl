@@ -9,6 +9,6 @@ foreach (example ${EXAMPLES})
     TARGET ${example_name}                                                                    
     POST_BUILD                                                                    
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}                                         
-    COMMAND python3 cpplint.py ${SRC}                                             
+    COMMAND python3 cpplint.py ${example}
     VERBATIM)
 endforeach()

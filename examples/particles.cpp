@@ -1,29 +1,30 @@
-#include "agl/window.h"
+// Copyright 2020, Savvy Sine, Aline Normoyle
 #include <algorithm>
+#include "agl/window.h"
 
-using namespace glm;
-using namespace agl;
+using glm::vec3;
+using glm::vec4;
 
-class MyWindow : public Window {
+class MyWindow : public agl::Window {
   void setup() {
     renderer.loadTexture("particle", "../textures/particle.png", 0);
     renderer.texture("image", "particle");
-    renderer.blendMode(ADD);
+    renderer.blendMode(agl::ADD);
 
     for (int i = 0; i < _numParticles; i++) {
-      Particle particle;                                                        
-      particle.size = 0.25 * agl::random() + 0.1;                                                     
-      particle.pos = randomUnitCube();                                        
-      particle.vel = randomUnitCube();                                        
-      particle.color = vec4(randomUnitCube(), 1);                             
-      _particles.push_back(particle);              
+      Particle particle;
+      particle.size = 0.25 * agl::random() + 0.1;
+      particle.pos = agl::randomUnitCube();
+      particle.vel = agl::randomUnitCube();
+      particle.color = vec4(agl::randomUnitCube(), 1);
+      _particles.push_back(particle);
     }
   }
 
   void draw() {
-    for (int i = 0; i < _particles.size(); i++) {                                                  
-      Particle particle = _particles[i];       
-      particle.pos += particle.vel * dt();                                        
+    for (int i = 0; i < _particles.size(); i++) {
+      Particle particle = _particles[i];
+      particle.pos += particle.vel * dt();
 
       if (particle.pos.x < -1) particle.vel.x = abs(particle.vel.x);
       if (particle.pos.y < -1) particle.vel.y = abs(particle.vel.y);
@@ -32,19 +33,19 @@ class MyWindow : public Window {
       if (particle.pos.x > 1) particle.vel.x = -abs(particle.vel.x);
       if (particle.pos.y > 1) particle.vel.y = -abs(particle.vel.y);
       if (particle.pos.z > 1) particle.vel.z = -abs(particle.vel.z);
-      _particles[i] = particle;                                                 
-    }                                                                            
-                                                                                
-    vec3 cameraPos = renderer.cameraPosition();                               
+      _particles[i] = particle;
+    }
+
+    vec3 cameraPos = renderer.cameraPosition();
     std::sort(_particles.begin(), _particles.end(),
        [cameraPos](Particle p1, Particle p2) {
-         float dSqr1 = glm::length2(p1.pos - cameraPos);                         
-         float dSqr2 = glm::length2(p2.pos - cameraPos);                         
+         float dSqr1 = glm::length2(p1.pos - cameraPos);
+         float dSqr2 = glm::length2(p2.pos - cameraPos);
          return (dSqr1 > dSqr2);
     });
     renderer.beginShader("sprite");
     for (int i = 0; i < _particles.size(); i++) {
-      renderer.sprite(_particles[i].pos, 
+      renderer.sprite(_particles[i].pos,
           _particles[i].color, _particles[i].size);
     }
     renderer.endShader();

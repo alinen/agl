@@ -1,14 +1,18 @@
-#include "agl/window.h"
+// Copyright 2020, Savvy Sine, Aline Normoyle
+
 #include <vector>
+#include "agl/window.h"
 
-using namespace glm;
-using namespace agl;
+using glm::vec2;
+using glm::vec3;
+using glm::vec4;
+using glm::mat4;
 
-class MyWindow : public Window {
+class MyWindow : public agl::Window {
   void setup() {
-    setCameraEnabled(false); // distance orbit camera
+    setCameraEnabled(false);  // distance orbit camera
     renderer.loadTexture("particle", "../textures/particle.png", 0);
-    renderer.blendMode(ADD);
+    renderer.blendMode(agl::ADD);
     _particlePos = vec3(0.0f);
     _lastParticlePos = _particlePos;
   }
@@ -21,8 +25,7 @@ class MyWindow : public Window {
   }
 
   void mouseMotion(int x, int y, int dx, int dy) {
-    if (_selected)
-    {
+    if (_selected) {
       // convert movement into an amount to change the particle (in world space)
       vec2 screenDir(dx, -dy);
       vec2 ndcDir = (2.0f * screenDir / vec2(width(), height()));
@@ -55,8 +58,7 @@ class MyWindow : public Window {
     // flip y coordinate because positive Y goes down instead of up
     screenPos.y = height() - screenPos.y;
 
-    if (length(screenPos - mousePos) < _threshold)
-    {
+    if (length(screenPos - mousePos) < _threshold) {
       _color = vec4(1, 1, 0, 1);
       _selected = true;
       _lastParticlePos = _particlePos;

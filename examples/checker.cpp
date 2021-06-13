@@ -1,3 +1,5 @@
+// Copyright 2020, Savvy Sine, Aline Normoyle
+
 #include "agl/window.h"
 
 using glm::vec2;
@@ -21,8 +23,7 @@ class MyWindow : public agl::Window {
       for (int j = 0; j < checker.width(); j++) {
         if ((i < halfh && j < halfw) || (i > halfh && j > halfw)) {
           checker.setVec4(i, j, vec4(0, 0, 0, 1));
-        }
-        else {
+        } else {
           checker.setVec4(i, j, vec4(1, 1, 1, 1));
         }
       }

@@ -1,3 +1,5 @@
+// Copyright 2020, Savvy Sine, Aline Normoyle
+
 #include "agl/window.h"
 #include "agl/mesh/torus.h"
 

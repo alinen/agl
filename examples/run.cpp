@@ -1,8 +1,10 @@
+// Copyright 2020, Savvy Sine, Aline Normoyle
+
 #include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void setup() {
-    setWindowSize(200,200);
+    setWindowSize(200, 200);
   }
 
   void draw() {

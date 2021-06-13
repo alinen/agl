@@ -1,3 +1,5 @@
+// Copyright 2020, Savvy Sine, Aline Normoyle
+
 #include "agl/window.h"
 
 using glm::vec2;
