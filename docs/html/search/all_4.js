@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['getcameraenabled_16',['getCameraEnabled',['../classagl_1_1_window.html#a518b2e57b2bdf0c589b96e0c143989c0',1,'agl::Window']]]
+  ['elapsedtime_18',['elapsedTime',['../classagl_1_1_window.html#a38e7f3ee34cc520b1fc18cce5653728c',1,'agl::Window']]],
+  ['endshader_19',['endShader',['../classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374',1,'agl::Renderer']]]
 ];

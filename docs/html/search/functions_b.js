@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['teapot_110',['teapot',['../classagl_1_1_renderer.html#a945598f63b1c97b98c1cb505575a489c',1,'agl::Renderer']]],
-  ['teapot_111',['Teapot',['../classagl_1_1_teapot.html#a19f91afc3ad9c6e602b239709893b5a6',1,'agl::Teapot']]],
-  ['texture_112',['texture',['../classagl_1_1_renderer.html#a669b3b37fa93e010c4d7b3b9016523bb',1,'agl::Renderer']]],
-  ['torus_113',['torus',['../classagl_1_1_renderer.html#acf67c53f8f33a8f7fd0e1082781607e9',1,'agl::Renderer']]],
-  ['torus_114',['Torus',['../classagl_1_1_torus.html#aa9117e9aa496f0b78cdd8c6953f2a0fa',1,'agl::Torus']]]
+  ['perspective_127',['perspective',['../classagl_1_1_renderer.html#a634eb6dcb6be2328a406aa419797df25',1,'agl::Renderer::perspective()'],['../classagl_1_1_window.html#a7a72080667b1f21ec89b6f8e3b99217d',1,'agl::Window::perspective()']]],
+  ['plane_128',['plane',['../classagl_1_1_renderer.html#a544696fbcc45bab239dbc3c9adbf72d5',1,'agl::Renderer']]]
 ];

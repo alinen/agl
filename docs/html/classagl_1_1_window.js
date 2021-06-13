@@ -8,7 +8,6 @@ var classagl_1_1_window =
     [ "elapsedTime", "classagl_1_1_window.html#a38e7f3ee34cc520b1fc18cce5653728c", null ],
     [ "getCameraEnabled", "classagl_1_1_window.html#a518b2e57b2bdf0c589b96e0c143989c0", null ],
     [ "height", "classagl_1_1_window.html#accb878c65569507a83594a369064df36", null ],
-    [ "initializeGui", "classagl_1_1_window.html#a0eb2df49304c1169750162b983f6a8bf", null ],
     [ "keyDown", "classagl_1_1_window.html#a45d8a8a6207565627d5d523eebb003cd", null ],
     [ "keyIsDown", "classagl_1_1_window.html#a3e3d0b63688529e3d1a3fc9d7c4e1a08", null ],
     [ "keyUp", "classagl_1_1_window.html#a022bd571eae1add76f1f06b4e4a4e8a3", null ],
@@ -29,7 +28,6 @@ var classagl_1_1_window =
     [ "setupOrthoScene", "classagl_1_1_window.html#a7b000f1549137c994f5c7e439bf01dfa", null ],
     [ "setupPerspectiveScene", "classagl_1_1_window.html#aa68800283fe7f4b40e4dfff9281c03a1", null ],
     [ "setWindowSize", "classagl_1_1_window.html#a0b7b1fcc8eda40a5636bfa496142f9c8", null ],
-    [ "update", "classagl_1_1_window.html#a3fc2113ac4d6b890e285551449231732", null ],
     [ "width", "classagl_1_1_window.html#a3e503006b3680496fc2a31056dae0a9d", null ],
     [ "camera", "classagl_1_1_window.html#a25cf5d274bf5652043fbc37f5562e3ad", null ],
     [ "renderer", "classagl_1_1_window.html#a593c28c3c22169f861c99cf84adb4e9c", null ]

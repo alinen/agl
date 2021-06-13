@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['operator_3c_3c_25',['operator&lt;&lt;',['../aglm_8h.html#ac48b43e1b892d72964007a40dc611efc',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::mat4 &amp;m):&#160;aglm.cpp'],['../aglm_8h.html#af391f797845c27bb26c2baa5e947149e',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::mat3 &amp;m):&#160;aglm.cpp'],['../aglm_8h.html#a01a892ebf0a9439910f2cf110da1da84',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec3 &amp;v):&#160;aglm.cpp'],['../aglm_8h.html#aa2767b20226401ae617af326d421f529',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec4 &amp;v):&#160;aglm.cpp'],['../aglm_8h.html#aebfe6edcabf2878c2f278c0964fc98bc',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec2 &amp;v):&#160;aglm.cpp']]],
-  ['ortho_26',['ortho',['../classagl_1_1_renderer.html#aea4f94741b90f0c91c2846ffef5f2e31',1,'agl::Renderer::ortho()'],['../classagl_1_1_window.html#a576cd7910f689c49f58f616fdb7b5944',1,'agl::Window::ortho()']]]
+  ['keydown_25',['keyDown',['../classagl_1_1_window.html#a45d8a8a6207565627d5d523eebb003cd',1,'agl::Window']]],
+  ['keyisdown_26',['keyIsDown',['../classagl_1_1_window.html#a3e3d0b63688529e3d1a3fc9d7c4e1a08',1,'agl::Window']]],
+  ['keyup_27',['keyUp',['../classagl_1_1_window.html#a022bd571eae1add76f1f06b4e4a4e8a3',1,'agl::Window']]]
 ];

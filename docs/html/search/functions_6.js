@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mesh_91',['mesh',['../classagl_1_1_renderer.html#aed808cf5b13ec7a7a4a9465816163d73',1,'agl::Renderer']]]
+  ['init_109',['init',['../classagl_1_1_renderer.html#af59f739bbc2ae0747eb724ca98fc2f75',1,'agl::Renderer']]],
+  ['initialized_110',['initialized',['../classagl_1_1_renderer.html#acfbb2d42960b288878ebf394f9e65770',1,'agl::Renderer']]]
 ];

@@ -100,119 +100,85 @@ $(document).ready(function(){initNavTree('classagl_1_1_window.html',''); initRes
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9f879d75daee8046575408bfd409371a"><td class="memItemLeft" align="right" valign="top"><a id="a9f879d75daee8046575408bfd409371a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a9f879d75daee8046575408bfd409371a">Window</a> ()</td></tr>
-<tr class="memdesc:a9f879d75daee8046575408bfd409371a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Override this class to create a custom application. The default window is sized 500x500 and draws an empty (black) scene. </p><pre class="fragment">#include "agl/window.h"
-int main() {
-  agl::Window window;
-  window.run();
-}
-</pre><p>. <br /></td></tr>
+<tr class="memitem:a9f879d75daee8046575408bfd409371a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a9f879d75daee8046575408bfd409371a">Window</a> ()</td></tr>
+<tr class="memdesc:a9f879d75daee8046575408bfd409371a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classagl_1_1_window.html#a9f879d75daee8046575408bfd409371a">More...</a><br /></td></tr>
 <tr class="separator:a9f879d75daee8046575408bfd409371a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a515991f708f8a46ef51cc1c4569e7f63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63">run</a> ()</td></tr>
-<tr class="memdesc:a515991f708f8a46ef51cc1c4569e7f63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the window and starts the main application loop. </p><pre class="fragment">#include "agl/window.h"
-
-class MyWindow : public agl::Window {
-  void setup() {
-    setWindowSize(200,200);
-  }
-
-  void draw() {
-    renderer.sphere();
-  }
-};
-
-int main() {
-  MyWindow window;
-  window.run();
-}
-</pre><p>.  <a href="classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63">More...</a><br /></td></tr>
+<tr class="memdesc:a515991f708f8a46ef51cc1c4569e7f63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the window and starts the main application loop.  <a href="classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63">More...</a><br /></td></tr>
 <tr class="separator:a515991f708f8a46ef51cc1c4569e7f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a527b5ff8261ce964d998f36c30b143c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a527b5ff8261ce964d998f36c30b143c0">screenshot</a> (const std::string &amp;filename)</td></tr>
-<tr class="memdesc:a527b5ff8261ce964d998f36c30b143c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the current screen image to a file </p><pre class="fragment">#include "agl/window.h"
-
-class MyWindow : public agl::Window {
-  void setup() {
-    renderer.sphere();
-    screenshot("sphere.png");
-  }
-};
-
-int main() {
-  MyWindow window;
-  window.run();
-}
-</pre><p>.  <a href="classagl_1_1_window.html#a527b5ff8261ce964d998f36c30b143c0">More...</a><br /></td></tr>
+<tr class="memdesc:a527b5ff8261ce964d998f36c30b143c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the current screen image to a file.  <a href="classagl_1_1_window.html#a527b5ff8261ce964d998f36c30b143c0">More...</a><br /></td></tr>
 <tr class="separator:a527b5ff8261ce964d998f36c30b143c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a784f44c53b5e22fcda1004ad9d2955f7"><td class="memItemLeft" align="right" valign="top"><a id="a784f44c53b5e22fcda1004ad9d2955f7"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> ()</td></tr>
+<tr class="memitem:af83bc964aede82c4fb09c3773eac8afe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#af83bc964aede82c4fb09c3773eac8afe">background</a> (const glm::vec3 &amp;color)</td></tr>
+<tr class="memdesc:af83bc964aede82c4fb09c3773eac8afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the background color.  <a href="classagl_1_1_window.html#af83bc964aede82c4fb09c3773eac8afe">More...</a><br /></td></tr>
+<tr class="separator:af83bc964aede82c4fb09c3773eac8afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Respond to events</div></td></tr>
+<tr class="memitem:a784f44c53b5e22fcda1004ad9d2955f7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a784f44c53b5e22fcda1004ad9d2955f7">setup</a> ()</td></tr>
+<tr class="memdesc:a784f44c53b5e22fcda1004ad9d2955f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to perform setup before the main application loop.  <a href="classagl_1_1_window.html#a784f44c53b5e22fcda1004ad9d2955f7">More...</a><br /></td></tr>
 <tr class="separator:a784f44c53b5e22fcda1004ad9d2955f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3fc2113ac4d6b890e285551449231732"><td class="memItemLeft" align="right" valign="top"><a id="a3fc2113ac4d6b890e285551449231732"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
-<tr class="separator:a3fc2113ac4d6b890e285551449231732"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d441a93bddc77472fdd987893e92547"><td class="memItemLeft" align="right" valign="top"><a id="a7d441a93bddc77472fdd987893e92547"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>draw</b> ()</td></tr>
+<tr class="memitem:a7d441a93bddc77472fdd987893e92547"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a7d441a93bddc77472fdd987893e92547">draw</a> ()</td></tr>
+<tr class="memdesc:a7d441a93bddc77472fdd987893e92547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to draw.  <a href="classagl_1_1_window.html#a7d441a93bddc77472fdd987893e92547">More...</a><br /></td></tr>
 <tr class="separator:a7d441a93bddc77472fdd987893e92547"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0eb2df49304c1169750162b983f6a8bf"><td class="memItemLeft" align="right" valign="top"><a id="a0eb2df49304c1169750162b983f6a8bf"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>initializeGui</b> ()</td></tr>
-<tr class="separator:a0eb2df49304c1169750162b983f6a8bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8a68f2cccd863ef7d1b466d30130c9d"><td class="memItemLeft" align="right" valign="top"><a id="ad8a68f2cccd863ef7d1b466d30130c9d"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseMotion</b> (int x, int y)</td></tr>
+<tr class="memitem:ad8a68f2cccd863ef7d1b466d30130c9d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#ad8a68f2cccd863ef7d1b466d30130c9d">mouseMotion</a> (int x, int y)</td></tr>
+<tr class="memdesc:ad8a68f2cccd863ef7d1b466d30130c9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to respond to mouse movement.  <a href="classagl_1_1_window.html#ad8a68f2cccd863ef7d1b466d30130c9d">More...</a><br /></td></tr>
 <tr class="separator:ad8a68f2cccd863ef7d1b466d30130c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeef10bec48436c43747e1210d9d89a04"><td class="memItemLeft" align="right" valign="top"><a id="aeef10bec48436c43747e1210d9d89a04"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>mousePress</b> (int button, int mods)</td></tr>
+<tr class="memitem:aeef10bec48436c43747e1210d9d89a04"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#aeef10bec48436c43747e1210d9d89a04">mousePress</a> (int button, int mods)</td></tr>
+<tr class="memdesc:aeef10bec48436c43747e1210d9d89a04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to respond to mouse press (button down)  <a href="classagl_1_1_window.html#aeef10bec48436c43747e1210d9d89a04">More...</a><br /></td></tr>
 <tr class="separator:aeef10bec48436c43747e1210d9d89a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7f3507e47c1ae6fdf8c6f6e829177ba"><td class="memItemLeft" align="right" valign="top"><a id="ab7f3507e47c1ae6fdf8c6f6e829177ba"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>scroll</b> (float dx, float dy)</td></tr>
+<tr class="memitem:ab7f3507e47c1ae6fdf8c6f6e829177ba"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#ab7f3507e47c1ae6fdf8c6f6e829177ba">scroll</a> (float dx, float dy)</td></tr>
+<tr class="memdesc:ab7f3507e47c1ae6fdf8c6f6e829177ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to respond to scrolling the middle mouse button.  <a href="classagl_1_1_window.html#ab7f3507e47c1ae6fdf8c6f6e829177ba">More...</a><br /></td></tr>
 <tr class="separator:ab7f3507e47c1ae6fdf8c6f6e829177ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdd384ff7a023c03f5d7103ea0b31053"><td class="memItemLeft" align="right" valign="top"><a id="afdd384ff7a023c03f5d7103ea0b31053"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>mouseRelease</b> (int button, int mods)</td></tr>
+<tr class="memitem:afdd384ff7a023c03f5d7103ea0b31053"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#afdd384ff7a023c03f5d7103ea0b31053">mouseRelease</a> (int button, int mods)</td></tr>
+<tr class="memdesc:afdd384ff7a023c03f5d7103ea0b31053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to respond to mouse press (button up)  <a href="classagl_1_1_window.html#afdd384ff7a023c03f5d7103ea0b31053">More...</a><br /></td></tr>
 <tr class="separator:afdd384ff7a023c03f5d7103ea0b31053"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a022bd571eae1add76f1f06b4e4a4e8a3"><td class="memItemLeft" align="right" valign="top"><a id="a022bd571eae1add76f1f06b4e4a4e8a3"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>keyUp</b> (int key, int mods)</td></tr>
+<tr class="memitem:a022bd571eae1add76f1f06b4e4a4e8a3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a022bd571eae1add76f1f06b4e4a4e8a3">keyUp</a> (int key, int mods)</td></tr>
+<tr class="memdesc:a022bd571eae1add76f1f06b4e4a4e8a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to respond to key presses (button up)  <a href="classagl_1_1_window.html#a022bd571eae1add76f1f06b4e4a4e8a3">More...</a><br /></td></tr>
 <tr class="separator:a022bd571eae1add76f1f06b4e4a4e8a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45d8a8a6207565627d5d523eebb003cd"><td class="memItemLeft" align="right" valign="top"><a id="a45d8a8a6207565627d5d523eebb003cd"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>keyDown</b> (int key, int mods)</td></tr>
+<tr class="memitem:a45d8a8a6207565627d5d523eebb003cd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a45d8a8a6207565627d5d523eebb003cd">keyDown</a> (int key, int mods)</td></tr>
+<tr class="memdesc:a45d8a8a6207565627d5d523eebb003cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override this method to respond to key presses (button down)  <a href="classagl_1_1_window.html#a45d8a8a6207565627d5d523eebb003cd">More...</a><br /></td></tr>
 <tr class="separator:a45d8a8a6207565627d5d523eebb003cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e3d0b63688529e3d1a3fc9d7c4e1a08"><td class="memItemLeft" align="right" valign="top"><a id="a3e3d0b63688529e3d1a3fc9d7c4e1a08"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>keyIsDown</b> (int key) const</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Query input and time</div></td></tr>
+<tr class="memitem:a3e3d0b63688529e3d1a3fc9d7c4e1a08"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a3e3d0b63688529e3d1a3fc9d7c4e1a08">keyIsDown</a> (int key) const</td></tr>
+<tr class="memdesc:a3e3d0b63688529e3d1a3fc9d7c4e1a08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query whether the given key is down @key The key to test.  <a href="classagl_1_1_window.html#a3e3d0b63688529e3d1a3fc9d7c4e1a08">More...</a><br /></td></tr>
 <tr class="separator:a3e3d0b63688529e3d1a3fc9d7c4e1a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d290b5a90b623943382da7d732eb735"><td class="memItemLeft" align="right" valign="top"><a id="a2d290b5a90b623943382da7d732eb735"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>mouseIsDown</b> (int button) const</td></tr>
+<tr class="memitem:a2d290b5a90b623943382da7d732eb735"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a2d290b5a90b623943382da7d732eb735">mouseIsDown</a> (int button) const</td></tr>
+<tr class="memdesc:a2d290b5a90b623943382da7d732eb735"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query whether the given mouse button is down.  <a href="classagl_1_1_window.html#a2d290b5a90b623943382da7d732eb735">More...</a><br /></td></tr>
 <tr class="separator:a2d290b5a90b623943382da7d732eb735"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0864a84646e07cfab964f841f52a0d42"><td class="memItemLeft" align="right" valign="top"><a id="a0864a84646e07cfab964f841f52a0d42"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>mouseX</b> () const</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a0864a84646e07cfab964f841f52a0d42">mouseX</a> () const</td></tr>
+<tr class="memdesc:a0864a84646e07cfab964f841f52a0d42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current mouse x position (in screen coordinates) <br /></td></tr>
 <tr class="separator:a0864a84646e07cfab964f841f52a0d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b174bbcc9eed654c49e8c7796f609f4"><td class="memItemLeft" align="right" valign="top"><a id="a1b174bbcc9eed654c49e8c7796f609f4"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>mouseY</b> () const</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a1b174bbcc9eed654c49e8c7796f609f4">mouseY</a> () const</td></tr>
+<tr class="memdesc:a1b174bbcc9eed654c49e8c7796f609f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current mouse y position (in screen coordinates) <br /></td></tr>
 <tr class="separator:a1b174bbcc9eed654c49e8c7796f609f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a209448b74595e0e9b5084a0913d83315"><td class="memItemLeft" align="right" valign="top"><a id="a209448b74595e0e9b5084a0913d83315"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>dt</b> () const</td></tr>
+<tr class="memitem:a209448b74595e0e9b5084a0913d83315"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a209448b74595e0e9b5084a0913d83315">dt</a> () const</td></tr>
+<tr class="memdesc:a209448b74595e0e9b5084a0913d83315"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the amount of time since the previous frame (in seconds)  <a href="classagl_1_1_window.html#a209448b74595e0e9b5084a0913d83315">More...</a><br /></td></tr>
 <tr class="separator:a209448b74595e0e9b5084a0913d83315"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a38e7f3ee34cc520b1fc18cce5653728c"><td class="memItemLeft" align="right" valign="top"><a id="a38e7f3ee34cc520b1fc18cce5653728c"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>elapsedTime</b> () const</td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a38e7f3ee34cc520b1fc18cce5653728c">elapsedTime</a> () const</td></tr>
+<tr class="memdesc:a38e7f3ee34cc520b1fc18cce5653728c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the amount of time since the <a class="el" href="classagl_1_1_window.html#a784f44c53b5e22fcda1004ad9d2955f7" title="Override this method to perform setup before the main application loop.">setup()</a> was called (in seconds) <br /></td></tr>
 <tr class="separator:a38e7f3ee34cc520b1fc18cce5653728c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accb878c65569507a83594a369064df36"><td class="memItemLeft" align="right" valign="top"><a id="accb878c65569507a83594a369064df36"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>height</b> () const</td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#accb878c65569507a83594a369064df36">height</a> () const</td></tr>
+<tr class="memdesc:accb878c65569507a83594a369064df36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the window height in pixels. <br /></td></tr>
 <tr class="separator:accb878c65569507a83594a369064df36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e503006b3680496fc2a31056dae0a9d"><td class="memItemLeft" align="right" valign="top"><a id="a3e503006b3680496fc2a31056dae0a9d"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>width</b> () const</td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a3e503006b3680496fc2a31056dae0a9d">width</a> () const</td></tr>
+<tr class="memdesc:a3e503006b3680496fc2a31056dae0a9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the window width in pixels. <br /></td></tr>
 <tr class="separator:a3e503006b3680496fc2a31056dae0a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af83bc964aede82c4fb09c3773eac8afe"><td class="memItemLeft" align="right" valign="top"><a id="af83bc964aede82c4fb09c3773eac8afe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>background</b> (const glm::vec3 &amp;color)</td></tr>
-<tr class="separator:af83bc964aede82c4fb09c3773eac8afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Projections and view</div></td></tr>
-<tr class="memitem:a0b7b1fcc8eda40a5636bfa496142f9c8"><td class="memItemLeft" align="right" valign="top"><a id="a0b7b1fcc8eda40a5636bfa496142f9c8"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setWindowSize</b> (int w, int h)</td></tr>
+<tr class="memitem:a0b7b1fcc8eda40a5636bfa496142f9c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a0b7b1fcc8eda40a5636bfa496142f9c8">setWindowSize</a> (int w, int h)</td></tr>
+<tr class="memdesc:a0b7b1fcc8eda40a5636bfa496142f9c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the size of the window in pixels.  <a href="classagl_1_1_window.html#a0b7b1fcc8eda40a5636bfa496142f9c8">More...</a><br /></td></tr>
 <tr class="separator:a0b7b1fcc8eda40a5636bfa496142f9c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b000f1549137c994f5c7e439bf01dfa"><td class="memItemLeft" align="right" valign="top"><a id="a7b000f1549137c994f5c7e439bf01dfa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setupOrthoScene</b> (const glm::vec3 &amp;center, const glm::vec3 &amp;dim)</td></tr>
+<tr class="memitem:a7b000f1549137c994f5c7e439bf01dfa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a7b000f1549137c994f5c7e439bf01dfa">setupOrthoScene</a> (const glm::vec3 &amp;center, const glm::vec3 &amp;dim)</td></tr>
+<tr class="memdesc:a7b000f1549137c994f5c7e439bf01dfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the projection and camera to fit the given dimensions and center using an orthographic projection.  <a href="classagl_1_1_window.html#a7b000f1549137c994f5c7e439bf01dfa">More...</a><br /></td></tr>
 <tr class="separator:a7b000f1549137c994f5c7e439bf01dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa68800283fe7f4b40e4dfff9281c03a1"><td class="memItemLeft" align="right" valign="top"><a id="aa68800283fe7f4b40e4dfff9281c03a1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setupPerspectiveScene</b> (const glm::vec3 &amp;center, const glm::vec3 &amp;dim)</td></tr>
+<tr class="memitem:aa68800283fe7f4b40e4dfff9281c03a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#aa68800283fe7f4b40e4dfff9281c03a1">setupPerspectiveScene</a> (const glm::vec3 &amp;center, const glm::vec3 &amp;dim)</td></tr>
+<tr class="memdesc:aa68800283fe7f4b40e4dfff9281c03a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the projection and camera to fit the given dimensions and center using a perspective projection.  <a href="classagl_1_1_window.html#aa68800283fe7f4b40e4dfff9281c03a1">More...</a><br /></td></tr>
 <tr class="separator:aa68800283fe7f4b40e4dfff9281c03a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb94594629d3fc1a971eeb86305fc537"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#abb94594629d3fc1a971eeb86305fc537">lookAt</a> (const glm::vec3 &amp;camPos, const glm::vec3 &amp;camLook, const glm::vec3 &amp;up=glm::vec3(0, 1, 0))</td></tr>
 <tr class="separator:abb94594629d3fc1a971eeb86305fc537"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -252,7 +218,148 @@ int main() {
   MyWindow window;
   window.run();
 }
-</pre> </div><h2 class="groupheader">Member Function Documentation</h2>
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a9f879d75daee8046575408bfd409371a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f879d75daee8046575408bfd409371a">&#9670;&nbsp;</a></span>Window()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">agl::Window::Window </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<p>Override this class to create a custom application. The default window is sized 500x500 and draws an empty (black) scene. </p><pre class="fragment">#include "agl/window.h"
+int main() {
+  agl::Window window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af83bc964aede82c4fb09c3773eac8afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af83bc964aede82c4fb09c3773eac8afe">&#9670;&nbsp;</a></span>background()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Window::background </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>color</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the background color. </p>
+<p>This function can be called from draw and will additionally clear the color and depth buffers </p>
+
+</div>
+</div>
+<a id="a7d441a93bddc77472fdd987893e92547"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d441a93bddc77472fdd987893e92547">&#9670;&nbsp;</a></span>draw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void agl::Window::draw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Override this method to draw. </p>
+<pre class="fragment">#include "agl/window.h"
+
+using glm::vec2;
+using glm::vec3;
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.setUniform("Fog.enabled", true);
+    renderer.setUniform("Fog.color", vec3(0.9f));
+    renderer.setUniform("Fog.minDist", 5.0f);
+    renderer.setUniform("Fog.maxDist", 9.0f);
+    renderer.setUniform("Material.specular", vec3(0.0));
+    renderer.setUniform("MainTexture.enabled", true);
+    renderer.setUniform("MainTexture.tile", vec2(10.0));
+
+    renderer.loadTexture("bricks", "../textures/bricks.png", 0);
+    renderer.texture("MainTexture.texture", "bricks");
+
+    setupPerspectiveScene(vec3(0.0), vec3(10.0));
+    background(vec3(0.9f));
+  }
+
+  void draw() {
+    renderer.scale(vec3(20.0f));
+    renderer.plane();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a209448b74595e0e9b5084a0913d83315"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a209448b74595e0e9b5084a0913d83315">&#9670;&nbsp;</a></span>dt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float agl::Window::dt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the amount of time since the previous frame (in seconds) </p>
+<p>If the frame rate is 30 frames per second, dt would be approximately 1/30 = 0.033333 seconds each frame </p>
+
+</div>
+</div>
 <a id="a518b2e57b2bdf0c589b96e0c143989c0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a518b2e57b2bdf0c589b96e0c143989c0">&#9670;&nbsp;</a></span>getCameraEnabled()</h2>
 
@@ -278,6 +385,154 @@ int main() {
 
 <p>Returns true if the camera controls are active; false otherwise. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_camera.html" title="Implements orbit and pan camera movement.">Camera</a> </dd></dl>
+
+</div>
+</div>
+<a id="a45d8a8a6207565627d5d523eebb003cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45d8a8a6207565627d5d523eebb003cd">&#9670;&nbsp;</a></span>keyDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void agl::Window::keyDown </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mods</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Override this method to respond to key presses (button down) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The key, e.g. as either a constant or capital ascii letter, such as 'P'. </td></tr>
+    <tr><td class="paramname">mods</td><td>Modifiers that are pressed (e.g. shift, control, etc)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><a href="https://www.glfw.org/docs/latest/group__keys.html">https://www.glfw.org/docs/latest/group__keys.html</a> </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_window.html#a022bd571eae1add76f1f06b4e4a4e8a3" title="Override this method to respond to key presses (button up)">keyUp(int,int)</a> </dd></dl>
+
+</div>
+</div>
+<a id="a3e3d0b63688529e3d1a3fc9d7c4e1a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e3d0b63688529e3d1a3fc9d7c4e1a08">&#9670;&nbsp;</a></span>keyIsDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool agl::Window::keyIsDown </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Query whether the given key is down @key The key to test. </p>
+<p>More than one key can be pressed at once. The key can be an ascii capital letter or a GLFW constant <a href="https://www.glfw.org/docs/latest/input_guide.html">https://www.glfw.org/docs/latest/input_guide.html</a> </p>
+
+</div>
+</div>
+<a id="a022bd571eae1add76f1f06b4e4a4e8a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a022bd571eae1add76f1f06b4e4a4e8a3">&#9670;&nbsp;</a></span>keyUp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void agl::Window::keyUp </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mods</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Override this method to respond to key presses (button up) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">key</td><td>The key, e.g. as either a constant or capital ascii letter, such as 'P'. </td></tr>
+    <tr><td class="paramname">mods</td><td>Modifiers that are pressed (e.g. shift, control, etc)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><a href="https://www.glfw.org/docs/latest/group__keys.html">https://www.glfw.org/docs/latest/group__keys.html</a> </p><pre class="fragment">#include "agl/window.h"
+
+using glm::vec3;
+class MyWindow : public agl::Window {
+  void setup() {
+    setupPerspectiveScene(vec3(0.0), vec3(10.0));
+  }
+
+  void draw() {
+    renderer.scale(vec3(10.0f));
+    renderer.plane();
+  }
+
+  void keyUp(int key, int mods) {
+    if (key == 'C') {
+      std::cout &lt;&lt; "Toggle camera controls " &lt;&lt; getCameraEnabled() &lt;&lt; std::endl;
+      setCameraEnabled(!getCameraEnabled());
+    }
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_window.html#a45d8a8a6207565627d5d523eebb003cd" title="Override this method to respond to key presses (button down)">keyDown(int,int)</a> </dd>
+<dd>
+keyIsDown(int) </dd></dl>
 
 </div>
 </div>
@@ -322,6 +577,178 @@ int main() {
 </div><div class="memdoc">
 
 <p></p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_window.html#aa68800283fe7f4b40e4dfff9281c03a1" title="Initialize the projection and camera to fit the given dimensions and center using a perspective proje...">setupPerspectiveScene(const glm::vec3&amp;, const glm::vec3&amp;)</a> </dd>
+<dd>
+<a class="el" href="classagl_1_1_window.html#a7b000f1549137c994f5c7e439bf01dfa" title="Initialize the projection and camera to fit the given dimensions and center using an orthographic pro...">setupOrthoScene(const glm::vec3&amp;, const glm::vec3&amp;)</a> </dd></dl>
+
+</div>
+</div>
+<a id="a2d290b5a90b623943382da7d732eb735"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d290b5a90b623943382da7d732eb735">&#9670;&nbsp;</a></span>mouseIsDown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool agl::Window::mouseIsDown </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>button</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Query whether the given mouse button is down. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>The button to test</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>More than one button can be pressed at once. The button should be a GLFW constant, such as GLFW_MOUSE_BUTTON_LEFT <a href="https://www.glfw.org/docs/latest/input.html">https://www.glfw.org/docs/latest/input.html</a> </p>
+
+</div>
+</div>
+<a id="ad8a68f2cccd863ef7d1b466d30130c9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8a68f2cccd863ef7d1b466d30130c9d">&#9670;&nbsp;</a></span>mouseMotion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void agl::Window::mouseMotion </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Override this method to respond to mouse movement. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>The current x position (in screen coordinates, a value between 0 and width) </td></tr>
+    <tr><td class="paramname">y</td><td>The current y position (in screen coordinates, a value between 0 and height) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aeef10bec48436c43747e1210d9d89a04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeef10bec48436c43747e1210d9d89a04">&#9670;&nbsp;</a></span>mousePress()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void agl::Window::mousePress </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>button</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mods</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Override this method to respond to mouse press (button down) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>The mouse button that is pressed, e.g. GLFW_MOUSE_BUTTON_LEFT </td></tr>
+    <tr><td class="paramname">mods</td><td>Modifiers that are pressed (e.g. shift, control, etc)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><a href="https://www.glfw.org/docs/latest/input_guide.html">https://www.glfw.org/docs/latest/input_guide.html</a> </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_window.html#afdd384ff7a023c03f5d7103ea0b31053" title="Override this method to respond to mouse press (button up)">mouseRelease(int, int)</a> </dd>
+<dd>
+mouseIsDown(int) </dd></dl>
+
+</div>
+</div>
+<a id="afdd384ff7a023c03f5d7103ea0b31053"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdd384ff7a023c03f5d7103ea0b31053">&#9670;&nbsp;</a></span>mouseRelease()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void agl::Window::mouseRelease </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>button</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mods</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Override this method to respond to mouse press (button up) </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_window.html#aeef10bec48436c43747e1210d9d89a04" title="Override this method to respond to mouse press (button down)">mousePress(int, int)</a> </dd>
+<dd>
+mouseIsDown(int) </dd></dl>
 
 </div>
 </div>
@@ -398,7 +825,8 @@ int main() {
 <p>If you are using <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> from the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> class, you should call <a class="el" href="classagl_1_1_window.html#a576cd7910f689c49f58f616fdb7b5944" title="Set the current projection to an orthographic view.">Window::ortho</a> instead of this method.</p>
 <p>An orthographic projection maintains parallel lines. All objects maintain their size regardless of distance to the camera. Only objects within the extents of the orthographic cuboid volume will be drawn.</p>
 <p>The current shader should define the following uniform variables</p>
-<p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform </p>
+<p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_window.html#a7b000f1549137c994f5c7e439bf01dfa" title="Initialize the projection and camera to fit the given dimensions and center using an orthographic pro...">setupOrthoScene(const glm::vec3&amp;, const glm::vec3&amp;)</a> </dd></dl>
 
 </div>
 </div>
@@ -461,7 +889,8 @@ int main() {
 <p>If you are using <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> from the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> class, you should call <a class="el" href="classagl_1_1_window.html#a7a72080667b1f21ec89b6f8e3b99217d" title="Set the current projection to a perspective view.">Window::perspective</a> instead of this method.</p>
 <p>Perspective projections foreshorten objects should that closer objects are larger than further objects. Only objects within the view volume will be drawn. For example, objects a distance further from the <em>far</em> plane will not be visible.</p>
 <p>The current shader should define the following uniform variables</p>
-<p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform </p>
+<p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_window.html#aa68800283fe7f4b40e4dfff9281c03a1" title="Initialize the projection and camera to fit the given dimensions and center using a perspective proje...">setupPerspectiveScene(const glm::vec3&amp;, const glm::vec3&amp;)</a> </dd></dl>
 
 </div>
 </div>
@@ -480,7 +909,8 @@ int main() {
       </table>
 </div><div class="memdoc">
 
-<p>Opens the window and starts the main application loop. </p><pre class="fragment">#include "agl/window.h"
+<p>Opens the window and starts the main application loop. </p>
+<pre class="fragment">#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void setup() {
@@ -496,8 +926,7 @@ int main() {
   MyWindow window;
   window.run();
 }
-</pre><p>. </p>
-<p>This function should typically called from main after creating the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> object. This function invokes the user's setup() function and then repeatedly calls the user's draw() function. This function returns when the user closes the window (via the escape key or close menu button) </p>
+</pre><p>This function should typically called from main after creating the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> object. This function invokes the user's <a class="el" href="classagl_1_1_window.html#a784f44c53b5e22fcda1004ad9d2955f7" title="Override this method to perform setup before the main application loop.">setup()</a> function and then repeatedly calls the user's <a class="el" href="classagl_1_1_window.html#a7d441a93bddc77472fdd987893e92547" title="Override this method to draw.">draw()</a> function. This function returns when the user closes the window (via the escape key or close menu button) </p>
 
 </div>
 </div>
@@ -517,7 +946,8 @@ int main() {
       </table>
 </div><div class="memdoc">
 
-<p>Save the current screen image to a file </p><pre class="fragment">#include "agl/window.h"
+<p>Save the current screen image to a file. </p>
+<pre class="fragment">#include "agl/window.h"
 
 class MyWindow : public agl::Window {
   void setup() {
@@ -530,8 +960,7 @@ int main() {
   MyWindow window;
   window.run();
 }
-</pre><p>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+</pre> <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">filename</td><td>image file name (should be a .png file) </td></tr>
   </table>
@@ -540,6 +969,83 @@ int main() {
 <dl class="section return"><dt>Returns</dt><dd>(bool) Returns false if the image cannot be saved; true otherwise</dd></dl>
 <p>Filenames should include the png file extension. <a class="el" href="classagl_1_1_image.html" title="Implements loading, modifying, and saving RGBA images.">Image</a> with relative paths will be written relative to the directory from which you run the executable. Images are saved in RGBA format. </p>
 
+</div>
+</div>
+<a id="ab7f3507e47c1ae6fdf8c6f6e829177ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7f3507e47c1ae6fdf8c6f6e829177ba">&#9670;&nbsp;</a></span>scroll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void agl::Window::scroll </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>dx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>dy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Override this method to respond to scrolling the middle mouse button. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dx</td><td>The change in the x direction (in scroll coordinates) </td></tr>
+    <tr><td class="paramname">dy</td><td>The change in the x direction (in scroll coordinates)</td></tr>
+  </table>
+  </dd>
+</dl>
+<pre class="fragment">#include "agl/window.h"
+
+using glm::vec2;
+using glm::vec3;
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.setUniform("Fog.enabled", true);
+    renderer.setUniform("Fog.color", vec3(0.9f));
+    renderer.setUniform("Fog.minDist", 5.0f);
+    renderer.setUniform("Fog.maxDist", 9.0f);
+    renderer.setUniform("Material.specular", vec3(0.0));
+    renderer.setUniform("MainTexture.enabled", true);
+    renderer.setUniform("MainTexture.tile", vec2(10.0));
+
+    renderer.loadTexture("bricks", "../textures/bricks.png", 0);
+    renderer.texture("MainTexture.texture", "bricks");
+
+    setupPerspectiveScene(vec3(0.0), vec3(10.0));
+    background(vec3(0.9f));
+  }
+
+  void draw() {
+    renderer.scale(vec3(20.0f));
+    renderer.plane();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
 </div>
 </div>
 <a id="a2e3933fd7cf1f32ca9228106eb97f402"></a>
@@ -568,6 +1074,212 @@ int main() {
 
 <p>Set whether the window's camera controls are active. </p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_camera.html" title="Implements orbit and pan camera movement.">Camera</a> </dd></dl>
+
+</div>
+</div>
+<a id="a784f44c53b5e22fcda1004ad9d2955f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a784f44c53b5e22fcda1004ad9d2955f7">&#9670;&nbsp;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void agl::Window::setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Override this method to perform setup before the main application loop. </p>
+<p>Use this method to load textures, load meshes, set the window size, and initialize the projection and view.</p>
+<pre class="fragment">#include "agl/window.h"
+
+using glm::vec2;
+using glm::vec3;
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.setUniform("Fog.enabled", true);
+    renderer.setUniform("Fog.color", vec3(0.9f));
+    renderer.setUniform("Fog.minDist", 5.0f);
+    renderer.setUniform("Fog.maxDist", 9.0f);
+    renderer.setUniform("Material.specular", vec3(0.0));
+    renderer.setUniform("MainTexture.enabled", true);
+    renderer.setUniform("MainTexture.tile", vec2(10.0));
+
+    renderer.loadTexture("bricks", "../textures/bricks.png", 0);
+    renderer.texture("MainTexture.texture", "bricks");
+
+    setupPerspectiveScene(vec3(0.0), vec3(10.0));
+    background(vec3(0.9f));
+  }
+
+  void draw() {
+    renderer.scale(vec3(20.0f));
+    renderer.plane();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_window.html#a0b7b1fcc8eda40a5636bfa496142f9c8" title="Set the size of the window in pixels.">setWindowSize(int,int)</a> </dd>
+<dd>
+<a class="el" href="classagl_1_1_window.html#aa68800283fe7f4b40e4dfff9281c03a1" title="Initialize the projection and camera to fit the given dimensions and center using a perspective proje...">setupPerspectiveScene(const glm::vec3&amp;, const glm::vec3&amp;)</a> </dd>
+<dd>
+<a class="el" href="classagl_1_1_window.html#a7b000f1549137c994f5c7e439bf01dfa" title="Initialize the projection and camera to fit the given dimensions and center using an orthographic pro...">setupOrthoScene(const glm::vec3&amp;, const glm::vec3&amp;)</a> </dd>
+<dd>
+<a class="el" href="classagl_1_1_renderer.html#a8d56b6bdbeb5d3a4e679a3ddb899db7f" title="Load a texture from a file.">Renderer.loadTexture(const std::string&amp;, const std::string&amp;, int)</a> </dd>
+<dd>
+<a class="el" href="classagl_1_1_renderer.html#abda4b08760e08aa30afed9f8a9e5b45c" title="Load a cube map.">Renderer.loadCubemap(const std::string&amp;, const std::string&amp;, int)</a> </dd></dl>
+
+</div>
+</div>
+<a id="a7b000f1549137c994f5c7e439bf01dfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b000f1549137c994f5c7e439bf01dfa">&#9670;&nbsp;</a></span>setupOrthoScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Window::setupOrthoScene </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>center</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>dim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initialize the projection and camera to fit the given dimensions and center using an orthographic projection. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">center</td><td>The center of the scene </td></tr>
+    <tr><td class="paramname">dim</td><td>The dimension of the scene</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_window.html#a576cd7910f689c49f58f616fdb7b5944" title="Set the current projection to an orthographic view.">ortho(float, float, float, float, float, float)</a> </dd>
+<dd>
+lookAt(const glm::vec3, const glm::vec3&amp;, const glm::vec3&amp;) </dd></dl>
+
+</div>
+</div>
+<a id="aa68800283fe7f4b40e4dfff9281c03a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa68800283fe7f4b40e4dfff9281c03a1">&#9670;&nbsp;</a></span>setupPerspectiveScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Window::setupPerspectiveScene </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>center</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>dim</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initialize the projection and camera to fit the given dimensions and center using a perspective projection. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">center</td><td>The center of the scene </td></tr>
+    <tr><td class="paramname">dim</td><td>The dimension of the scene</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_window.html#a7a72080667b1f21ec89b6f8e3b99217d" title="Set the current projection to a perspective view.">perspective(float, float, float, float)</a> </dd>
+<dd>
+lookAt(const glm::vec3, const glm::vec3&amp;, const glm::vec3&amp;) </dd></dl>
+
+</div>
+</div>
+<a id="a0b7b1fcc8eda40a5636bfa496142f9c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b7b1fcc8eda40a5636bfa496142f9c8">&#9670;&nbsp;</a></span>setWindowSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Window::setWindowSize </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>w</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>h</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the size of the window in pixels. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_window.html#a3e503006b3680496fc2a31056dae0a9d" title="Return the window width in pixels.">width</a> </dd>
+<dd>
+<a class="el" href="classagl_1_1_window.html#accb878c65569507a83594a369064df36" title="Return the window height in pixels.">height</a> </dd></dl>
 
 </div>
 </div>
