@@ -17,7 +17,7 @@ class TriangleMesh {
  public:
   virtual ~TriangleMesh();
   virtual void render() const;
-  GLuint getVao() const { return _vao; }
+  GLuint vao() const { return _vao; }
   bool hasUV() const { return _hasUV; }
 
  protected:
