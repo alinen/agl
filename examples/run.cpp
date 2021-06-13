@@ -2,7 +2,7 @@
 
 class MyWindow : public agl::Window {
   void setup() {
-    setSize(200,200);
+    setWindowSize(200,200);
   }
 
   void draw() {

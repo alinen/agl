@@ -2,8 +2,8 @@
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };

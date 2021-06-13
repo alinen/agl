@@ -21,6 +21,7 @@ void TriangleMesh::initBuffers(
   }
 
   _initialized = true;
+  _hasUV = (texCoords != nullptr);
   _nVerts = (GLuint)indices->size();
 
   // From OpenGL 4.0 Shading language cookbook (David Wolf)

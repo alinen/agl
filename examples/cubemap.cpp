@@ -7,7 +7,7 @@ class MyWindow : public agl::Window
 {
   void setup() {
     renderer.loadCubemap("cubemap", "../textures/sea", 0);
-    renderer.perspective(glm::radians<float>(60.0f), 1.0f, 0.1f, 100.0f);
+    perspective(glm::radians<float>(60.0f), 1.0f, 0.1f, 100.0f);
   }  
   void draw()
   {

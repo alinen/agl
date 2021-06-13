@@ -109,6 +109,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> ()
 <tr class="memitem:a8c0597191940e74aaaeac45793615ff4 inherit pub_methods_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="a8c0597191940e74aaaeac45793615ff4"></a>
 GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>getVao</b> () const</td></tr>
 <tr class="separator:a8c0597191940e74aaaeac45793615ff4 inherit pub_methods_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19961a52e125368dbda148af1f19da03 inherit pub_methods_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="a19961a52e125368dbda148af1f19da03"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasUV</b> () const</td></tr>
+<tr class="separator:a19961a52e125368dbda148af1f19da03 inherit pub_methods_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -132,6 +135,9 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_nVerts</b> = 0</td
 <tr class="memitem:a071e0a3ef6e50f236337943789a9cf69 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="a071e0a3ef6e50f236337943789a9cf69"></a>
 GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_vao</b> = 0</td></tr>
 <tr class="separator:a071e0a3ef6e50f236337943789a9cf69 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9efdaea9d0a754ba19a38fe01e86b6a inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="af9efdaea9d0a754ba19a38fe01e86b6a"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_hasUV</b> = false</td></tr>
+<tr class="separator:af9efdaea9d0a754ba19a38fe01e86b6a inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d366fcc77b3988811274f137458ad58 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memItemLeft" align="right" valign="top"><a id="a4d366fcc77b3988811274f137458ad58"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>_initialized</b> = false</td></tr>
 <tr class="separator:a4d366fcc77b3988811274f137458ad58 inherit pro_attribs_classagl_1_1_triangle_mesh"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -190,27 +196,7 @@ std::vector&lt; GLuint &gt;&#160;</td><td class="memItemRight" valign="bottom"><
   </table>
   </dd>
 </dl>
-<p>Use the renderer to draw a torus with default settings. Create a new torus to create torus with different settings. </p><pre class="fragment">#include "agl/window.h"
-#include "agl/mesh/torus.h"
-
-using agl::Torus;
-using glm::vec3;
-
-class MyWindow : public agl::Window {
- public:
-  void draw() {
-    renderer.rotate(elapsedTime(), vec3(1, 1, 0));
-    renderer.mesh(_fatTorus);
-  }
-
-  Torus _fatTorus = Torus(0.45, 0.5, 20, 20);
-};
-
-int main() {
-  MyWindow window;
-  window.run();
-}
-</pre> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#acf67c53f8f33a8f7fd0e1082781607e9" title="Draws a torus.">Renderer::torus()</a> </dd></dl>
+<p>Use the renderer to draw a torus with default settings. Create a new torus to create torus with different settings. </p><pre class="fragment"></pre> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#acf67c53f8f33a8f7fd0e1082781607e9" title="Draws a torus.">Renderer::torus()</a> </dd></dl>
 
 </div>
 </div>

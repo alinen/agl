@@ -114,7 +114,7 @@ int main() {
 
 class MyWindow : public agl::Window {
   void setup() {
-    setSize(200,200);
+    setWindowSize(200,200);
   }
 
   void draw() {
@@ -201,18 +201,42 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>height</b> () const<
 <tr class="memitem:a3e503006b3680496fc2a31056dae0a9d"><td class="memItemLeft" align="right" valign="top"><a id="a3e503006b3680496fc2a31056dae0a9d"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>width</b> () const</td></tr>
 <tr class="separator:a3e503006b3680496fc2a31056dae0a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f0da02c1b44582e174704d703fa2044"><td class="memItemLeft" align="right" valign="top"><a id="a1f0da02c1b44582e174704d703fa2044"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setSize</b> (int w, int h)</td></tr>
-<tr class="separator:a1f0da02c1b44582e174704d703fa2044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af83bc964aede82c4fb09c3773eac8afe"><td class="memItemLeft" align="right" valign="top"><a id="af83bc964aede82c4fb09c3773eac8afe"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>background</b> (const glm::vec3 &amp;color)</td></tr>
 <tr class="separator:af83bc964aede82c4fb09c3773eac8afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Projections and view</div></td></tr>
+<tr class="memitem:a0b7b1fcc8eda40a5636bfa496142f9c8"><td class="memItemLeft" align="right" valign="top"><a id="a0b7b1fcc8eda40a5636bfa496142f9c8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setWindowSize</b> (int w, int h)</td></tr>
+<tr class="separator:a0b7b1fcc8eda40a5636bfa496142f9c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b000f1549137c994f5c7e439bf01dfa"><td class="memItemLeft" align="right" valign="top"><a id="a7b000f1549137c994f5c7e439bf01dfa"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setupOrthoScene</b> (const glm::vec3 &amp;center, const glm::vec3 &amp;dim)</td></tr>
+<tr class="separator:a7b000f1549137c994f5c7e439bf01dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa68800283fe7f4b40e4dfff9281c03a1"><td class="memItemLeft" align="right" valign="top"><a id="aa68800283fe7f4b40e4dfff9281c03a1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setupPerspectiveScene</b> (const glm::vec3 &amp;center, const glm::vec3 &amp;dim)</td></tr>
+<tr class="separator:aa68800283fe7f4b40e4dfff9281c03a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb94594629d3fc1a971eeb86305fc537"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#abb94594629d3fc1a971eeb86305fc537">lookAt</a> (const glm::vec3 &amp;camPos, const glm::vec3 &amp;camLook, const glm::vec3 &amp;up=glm::vec3(0, 1, 0))</td></tr>
+<tr class="separator:abb94594629d3fc1a971eeb86305fc537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a72080667b1f21ec89b6f8e3b99217d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a7a72080667b1f21ec89b6f8e3b99217d">perspective</a> (float fovRadians, float aspect, float near, float far)</td></tr>
+<tr class="memdesc:a7a72080667b1f21ec89b6f8e3b99217d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current projection to a perspective view.  <a href="classagl_1_1_window.html#a7a72080667b1f21ec89b6f8e3b99217d">More...</a><br /></td></tr>
+<tr class="separator:a7a72080667b1f21ec89b6f8e3b99217d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a576cd7910f689c49f58f616fdb7b5944"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a576cd7910f689c49f58f616fdb7b5944">ortho</a> (float minx, float maxx, float miny, float maxy, float minz, float maxz)</td></tr>
+<tr class="memdesc:a576cd7910f689c49f58f616fdb7b5944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the current projection to an orthographic view.  <a href="classagl_1_1_window.html#a576cd7910f689c49f58f616fdb7b5944">More...</a><br /></td></tr>
+<tr class="separator:a576cd7910f689c49f58f616fdb7b5944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a518b2e57b2bdf0c589b96e0c143989c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a518b2e57b2bdf0c589b96e0c143989c0">getCameraEnabled</a> () const</td></tr>
+<tr class="memdesc:a518b2e57b2bdf0c589b96e0c143989c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the camera controls are active; false otherwise.  <a href="classagl_1_1_window.html#a518b2e57b2bdf0c589b96e0c143989c0">More...</a><br /></td></tr>
+<tr class="separator:a518b2e57b2bdf0c589b96e0c143989c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e3933fd7cf1f32ca9228106eb97f402"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_window.html#a2e3933fd7cf1f32ca9228106eb97f402">setCameraEnabled</a> (bool on)</td></tr>
+<tr class="memdesc:a2e3933fd7cf1f32ca9228106eb97f402"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set whether the window's camera controls are active.  <a href="classagl_1_1_window.html#a2e3933fd7cf1f32ca9228106eb97f402">More...</a><br /></td></tr>
+<tr class="separator:a2e3933fd7cf1f32ca9228106eb97f402"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a593c28c3c22169f861c99cf84adb4e9c"><td class="memItemLeft" align="right" valign="top"><a id="a593c28c3c22169f861c99cf84adb4e9c"></a>
 <a class="el" href="classagl_1_1_renderer.html">Renderer</a>&#160;</td><td class="memItemRight" valign="bottom"><b>renderer</b></td></tr>
 <tr class="separator:a593c28c3c22169f861c99cf84adb4e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25cf5d274bf5652043fbc37f5562e3ad"><td class="memItemLeft" align="right" valign="top"><a id="a25cf5d274bf5652043fbc37f5562e3ad"></a>
+<a class="el" href="classagl_1_1_camera.html">Camera</a>&#160;</td><td class="memItemRight" valign="bottom"><b>camera</b></td></tr>
+<tr class="separator:a25cf5d274bf5652043fbc37f5562e3ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages the window and user input. </p>
@@ -229,6 +253,218 @@ int main() {
   window.run();
 }
 </pre> </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a518b2e57b2bdf0c589b96e0c143989c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a518b2e57b2bdf0c589b96e0c143989c0">&#9670;&nbsp;</a></span>getCameraEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool agl::Window::getCameraEnabled </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns true if the camera controls are active; false otherwise. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_camera.html" title="Implements orbit and pan camera movement.">Camera</a> </dd></dl>
+
+</div>
+</div>
+<a id="abb94594629d3fc1a971eeb86305fc537"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb94594629d3fc1a971eeb86305fc537">&#9670;&nbsp;</a></span>lookAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Window::lookAt </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>camPos</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>camLook</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>up</em> = <code>glm::vec3(0,&#160;1,&#160;0)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p></p>
+
+</div>
+</div>
+<a id="a576cd7910f689c49f58f616fdb7b5944"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a576cd7910f689c49f58f616fdb7b5944">&#9670;&nbsp;</a></span>ortho()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Window::ortho </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>minx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>miny</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>minz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>maxz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the current projection to an orthographic view. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minx</td><td>The left side of the projection </td></tr>
+    <tr><td class="paramname">maxx</td><td>The right side of the projection </td></tr>
+    <tr><td class="paramname">miny</td><td>The bottom side of the projection </td></tr>
+    <tr><td class="paramname">maxy</td><td>The top side of the projection </td></tr>
+    <tr><td class="paramname">minz</td><td>The back side of the projection </td></tr>
+    <tr><td class="paramname">maxz</td><td>The front side of the projection</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>If you are using <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> from the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> class, you should call <a class="el" href="classagl_1_1_window.html#a576cd7910f689c49f58f616fdb7b5944" title="Set the current projection to an orthographic view.">Window::ortho</a> instead of this method.</p>
+<p>An orthographic projection maintains parallel lines. All objects maintain their size regardless of distance to the camera. Only objects within the extents of the orthographic cuboid volume will be drawn.</p>
+<p>The current shader should define the following uniform variables</p>
+<p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform </p>
+
+</div>
+</div>
+<a id="a7a72080667b1f21ec89b6f8e3b99217d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a72080667b1f21ec89b6f8e3b99217d">&#9670;&nbsp;</a></span>perspective()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Window::perspective </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fovRadians</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>aspect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>near</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>far</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the current projection to a perspective view. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fovRadians</td><td>The field of view </td></tr>
+    <tr><td class="paramname">aspect</td><td>The aspect ratio (width divided by height) of the screen </td></tr>
+    <tr><td class="paramname">near</td><td>The distance to the near plane from the camera </td></tr>
+    <tr><td class="paramname">far</td><td>The distance to the far plane from the camera</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>If you are using <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> from the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> class, you should call <a class="el" href="classagl_1_1_window.html#a7a72080667b1f21ec89b6f8e3b99217d" title="Set the current projection to a perspective view.">Window::perspective</a> instead of this method.</p>
+<p>Perspective projections foreshorten objects should that closer objects are larger than further objects. Only objects within the view volume will be drawn. For example, objects a distance further from the <em>far</em> plane will not be visible.</p>
+<p>The current shader should define the following uniform variables</p>
+<p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform </p>
+
+</div>
+</div>
 <a id="a515991f708f8a46ef51cc1c4569e7f63"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a515991f708f8a46ef51cc1c4569e7f63">&#9670;&nbsp;</a></span>run()</h2>
 
@@ -248,7 +484,7 @@ int main() {
 
 class MyWindow : public agl::Window {
   void setup() {
-    setSize(200,200);
+    setWindowSize(200,200);
   }
 
   void draw() {
@@ -303,6 +539,35 @@ int main() {
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>(bool) Returns false if the image cannot be saved; true otherwise</dd></dl>
 <p>Filenames should include the png file extension. <a class="el" href="classagl_1_1_image.html" title="Implements loading, modifying, and saving RGBA images.">Image</a> with relative paths will be written relative to the directory from which you run the executable. Images are saved in RGBA format. </p>
+
+</div>
+</div>
+<a id="a2e3933fd7cf1f32ca9228106eb97f402"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e3933fd7cf1f32ca9228106eb97f402">&#9670;&nbsp;</a></span>setCameraEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Window::setCameraEnabled </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>on</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set whether the window's camera controls are active. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_camera.html" title="Implements orbit and pan camera movement.">Camera</a> </dd></dl>
 
 </div>
 </div>

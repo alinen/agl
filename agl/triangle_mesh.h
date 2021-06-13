@@ -18,10 +18,12 @@ class TriangleMesh {
   virtual ~TriangleMesh();
   virtual void render() const;
   GLuint getVao() const { return _vao; }
+  bool hasUV() const { return _hasUV; }
 
  protected:
   GLuint _nVerts = 0;    // Number of vertices
   GLuint _vao = 0;       // The Vertex Array Object
+  bool _hasUV = false;
   bool _initialized = false;
 
   // Vertex buffers

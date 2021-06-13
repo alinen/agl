@@ -14,10 +14,10 @@ namespace agl {
 
 /**
  * @brief Manages the window and user input.
- * 
+ *
  * Override this class to create a custom application.
  * @verbinclude sphere.cpp
- */ 
+ */
 class Window {
  public:
   /**
@@ -34,19 +34,19 @@ class Window {
    * @verbinclude run.cpp
    *
    * This function should typically called from main after creating the Window
-   * object. This function invokes the user's setup() function and then 
-   * repeatedly calls the user's draw() function. This function returns when 
+   * object. This function invokes the user's setup() function and then
+   * repeatedly calls the user's draw() function. This function returns when
    * the user closes the window (via the escape key or close menu button)
    */
   void run();
 
   /**
-   * @brief Save the current screen image to a file 
+   * @brief Save the current screen image to a file
    * @verbinclude screenshot.cpp
    * @param filename image file name (should be a .png file)
    * @return (bool) Returns false if the image cannot be saved; true otherwise
    *
-   * Filenames should include the png file extension. 
+   * Filenames should include the png file extension.
    * Image with relative paths will be written relative to the directory
    * from which you run the executable. Images are saved in RGBA format.
    */
@@ -76,8 +76,46 @@ class Window {
   float elapsedTime() const;  // amount of time since start (can be reset)
   float height() const;
   float width() const;
-  void setSize(int w, int h);
   void background(const glm::vec3& color);
+
+  /** @name Projections and view
+   */
+  ///@{
+  void setWindowSize(int w, int h);
+  void setupOrthoScene(const glm::vec3& center, const glm::vec3& dim);
+  void setupPerspectiveScene(const glm::vec3& center, const glm::vec3& dim);
+
+  /**
+   * @copydoc Renderer::lookAt(
+   *     const glm::vec3&, const glm::vec&, const glm::vec3&)
+   */
+  void lookAt(const glm::vec3& camPos,
+              const glm::vec3& camLook,
+              const glm::vec3& up = glm::vec3(0, 1, 0));
+
+  /**
+   * @copydoc Renderer::perspective(float, float, float, float)
+   */
+  void perspective(float fovRadians, float aspect, float near, float far);
+
+  /**
+   * @copydoc Renderer::ortho(float, float, float, float, float, float)
+   */
+  void ortho(float minx, float maxx,
+      float miny, float maxy, float minz, float maxz);
+
+  /**
+   * @brief Returns true if the camera controls are active; false otherwise
+   * @see Camera
+   */
+  inline bool getCameraEnabled() const { return _cameraEnabled; }
+
+  /**
+   * @brief Set whether the window's camera controls are active
+   * @see Camera
+   */
+  inline void setCameraEnabled(bool on) { _cameraEnabled = on; }
+  ///@}
 
  private:
   void init();
@@ -97,13 +135,15 @@ class Window {
 
  protected:
   Renderer renderer;
+  Camera camera;
 
  private:
-  int windowWidth_, windowHeight_;
-  float elapsedTime_;
-  float dt_;
-  Camera _camera;
-  struct GLFWwindow* window_ = 0;
+  int _windowWidth, _windowHeight;
+  float _elapsedTime;
+  float _dt;
+  bool _cameraEnabled;
+  glm::vec3 _backgroundColor;
+  struct GLFWwindow* _window = 0;
 };
 
 }  // namespace agl

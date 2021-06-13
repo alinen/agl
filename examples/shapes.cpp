@@ -4,8 +4,7 @@ using glm::vec3;
 
 class MyWindow : public agl::Window {
   void setup() {
-    renderer.perspective(glm::radians(30.0f), 1.0f, 0.1f, 100.0f);
-    renderer.lookAt(vec3(0,0,5), vec3(0,0,0));
+    setupPerspectiveScene(vec3(0.0), vec3(5));
   }
 
   void draw() {

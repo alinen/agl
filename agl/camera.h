@@ -9,6 +9,12 @@ namespace agl {
 
 /**
  * @brief Implements orbit and pan camera movement
+ * 
+ * Default controls
+ * * Click-drag the left mouse button to orbit
+ * * Click-drag the middle mouse button to zoom
+ * * Click-drag the right mouse button to pan
+ * * Press spacebar to reset the view
  */
 class Camera {
  public:
@@ -23,10 +29,9 @@ class Camera {
                    const glm::vec3& look = glm::vec3(0, 0, 0),
                    const glm::vec3& up = glm::vec3(0, 1, 0));
 
-  // Set camera parameters to fit the given view volume
-  virtual void frameVolume(const glm::vec3& pos, const glm::vec3& dim);
-
-  // Get camera state
+  /** @name Camera state
+   */
+  ///@{
   virtual const glm::mat4& viewMatrix() const;
   virtual const glm::vec3& position() const;
   virtual const glm::vec3& look() const;
@@ -35,14 +40,20 @@ class Camera {
   virtual const glm::vec3& right() const;
   virtual float heading() const;
   virtual float pitch() const;
+  ///@}
 
-  // Respond to user input
+  /** @name Respond to user input 
+   */
+  ///@{
   void onMouseMotion(int x, int y);  // x and y in screen coords
   void onMouseButton(int button, int state, int x, int y);
   void onKeyboard(int key, int scancode, int action, int mods);
   void onScroll(float dx, float dy);
+  ///@}
 
-  // Relative movement commands
+  /** @name Relative movement commands
+   */
+  ///@{
   void moveLeft(float scale = 1.0);
   void moveRight(float scale = 1.0);
   void moveUp(float scale = 1.0);
@@ -65,6 +76,7 @@ class Camera {
 
   void setMoveSpeed(float rate);
   float moveSpeed() const;
+  ///@}
 
  protected:
   virtual void turn(glm::vec3* v, glm::vec3* n, float amount);

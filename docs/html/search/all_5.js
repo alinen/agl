@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['loadcubemap_19',['loadCubemap',['../classagl_1_1_renderer.html#abda4b08760e08aa30afed9f8a9e5b45c',1,'agl::Renderer::loadCubemap(const std::string &amp;name, const std::string &amp;dir, int slot)'],['../classagl_1_1_renderer.html#a25df953af2c8b6a9c5c53c157022f2f3',1,'agl::Renderer::loadCubemap(const std::string &amp;name, const std::vector&lt; std::string &gt; &amp;names, int slot)'],['../classagl_1_1_renderer.html#af87fda1afd7cdb18daa4043e155c2e12',1,'agl::Renderer::loadCubemap(const std::string &amp;name, const std::vector&lt; Image &gt; &amp;images, int slot)']]],
-  ['loadshader_20',['loadShader',['../classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8',1,'agl::Renderer']]],
-  ['loadtexture_21',['loadTexture',['../classagl_1_1_renderer.html#a8d56b6bdbeb5d3a4e679a3ddb899db7f',1,'agl::Renderer::loadTexture(const std::string &amp;name, const std::string &amp;filename, int slot)'],['../classagl_1_1_renderer.html#a50067c8743a6f0a672ed666bf3b28af7',1,'agl::Renderer::loadTexture(const std::string &amp;name, const Image &amp;img, int slot)']]],
-  ['lookat_22',['lookAt',['../classagl_1_1_renderer.html#a6ec93bbf6fc34ba1692331218fd1c104',1,'agl::Renderer']]]
+  ['image_17',['Image',['../classagl_1_1_image.html',1,'agl']]],
+  ['init_18',['init',['../classagl_1_1_renderer.html#af59f739bbc2ae0747eb724ca98fc2f75',1,'agl::Renderer']]],
+  ['initialized_19',['initialized',['../classagl_1_1_renderer.html#acfbb2d42960b288878ebf394f9e65770',1,'agl::Renderer']]]
 ];

@@ -21,7 +21,7 @@ Camera::Camera() :
   mEye(0.0, 2.0, 2.5),
   mLook(0.0, 0.0, 0.0),
   mUp(0.0, 1.0, 0.0),
-  mHeading(-0.85),
+  mHeading(0.0),
   mPitch(0.0),
   mRadius(0.0) {
   set(mEye, mLook, mUp);
@@ -72,6 +72,9 @@ void Camera::set(const vec3& eyepos, const vec3& look, const vec3& up) {
   mResetUp = up;
 
   _set(eyepos, look, up);
+
+  mPitch = atan2(-mN[1], -mN[2]);
+  mHeading = atan2(-mN[2], -mN[0]);
 }
 
 void Camera::_set(const vec3& eyepos, const vec3& look, const vec3& up) {
@@ -93,7 +96,9 @@ void Camera::print() {
   std::cout << "RIGHT: " << mV << std::endl;
   std::cout << "UP: " << mU << std::endl;
   std::cout << "N: " << mN << std::endl;
-  std::cout << "RIGHT-----------------------\n";
+  std::cout << "Pitch: " << mPitch << std::endl;
+  std::cout << "Heading: " << mHeading << std::endl;
+  std::cout << "-----------------------\n";
 }
 
 void Camera::move(float dV, float dU, float dN) {
@@ -267,38 +272,5 @@ void Camera::onKeyboard(int pKey, int scancode, int action, int mods) {
   if (pKey == ' ') {
     reset();
   }
-  // AN TODO frameVolume(vec3(0.0), vec3(100,200,100));
 }
-
-void Camera::frameVolume(const vec3& pos, const vec3& dim) {
-  double w = dim[0];
-  double h = dim[1];
-  double d = dim[2];
-  double vfov = 60.0;
-  double angle = 0.5 * vfov * M_PI / 180.0;
-  double dist;
-  if (d > h) {
-    mUp = vec3(0, 0.0, 1.0);
-    if (w > d) {
-      dist = w*0.5 / tan(angle);  // aspect is 1, so i can do this
-    } else {
-      dist = d*0.5 / tan(angle);
-    }
-    mEye = mEye + pos;
-    mLook = pos + vec3(0, 0.0, d*0.75);
-
-  } else {
-    mUp = vec3(0, 1.0, 0.0);
-    if (w > h) {
-      dist = w*0.5 / tan(angle);  // aspect is 1, so i can do this
-    } else {
-      dist = h*0.5 / tan(angle);
-    }
-    mEye = vec3(-(dist + d), h*0.1, (dist + d));
-    mEye = mEye + pos;
-    mLook = pos + vec3(0, h*0.5, 0);
-  }
-  set(mEye, mLook, mUp);
-}
-
 }  // namespace agl

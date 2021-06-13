@@ -281,8 +281,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Usage </p><div class="fragment"><div class="line"><a class="code" href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">beginShader</a>(<span class="stringliteral">&quot;myShader&quot;</span>);</div>
 <div class="line"><span class="comment">// draw primitives</span></div>
 <div class="line"><a class="code" href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">endShader</a>();</div>
-<div class="ttc" id="aclassagl_1_1_renderer_html_a219ab8aaf5d0bb109bbd1bbbf567f78d"><div class="ttname"><a href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">agl::Renderer::beginShader</a></div><div class="ttdeci">void beginShader(const std::string &amp;shaderName)</div><div class="ttdoc">Set active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:300</div></div>
-<div class="ttc" id="aclassagl_1_1_renderer_html_a21af4885a9fe659b6515e07bee758374"><div class="ttname"><a href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">agl::Renderer::endShader</a></div><div class="ttdeci">void endShader()</div><div class="ttdoc">Clear active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:308</div></div>
+<div class="ttc" id="aclassagl_1_1_renderer_html_a219ab8aaf5d0bb109bbd1bbbf567f78d"><div class="ttname"><a href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">agl::Renderer::beginShader</a></div><div class="ttdeci">void beginShader(const std::string &amp;shaderName)</div><div class="ttdoc">Set active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:312</div></div>
+<div class="ttc" id="aclassagl_1_1_renderer_html_a21af4885a9fe659b6515e07bee758374"><div class="ttname"><a href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">agl::Renderer::endShader</a></div><div class="ttdeci">void endShader()</div><div class="ttdoc">Clear active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:320</div></div>
 </div><!-- fragment --> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8" title="Load a GLSL shader from files.">loadShader</a> </dd></dl>
 
 </div>
@@ -501,7 +501,7 @@ class MyWindow : public agl::Window
 {
   void setup() {
     renderer.loadCubemap("cubemap", "../textures/sea", 0);
-    renderer.perspective(glm::radians&lt;float&gt;(60.0f), 1.0f, 0.1f, 100.0f);
+    perspective(glm::radians&lt;float&gt;(60.0f), 1.0f, 0.1f, 100.0f);
   }  
   void draw()
   {
@@ -730,6 +730,7 @@ int main() {
   </table>
   </dd>
 </dl>
+<p>If you are using <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> from the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> class, you should call <a class="el" href="classagl_1_1_window.html#abb94594629d3fc1a971eeb86305fc537">Window::lookAt</a> instead of this method.</p>
 <p>The current shader should define the following uniform variables</p>
 <ul>
 <li><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform</li>
@@ -822,8 +823,9 @@ int main() {
   </table>
   </dd>
 </dl>
+<p>If you are using <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> from the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> class, you should call <a class="el" href="classagl_1_1_window.html#a576cd7910f689c49f58f616fdb7b5944" title="Set the current projection to an orthographic view.">Window::ortho</a> instead of this method.</p>
 <p>An orthographic projection maintains parallel lines. All objects maintain their size regardless of distance to the camera. Only objects within the extents of the orthographic cuboid volume will be drawn.</p>
-<p>The current * shader should define the following uniform variables</p>
+<p>The current shader should define the following uniform variables</p>
 <p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform </p>
 
 </div>
@@ -876,6 +878,7 @@ int main() {
   </table>
   </dd>
 </dl>
+<p>If you are using <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> from the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> class, you should call <a class="el" href="classagl_1_1_window.html#a7a72080667b1f21ec89b6f8e3b99217d" title="Set the current projection to a perspective view.">Window::perspective</a> instead of this method.</p>
 <p>Perspective projections foreshorten objects should that closer objects are larger than further objects. Only objects within the view volume will be drawn. For example, objects a distance further from the <em>far</em> plane will not be visible.</p>
 <p>The current shader should define the following uniform variables</p>
 <p><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform </p>
@@ -914,8 +917,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };
@@ -959,8 +962,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };
@@ -1004,8 +1007,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };
@@ -1049,8 +1052,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };
@@ -1094,8 +1097,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };
@@ -1139,8 +1142,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };
@@ -1184,8 +1187,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };
@@ -1241,8 +1244,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };
@@ -1304,8 +1307,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };
@@ -1349,8 +1352,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };
@@ -1394,8 +1397,8 @@ int main() {
 
 class MyWindow : public agl::Window {
   void draw() {
-    // Set diffuse color in shaders/phong.fs to red
-    renderer.setUniform("Material.diffuse", glm::vec3(1,0,0));
+    // Set diffuse color in shaders/phong.fs to blue
+    renderer.setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
     renderer.sphere();
   }
 };
@@ -1433,7 +1436,7 @@ class MyWindow : public agl::Window
 {
   void setup() {
     renderer.loadCubemap("cubemap", "../textures/sea", 0);
-    renderer.perspective(glm::radians&lt;float&gt;(60.0f), 1.0f, 0.1f, 100.0f);
+    perspective(glm::radians&lt;float&gt;(60.0f), 1.0f, 0.1f, 100.0f);
   }  
   void draw()
   {

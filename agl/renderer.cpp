@@ -16,6 +16,7 @@
 
 namespace agl {
 
+using glm::vec2;
 using glm::vec3;
 using glm::vec4;
 using glm::mat4;
@@ -96,12 +97,12 @@ void Renderer::init() {
 
   _cube = new Cube(1.0f);
   _cone = new Cylinder(1.0f, 0.01, 1, 8);
-  _capsule = new Capsule(0.25, 0.5, 20, 20);
-  _cylinder = new Cylinder(1.0, 1.0, 8.0);
+  _capsule = new Capsule(0.25, 0.5, 40, 40);
+  _cylinder = new Cylinder(1.0, 1.0, 40.0);
   _teapot = new Teapot(13, mat4(1.0));
-  _torus = new Torus(0.5, 0.25, 20, 20);
+  _torus = new Torus(0.5, 0.25, 40, 40);
   _plane = new Plane(1.0, 1.0, 1.0, 1.0);
-  _sphere = new Sphere(0.5f, 20, 20);
+  _sphere = new Sphere(0.5f, 40, 40);
   _skybox = new SkyBox(1);
   _trs = mat4(1.0);
   _initialized = true;
@@ -116,11 +117,21 @@ void Renderer::initMesh() {
   beginShader("phong");
   setUniform("Gamma", 0.8f);
   setUniform("Material.specular", 1.0f, 1.0f, 1.0f);
-  setUniform("Material.diffuse", 0.4f, 0.6f, 1.0f);
+  setUniform("Material.diffuse", 1.0f, 1.0f, 1.0f);
   setUniform("Material.ambient", 0.1f, 0.1f, 0.1f);
   setUniform("Material.shininess", 80.0f);
   setUniform("Light.position", 100.0f, 100.0f, 100.0f, 1.0f);
   setUniform("Light.color", 1.0f, 1.0f, 1.0f);
+  setUniform("Fog.enabled", false);
+  setUniform("HasUV", false);
+
+  setUniform("MainTexture.enabled", false);
+  setUniform("MainTexture.offset", vec2(0.0f));
+  setUniform("MainTexture.tile", vec2(1.0f));
+
+  setUniform("DetailTexture.enabled", false);
+  setUniform("DetailTexture.offset", vec2(0.0f));
+  setUniform("DetailTexture.tile", vec2(1.0f));
   endShader();
 }
 
@@ -293,6 +304,7 @@ void Renderer::mesh(const TriangleMesh& mesh) {
   setUniform("MVP", mvp);
   setUniform("ModelViewMatrix", mv);
   setUniform("NormalMatrix", nmv);
+  setUniform("HasUV", mesh.hasUV());
 
   mesh.render();
 }

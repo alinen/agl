@@ -21,10 +21,12 @@ static void error_callback(int error, const char* description) {
 }
 
 Window::Window() :
-  windowWidth_(500),
-  windowHeight_(500),
-  elapsedTime_(0.0),
-  dt_(-1.0) {
+  _windowWidth(500),
+  _windowHeight(500),
+  _backgroundColor(0.0f),
+  _elapsedTime(0.0),
+  _cameraEnabled(true),
+  _dt(-1.0) {
   init();
 }
 
@@ -34,28 +36,98 @@ Window::~Window() {
 }
 
 void Window::background(const vec3& color) {
-  glClearColor(color[0], color[1], color[2], 1.0f);
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  if (glm::any(glm::epsilonNotEqual(_backgroundColor, color, 0.0001f))) {
+    _backgroundColor = color;
+    glClearColor(color[0], color[1], color[2], 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  }
+}
+
+void Window::setupOrthoScene(const vec3& center, const vec3& dim) {
+  vec3 minCorner = center - 0.5f * dim;
+  vec3 maxCorner = center + 0.5f * dim;
+  ortho(minCorner.x, maxCorner.x,
+        minCorner.y, maxCorner.y,
+        minCorner.z, maxCorner.z);
+
+  vec3 offset(0, 0.25f * dim.y, 0.25f * dim.z);
+  lookAt(center - offset, center);
+}
+
+void Window::setupPerspectiveScene(const vec3& center, const vec3& dim) {
+  float w = dim[0];
+  float h = dim[1];
+  float d = dim[2];
+  float vfov = glm::radians(60.0);
+  float angle = 0.5f * vfov;
+  float aspect = _windowWidth / _windowHeight;
+  float dist;
+  vec3 up, eye, look;
+
+  if (d > h) {
+    up = vec3(0, 0.0, 1.0);
+    if (w > d) {
+      dist = w*0.5 / tan(angle);
+    } else {
+      dist = d*aspect*0.5 / tan(angle);
+    }
+    eye = 0.5f * vec3(-dist, dist, h);
+    eye = eye + center;
+    look = center;
+
+  } else {
+    up = vec3(0, 1.0, 0.0);
+    if (w > h) {
+      dist = w*0.5 / tan(angle);
+    } else {
+      dist = h*aspect*0.5 / tan(angle);
+    }
+    eye = 0.5f * vec3(-dist, h, dist);
+    eye = center + eye;
+    look = center;
+  }
+  float far = std::max(std::max(w, h), d) * 2;
+  perspective(vfov, aspect, far * 0.01f, far);
+  lookAt(eye, look, up);
+}
+
+void Window::ortho(float minx, float maxx,
+    float miny, float maxy, float minz, float maxz) {
+  renderer.ortho(minx, maxx, miny, maxy, minz, maxz);
+}
+
+void Window::perspective(float fovRadians, float aspect,
+    float near, float far) {
+  renderer.perspective(fovRadians, aspect, near, far);
+}
+
+void Window::lookAt(const glm::vec3& camPos,
+    const glm::vec3& camLook, const glm::vec3& up) {
+  renderer.lookAt(camPos, camLook, up);
+  camera.set(camPos, camLook, up);
 }
 
 void Window::run() {
-  if (!window_) return;  // window wasn't initialized
+  if (!_window) return;  // window wasn't initialized
 
   background(vec3(0));
   setup();
 
-  while (!glfwWindowShouldClose(window_)) {
+  while (!glfwWindowShouldClose(_window)) {
     float time = glfwGetTime();
-    dt_ = time - elapsedTime_;
-    elapsedTime_ = time;
+    _dt = time - _elapsedTime;
+    _elapsedTime = time;
 
-    background(vec3(0));
-    renderer.lookAt(_camera.position(), _camera.look(), _camera.up());
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    if (getCameraEnabled()) {
+      renderer.lookAt(camera.position(), camera.look(), camera.up());
+    }
     renderer.identity();
 
     draw();  // user function
 
-    glfwSwapBuffers(window_);
+    glfwSwapBuffers(_window);
     glfwPollEvents();
   }
 }
@@ -90,46 +162,46 @@ bool Window::screenshot(const std::string& filename) {
 }
 
 float Window::height() const {
-  return static_cast<float>(windowHeight_);
+  return static_cast<float>(_windowHeight);
 }
 
 float Window::width() const {
-  return static_cast<float>(windowWidth_);
+  return static_cast<float>(_windowWidth);
 }
 
 float Window::dt() const {
-  return dt_;
+  return _dt;
 }
 
 float Window::elapsedTime() const {
-  return elapsedTime_;
+  return _elapsedTime;
 }
 
 int Window::mouseX() const {
   double xpos, ypos;
-  glfwGetCursorPos(window_, &xpos, &ypos);
+  glfwGetCursorPos(_window, &xpos, &ypos);
   return xpos;
 }
 
 int Window::mouseY() const {
   double xpos, ypos;
-  glfwGetCursorPos(window_, &xpos, &ypos);
+  glfwGetCursorPos(_window, &xpos, &ypos);
   return ypos;
 }
 
 bool Window::keyIsDown(int key) const {
-  int state = glfwGetKey(window_, key);
+  int state = glfwGetKey(_window, key);
   return (state == GLFW_PRESS);
 }
 
 bool Window::mouseIsDown(int button) const {
-  int state = glfwGetMouseButton(window_, button);
+  int state = glfwGetMouseButton(_window, button);
   return (state == GLFW_PRESS);
 }
 
-void Window::setSize(int w, int h) {
-  if (windowWidth_ == w && windowHeight_ == h) return;
-  glfwSetWindowSize(window_, w, h);
+void Window::setWindowSize(int w, int h) {
+  if (_windowWidth == w && _windowHeight == h) return;
+  glfwSetWindowSize(_window, w, h);
 }
 
 void Window::init() {
@@ -148,30 +220,28 @@ void Window::init() {
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-  window_ = glfwCreateWindow(windowWidth_, windowHeight_, "AGL Window", 0, 0);
-  if (!window_) {
+  _window = glfwCreateWindow(_windowWidth, _windowHeight, "AGL Window", 0, 0);
+  if (!_window) {
     fprintf(stderr, "ERROR: Cannot initialize GLFW window\n");
     glfwTerminate();
     return;
   }
 
-  glfwMakeContextCurrent(window_);
-  glfwSetKeyCallback(window_, Window::onKeyboardCb);
-  glfwSetFramebufferSizeCallback(window_, Window::onResizeCb);
-  glfwSetMouseButtonCallback(window_, Window::onMouseButtonCb);
-  glfwSetCursorPosCallback(window_, Window::onMouseMotionCb);
-  glfwSetScrollCallback(window_, Window::onScrollCb);
+  glfwMakeContextCurrent(_window);
+  glfwSetKeyCallback(_window, Window::onKeyboardCb);
+  glfwSetFramebufferSizeCallback(_window, Window::onResizeCb);
+  glfwSetMouseButtonCallback(_window, Window::onMouseButtonCb);
+  glfwSetCursorPosCallback(_window, Window::onMouseMotionCb);
+  glfwSetScrollCallback(_window, Window::onScrollCb);
 
   // check that os doesn't override window size
   int width, height;
-  glfwGetFramebufferSize(window_, &width, &height);
+  glfwGetFramebufferSize(_window, &width, &height);
   onResize(width, height);
 
-  // Initialize openGL
+  // Initialize openGL and set default values
   renderer.init();
-
-  // ASN TODO: Init based on volume size
-  _camera.set(vec3(0.0, 0.0, 2.0), vec3(0.0));
+  camera.set(vec3(0.0, 0.0, 2.0), vec3(0.0));
 }
 
 void Window::onMouseMotionCb(GLFWwindow* win, double pX, double pY) {
@@ -179,7 +249,9 @@ void Window::onMouseMotionCb(GLFWwindow* win, double pX, double pY) {
 }
 
 void Window::onMouseMotion(int pX, int pY) {
-  _camera.onMouseMotion(pX, pY);
+  if (getCameraEnabled()) {
+    camera.onMouseMotion(pX, pY);
+  }
   mouseMotion(pX, pY);  // user hook
 }
 
@@ -189,16 +261,19 @@ void Window::onMouseButtonCb(GLFWwindow* win,
 }
 
 void Window::onMouseButton(int button, int action, int mods) {
-  _camera.onMouseButton(button, action, mouseX(), mouseY());
+  if (getCameraEnabled()) {
+    camera.onMouseButton(button, action, mouseX(), mouseY());
+  }
 
   if (action == GLFW_PRESS) {
     mousePress(button, mods);
+
   } else if (action == GLFW_RELEASE) {
     mouseRelease(button, mods);
   }
 
   double xpos, ypos;
-  glfwGetCursorPos(window_, &xpos, &ypos);
+  glfwGetCursorPos(_window, &xpos, &ypos);
   onMouseMotion(static_cast<float>(xpos), static_cast<float>(ypos));
 }
 
@@ -210,10 +285,13 @@ void Window::onKeyboardCb(GLFWwindow* w,
 void Window::onKeyboard(int key, int scancode, int action, int mods) {
   // Exit on ESC key.
   if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) {
-    glfwSetWindowShouldClose(window_, GL_TRUE);
+    glfwSetWindowShouldClose(_window, GL_TRUE);
   }
 
-  _camera.onKeyboard(key, scancode, action, mods);
+  if (getCameraEnabled()) {
+    camera.onKeyboard(key, scancode, action, mods);
+  }
+
   if (action == GLFW_PRESS) {
     keyDown(key, mods);
   } else if (action == GLFW_RELEASE) {
@@ -228,7 +306,9 @@ void Window::onScrollCb(GLFWwindow* win, double xoffset, double yoffset) {
 }
 
 void Window::onScroll(float xoffset, float yoffset) {
-  _camera.onScroll(xoffset, yoffset);
+  if (getCameraEnabled()) {
+    camera.onScroll(xoffset, yoffset);
+  }
   scroll(xoffset, yoffset);  // user hook
 }
 
@@ -237,8 +317,8 @@ void Window::onResizeCb(GLFWwindow* window, int width, int height) {
 }
 
 void Window::onResize(int width, int height) {
-  windowWidth_ = width;
-  windowHeight_ = height;
+  _windowWidth = width;
+  _windowHeight = height;
   glViewport(0, 0, width, height);
 }
 

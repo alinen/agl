@@ -1,8 +1,11 @@
 var searchData=
 [
-  ['screenshot_99',['screenshot',['../classagl_1_1_window.html#a527b5ff8261ce964d998f36c30b143c0',1,'agl::Window']]],
-  ['setuniform_100',['setUniform',['../classagl_1_1_renderer.html#af59ab1ce370cf7b6951bd4b0f39f212e',1,'agl::Renderer::setUniform(const std::string &amp;name, float x, float y, float z)'],['../classagl_1_1_renderer.html#a66e7c746443ec1d11ad127f83ba870c5',1,'agl::Renderer::setUniform(const std::string &amp;name, float x, float y, float z, float w)'],['../classagl_1_1_renderer.html#a582fc93af2778c83dd65c2b7afc5acfb',1,'agl::Renderer::setUniform(const std::string &amp;name, const glm::vec2 &amp;v)'],['../classagl_1_1_renderer.html#a7bf09bd96e6b8315bd4397436749bb0a',1,'agl::Renderer::setUniform(const std::string &amp;name, const glm::vec3 &amp;v)'],['../classagl_1_1_renderer.html#a6a2423125e617c1096ddc9dd76dd0c4b',1,'agl::Renderer::setUniform(const std::string &amp;name, const glm::vec4 &amp;v)'],['../classagl_1_1_renderer.html#a67b5312ca401a1063d564a663c1c74c3',1,'agl::Renderer::setUniform(const std::string &amp;name, const glm::mat4 &amp;m)'],['../classagl_1_1_renderer.html#a81cb2d116dbd162003c7568088f88370',1,'agl::Renderer::setUniform(const std::string &amp;name, const glm::mat3 &amp;m)'],['../classagl_1_1_renderer.html#a133e7aff9f2a0ef2614d6a04a14cf809',1,'agl::Renderer::setUniform(const std::string &amp;name, float val)'],['../classagl_1_1_renderer.html#a92dcd15e00f7f7611034a361999fb4fd',1,'agl::Renderer::setUniform(const std::string &amp;name, int val)'],['../classagl_1_1_renderer.html#a257300a6fa0fbb3fdee92b242dd002d8',1,'agl::Renderer::setUniform(const std::string &amp;name, bool val)'],['../classagl_1_1_renderer.html#a7f3e1d788b14f778b4435cf2f943d75a',1,'agl::Renderer::setUniform(const std::string &amp;name, GLuint val)']]],
-  ['skybox_101',['skybox',['../classagl_1_1_renderer.html#afa9c3890ff91416793183e32abcf0614',1,'agl::Renderer']]],
-  ['sphere_102',['sphere',['../classagl_1_1_renderer.html#aee2f70c93e3c660bd260d9241c533355',1,'agl::Renderer']]],
-  ['sprite_103',['sprite',['../classagl_1_1_renderer.html#a9059620a6ebc876e27ca0feb347cdfc6',1,'agl::Renderer']]]
+  ['random_96',['random',['../aglm_8h.html#aa04bffe547f6f0e4643ae0e5810d695a',1,'agl::random()'],['../aglm_8h.html#a040c74acb39f137ae2f962dfccaa5b9f',1,'agl::random(float min, float max)']]],
+  ['randomhemisphere_97',['randomHemisphere',['../aglm_8h.html#a937ad0795b3a3ff55eedfae486d160db',1,'agl']]],
+  ['randomunitcube_98',['randomUnitCube',['../aglm_8h.html#a4e2e22be803e7c06707800915a94f70b',1,'agl']]],
+  ['randomunitdisk_99',['randomUnitDisk',['../aglm_8h.html#ab0329368ebbf0374db2ed9c620f4228e',1,'agl']]],
+  ['randomunitsphere_100',['randomUnitSphere',['../aglm_8h.html#a37c9f25aa62ce390e51c7d7687ec76e1',1,'agl']]],
+  ['randomunitsquare_101',['randomUnitSquare',['../aglm_8h.html#a23402ff2f46aa52669ebea581fe9c02e',1,'agl']]],
+  ['randomunitvector_102',['randomUnitVector',['../aglm_8h.html#a8e61df3e1fa0a251528d11fead2d83d5',1,'agl']]],
+  ['run_103',['run',['../classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63',1,'agl::Window']]]
 ];

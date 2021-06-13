@@ -70,6 +70,9 @@ class Renderer {
    * @param near The distance to the near plane from the camera
    * @param far The distance to the far plane from the camera
    *
+   * If you are using Renderer from the Window class, you should call 
+   * Window::perspective instead of this method.
+   *
    * Perspective projections foreshorten objects should that closer objects are
    * larger than further objects.  Only objects within the view volume will be
    * drawn.  For example, objects a distance further from the *far* plane will
@@ -93,11 +96,14 @@ class Renderer {
    * @param minz The back side of the projection
    * @param maxz The front side of the projection
    *
+   * If you are using Renderer from the Window class, you should call 
+   * Window::ortho instead of this method.
+   *
    * An orthographic projection maintains parallel lines. All objects maintain
    * their size regardless of distance to the camera. Only objects within the
    * extents of the orthographic cuboid volume will be drawn.
    *
-   * The current * shader should define the following uniform variables
+   * The current shader should define the following uniform variables
    *
    * *uniform mat4 MVP* A 4x4 matrix containing the product of projection *
    * view * modelTransform
@@ -110,6 +116,9 @@ class Renderer {
    * @param lookfrom The position of the camera (default is vec3(0,0,2))
    * @param lookat The target the camera is facing (default is vec3(0,0,0))
    * @param up The "up" direction of the camera (typically vec3(0,1,0))
+   *
+   * If you are using Renderer from the Window class, you should call 
+   * Window::lookAt instead of this method.
    *
    * The current shader should define the following uniform variables
    *
