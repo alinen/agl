@@ -223,10 +223,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>rotate</b> (float ang
 <tr class="memitem:a0c4a406f8aff214722b4f6a706d37588"><td class="memItemLeft" align="right" valign="top"><a id="a0c4a406f8aff214722b4f6a706d37588"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>transform</b> (const glm::mat4 &amp;trs)</td></tr>
 <tr class="separator:a0c4a406f8aff214722b4f6a706d37588"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">Drawing meshes</div></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Drawing</div></td></tr>
 <tr class="memitem:a9059620a6ebc876e27ca0feb347cdfc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a9059620a6ebc876e27ca0feb347cdfc6">sprite</a> (const glm::vec3 &amp;pos, const glm::vec4 &amp;color, float size)</td></tr>
 <tr class="memdesc:a9059620a6ebc876e27ca0feb347cdfc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a sprite using a point billboard.  <a href="classagl_1_1_renderer.html#a9059620a6ebc876e27ca0feb347cdfc6">More...</a><br /></td></tr>
 <tr class="separator:a9059620a6ebc876e27ca0feb347cdfc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf108b1cd32dc809446787c39be849ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#abf108b1cd32dc809446787c39be849ce">line</a> (const glm::vec3 &amp;p1, const glm::vec3 &amp;p2, const glm::vec3 &amp;c1, const glm::vec3 &amp;c2)</td></tr>
+<tr class="memdesc:abf108b1cd32dc809446787c39be849ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a sprite using a point billboard.  <a href="classagl_1_1_renderer.html#abf108b1cd32dc809446787c39be849ce">More...</a><br /></td></tr>
+<tr class="separator:abf108b1cd32dc809446787c39be849ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee2f70c93e3c660bd260d9241c533355"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#aee2f70c93e3c660bd260d9241c533355">sphere</a> ()</td></tr>
 <tr class="memdesc:aee2f70c93e3c660bd260d9241c533355"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a sphere centered at the origin with radius 0.5.  <a href="classagl_1_1_renderer.html#aee2f70c93e3c660bd260d9241c533355">More...</a><br /></td></tr>
 <tr class="separator:aee2f70c93e3c660bd260d9241c533355"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -287,8 +290,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Usage </p><div class="fragment"><div class="line"><a class="code" href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">beginShader</a>(<span class="stringliteral">&quot;myShader&quot;</span>);</div>
 <div class="line"><span class="comment">// draw primitives</span></div>
 <div class="line"><a class="code" href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">endShader</a>();</div>
-<div class="ttc" id="aclassagl_1_1_renderer_html_a219ab8aaf5d0bb109bbd1bbbf567f78d"><div class="ttname"><a href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">agl::Renderer::beginShader</a></div><div class="ttdeci">void beginShader(const std::string &amp;shaderName)</div><div class="ttdoc">Set active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:312</div></div>
-<div class="ttc" id="aclassagl_1_1_renderer_html_a21af4885a9fe659b6515e07bee758374"><div class="ttname"><a href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">agl::Renderer::endShader</a></div><div class="ttdeci">void endShader()</div><div class="ttdoc">Clear active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:320</div></div>
+<div class="ttc" id="aclassagl_1_1_renderer_html_a219ab8aaf5d0bb109bbd1bbbf567f78d"><div class="ttname"><a href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">agl::Renderer::beginShader</a></div><div class="ttdeci">void beginShader(const std::string &amp;shaderName)</div><div class="ttdoc">Set active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:376</div></div>
+<div class="ttc" id="aclassagl_1_1_renderer_html_a21af4885a9fe659b6515e07bee758374"><div class="ttname"><a href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">agl::Renderer::endShader</a></div><div class="ttdeci">void endShader()</div><div class="ttdoc">Clear active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:384</div></div>
 </div><!-- fragment --> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8" title="Load a GLSL shader from files.">loadShader</a> </dd></dl>
 
 </div>
@@ -588,6 +591,57 @@ int main() {
 
 <p>Return whether the <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> is ready for drawing. </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns true if initialized; false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="abf108b1cd32dc809446787c39be849ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf108b1cd32dc809446787c39be849ce">&#9670;&nbsp;</a></span>line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::line </td>
+          <td>(</td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>p1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>p2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>c1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec3 &amp;&#160;</td>
+          <td class="paramname"><em>c2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a sprite using a point billboard. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p1</td><td>The location of the first point </td></tr>
+    <tr><td class="paramname">p2</td><td>The location of the second point </td></tr>
+    <tr><td class="paramname">c1</td><td>The color of the first point </td></tr>
+    <tr><td class="paramname">c2</td><td>The color of the second point </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

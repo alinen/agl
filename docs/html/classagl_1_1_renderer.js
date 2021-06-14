@@ -15,6 +15,7 @@ var classagl_1_1_renderer =
     [ "identity", "classagl_1_1_renderer.html#a08999004bf88bfaee4bd79a8d1b34227", null ],
     [ "init", "classagl_1_1_renderer.html#af59f739bbc2ae0747eb724ca98fc2f75", null ],
     [ "initialized", "classagl_1_1_renderer.html#acfbb2d42960b288878ebf394f9e65770", null ],
+    [ "line", "classagl_1_1_renderer.html#abf108b1cd32dc809446787c39be849ce", null ],
     [ "loadCubemap", "classagl_1_1_renderer.html#abda4b08760e08aa30afed9f8a9e5b45c", null ],
     [ "loadCubemap", "classagl_1_1_renderer.html#af87fda1afd7cdb18daa4043e155c2e12", null ],
     [ "loadCubemap", "classagl_1_1_renderer.html#a25df953af2c8b6a9c5c53c157022f2f3", null ],

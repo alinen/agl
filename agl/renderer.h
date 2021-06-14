@@ -343,7 +343,7 @@ class Renderer {
    */
   void blendMode(BlendMode mode);
 
-  /** @name Drawing meshes
+  /** @name Drawing
    */
   ///@{
   /**
@@ -355,6 +355,17 @@ class Renderer {
    * @verbinclude sprites.cpp
    */
   void sprite(const glm::vec3& pos, const glm::vec4& color, float size);
+
+  /**
+   * @brief Draws a sprite using a point billboard
+   * @param p1 The location of the first point
+   * @param p2 The location of the second point
+   * @param c1 The color of the first point
+   * @param c2 The color of the second point
+   *
+   */
+  void line(const glm::vec3& p1, const glm::vec3& p2,
+      const glm::vec3& c1, const glm::vec3& c2);
 
   /**
    * @brief Draws a sphere centered at the origin with radius 0.5
@@ -430,6 +441,7 @@ class Renderer {
 
  private:
   void initBillboards();
+  void initLines();
   void initMesh();
 
  private:
@@ -470,6 +482,11 @@ class Renderer {
   // Quad
   GLuint mBBVboPosId;
   GLuint mBBVaoId;
+
+  // Line
+  GLuint mVboLinePosId;
+  GLuint mVboLineColorId;
+  GLuint mVaoLineId;
 };
 
 }  // namespace agl

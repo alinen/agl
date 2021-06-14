@@ -91,6 +91,7 @@ void Renderer::init() {
   ortho(-halfw, halfw, -halfh, halfh, -10.0f, 10.0f);
   lookAt(vec3(0, 0, 2), vec3(0, 0, 0));
 
+  initLines();
   initBillboards();
   initMesh();
   loadShader("cubemap", "../shaders/cubemap.vs", "../shaders/cubemap.fs");
@@ -133,6 +134,33 @@ void Renderer::initMesh() {
   setUniform("DetailTexture.offset", vec2(0.0f));
   setUniform("DetailTexture.tile", vec2(1.0f));
   endShader();
+}
+
+void Renderer::initLines() {
+  loadShader("lines", "../shaders/lines.vs", "../shaders/lines.fs");
+  const float positions[] = {
+    0.0f, 0.0f, 1.0f,
+    1.0f, 0.0f, 0.0f
+  };
+
+  glGenBuffers(1, &mVboLinePosId);
+  glBindBuffer(GL_ARRAY_BUFFER, mVboLinePosId);
+  glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_DYNAMIC_DRAW);
+
+  glGenBuffers(1, &mVboLineColorId);
+  glBindBuffer(GL_ARRAY_BUFFER, mVboLineColorId);
+  glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_DYNAMIC_DRAW);
+
+  glGenVertexArrays(1, &mVaoLineId);
+  glBindVertexArray(mVaoLineId);
+
+  glEnableVertexAttribArray(0);  // 0 -> VertexPositions to array #0
+  glBindBuffer(GL_ARRAY_BUFFER, mVboLinePosId);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, static_cast<GLubyte*>(0));
+
+  glEnableVertexAttribArray(1);  // 1 -> VertexPositions to array #1
+  glBindBuffer(GL_ARRAY_BUFFER, mVboLineColorId);
+  glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, static_cast<GLubyte*>(0));
 }
 
 void Renderer::initBillboards() {
@@ -198,6 +226,39 @@ void Renderer::texture(const std::string& uniformName,
 
   glBindTexture(GL_TEXTURE_2D, _textures[textureName].texId);
   setUniform(uniformName, _textures[textureName].slot);
+}
+
+void Renderer::line(const glm::vec3& p1, const glm::vec3& p2,
+    const glm::vec3& c1, const glm::vec3& c2) {
+  assert(_initialized);
+
+  mat4 mvp = _projectionMatrix * _viewMatrix;
+  setUniform("MVP", mvp);
+
+  GLfloat positions[6];
+  positions[0] = p1.x;
+  positions[1] = p1.y;
+  positions[2] = p1.z;
+  positions[3] = p2.x;
+  positions[4] = p2.y;
+  positions[5] = p2.z;
+
+  GLfloat colors[6];
+  colors[0] = c1.x;
+  colors[1] = c1.y;
+  colors[2] = c1.z;
+  colors[3] = c2.x;
+  colors[4] = c2.y;
+  colors[5] = c2.z;
+
+  glBindVertexArray(mVaoLineId);
+  glBindBuffer(GL_ARRAY_BUFFER, mVboLinePosId);
+  glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_DYNAMIC_DRAW);
+
+  glBindBuffer(GL_ARRAY_BUFFER, mVboLineColorId);
+  glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), colors, GL_DYNAMIC_DRAW);
+
+  glDrawArrays(GL_LINES, 0, 2);
 }
 
 void Renderer::sprite(const glm::vec3& pos,
