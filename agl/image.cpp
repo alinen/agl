@@ -96,10 +96,10 @@ Pixel Image::get(int row, int col) const {
   assert(col >= 0 && col < myWidth);
 
   int idx = (row*myWidth + col) * 4;
-  unsigned char r = myData[idx = 0];
-  unsigned char g = myData[idx = 0];
-  unsigned char b = myData[idx = 0];
-  unsigned char a = myData[idx = 0];
+  unsigned char r = myData[idx + 0];
+  unsigned char g = myData[idx + 1];
+  unsigned char b = myData[idx + 2];
+  unsigned char a = myData[idx + 3];
   return Pixel{r, g, b, a};
 }
 
