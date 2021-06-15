@@ -317,6 +317,7 @@ void Window::onResize(int width, int height) {
   _windowWidth = width;
   _windowHeight = height;
   glViewport(0, 0, width, height);
+  resize(width, height);  // user function
 }
 
 }  // namespace agl

@@ -800,7 +800,7 @@ int main() {
   </table>
   </dd>
 </dl>
-<p>If you are using <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> from the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> class, you should call <a class="el" href="classagl_1_1_window.html#abb94594629d3fc1a971eeb86305fc537">Window::lookAt</a> instead of this method.</p>
+<p>If you are using <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> from the <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> class, you should call <a class="el" href="classagl_1_1_window.html#abb94594629d3fc1a971eeb86305fc537">Window::lookAt</a> instead of this method. NOTE: lookfrom and lookat should never be equal!</p>
 <p>The current shader should define the following uniform variables</p>
 <ul>
 <li><em>uniform mat4 MVP</em> A 4x4 matrix containing the product of projection * view * modelTransform</li>

@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['teapot_69',['Teapot',['../classagl_1_1_teapot.html',1,'agl']]],
-  ['teapot_70',['teapot',['../classagl_1_1_renderer.html#a945598f63b1c97b98c1cb505575a489c',1,'agl::Renderer']]],
-  ['teapot_71',['Teapot',['../classagl_1_1_teapot.html#a19f91afc3ad9c6e602b239709893b5a6',1,'agl::Teapot']]],
+  ['teapot_70',['Teapot',['../classagl_1_1_teapot.html',1,'agl::Teapot'],['../classagl_1_1_teapot.html#a19f91afc3ad9c6e602b239709893b5a6',1,'agl::Teapot::Teapot()']]],
+  ['teapot_71',['teapot',['../classagl_1_1_renderer.html#a945598f63b1c97b98c1cb505575a489c',1,'agl::Renderer']]],
   ['texture_72',['texture',['../classagl_1_1_renderer.html#a669b3b37fa93e010c4d7b3b9016523bb',1,'agl::Renderer']]],
   ['torus_73',['Torus',['../classagl_1_1_torus.html',1,'agl']]],
   ['torus_74',['torus',['../classagl_1_1_renderer.html#acf67c53f8f33a8f7fd0e1082781607e9',1,'agl::Renderer']]],

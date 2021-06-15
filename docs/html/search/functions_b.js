@@ -7,5 +7,6 @@ var searchData=
   ['randomunitsphere_137',['randomUnitSphere',['../aglm_8h.html#a37c9f25aa62ce390e51c7d7687ec76e1',1,'agl']]],
   ['randomunitsquare_138',['randomUnitSquare',['../aglm_8h.html#a23402ff2f46aa52669ebea581fe9c02e',1,'agl']]],
   ['randomunitvector_139',['randomUnitVector',['../aglm_8h.html#a8e61df3e1fa0a251528d11fead2d83d5',1,'agl']]],
-  ['run_140',['run',['../classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63',1,'agl::Window']]]
+  ['resize_140',['resize',['../classagl_1_1_window.html#ae2d1ec72f0d21b86030737c6536c1083',1,'agl::Window']]],
+  ['run_141',['run',['../classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63',1,'agl::Window']]]
 ];

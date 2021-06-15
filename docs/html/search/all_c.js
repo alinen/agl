@@ -8,5 +8,6 @@ var searchData=
   ['randomunitsquare_52',['randomUnitSquare',['../aglm_8h.html#a23402ff2f46aa52669ebea581fe9c02e',1,'agl']]],
   ['randomunitvector_53',['randomUnitVector',['../aglm_8h.html#a8e61df3e1fa0a251528d11fead2d83d5',1,'agl']]],
   ['renderer_54',['Renderer',['../classagl_1_1_renderer.html',1,'agl']]],
-  ['run_55',['run',['../classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63',1,'agl::Window']]]
+  ['resize_55',['resize',['../classagl_1_1_window.html#ae2d1ec72f0d21b86030737c6536c1083',1,'agl::Window']]],
+  ['run_56',['run',['../classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63',1,'agl::Window']]]
 ];

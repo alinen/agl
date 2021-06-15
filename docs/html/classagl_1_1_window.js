@@ -19,6 +19,7 @@ var classagl_1_1_window =
     [ "mouseUp", "classagl_1_1_window.html#af00655086403dad1817491414afa6b81", null ],
     [ "ortho", "classagl_1_1_window.html#a576cd7910f689c49f58f616fdb7b5944", null ],
     [ "perspective", "classagl_1_1_window.html#a7a72080667b1f21ec89b6f8e3b99217d", null ],
+    [ "resize", "classagl_1_1_window.html#ae2d1ec72f0d21b86030737c6536c1083", null ],
     [ "run", "classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63", null ],
     [ "screenshot", "classagl_1_1_window.html#a527b5ff8261ce964d998f36c30b143c0", null ],
     [ "scroll", "classagl_1_1_window.html#ab7f3507e47c1ae6fdf8c6f6e829177ba", null ],

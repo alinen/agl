@@ -119,6 +119,7 @@ class Renderer {
    *
    * If you are using Renderer from the Window class, you should call 
    * Window::lookAt instead of this method.
+   * NOTE: lookfrom and lookat should never be equal!
    *
    * The current shader should define the following uniform variables
    *

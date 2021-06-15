@@ -147,6 +147,15 @@ class Window {
    * @see keyUp(int,int)
    */
   virtual void keyDown(int key, int mods) {}
+
+  /**
+   * @brief Override this method to respond to window resizing
+   * @param width The new window width 
+   * @param height The new window height 
+   * 
+   * \verbinclude shadertoy.cpp
+   */
+  virtual void resize(int width, int height) {}
   ///@}
 
   /** @name Query input and time
@@ -245,6 +254,10 @@ class Window {
   /**
    * @copydoc Renderer::lookAt(
    *     const glm::vec3&, const glm::vec&, const glm::vec3&)
+   *
+   * If you're not using the default camera controls and you don't call
+   * setupSecene, the camera is at position (0,0,2) and faces the point 
+   * (0,0,0)
    *
    * @see setupPerspectiveScene(const glm::vec3&, const glm::vec3&)
    * @see setupOrthoScene(const glm::vec3&, const glm::vec3&)
