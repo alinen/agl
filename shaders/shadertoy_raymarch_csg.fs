@@ -9,7 +9,7 @@ out vec4 FragColor;
 //   improvements-to-the-canonical-one-liner-glsl-rand-for-opengl-es-2-0/
 // watch out for float precision
 
-float noise3(in vec3 p) {
+float noiseVec3(in vec3 p) {
   return fract(sin(dot(p,vec3(12.9898f, 78.233f, 1.87124f))) * 43758.5453f);
 }
 
@@ -60,7 +60,7 @@ vec3 rotate(in vec3 p, float theta, float psi)
 float object(in vec3 p) {
   float cs = 2.0f;
   vec3 cell = floor(abs(p+1.0f)/cs) * cs;
-  float random = noise3(cell);
+  float random = noiseVec3(cell);
   float size = clamp(0.5f+random, 0.1f, 1.0f);
   vec2 offset = 0.25f * vec2(random, 1.0f-random);
 
@@ -132,7 +132,7 @@ vec3 render( in vec3 ro, in vec3 rd) {
 
     float cs = 2.0;
     vec3 cell = floor(abs(p+1.0)/cs) * cs;
-    float random = abs(noise3(cell));
+    float random = abs(noiseVec3(cell));
     vec3 color = colors[int(floor(mod(4.0 * random, 4.0)))] / 255.0;
 
     col = max(0.0, dot(lpos, n)) * color; //vec3(1.0, 0.0, 0.5);
@@ -158,6 +158,6 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 
 void main() {
   vec4 fragColor = vec4(1,0,0,1);
-  // mainImage(fragColor, gl_FragCoord);
-  gl_FragColor = fragColor;
+  mainImage(fragColor, gl_FragCoord.xy);
+  FragColor = fragColor;
 }

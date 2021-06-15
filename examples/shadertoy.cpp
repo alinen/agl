@@ -14,7 +14,8 @@ class MyWindow : public agl::Window {
     background(vec3(0));
     
     renderer.loadShader("shadertoy", 
-        "../shaders/shadertoy.vs", "../shaders/shadertoy_fragCoord.fs");
+        "../shaders/shadertoy.vs",
+        "../shaders/shadertoy_raymarch_csg.fs");
   }
 
   void draw() {
