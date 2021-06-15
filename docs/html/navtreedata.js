@@ -53,7 +53,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "agl_8h_source.html",
-"structagl_1_1_pixel.html#a502877a5c8fc77f10aa8b7e704217498"
+"index.html#autotoc_md1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

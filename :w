@@ -4,7 +4,6 @@
 
 #include <vector>
 #include "agl/agl.h"
-#include "agl/aglm.h"
 
 namespace agl {
 
@@ -53,19 +52,17 @@ class TriangleMesh {
   bool isDynamic() const { return _isDynamic; }
 
  protected:
-  GLuint _nIndices = 0;    // Number of triangle vertices
-  GLuint _nVerts = 0;      // Number of unique vertices
-  GLuint _vao = 0;         // The Vertex Array Object
+  GLuint _nVerts = 0;    // Number of vertices
+  GLuint _vao = 0;       // The Vertex Array Object
   bool _hasUV = false;
   bool _isDynamic = false;
   bool _initialized = false;
   std::vector<GLuint> _buffers;  // vertex buffers
-  enum VertexAttribute {
-    POSITION = 1,
+  enum VertexData {
+    POSITION,
     NORMAL,
     UV,
-    TANGENT,
-    NUM_ATTRIBUTES
+    TANGENT
   };
 
   /**
@@ -75,42 +72,13 @@ class TriangleMesh {
 
   /**
    * @brief Set vertex properties
-   * @param type A supported vertex attribute, such as POSITION, NORMAL, etc
-   * @param vertexId The id of the vertex (should be between 0 and numVertices) 
-   * @param data The data to set
    * 
-   * This function only works for dynamic meshes.
-   * This function takes a vec4 but depending on the vertex attribute only a 
-   * subset of the given values will be used, depending on the data set during
-   * initialization. For example, texture coordinates typically only need two
-   * coordinates and so only the first xy values of data will be used.
-   *
    * @verbinclude undulate.cpp
-   * @see numVertices()
-   * @see vertexAttribute()
-   * @see setIsDynamic()
+   * @see isDynamic()
    */
-  void setVertexData(VertexAttribute type, int vertexId, const glm::vec4& data);
+  void setVertexData(VertexData type, int vertexId, const vec4& data);
 
-  /**
-   * @brief Get vertex properties
-   * @param type A supported vertex attribute, such as POSITION, NORMAL, etc
-   * @param vertexId The id of the vertex (should be between 0 and numVertices) 
-   * @return The data for the given vertex if the mesh is dynamic, and 
-   * vec4(0) otherwise
-   * 
-   * This function only works for dynamic meshes.
-   * This function takes a vec4 but depending on the vertex attribute only a 
-   * subset of the given values will be used, depending on the data set during
-   * initialization. For example, texture coordinates typically only need two
-   * coordinates and so only the first xy values of data will be used.
-   *
-   * @verbinclude undulate.cpp
-   * @see numVertices()
-   * @see setVertexAttribute()
-   * @see setIsDynamic()
-   */
-  glm::vec4 vertexData(VertexAttribute type, int vertexId) const;
+  vec4 vertexData(VertexData type, int vertexId, const vec4& data);
 
   /**
    * @brief Set whether or not this is a dynamic mesh
@@ -155,8 +123,11 @@ class TriangleMesh {
   virtual void deleteBuffers();
 
  private:
-  // State for dynamic meshes
-  std::vector<GLfloat> _data[5];
+  // The following members are only non-empty for dynamic meshes
+  std::vector<GLfloat> _positions;
+  std::vector<GLfloat> _normals;
+  std::vector<GLfloat> _uvs;
+  std::vector<GLfloat> _tangents;
 };
 
 }  // namespace agl

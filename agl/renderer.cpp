@@ -95,6 +95,7 @@ void Renderer::init() {
   initBillboards();
   initMesh();
   loadShader("cubemap", "../shaders/cubemap.vs", "../shaders/cubemap.fs");
+  loadShader("unlit", "../shaders/unlit.vs", "../shaders/unlit.fs");
 
   _cube = new Cube(1.0f);
   _cone = new Cylinder(0.5f, 0.01, 1, 40);

@@ -967,13 +967,15 @@ using glm::vec3;
 
 class MyWindow : public agl::Window {
   void setup() {
+    setWindowSize(600, 400);
     setCameraEnabled(false);
     lookAt(vec3(0), vec3(0, 0, -2));
-    ortho(0, width(), 0, height(), -1.0f, 1.0f);
+    ortho(0, width(), 0, height(), -1, 1);
     background(vec3(0));
     
     renderer.loadShader("shadertoy", 
-        "../shaders/shadertoy.vs", "../shaders/fragCoord.fs");
+        "../shaders/shadertoy.vs",
+        "../shaders/shadertoy_raymarch_csg.fs");
   }
 
   void draw() {
@@ -988,7 +990,7 @@ class MyWindow : public agl::Window {
   }
 
   void resize(int width, int height) {
-    ortho(0, width, 0, height, -10.0f, 10.0f);
+    ortho(0, width, 0, height, -1, 1);
   }
 };
 

@@ -85,6 +85,7 @@ $(document).ready(function(){initNavTree('classagl_1_1_triangle_mesh.html',''); 
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-types">Protected Types</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classagl_1_1_triangle_mesh-members.html">List of all members</a>  </div>
@@ -100,23 +101,54 @@ $(document).ready(function(){initNavTree('classagl_1_1_triangle_mesh.html',''); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aea98e6052c68cb432d63080cd9622958"><td class="memItemLeft" align="right" valign="top"><a id="aea98e6052c68cb432d63080cd9622958"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>render</b> () const</td></tr>
+<tr class="memitem:aea98e6052c68cb432d63080cd9622958"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_triangle_mesh.html#aea98e6052c68cb432d63080cd9622958">render</a> () const</td></tr>
+<tr class="memdesc:aea98e6052c68cb432d63080cd9622958"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw this mesh.  <a href="classagl_1_1_triangle_mesh.html#aea98e6052c68cb432d63080cd9622958">More...</a><br /></td></tr>
 <tr class="separator:aea98e6052c68cb432d63080cd9622958"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0e7426a02b8951a306db17cff85d60a"><td class="memItemLeft" align="right" valign="top"><a id="ac0e7426a02b8951a306db17cff85d60a"></a>
-GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>vao</b> () const</td></tr>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_triangle_mesh.html#ac0e7426a02b8951a306db17cff85d60a">vao</a> () const</td></tr>
+<tr class="memdesc:ac0e7426a02b8951a306db17cff85d60a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the vertex array object corresponding to this mesh. <br /></td></tr>
 <tr class="separator:ac0e7426a02b8951a306db17cff85d60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19961a52e125368dbda148af1f19da03"><td class="memItemLeft" align="right" valign="top"><a id="a19961a52e125368dbda148af1f19da03"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>hasUV</b> () const</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_triangle_mesh.html#a19961a52e125368dbda148af1f19da03">hasUV</a> () const</td></tr>
+<tr class="memdesc:a19961a52e125368dbda148af1f19da03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether this mesh has UV coordinates defined. <br /></td></tr>
 <tr class="separator:a19961a52e125368dbda148af1f19da03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab52d822efe913612302d596027107558"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_triangle_mesh.html#ab52d822efe913612302d596027107558">isDynamic</a> () const</td></tr>
+<tr class="memdesc:ab52d822efe913612302d596027107558"><td class="mdescLeft">&#160;</td><td class="mdescRight">Query whether or not this is a dynamic mesh.  <a href="classagl_1_1_triangle_mesh.html#ab52d822efe913612302d596027107558">More...</a><br /></td></tr>
+<tr class="separator:ab52d822efe913612302d596027107558"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:a275c7e4998240bf4af9f30685577e56e"><td class="memItemLeft" align="right" valign="top"><a id="a275c7e4998240bf4af9f30685577e56e"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>VertexAttribute</b> { <br />
+&#160;&#160;<b>POSITION</b> = 1
+, <b>NORMAL</b>
+, <b>UV</b>
+, <b>TANGENT</b>
+, <br />
+&#160;&#160;<b>NUM_ATTRIBUTES</b>
+<br />
+ }</td></tr>
+<tr class="separator:a275c7e4998240bf4af9f30685577e56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a457ade3ea5f14622394c6edc9a2b1b9a"><td class="memItemLeft" align="right" valign="top"><a id="a457ade3ea5f14622394c6edc9a2b1b9a"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> ()=0</td></tr>
+<tr class="memitem:a38fa97d8cbee595b7a5e23941dc86e31"><td class="memItemLeft" align="right" valign="top"><a id="a38fa97d8cbee595b7a5e23941dc86e31"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_triangle_mesh.html#a38fa97d8cbee595b7a5e23941dc86e31">numVertices</a> () const</td></tr>
+<tr class="memdesc:a38fa97d8cbee595b7a5e23941dc86e31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of vertices. <br /></td></tr>
+<tr class="separator:a38fa97d8cbee595b7a5e23941dc86e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9153cff6e5624d6eade1b721ac4772e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_triangle_mesh.html#a9153cff6e5624d6eade1b721ac4772e5">setVertexData</a> (VertexAttribute type, int vertexId, const glm::vec4 &amp;data)</td></tr>
+<tr class="memdesc:a9153cff6e5624d6eade1b721ac4772e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set vertex properties.  <a href="classagl_1_1_triangle_mesh.html#a9153cff6e5624d6eade1b721ac4772e5">More...</a><br /></td></tr>
+<tr class="separator:a9153cff6e5624d6eade1b721ac4772e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeeb7ff21f3f9527fcf61c443054f81b5"><td class="memItemLeft" align="right" valign="top">glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_triangle_mesh.html#aeeb7ff21f3f9527fcf61c443054f81b5">vertexData</a> (VertexAttribute type, int vertexId) const</td></tr>
+<tr class="memdesc:aeeb7ff21f3f9527fcf61c443054f81b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get vertex properties.  <a href="classagl_1_1_triangle_mesh.html#aeeb7ff21f3f9527fcf61c443054f81b5">More...</a><br /></td></tr>
+<tr class="separator:aeeb7ff21f3f9527fcf61c443054f81b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4774380c1697003e7514850fdbc86a8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_triangle_mesh.html#ab4774380c1697003e7514850fdbc86a8">setIsDynamic</a> (bool on)</td></tr>
+<tr class="memdesc:ab4774380c1697003e7514850fdbc86a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set whether or not this is a dynamic mesh.  <a href="classagl_1_1_triangle_mesh.html#ab4774380c1697003e7514850fdbc86a8">More...</a><br /></td></tr>
+<tr class="separator:ab4774380c1697003e7514850fdbc86a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a457ade3ea5f14622394c6edc9a2b1b9a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_triangle_mesh.html#a457ade3ea5f14622394c6edc9a2b1b9a">init</a> ()=0</td></tr>
+<tr class="memdesc:a457ade3ea5f14622394c6edc9a2b1b9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override init to specifiy vertex data for the mesh.  <a href="classagl_1_1_triangle_mesh.html#a457ade3ea5f14622394c6edc9a2b1b9a">More...</a><br /></td></tr>
 <tr class="separator:a457ade3ea5f14622394c6edc9a2b1b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9ee5a5fa32b1b7756b4d407f4182202"><td class="memItemLeft" align="right" valign="top"><a id="ae9ee5a5fa32b1b7756b4d407f4182202"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>initBuffers</b> (std::vector&lt; GLuint &gt; *indices, std::vector&lt; GLfloat &gt; *points, std::vector&lt; GLfloat &gt; *normals, std::vector&lt; GLfloat &gt; *texCoords=nullptr, std::vector&lt; GLfloat &gt; *tangents=nullptr)</td></tr>
+<tr class="memitem:ae9ee5a5fa32b1b7756b4d407f4182202"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_triangle_mesh.html#ae9ee5a5fa32b1b7756b4d407f4182202">initBuffers</a> (std::vector&lt; GLuint &gt; *indices, std::vector&lt; GLfloat &gt; *points, std::vector&lt; GLfloat &gt; *normals, std::vector&lt; GLfloat &gt; *texCoords=nullptr, std::vector&lt; GLfloat &gt; *tangents=nullptr)</td></tr>
+<tr class="memdesc:ae9ee5a5fa32b1b7756b4d407f4182202"><td class="mdescLeft">&#160;</td><td class="mdescRight">Call initBuffers from <a class="el" href="classagl_1_1_triangle_mesh.html#a457ade3ea5f14622394c6edc9a2b1b9a" title="Override init to specifiy vertex data for the mesh.">init()</a> to set the data for this mesh.  <a href="classagl_1_1_triangle_mesh.html#ae9ee5a5fa32b1b7756b4d407f4182202">More...</a><br /></td></tr>
 <tr class="separator:ae9ee5a5fa32b1b7756b4d407f4182202"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c5f693bed51cd0b042f4f85160c596c"><td class="memItemLeft" align="right" valign="top"><a id="a3c5f693bed51cd0b042f4f85160c596c"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteBuffers</b> ()</td></tr>
@@ -124,6 +156,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>deleteBuffers
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:ae0aa28139fb1d7c512e430275803fee6"><td class="memItemLeft" align="right" valign="top"><a id="ae0aa28139fb1d7c512e430275803fee6"></a>
+GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_nIndices</b> = 0</td></tr>
+<tr class="separator:ae0aa28139fb1d7c512e430275803fee6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ba40b043a79ab11fa03ce077318d559"><td class="memItemLeft" align="right" valign="top"><a id="a5ba40b043a79ab11fa03ce077318d559"></a>
 GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_nVerts</b> = 0</td></tr>
 <tr class="separator:a5ba40b043a79ab11fa03ce077318d559"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,16 +168,678 @@ GLuint&#160;</td><td class="memItemRight" valign="bottom"><b>_vao</b> = 0</td></
 <tr class="memitem:af9efdaea9d0a754ba19a38fe01e86b6a"><td class="memItemLeft" align="right" valign="top"><a id="af9efdaea9d0a754ba19a38fe01e86b6a"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>_hasUV</b> = false</td></tr>
 <tr class="separator:af9efdaea9d0a754ba19a38fe01e86b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68678b1f4995fbfa575e0f78345b88ba"><td class="memItemLeft" align="right" valign="top"><a id="a68678b1f4995fbfa575e0f78345b88ba"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_isDynamic</b> = false</td></tr>
+<tr class="separator:a68678b1f4995fbfa575e0f78345b88ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d366fcc77b3988811274f137458ad58"><td class="memItemLeft" align="right" valign="top"><a id="a4d366fcc77b3988811274f137458ad58"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>_initialized</b> = false</td></tr>
 <tr class="separator:a4d366fcc77b3988811274f137458ad58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac716b85602f7f77380930a183ee6b60b"><td class="memItemLeft" align="right" valign="top"><a id="ac716b85602f7f77380930a183ee6b60b"></a>
-std::vector&lt; GLuint &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>buffers</b></td></tr>
-<tr class="separator:ac716b85602f7f77380930a183ee6b60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca8a25b0aa5d63da12632175bca51660"><td class="memItemLeft" align="right" valign="top"><a id="aca8a25b0aa5d63da12632175bca51660"></a>
+std::vector&lt; GLuint &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_buffers</b></td></tr>
+<tr class="separator:aca8a25b0aa5d63da12632175bca51660"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for indexed triangle meshes. </p>
-<p>Override this class to create your own meshes. </p><pre class="fragment"></pre> </div><hr/>The documentation for this class was generated from the following files:<ul>
+<p>Override this class to create your own meshes. </p><pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+#include "agl/mesh/plane.h"
+
+using glm::vec2;
+using glm::vec4;
+using glm::vec3;
+
+class UndulateMesh : public agl::Plane {
+ public:
+  UndulateMesh(int xsize, int ysize) : Plane(1, 1, xsize, ysize) {
+    setIsDynamic(false);
+    init();  // initialize the mesh now, so its safe to call update()
+  }
+
+  void update(float elapsedTime) {
+    for (int i = 0; i &lt; numVertices(); i++) {
+      vec4 p = vertexData(POSITION, i);
+      setVertexData(POSITION, i, position(p, elapsedTime));
+      setVertexData(NORMAL, i, derivative(p, elapsedTime));
+    }
+  }
+
+  float function(const vec4&amp; p, float t) {
+    float angle = t;
+    float frequency = 7.0;
+    float amplitude = 0.05;
+
+    float heightFn = (angle + frequency * p[0] * frequency * p[2]);
+    return amplitude * sin(heightFn);
+  }
+
+  vec4 position(const vec4&amp; p, float t) {
+    return vec4(p[0], function(p, t), p[2], 0);
+  }
+
+  vec4 derivative(const vec4&amp; p, float t) {
+    float eps = 0.001;
+    //float dx = function(p+vec4(eps, 0, 0, 0), t) - function(p-vec4(eps, 0, 0, 0), t);
+    //float dy = function(p+vec4(0, eps, 0, 0), t) - function(p-vec4(0, eps, 0, 0), t);
+    //float dz = function(p+vec4(0, 0, eps, 0), t) - function(p-vec4(0, 0, eps, 0), t);
+    //return normalize(vec4(dx, dy+eps, dz, 0));
+    vec4 x = position(p+vec4(eps, 0, 0, 0), t) - position(p-vec4(eps,0,0,0), t);
+    vec4 z = position(p+vec4(0, 0, eps, 0), t) - position(p-vec4(0,0,eps,0), t);
+    vec3 y = glm::cross(vec3(z), vec3(x));
+    return normalize(vec4(y,0));
+    
+  }
+};
+
+class MyWindow : public agl::Window {
+ public:
+  void setup() {
+    perspective(glm::radians(30.0), 1, 0.1, 100);
+    renderer.loadShader("unlit", "../shaders/unlit.vs", "../shaders/unlit.fs");
+  }
+
+  void draw() {
+    _mesh.update(elapsedTime());
+
+    renderer.beginShader("unlit");
+    renderer.rotate(kPI * 0.1, vec3(1, 0, 0));
+    renderer.mesh(_mesh);
+    renderer.endShader();
+  }
+
+  UndulateMesh _mesh = UndulateMesh(30, 30);
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a457ade3ea5f14622394c6edc9a2b1b9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a457ade3ea5f14622394c6edc9a2b1b9a">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void agl::TriangleMesh::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Override init to specifiy vertex data for the mesh. </p>
+<p><a class="el" href="classagl_1_1_triangle_mesh.html#a457ade3ea5f14622394c6edc9a2b1b9a" title="Override init to specifiy vertex data for the mesh.">init()</a> will be called automatically the first time <a class="el" href="classagl_1_1_triangle_mesh.html#aea98e6052c68cb432d63080cd9622958" title="Draw this mesh.">render()</a> is called. Overridden implementations of <a class="el" href="classagl_1_1_triangle_mesh.html#a457ade3ea5f14622394c6edc9a2b1b9a" title="Override init to specifiy vertex data for the mesh.">init()</a> should call initBuffers. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_triangle_mesh.html#ae9ee5a5fa32b1b7756b4d407f4182202" title="Call initBuffers from init() to set the data for this mesh.">initBuffers</a>(std::vector&lt;GLuint&gt;*, std::vector&lt;GLfloat&gt;*, std::vector&lt;GLfloat&gt;*, std::vector&lt;GLfloat&gt;*, std::vector&lt;GLfloat&gt;*) </dd></dl>
+
+<p>Implemented in <a class="el" href="classagl_1_1_torus.html#a7839818814fdd8b5441b41e2a601ed88">agl::Torus</a>, <a class="el" href="classagl_1_1_teapot.html#aa5df872f296b468229e504d1c2328c7a">agl::Teapot</a>, <a class="el" href="classagl_1_1_sphere.html#a488c6af763e044269e4a47f64aa3f844">agl::Sphere</a>, <a class="el" href="classagl_1_1_pyramid.html#a0fb75de7deb7351313de5192fbc3df87">agl::Pyramid</a>, <a class="el" href="classagl_1_1_plane.html#a4b75f222b8f04b20c199ee37cc412f09">agl::Plane</a>, <a class="el" href="classagl_1_1_cylinder.html#ae28f0cad1b10c1f5bd57a15a4cecbd3a">agl::Cylinder</a>, <a class="el" href="classagl_1_1_cube.html#a75d642a0cf3dc786db5ae57c09a8bd91">agl::Cube</a>, and <a class="el" href="classagl_1_1_capsule.html#a600290f6d454c81570404ccfeadec758">agl::Capsule</a>.</p>
+
+</div>
+</div>
+<a id="ae9ee5a5fa32b1b7756b4d407f4182202"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9ee5a5fa32b1b7756b4d407f4182202">&#9670;&nbsp;</a></span>initBuffers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::TriangleMesh::initBuffers </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; GLuint &gt; *&#160;</td>
+          <td class="paramname"><em>indices</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; GLfloat &gt; *&#160;</td>
+          <td class="paramname"><em>points</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; GLfloat &gt; *&#160;</td>
+          <td class="paramname"><em>normals</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; GLfloat &gt; *&#160;</td>
+          <td class="paramname"><em>texCoords</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; GLfloat &gt; *&#160;</td>
+          <td class="paramname"><em>tangents</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Call initBuffers from <a class="el" href="classagl_1_1_triangle_mesh.html#a457ade3ea5f14622394c6edc9a2b1b9a" title="Override init to specifiy vertex data for the mesh.">init()</a> to set the data for this mesh. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_triangle_mesh.html#a457ade3ea5f14622394c6edc9a2b1b9a" title="Override init to specifiy vertex data for the mesh.">init()</a> </dd>
+<dd>
+<a class="el" href="classagl_1_1_triangle_mesh.html#ab4774380c1697003e7514850fdbc86a8" title="Set whether or not this is a dynamic mesh.">setIsDynamic(bool)</a> </dd></dl>
+
+</div>
+</div>
+<a id="ab52d822efe913612302d596027107558"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab52d822efe913612302d596027107558">&#9670;&nbsp;</a></span>isDynamic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool agl::TriangleMesh::isDynamic </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Query whether or not this is a dynamic mesh. </p>
+<p>Dynamic meshes can change vertex quantities (e.g. position, normal, etc.) at runtime. Dynamic meshes require more memory and are generally slower. Meshes are static (e.g. assumed not to change) by default.</p>
+<p>To create a dynamic mesh, subclass this class and set _isDynamic to true in the constructor.</p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+#include "agl/mesh/plane.h"
+
+using glm::vec2;
+using glm::vec4;
+using glm::vec3;
+
+class UndulateMesh : public agl::Plane {
+ public:
+  UndulateMesh(int xsize, int ysize) : Plane(1, 1, xsize, ysize) {
+    setIsDynamic(false);
+    init();  // initialize the mesh now, so its safe to call update()
+  }
+
+  void update(float elapsedTime) {
+    for (int i = 0; i &lt; numVertices(); i++) {
+      vec4 p = vertexData(POSITION, i);
+      setVertexData(POSITION, i, position(p, elapsedTime));
+      setVertexData(NORMAL, i, derivative(p, elapsedTime));
+    }
+  }
+
+  float function(const vec4&amp; p, float t) {
+    float angle = t;
+    float frequency = 7.0;
+    float amplitude = 0.05;
+
+    float heightFn = (angle + frequency * p[0] * frequency * p[2]);
+    return amplitude * sin(heightFn);
+  }
+
+  vec4 position(const vec4&amp; p, float t) {
+    return vec4(p[0], function(p, t), p[2], 0);
+  }
+
+  vec4 derivative(const vec4&amp; p, float t) {
+    float eps = 0.001;
+    //float dx = function(p+vec4(eps, 0, 0, 0), t) - function(p-vec4(eps, 0, 0, 0), t);
+    //float dy = function(p+vec4(0, eps, 0, 0), t) - function(p-vec4(0, eps, 0, 0), t);
+    //float dz = function(p+vec4(0, 0, eps, 0), t) - function(p-vec4(0, 0, eps, 0), t);
+    //return normalize(vec4(dx, dy+eps, dz, 0));
+    vec4 x = position(p+vec4(eps, 0, 0, 0), t) - position(p-vec4(eps,0,0,0), t);
+    vec4 z = position(p+vec4(0, 0, eps, 0), t) - position(p-vec4(0,0,eps,0), t);
+    vec3 y = glm::cross(vec3(z), vec3(x));
+    return normalize(vec4(y,0));
+    
+  }
+};
+
+class MyWindow : public agl::Window {
+ public:
+  void setup() {
+    perspective(glm::radians(30.0), 1, 0.1, 100);
+    renderer.loadShader("unlit", "../shaders/unlit.vs", "../shaders/unlit.fs");
+  }
+
+  void draw() {
+    _mesh.update(elapsedTime());
+
+    renderer.beginShader("unlit");
+    renderer.rotate(kPI * 0.1, vec3(1, 0, 0));
+    renderer.mesh(_mesh);
+    renderer.endShader();
+  }
+
+  UndulateMesh _mesh = UndulateMesh(30, 30);
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_triangle_mesh.html#ab4774380c1697003e7514850fdbc86a8" title="Set whether or not this is a dynamic mesh.">setIsDynamic(bool)</a> </dd></dl>
+
+</div>
+</div>
+<a id="aea98e6052c68cb432d63080cd9622958"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea98e6052c68cb432d63080cd9622958">&#9670;&nbsp;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::TriangleMesh::render </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Draw this mesh. </p>
+<p>Typically, users do not need to call this function. It is called from <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a>. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#aed808cf5b13ec7a7a4a9465816163d73" title="Draws a custom (indexed) mesh.">Renderer::mesh(const TriangleMesh&amp;)</a> </dd></dl>
+
+</div>
+</div>
+<a id="ab4774380c1697003e7514850fdbc86a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4774380c1697003e7514850fdbc86a8">&#9670;&nbsp;</a></span>setIsDynamic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::TriangleMesh::setIsDynamic </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>on</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set whether or not this is a dynamic mesh. </p>
+<p>Dynamic meshes can change vertex quantities (e.g. position, normal, etc.) at runtime. Dynamic meshes require more memory and are generally slower. Meshes are static (e.g. assumed not to change) by default.</p>
+<p>To create a dynamic mesh, subclass this class and call setIsDynamic(true) in the constructor. setIsDynamic must be called before the mesh is initialized and cannot be changed afterwards.</p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+#include "agl/mesh/plane.h"
+
+using glm::vec2;
+using glm::vec4;
+using glm::vec3;
+
+class UndulateMesh : public agl::Plane {
+ public:
+  UndulateMesh(int xsize, int ysize) : Plane(1, 1, xsize, ysize) {
+    setIsDynamic(false);
+    init();  // initialize the mesh now, so its safe to call update()
+  }
+
+  void update(float elapsedTime) {
+    for (int i = 0; i &lt; numVertices(); i++) {
+      vec4 p = vertexData(POSITION, i);
+      setVertexData(POSITION, i, position(p, elapsedTime));
+      setVertexData(NORMAL, i, derivative(p, elapsedTime));
+    }
+  }
+
+  float function(const vec4&amp; p, float t) {
+    float angle = t;
+    float frequency = 7.0;
+    float amplitude = 0.05;
+
+    float heightFn = (angle + frequency * p[0] * frequency * p[2]);
+    return amplitude * sin(heightFn);
+  }
+
+  vec4 position(const vec4&amp; p, float t) {
+    return vec4(p[0], function(p, t), p[2], 0);
+  }
+
+  vec4 derivative(const vec4&amp; p, float t) {
+    float eps = 0.001;
+    //float dx = function(p+vec4(eps, 0, 0, 0), t) - function(p-vec4(eps, 0, 0, 0), t);
+    //float dy = function(p+vec4(0, eps, 0, 0), t) - function(p-vec4(0, eps, 0, 0), t);
+    //float dz = function(p+vec4(0, 0, eps, 0), t) - function(p-vec4(0, 0, eps, 0), t);
+    //return normalize(vec4(dx, dy+eps, dz, 0));
+    vec4 x = position(p+vec4(eps, 0, 0, 0), t) - position(p-vec4(eps,0,0,0), t);
+    vec4 z = position(p+vec4(0, 0, eps, 0), t) - position(p-vec4(0,0,eps,0), t);
+    vec3 y = glm::cross(vec3(z), vec3(x));
+    return normalize(vec4(y,0));
+    
+  }
+};
+
+class MyWindow : public agl::Window {
+ public:
+  void setup() {
+    perspective(glm::radians(30.0), 1, 0.1, 100);
+    renderer.loadShader("unlit", "../shaders/unlit.vs", "../shaders/unlit.fs");
+  }
+
+  void draw() {
+    _mesh.update(elapsedTime());
+
+    renderer.beginShader("unlit");
+    renderer.rotate(kPI * 0.1, vec3(1, 0, 0));
+    renderer.mesh(_mesh);
+    renderer.endShader();
+  }
+
+  UndulateMesh _mesh = UndulateMesh(30, 30);
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_triangle_mesh.html#ab52d822efe913612302d596027107558" title="Query whether or not this is a dynamic mesh.">isDynamic()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a9153cff6e5624d6eade1b721ac4772e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9153cff6e5624d6eade1b721ac4772e5">&#9670;&nbsp;</a></span>setVertexData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::TriangleMesh::setVertexData </td>
+          <td>(</td>
+          <td class="paramtype">VertexAttribute&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vertexId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec4 &amp;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set vertex properties. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>A supported vertex attribute, such as POSITION, NORMAL, etc </td></tr>
+    <tr><td class="paramname">vertexId</td><td>The id of the vertex (should be between 0 and numVertices) </td></tr>
+    <tr><td class="paramname">data</td><td>The data to set</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function only works for dynamic meshes. This function takes a vec4 but depending on the vertex attribute only a subset of the given values will be used, depending on the data set during initialization. For example, texture coordinates typically only need two coordinates and so only the first xy values of data will be used.</p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+#include "agl/mesh/plane.h"
+
+using glm::vec2;
+using glm::vec4;
+using glm::vec3;
+
+class UndulateMesh : public agl::Plane {
+ public:
+  UndulateMesh(int xsize, int ysize) : Plane(1, 1, xsize, ysize) {
+    setIsDynamic(false);
+    init();  // initialize the mesh now, so its safe to call update()
+  }
+
+  void update(float elapsedTime) {
+    for (int i = 0; i &lt; numVertices(); i++) {
+      vec4 p = vertexData(POSITION, i);
+      setVertexData(POSITION, i, position(p, elapsedTime));
+      setVertexData(NORMAL, i, derivative(p, elapsedTime));
+    }
+  }
+
+  float function(const vec4&amp; p, float t) {
+    float angle = t;
+    float frequency = 7.0;
+    float amplitude = 0.05;
+
+    float heightFn = (angle + frequency * p[0] * frequency * p[2]);
+    return amplitude * sin(heightFn);
+  }
+
+  vec4 position(const vec4&amp; p, float t) {
+    return vec4(p[0], function(p, t), p[2], 0);
+  }
+
+  vec4 derivative(const vec4&amp; p, float t) {
+    float eps = 0.001;
+    //float dx = function(p+vec4(eps, 0, 0, 0), t) - function(p-vec4(eps, 0, 0, 0), t);
+    //float dy = function(p+vec4(0, eps, 0, 0), t) - function(p-vec4(0, eps, 0, 0), t);
+    //float dz = function(p+vec4(0, 0, eps, 0), t) - function(p-vec4(0, 0, eps, 0), t);
+    //return normalize(vec4(dx, dy+eps, dz, 0));
+    vec4 x = position(p+vec4(eps, 0, 0, 0), t) - position(p-vec4(eps,0,0,0), t);
+    vec4 z = position(p+vec4(0, 0, eps, 0), t) - position(p-vec4(0,0,eps,0), t);
+    vec3 y = glm::cross(vec3(z), vec3(x));
+    return normalize(vec4(y,0));
+    
+  }
+};
+
+class MyWindow : public agl::Window {
+ public:
+  void setup() {
+    perspective(glm::radians(30.0), 1, 0.1, 100);
+    renderer.loadShader("unlit", "../shaders/unlit.vs", "../shaders/unlit.fs");
+  }
+
+  void draw() {
+    _mesh.update(elapsedTime());
+
+    renderer.beginShader("unlit");
+    renderer.rotate(kPI * 0.1, vec3(1, 0, 0));
+    renderer.mesh(_mesh);
+    renderer.endShader();
+  }
+
+  UndulateMesh _mesh = UndulateMesh(30, 30);
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_triangle_mesh.html#a38fa97d8cbee595b7a5e23941dc86e31" title="Get the number of vertices.">numVertices()</a> </dd>
+<dd>
+vertexAttribute() </dd>
+<dd>
+<a class="el" href="classagl_1_1_triangle_mesh.html#ab4774380c1697003e7514850fdbc86a8" title="Set whether or not this is a dynamic mesh.">setIsDynamic()</a> </dd></dl>
+
+</div>
+</div>
+<a id="aeeb7ff21f3f9527fcf61c443054f81b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeb7ff21f3f9527fcf61c443054f81b5">&#9670;&nbsp;</a></span>vertexData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vec4 agl::TriangleMesh::vertexData </td>
+          <td>(</td>
+          <td class="paramtype">VertexAttribute&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vertexId</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get vertex properties. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>A supported vertex attribute, such as POSITION, NORMAL, etc </td></tr>
+    <tr><td class="paramname">vertexId</td><td>The id of the vertex (should be between 0 and numVertices) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The data for the given vertex if the mesh is dynamic, and vec4(0) otherwise</dd></dl>
+<p>This function only works for dynamic meshes. This function takes a vec4 but depending on the vertex attribute only a subset of the given values will be used, depending on the data set during initialization. For example, texture coordinates typically only need two coordinates and so only the first xy values of data will be used.</p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+#include "agl/mesh/plane.h"
+
+using glm::vec2;
+using glm::vec4;
+using glm::vec3;
+
+class UndulateMesh : public agl::Plane {
+ public:
+  UndulateMesh(int xsize, int ysize) : Plane(1, 1, xsize, ysize) {
+    setIsDynamic(false);
+    init();  // initialize the mesh now, so its safe to call update()
+  }
+
+  void update(float elapsedTime) {
+    for (int i = 0; i &lt; numVertices(); i++) {
+      vec4 p = vertexData(POSITION, i);
+      setVertexData(POSITION, i, position(p, elapsedTime));
+      setVertexData(NORMAL, i, derivative(p, elapsedTime));
+    }
+  }
+
+  float function(const vec4&amp; p, float t) {
+    float angle = t;
+    float frequency = 7.0;
+    float amplitude = 0.05;
+
+    float heightFn = (angle + frequency * p[0] * frequency * p[2]);
+    return amplitude * sin(heightFn);
+  }
+
+  vec4 position(const vec4&amp; p, float t) {
+    return vec4(p[0], function(p, t), p[2], 0);
+  }
+
+  vec4 derivative(const vec4&amp; p, float t) {
+    float eps = 0.001;
+    //float dx = function(p+vec4(eps, 0, 0, 0), t) - function(p-vec4(eps, 0, 0, 0), t);
+    //float dy = function(p+vec4(0, eps, 0, 0), t) - function(p-vec4(0, eps, 0, 0), t);
+    //float dz = function(p+vec4(0, 0, eps, 0), t) - function(p-vec4(0, 0, eps, 0), t);
+    //return normalize(vec4(dx, dy+eps, dz, 0));
+    vec4 x = position(p+vec4(eps, 0, 0, 0), t) - position(p-vec4(eps,0,0,0), t);
+    vec4 z = position(p+vec4(0, 0, eps, 0), t) - position(p-vec4(0,0,eps,0), t);
+    vec3 y = glm::cross(vec3(z), vec3(x));
+    return normalize(vec4(y,0));
+    
+  }
+};
+
+class MyWindow : public agl::Window {
+ public:
+  void setup() {
+    perspective(glm::radians(30.0), 1, 0.1, 100);
+    renderer.loadShader("unlit", "../shaders/unlit.vs", "../shaders/unlit.fs");
+  }
+
+  void draw() {
+    _mesh.update(elapsedTime());
+
+    renderer.beginShader("unlit");
+    renderer.rotate(kPI * 0.1, vec3(1, 0, 0));
+    renderer.mesh(_mesh);
+    renderer.endShader();
+  }
+
+  UndulateMesh _mesh = UndulateMesh(30, 30);
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_triangle_mesh.html#a38fa97d8cbee595b7a5e23941dc86e31" title="Get the number of vertices.">numVertices()</a> </dd>
+<dd>
+setVertexAttribute() </dd>
+<dd>
+<a class="el" href="classagl_1_1_triangle_mesh.html#ab4774380c1697003e7514850fdbc86a8" title="Set whether or not this is a dynamic mesh.">setIsDynamic()</a> </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>agl/<a class="el" href="triangle__mesh_8h_source.html">triangle_mesh.h</a></li>
 <li>agl/triangle_mesh.cpp</li>
 </ul>
