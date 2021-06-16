@@ -1,14 +1,10 @@
 var searchData=
 [
-  ['random_55',['random',['../aglm_8h.html#aa04bffe547f6f0e4643ae0e5810d695a',1,'agl::random()'],['../aglm_8h.html#a040c74acb39f137ae2f962dfccaa5b9f',1,'agl::random(float min, float max)']]],
-  ['randomhemisphere_56',['randomHemisphere',['../aglm_8h.html#a937ad0795b3a3ff55eedfae486d160db',1,'agl']]],
-  ['randomunitcube_57',['randomUnitCube',['../aglm_8h.html#a4e2e22be803e7c06707800915a94f70b',1,'agl']]],
-  ['randomunitdisk_58',['randomUnitDisk',['../aglm_8h.html#ab0329368ebbf0374db2ed9c620f4228e',1,'agl']]],
-  ['randomunitsphere_59',['randomUnitSphere',['../aglm_8h.html#a37c9f25aa62ce390e51c7d7687ec76e1',1,'agl']]],
-  ['randomunitsquare_60',['randomUnitSquare',['../aglm_8h.html#a23402ff2f46aa52669ebea581fe9c02e',1,'agl']]],
-  ['randomunitvector_61',['randomUnitVector',['../aglm_8h.html#a8e61df3e1fa0a251528d11fead2d83d5',1,'agl']]],
-  ['render_62',['render',['../classagl_1_1_line_mesh.html#ad07b40b8def07443a4257e06c4d6b4ee',1,'agl::LineMesh::render()'],['../classagl_1_1_mesh.html#a6baf7942c947b874118c4a14a6a2eb73',1,'agl::Mesh::render()'],['../classagl_1_1_point_mesh.html#a0e9941ecdb4304d874eddfdfd6b5393c',1,'agl::PointMesh::render()'],['../classagl_1_1_triangle_mesh.html#aea98e6052c68cb432d63080cd9622958',1,'agl::TriangleMesh::render()']]],
-  ['renderer_63',['Renderer',['../classagl_1_1_renderer.html',1,'agl']]],
-  ['resize_64',['resize',['../classagl_1_1_window.html#ae2d1ec72f0d21b86030737c6536c1083',1,'agl::Window']]],
-  ['run_65',['run',['../classagl_1_1_window.html#a515991f708f8a46ef51cc1c4569e7f63',1,'agl::Window']]]
+  ['perspective_50',['perspective',['../classagl_1_1_renderer.html#a634eb6dcb6be2328a406aa419797df25',1,'agl::Renderer::perspective()'],['../classagl_1_1_window.html#a7a72080667b1f21ec89b6f8e3b99217d',1,'agl::Window::perspective()']]],
+  ['pixel_51',['Pixel',['../structagl_1_1_pixel.html',1,'agl']]],
+  ['plane_52',['Plane',['../classagl_1_1_plane.html',1,'agl']]],
+  ['plane_53',['plane',['../classagl_1_1_renderer.html#a544696fbcc45bab239dbc3c9adbf72d5',1,'agl::Renderer']]],
+  ['pointmesh_54',['PointMesh',['../classagl_1_1_point_mesh.html',1,'agl']]],
+  ['projectionmatrix_55',['projectionMatrix',['../classagl_1_1_renderer.html#abb2da73ef50d1311e6befcf9684b95ad',1,'agl::Renderer']]],
+  ['pyramid_56',['Pyramid',['../classagl_1_1_pyramid.html',1,'agl']]]
 ];
