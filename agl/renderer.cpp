@@ -96,6 +96,7 @@ void Renderer::init() {
   initMesh();
   loadShader("cubemap", "../shaders/cubemap.vs", "../shaders/cubemap.fs");
   loadShader("unlit", "../shaders/unlit.vs", "../shaders/unlit.fs");
+  loadShader("normals", "../shaders/normals.vs", "../shaders/normals.fs");
 
   _cube = new Cube(1.0f);
   _cone = new Cylinder(0.5f, 0.01, 1, 40);
@@ -356,7 +357,7 @@ void Renderer::sphere() {
   mesh(*_sphere);
 }
 
-void Renderer::mesh(const TriangleMesh& mesh) {
+void Renderer::mesh(const Mesh& mesh) {
   assert(_initialized);
 
   mat4 mv = _viewMatrix * _trs;
@@ -369,6 +370,12 @@ void Renderer::mesh(const TriangleMesh& mesh) {
   setUniform("HasUV", mesh.hasUV());
 
   mesh.render();
+}
+
+void Renderer::cleanupShaders() {
+  while (_shaderStack.size() > 1) {
+    endShader();
+  }
 }
 
 void Renderer::beginShader(const std::string& shaderName) {

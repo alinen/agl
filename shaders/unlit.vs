@@ -1,19 +1,18 @@
 #version 400
 
 layout (location = 0) in vec3 vPositions;
-layout (location = 1) in vec3 vNormals;
-layout (location = 2) in vec2 vTextureCoords;
 
-uniform mat3 NormalMatrix;
-uniform mat4 ModelViewMatrix;
+struct MaterialInfo {
+  vec4 color;
+};
+
 uniform mat4 MVP;
+uniform MaterialInfo Material;
 
-out vec3 color;
+out vec4 color;
 
 void main()
 {
-  color = 0.5 * (vNormals + 1.0);
+  color = Material.color;
   gl_Position = MVP * vec4(vPositions, 1.0);
 }
-
-

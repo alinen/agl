@@ -140,6 +140,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a21af4885a9fe659b6515e07bee758374"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">endShader</a> ()</td></tr>
 <tr class="memdesc:a21af4885a9fe659b6515e07bee758374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear active shader to use for rendering.  <a href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">More...</a><br /></td></tr>
 <tr class="separator:a21af4885a9fe659b6515e07bee758374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44cc6004af2e17a9b7607f96b0648641"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a44cc6004af2e17a9b7607f96b0648641">cleanupShaders</a> ()</td></tr>
+<tr class="memdesc:a44cc6004af2e17a9b7607f96b0648641"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all active shaders.  <a href="classagl_1_1_renderer.html#a44cc6004af2e17a9b7607f96b0648641">More...</a><br /></td></tr>
+<tr class="separator:a44cc6004af2e17a9b7607f96b0648641"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af59ab1ce370cf7b6951bd4b0f39f212e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#af59ab1ce370cf7b6951bd4b0f39f212e">setUniform</a> (const std::string &amp;name, float x, float y, float z)</td></tr>
 <tr class="memdesc:af59ab1ce370cf7b6951bd4b0f39f212e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a uniform parameter in the currently active shader.  <a href="classagl_1_1_renderer.html#af59ab1ce370cf7b6951bd4b0f39f212e">More...</a><br /></td></tr>
 <tr class="separator:af59ab1ce370cf7b6951bd4b0f39f212e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -262,9 +265,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:afa9c3890ff91416793183e32abcf0614"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#afa9c3890ff91416793183e32abcf0614">skybox</a> (float size=10.0)</td></tr>
 <tr class="memdesc:afa9c3890ff91416793183e32abcf0614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a skybox (typically with a cubemap)  <a href="classagl_1_1_renderer.html#afa9c3890ff91416793183e32abcf0614">More...</a><br /></td></tr>
 <tr class="separator:afa9c3890ff91416793183e32abcf0614"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed808cf5b13ec7a7a4a9465816163d73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#aed808cf5b13ec7a7a4a9465816163d73">mesh</a> (const <a class="el" href="classagl_1_1_triangle_mesh.html">TriangleMesh</a> &amp;m)</td></tr>
-<tr class="memdesc:aed808cf5b13ec7a7a4a9465816163d73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a custom (indexed) mesh.  <a href="classagl_1_1_renderer.html#aed808cf5b13ec7a7a4a9465816163d73">More...</a><br /></td></tr>
-<tr class="separator:aed808cf5b13ec7a7a4a9465816163d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71d4dac6b044055e3df94179df2c0b18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_renderer.html#a71d4dac6b044055e3df94179df2c0b18">mesh</a> (const <a class="el" href="classagl_1_1_mesh.html">Mesh</a> &amp;m)</td></tr>
+<tr class="memdesc:a71d4dac6b044055e3df94179df2c0b18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a custom mesh.  <a href="classagl_1_1_renderer.html#a71d4dac6b044055e3df94179df2c0b18">More...</a><br /></td></tr>
+<tr class="separator:a71d4dac6b044055e3df94179df2c0b18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">Renderer</a> class draws meshes to the screen using shaders. </p>
@@ -290,8 +293,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Usage </p><div class="fragment"><div class="line"><a class="code" href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">beginShader</a>(<span class="stringliteral">&quot;myShader&quot;</span>);</div>
 <div class="line"><span class="comment">// draw primitives</span></div>
 <div class="line"><a class="code" href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">endShader</a>();</div>
-<div class="ttc" id="aclassagl_1_1_renderer_html_a219ab8aaf5d0bb109bbd1bbbf567f78d"><div class="ttname"><a href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">agl::Renderer::beginShader</a></div><div class="ttdeci">void beginShader(const std::string &amp;shaderName)</div><div class="ttdoc">Set active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:374</div></div>
-<div class="ttc" id="aclassagl_1_1_renderer_html_a21af4885a9fe659b6515e07bee758374"><div class="ttname"><a href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">agl::Renderer::endShader</a></div><div class="ttdeci">void endShader()</div><div class="ttdoc">Clear active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:382</div></div>
+<div class="ttc" id="aclassagl_1_1_renderer_html_a219ab8aaf5d0bb109bbd1bbbf567f78d"><div class="ttname"><a href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d">agl::Renderer::beginShader</a></div><div class="ttdeci">void beginShader(const std::string &amp;shaderName)</div><div class="ttdoc">Set active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:381</div></div>
+<div class="ttc" id="aclassagl_1_1_renderer_html_a21af4885a9fe659b6515e07bee758374"><div class="ttname"><a href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374">agl::Renderer::endShader</a></div><div class="ttdeci">void endShader()</div><div class="ttdoc">Clear active shader to use for rendering.</div><div class="ttdef"><b>Definition:</b> renderer.cpp:389</div></div>
 </div><!-- fragment --> <dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8" title="Load a GLSL shader from files.">loadShader</a> </dd></dl>
 
 </div>
@@ -391,6 +394,26 @@ int main() {
 
 <p>Cleanup all resources used for drawing. </p>
 <p>This method must be called before any draw or shader calls. <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> calls this method automatically. Users should not call this method. </p>
+
+</div>
+</div>
+<a id="a44cc6004af2e17a9b7607f96b0648641"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44cc6004af2e17a9b7607f96b0648641">&#9670;&nbsp;</a></span>cleanupShaders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Renderer::cleanupShaders </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear all active shaders. </p>
+<p>Resets all active shaders (e.g. those for which beginShader has been called but <a class="el" href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374" title="Clear active shader to use for rendering.">endShader()</a> hasn't). This function is called by <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">Window</a> at the end up each frame (users shouldn't need to call this function) </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374" title="Clear active shader to use for rendering.">endShader</a> </dd></dl>
 
 </div>
 </div>
@@ -810,8 +833,8 @@ int main() {
 
 </div>
 </div>
-<a id="aed808cf5b13ec7a7a4a9465816163d73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed808cf5b13ec7a7a4a9465816163d73">&#9670;&nbsp;</a></span>mesh()</h2>
+<a id="a71d4dac6b044055e3df94179df2c0b18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71d4dac6b044055e3df94179df2c0b18">&#9670;&nbsp;</a></span>mesh()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -819,15 +842,20 @@ int main() {
         <tr>
           <td class="memname">void agl::Renderer::mesh </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classagl_1_1_triangle_mesh.html">TriangleMesh</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classagl_1_1_mesh.html">Mesh</a> &amp;&#160;</td>
           <td class="paramname"><em>m</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Draws a custom (indexed) mesh. </p>
-<p>Meshes can be loaded from a file or created procedurally. Subclasses of leMesh should minimally define positions, normals, and indices. Texture (UV) coordinates and tangents may also be defined. </p>
+<p>Draws a custom mesh. </p>
+<p>Meshes can be loaded from a file or created procedurally. Subclasses of leMesh should minimally define positions, normals, and indices. Texture (UV) coordinates and tangents may also be defined.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classagl_1_1_triangle_mesh.html" title="Base class for indexed triangle meshes.">TriangleMesh</a> </dd>
+<dd>
+<a class="el" href="classagl_1_1_line_mesh.html" title="Base class for meshes.">LineMesh</a> </dd>
+<dd>
+<a class="el" href="classagl_1_1_point_mesh.html" title="Base class for drawing large numbers of points.">PointMesh</a> </dd></dl>
 
 </div>
 </div>

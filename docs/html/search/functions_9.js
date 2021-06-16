@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['numvertices_140',['numVertices',['../classagl_1_1_triangle_mesh.html#a38fa97d8cbee595b7a5e23941dc86e31',1,'agl::TriangleMesh']]]
+  ['numvertices_148',['numVertices',['../classagl_1_1_mesh.html#a14b9eb65b80e4fdfd534758c65333e15',1,'agl::Mesh']]]
 ];

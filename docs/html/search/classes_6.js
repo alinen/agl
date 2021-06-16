@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['window_103',['Window',['../classagl_1_1_window.html',1,'agl']]]
+  ['skybox_105',['SkyBox',['../classagl_1_1_sky_box.html',1,'agl']]],
+  ['sphere_106',['Sphere',['../classagl_1_1_sphere.html',1,'agl']]]
 ];

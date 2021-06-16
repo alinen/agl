@@ -199,6 +199,16 @@ class Renderer {
   void endShader();
 
   /**
+   * @brief Clear all active shaders
+   *
+   * Resets all active shaders (e.g. those for which beginShader has been
+   * called but endShader() hasn't). This function is called by Window at the
+   * end up each frame (users shouldn't need to call this function)
+   * @see endShader
+   */
+  void cleanupShaders();
+
+  /**
    * @brief Set a uniform parameter in the currently active shader
    *
    * The name should match the name of the uniform parameter. Overrides
@@ -429,15 +439,17 @@ class Renderer {
   void skybox(float size = 10.0);
 
   /**
-   * @brief Draws a custom (indexed) mesh
+   * @brief Draws a custom mesh
    *
    * Meshes can be loaded from a file or created procedurally.
    * Subclasses of leMesh should minimally define positions, normals, and
    * indices. Texture (UV) coordinates and tangents may also be defined.
    *
-   *
+   * @see TriangleMesh
+   * @see LineMesh
+   * @see PointMesh
    */
-  void mesh(const TriangleMesh& m);
+  void mesh(const Mesh& m);
   ///@}
 
  private:

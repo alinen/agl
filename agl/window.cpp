@@ -125,8 +125,8 @@ void Window::run() {
       renderer.lookAt(camera.position(), camera.look(), camera.up());
     }
     renderer.identity();
-
     draw();  // user function
+    renderer.cleanupShaders();
 
     glfwSwapBuffers(_window);
     glfwPollEvents();
