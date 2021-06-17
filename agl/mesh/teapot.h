@@ -3,7 +3,7 @@
 #ifndef AGL_MESH_TEAPOT_H_
 #define AGL_MESH_TEAPOT_H_
 
-#include "agl/triangle_mesh.h"
+#include "agl/mesh/triangle_mesh.h"
 #include <vector>
 #include <glm/glm.hpp>
 

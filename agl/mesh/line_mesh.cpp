@@ -1,13 +1,13 @@
 // Copyright, 2020, Savvy Sine, Aline Normoyle
-#include "agl/point_mesh.h"
+#include "agl/mesh/line_mesh.h"
 #include <iostream>
 
 using glm::vec4;
 
 namespace agl {
 
-void PointMesh::render() const {
-  if (!_initialized) const_cast<PointMesh*>(this)->init();
+void LineMesh::render() const {
+  if (!_initialized) const_cast<LineMesh*>(this)->init();
   if (_vao == 0) return;
 
   glBindVertexArray(_vao);
@@ -22,9 +22,8 @@ void PointMesh::render() const {
     }
   }
 
-  glDrawArrays(GL_POINTS, 0, _nVerts * 3);
+  glDrawArrays(GL_LINES, 0, _nVerts * 3);
   glBindVertexArray(0);
 }
 
 }  // namespace agl
-

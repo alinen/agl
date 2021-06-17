@@ -3,7 +3,7 @@
 #ifndef AGL_MESH_TORUS_H_
 #define AGL_MESH_TORUS_H_
 
-#include "agl/triangle_mesh.h"
+#include "agl/mesh/triangle_mesh.h"
 
 namespace agl {
 

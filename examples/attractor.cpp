@@ -3,7 +3,7 @@
 // See: Julien C. Sprott, 2000, Strange Attractors: Creating patterns in Chaos
 
 #include "agl/window.h"
-#include "agl/point_mesh.h"
+#include "agl/mesh/point_mesh.h"
 
 using glm::vec2;
 using glm::vec4;

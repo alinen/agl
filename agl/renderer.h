@@ -10,7 +10,7 @@
 #include "agl/agl.h"
 #include "agl/aglm.h"
 #include "agl/image.h"
-#include "agl/triangle_mesh.h"
+#include "agl/mesh.h"
 
 namespace agl {
 

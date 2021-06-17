@@ -1,5 +1,5 @@
 // Copyright, 2020, Savvy Sine, Aline Normoyle
-#include "agl/triangle_mesh.h"
+#include "agl/mesh/triangle_mesh.h"
 #include <iostream>
 
 using glm::vec4;
