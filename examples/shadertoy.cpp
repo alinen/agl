@@ -12,8 +12,8 @@ class MyWindow : public agl::Window {
     lookAt(vec3(0), vec3(0, 0, -2));
     ortho(0, width(), 0, height(), -1, 1);
     background(vec3(0));
-    
-    renderer.loadShader("shadertoy", 
+
+    renderer.loadShader("shadertoy",
         "../shaders/shadertoy.vs",
         "../shaders/shadertoy_raymarch_csg.fs");
   }

@@ -1,5 +1,5 @@
 // Copyright 2020, Savvy Sine, Aline Normoyle
-// Visualizes strange attractors 
+// Visualizes strange attractors
 // See: Julien C. Sprott, 2000, Strange Attractors: Creating patterns in Chaos
 
 #include "agl/window.h"
@@ -29,7 +29,7 @@ class Attractor : public agl::PointMesh {
 
   void init() override {
     std::vector<float> a;
-    //setParameters("MTISVBKHOIJFWSYEKEGYLWJKEOGVLM", &a);
+    // setParameters("MTISVBKHOIJFWSYEKEGYLWJKEOGVLM", &a);
     setParameters("JKRADSXGDBHIJTQJJDICEJKYSTXFNU", &a);
 
     int iterationsMax = 400000;
@@ -46,13 +46,13 @@ class Attractor : public agl::PointMesh {
       float y = p.y;
       float z = p.z;
 
-      float xnew = a[0] + a[1]*x + a[2]*x*x + a[3]*x*y + a[4]*x*z + 
+      float xnew = a[0] + a[1]*x + a[2]*x*x + a[3]*x*y + a[4]*x*z +
                    a[5]*y + a[6]*y*y + a[7]*y*z + a[8]*z + a[9]*z*z;
 
-      float ynew = a[10] + a[11]*x + a[12]*x*x + a[13]*x*y + a[14]*x*z + 
+      float ynew = a[10] + a[11]*x + a[12]*x*x + a[13]*x*y + a[14]*x*z +
                    a[15]*y + a[16]*y*y + a[17]*y*z + a[18]*z + a[19]*z*z;
 
-      float znew = a[20] + a[21]*x + a[22]*x*x + a[23]*x*y + a[24]*x*z + 
+      float znew = a[20] + a[21]*x + a[22]*x*x + a[23]*x*y + a[24]*x*z +
                    a[25]*y + a[26]*y*y + a[27]*y*z + a[28]*z + a[29]*z*z;
 
       p = glm::clamp(vec3(xnew, ynew, znew), vec3(minValue), vec3(maxValue));
@@ -65,12 +65,11 @@ class Attractor : public agl::PointMesh {
         points.push_back(p.z);
       }
 
-      maxBound = glm::max(p, maxBound); 
-      minBound = glm::min(p, minBound); 
+      maxBound = glm::max(p, maxBound);
+      minBound = glm::min(p, minBound);
     }
     bounds = maxBound - minBound;
     center = minBound + 0.5f * (maxBound - minBound);
-    //std::cout << bounds << " " << center << std::endl;
     initBuffers(&points, 0, 0, 0);
   }
 
@@ -92,7 +91,7 @@ class MyWindow : public agl::Window {
     float far = maxD * 10.0f;
 
     perspective(fov, width()/height(), near, far);
-    lookAt(vec3(0,0,-2), vec3(0));
+    lookAt(vec3(0, 0, -2), vec3(0));
   }
 
   void draw() {

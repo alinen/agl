@@ -7,7 +7,7 @@ class MyWindow : public agl::Window {
   void draw() {
     float y = sin(elapsedTime());
     renderer.beginShader("lines");
-    renderer.line(vec3(-0.5, y, 0.0), vec3(0.5, -y, 0.0), 
+    renderer.line(vec3(-0.5, y, 0.0), vec3(0.5, -y, 0.0),
       vec3(1, 1, 0), vec3(0, 1, 1));
     renderer.endShader();
   }

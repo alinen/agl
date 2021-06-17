@@ -45,8 +45,9 @@ class MyWindow : public agl::Window {
 
         _texture.set(i, j, color);
       }
-    } 
+    }
   }
+
  private:
   agl::Image _texture;
 };

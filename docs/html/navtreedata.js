@@ -29,28 +29,30 @@ var NAVTREE =
       [ "About", "index.html#autotoc_md1", null ],
       [ "How to build", "index.html#autotoc_md2", [
         [ "Tools and dependencies", "index.html#autotoc_md3", null ],
-        [ "Compiling and running", "index.html#autotoc_md4", null ]
+        [ "Compiling and running", "index.html#autotoc_md4", null ],
+        [ "Docs", "index.html#autotoc_md5", null ],
+        [ "References", "index.html#autotoc_md6", null ]
       ] ]
     ] ],
     [ "Getting Started", "md_docs__getting_started.html", [
-      [ "How to set up your scene", "md_docs__getting_started.html#autotoc_md6", null ],
-      [ "How to use the default camera", "md_docs__getting_started.html#autotoc_md7", null ],
-      [ "How to respond to events", "md_docs__getting_started.html#autotoc_md8", null ],
-      [ "How to draw shapes", "md_docs__getting_started.html#autotoc_md9", null ],
-      [ "How to work with shaders", "md_docs__getting_started.html#autotoc_md10", null ],
-      [ "How to load and use textures", "md_docs__getting_started.html#autotoc_md11", null ],
-      [ "Common problems", "md_docs__getting_started.html#autotoc_md12", [
-        [ "I have a black screen. What's wrong?", "md_docs__getting_started.html#autotoc_md13", null ]
+      [ "How to set up your scene", "md_docs__getting_started.html#autotoc_md8", null ],
+      [ "How to use the default camera", "md_docs__getting_started.html#autotoc_md9", null ],
+      [ "How to respond to events", "md_docs__getting_started.html#autotoc_md10", null ],
+      [ "How to draw shapes", "md_docs__getting_started.html#autotoc_md11", null ],
+      [ "How to work with shaders", "md_docs__getting_started.html#autotoc_md12", null ],
+      [ "How to load and use textures", "md_docs__getting_started.html#autotoc_md13", null ],
+      [ "Common problems", "md_docs__getting_started.html#autotoc_md14", [
+        [ "I have a black screen. What's wrong?", "md_docs__getting_started.html#autotoc_md15", null ]
       ] ],
-      [ "Known issues", "md_docs__getting_started.html#autotoc_md14", null ]
+      [ "Known issues", "md_docs__getting_started.html#autotoc_md16", null ]
     ] ],
     [ "Examples", "md_docs__examples.html", [
-      [ "Undulating mesh", "md_docs__examples.html#autotoc_md16", null ],
-      [ "Attractor", "md_docs__examples.html#autotoc_md17", null ],
-      [ "Dynamic texture", "md_docs__examples.html#autotoc_md18", null ],
-      [ "Procedural texture", "md_docs__examples.html#autotoc_md19", null ],
-      [ "Built-in primitives", "md_docs__examples.html#autotoc_md20", null ],
-      [ "Shadertoy", "md_docs__examples.html#autotoc_md21", null ]
+      [ "Undulating mesh", "md_docs__examples.html#autotoc_md18", null ],
+      [ "Attractor", "md_docs__examples.html#autotoc_md19", null ],
+      [ "Dynamic texture", "md_docs__examples.html#autotoc_md20", null ],
+      [ "Procedural texture", "md_docs__examples.html#autotoc_md21", null ],
+      [ "Built-in primitives", "md_docs__examples.html#autotoc_md22", null ],
+      [ "Shadertoy", "md_docs__examples.html#autotoc_md23", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
