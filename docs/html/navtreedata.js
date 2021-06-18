@@ -34,25 +34,26 @@ var NAVTREE =
         [ "References", "index.html#autotoc_md6", null ]
       ] ]
     ] ],
-    [ "Getting Started", "md_docs__getting_started.html", [
-      [ "How to set up your scene", "md_docs__getting_started.html#autotoc_md8", null ],
-      [ "How to use the default camera", "md_docs__getting_started.html#autotoc_md9", null ],
-      [ "How to respond to events", "md_docs__getting_started.html#autotoc_md10", null ],
-      [ "How to draw shapes", "md_docs__getting_started.html#autotoc_md11", null ],
-      [ "How to work with shaders", "md_docs__getting_started.html#autotoc_md12", null ],
-      [ "How to load and use textures", "md_docs__getting_started.html#autotoc_md13", null ],
-      [ "Common problems", "md_docs__getting_started.html#autotoc_md14", [
-        [ "I have a black screen. What's wrong?", "md_docs__getting_started.html#autotoc_md15", null ]
+    [ "Getting Started", "page2.html", [
+      [ "Setting up scenes", "page2.html#start", null ],
+      [ "Using the default camera", "page2.html#camera", null ],
+      [ "Responding to events", "page2.html#events", null ],
+      [ "Drawing shapes", "page2.html#shapes", null ],
+      [ "Using shaders", "page2.html#shaders", [
+        [ "The built-in shaders", "page2.html#builtinshaders", null ],
+        [ "Custom shaders", "page2.html#customshaders", null ]
       ] ],
-      [ "Known issues", "md_docs__getting_started.html#autotoc_md16", null ]
+      [ "Textures", "page2.html#textures", null ],
+      [ "Common problems", "page2.html#troubleshooting", [
+        [ "I have a black screen. What's wrong?", "page2.html#blackscreen", null ]
+      ] ],
+      [ "Known issues", "page2.html#issues", null ]
     ] ],
     [ "Examples", "page1.html", [
       [ "Built-in primitives", "page1.html#primitives", null ],
       [ "Custom meshes", "page1.html#sec", [
         [ "Dynamic mesh", "page1.html#subsection1", null ],
-        [ "Point mesh", "page1.html#subsection2", null ]
-      ] ],
-      [ "Textures", "page1.html#textures", [
+        [ "Point mesh", "page1.html#subsection2", null ],
         [ "Dynamic Texture", "page1.html#dynamictex", null ],
         [ "Procedural texture", "page1.html#proctex", null ],
         [ "Sprites", "page1.html#sprites", null ],

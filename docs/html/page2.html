@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>AGL: Related Pages</title>
+<title>AGL: Getting Started</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('pages.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('page2.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -82,18 +82,74 @@ $(document).ready(function(){initNavTree('pages.html',''); initResizable(); });
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Related Pages</div>  </div>
+<div class="title">Getting Started </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all related documentation pages:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="page2.html" target="_self">Getting Started</a></td><td class="desc"></td></tr>
-<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><a class="el" href="page1.html" target="_self">Examples</a></td><td class="desc"></td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#start">Setting up scenes</a></li>
+<li class="level1"><a href="#camera">Using the default camera</a></li>
+<li class="level1"><a href="#events">Responding to events</a></li>
+<li class="level1"><a href="#shapes">Drawing shapes</a></li>
+<li class="level1"><a href="#shaders">Using shaders</a><ul><li class="level2"><a href="#builtinshaders">The built-in shaders</a></li>
+<li class="level2"><a href="#customshaders">Custom shaders</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#textures">Textures</a></li>
+<li class="level1"><a href="#troubleshooting">Common problems</a><ul><li class="level2"><a href="#blackscreen">I have a black screen. What&#39;s wrong?</a></li>
+</ul>
+</li>
+<li class="level1"><a href="#issues">Known issues</a></li>
+</ul>
+</div>
+<div class="textblock"><p>The main classes implemented in this library are</p>
+<ul>
+<li><a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">agl::Window</a>: Manages user input, window properties, and the main application loop</li>
+<li><a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">agl::Renderer</a>: Manages drawing and shaders.</li>
+<li><a class="el" href="classagl_1_1_image.html" title="Implements loading, modifying, and saving RGBA images.">agl::Image</a>: Helper class for textures.</li>
+<li><a class="el" href="classagl_1_1_mesh.html" title="Base class for meshes.">agl::Mesh</a>: Implements primitives composed of large numbers of vertices, such as spheres and models.</li>
+</ul>
+<h1><a class="anchor" id="start"></a>
+Setting up scenes</h1>
+<h1><a class="anchor" id="camera"></a>
+Using the default camera</h1>
+<h1><a class="anchor" id="events"></a>
+Responding to events</h1>
+<h1><a class="anchor" id="shapes"></a>
+Drawing shapes</h1>
+<ul>
+<li>Built-in shapes</li>
+<li>User-defined shapes</li>
+<li>Positioning using the matrix stack</li>
+</ul>
+<h1><a class="anchor" id="shaders"></a>
+Using shaders</h1>
+<h2><a class="anchor" id="builtinshaders"></a>
+The built-in shaders</h2>
+<p>Default layouts and uniform parameters</p>
+<h2><a class="anchor" id="customshaders"></a>
+Custom shaders</h2>
+<h1><a class="anchor" id="textures"></a>
+Textures</h1>
+<h1><a class="anchor" id="troubleshooting"></a>
+Common problems</h1>
+<h2><a class="anchor" id="blackscreen"></a>
+I have a black screen. What's wrong?</h2>
+<ul>
+<li>Check your projection and camera properties. Make sure that any objects you define are located inside the view volume.</li>
+<li>Try drawing a simple shape</li>
+<li>Try drawing with the unlit shader</li>
+<li>Make sure the the object color and background colors are different</li>
+<li>If your colors have transparency, make sure that alpha is not 0.0</li>
+</ul>
+<h1><a class="anchor" id="issues"></a>
+Known issues</h1>
+<ul>
+<li>Only RGBA images are currently supported </li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -1,0 +1,49 @@
+/*!
+
+\page page2 Getting Started
+\tableofcontents
+
+The main classes implemented in this library are 
+
+- agl::Window: Manages user input, window properties, and the main application loop
+- agl::Renderer: Manages drawing and shaders.
+- agl::Image: Helper class for textures.
+- agl::Mesh: Implements primitives composed of large numbers of vertices, such as spheres and models.
+
+\section start Setting up scenes
+
+\section camera Using the default camera
+
+\section events Responding to events
+
+\section shapes Drawing shapes
+
+- Built-in shapes
+- User-defined shapes
+- Positioning using the matrix stack
+
+\section shaders Using shaders
+
+\subsection builtinshaders The built-in shaders 
+
+Default layouts and uniform parameters
+
+\subsection customshaders Custom shaders
+
+\section textures Textures
+
+\section troubleshooting Common problems
+
+\subsection blackscreen I have a black screen. What's wrong?
+
+- Check your projection and camera properties. Make sure that any objects you define are located inside the view volume.
+- Try drawing a simple shape
+- Try drawing with the unlit shader
+- Make sure the the object color and background colors are different
+- If your colors have transparency, make sure that alpha is not 0.0
+
+\section issues Known issues
+
+- Only RGBA images are currently supported
+
+*/
