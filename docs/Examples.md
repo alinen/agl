@@ -46,9 +46,11 @@ https://user-images.githubusercontent.com/259657/122495146-b81ff900-cfb7-11eb-88
 
 You can write fragment programs that do ray tracing and ray marching -- like in [shadertoy](https://www.shadertoy.com). Below we draw a quad the faces the camera and has the same dimensions as the window. The scene is then drawn in [glsl-raymarch.fs](https://github.com/alinen/agl/blob/main/shaders/glsl-raymarch.fs). The application code is [here](https://github.com/alinen/agl/blob/main/shaders/shadertoy_raymarch_csg.fs).
 
+/htmlonly
 <video controls>
 <source src="https://user-images.githubusercontent.com/259657/122495250-bd7d4380-cfb7-11eb-86a1-2ba2fb181059.mp4" type="video/mp4">
 Your browser does not support video
 </video>
+/endhtmlonly
 
 https://user-images.githubusercontent.com/259657/122495250-bd7d4380-cfb7-11eb-86a1-2ba2fb181059.mp4

@@ -46,19 +46,19 @@ var NAVTREE =
       ] ],
       [ "Known issues", "md_docs__getting_started.html#autotoc_md16", null ]
     ] ],
-    [ "Examples", "md_docs__examples.html", [
-      [ "Custom meshes", "md_docs__examples.html#autotoc_md18", [
-        [ "Undulating mesh", "md_docs__examples.html#autotoc_md19", null ],
-        [ "Attractor", "md_docs__examples.html#autotoc_md20", null ]
+    [ "Examples", "page1.html", [
+      [ "Built-in primitives", "page1.html#primitives", null ],
+      [ "Custom meshes", "page1.html#sec", [
+        [ "Dynamic mesh", "page1.html#subsection1", null ],
+        [ "Point mesh", "page1.html#subsection2", null ]
       ] ],
-      [ "Textures", "md_docs__examples.html#autotoc_md21", [
-        [ "Dynamic texture", "md_docs__examples.html#autotoc_md22", null ],
-        [ "Procedural texture", "md_docs__examples.html#autotoc_md23", null ],
-        [ "Sprites", "md_docs__examples.html#autotoc_md24", null ],
-        [ "Cubemap", "md_docs__examples.html#autotoc_md25", null ]
+      [ "Textures", "page1.html#textures", [
+        [ "Dynamic Texture", "page1.html#dynamictex", null ],
+        [ "Procedural texture", "page1.html#proctex", null ],
+        [ "Sprites", "page1.html#sprites", null ],
+        [ "Cubemap", "page1.html#cubemap", null ]
       ] ],
-      [ "Built-in primitives", "md_docs__examples.html#autotoc_md26", null ],
-      [ "Shadertoy", "md_docs__examples.html#autotoc_md27", null ]
+      [ "Shadertoy", "page1.html#shadertoy", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
