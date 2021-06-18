@@ -39,5 +39,4 @@ The following example shows how to enable fog, set colors, and draw different pr
 
 ## Shadertoy
 
-You can write fragment programs that do ray tracing and ray marching -- like in [shadertoy](https://www.shadertoy.com). Below we draw a quad the faces the camera and has the same dimensions as the window. The scene is then drawn in [glsl-raymarch.fs](https://github.com/alinen/agl/blob/main/shaders/glsl-raymarch.fs). The application code is [here](https://github.com/alinen/agl/blob/main/examples/shadertoy.cpp).
-
+You can write fragment programs that do ray tracing and ray marching -- like in [shadertoy](https://www.shadertoy.com). Below we draw a quad the faces the camera and has the same dimensions as the window. The scene is then drawn in [glsl-raymarch.fs](https://github.com/alinen/agl/blob/main/shaders/glsl-raymarch.fs). The application code is [here](https://github.com/alinen/agl/blob/main/shaders/shadertoy_raymarch_csg.fs).
