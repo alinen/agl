@@ -264,7 +264,7 @@ void Window::onMouseButton(int button, int action, int mods) {
 
   if (action == GLFW_PRESS) {
     _lastx = xpos;
-    _lasty = xpos;
+    _lasty = ypos;
     mouseDown(button, mods);
 
   } else if (action == GLFW_RELEASE) {
