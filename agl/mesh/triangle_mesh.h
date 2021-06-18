@@ -1,6 +1,6 @@
 // Copyright, 2020, Savvy Sine, Aline Normoyle
-#ifndef AGL_TRIANGLE_MESH_H_
-#define AGL_TRIANGLE_MESH_H_
+#ifndef AGL_MESH_TRIANGLE_MESH_H_
+#define AGL_MESH_TRIANGLE_MESH_H_
 
 #include <vector>
 #include "agl/mesh.h"
@@ -42,4 +42,4 @@ class TriangleMesh : public Mesh {
 };
 
 }  // namespace agl
-#endif  // AGL_TRIANGLE_MESH_H_
+#endif  // AGL_MESH_TRIANGLE_MESH_H_

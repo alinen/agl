@@ -88,19 +88,39 @@ $(document).ready(function(){initNavTree('md_docs__examples.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md18"></a>
-Undulating mesh</h1>
-<p>Video + code</p>
-<h1><a class="anchor" id="autotoc_md19"></a>
-Attractor</h1>
-<p>Video + code</p>
-<h1><a class="anchor" id="autotoc_md20"></a>
-Dynamic texture</h1>
+Custom meshes</h1>
+<h2><a class="anchor" id="autotoc_md19"></a>
+Undulating mesh</h2>
+<p>To create a dynamic triangle mesh, override <code>TriangleMesh</code> and call <code>setIsDynamic</code>. Below, we override the <code>Plane</code> primitive. The full code is <a href="https://github.com/alinen/agl/blob/main/examples/undulate.cpp">here</a>.</p>
+<p><a href="https://user-images.githubusercontent.com/259657/122494550-94f54980-cfb7-11eb-8111-b4bc5c920d00.mp4">https://user-images.githubusercontent.com/259657/122494550-94f54980-cfb7-11eb-8111-b4bc5c920d00.mp4</a></p>
+<h2><a class="anchor" id="autotoc_md20"></a>
+Attractor</h2>
+<p>The following example creates a <code>PointMesh</code> to draw a atrsnage attractor. The full code is <a href="https://github.com/alinen/agl/blob/main/examples/attractor.cpp">here</a>.</p>
+<p><a href="https://user-images.githubusercontent.com/259657/122494655-9de61b00-cfb7-11eb-91b6-ea922be4873e.mp4">https://user-images.githubusercontent.com/259657/122494655-9de61b00-cfb7-11eb-91b6-ea922be4873e.mp4</a></p>
 <h1><a class="anchor" id="autotoc_md21"></a>
-Procedural texture</h1>
-<h1><a class="anchor" id="autotoc_md22"></a>
+Textures</h1>
+<h2><a class="anchor" id="autotoc_md22"></a>
+Dynamic texture</h2>
+<p>The colors of the texture change when the user presses the 'up' key. The full code is <a href="https://github.com/alinen/agl/blob/main/examples/texture.cpp">here</a>.</p>
+<p><a href="https://user-images.githubusercontent.com/259657/122494807-a6d6ec80-cfb7-11eb-976b-18b5f8abfe9a.mp4">https://user-images.githubusercontent.com/259657/122494807-a6d6ec80-cfb7-11eb-976b-18b5f8abfe9a.mp4</a></p>
+<h2><a class="anchor" id="autotoc_md23"></a>
+Procedural texture</h2>
+<p>We can create textures directly from code. Below we draw a checker pattern using the <code>Image</code> class. The full code is <a href="https://github.com/alinen/agl/blob/main/examples/checker.cpp">here</a>.</p>
+<p><img src="https://user-images.githubusercontent.com/259657/122494946-ae969100-cfb7-11eb-86e6-2b6830570594.png" alt="checker" width="487" class="inline"/></p>
+<h2><a class="anchor" id="autotoc_md24"></a>
+Sprites</h2>
+<p>The following shows how to use multiple textures using <code>texture</code> and <code>loadTexture</code>. If the same slot id is used for both textures, the new texture replaces the old one. If multiple textures are needed, they should each have their own slot id. The full code is <a href="https://github.com/alinen/agl/blob/main/examples/sprites.cpp">here</a>.</p>
+<h2><a class="anchor" id="autotoc_md25"></a>
+Cubemap</h2>
+<p>The follow code shows how to load a cubemap using <code>texture</code> and <code>loadCubemap</code>. The full code is [here]().</p>
+<h1><a class="anchor" id="autotoc_md26"></a>
 Built-in primitives</h1>
-<h1><a class="anchor" id="autotoc_md23"></a>
+<p>The following example shows how to enable fog, set colors, and draw different primitives. The full code is <a href="https://github.com/alinen/agl/blob/main/examples/shapes.cpp">here</a>.</p>
+<p><a href="https://user-images.githubusercontent.com/259657/122495146-b81ff900-cfb7-11eb-88d3-7f12ca2a5de4.mp4">https://user-images.githubusercontent.com/259657/122495146-b81ff900-cfb7-11eb-88d3-7f12ca2a5de4.mp4</a></p>
+<h1><a class="anchor" id="autotoc_md27"></a>
 Shadertoy</h1>
+<p>You can write fragment programs that do ray tracing and ray marching &ndash; like in <a href="https://www.shadertoy.com">shadertoy</a>. Below we draw a quad the faces the camera and has the same dimensions as the window. The scene is then drawn in <a href="https://github.com/alinen/agl/blob/main/shaders/glsl-raymarch.fs">glsl-raymarch.fs</a>. The application code is <a href="https://github.com/alinen/agl/blob/main/shaders/shadertoy_raymarch_csg.fs">here</a>.</p>
+<p><a href="https://user-images.githubusercontent.com/259657/122495250-bd7d4380-cfb7-11eb-86a1-2ba2fb181059.mp4">https://user-images.githubusercontent.com/259657/122495250-bd7d4380-cfb7-11eb-86a1-2ba2fb181059.mp4</a> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

@@ -1,6 +1,6 @@
 // Copyright, 2020, Savvy Sine, Aline Normoyle
-#ifndef AGL_POINT_MESH_H_
-#define AGL_POINT_MESH_H_
+#ifndef AGL_MESH_POINT_MESH_H_
+#define AGL_MESH_POINT_MESH_H_
 
 #include "agl/mesh.h"
 
@@ -26,4 +26,4 @@ class PointMesh : public Mesh {
 };
 
 }  // namespace agl
-#endif  // AGL_POINT_MESH_H_
+#endif  // AGL_MESH_POINT_MESH_H_
