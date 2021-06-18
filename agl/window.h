@@ -211,6 +211,14 @@ class Window {
   ///@}
 
   /** 
+   * @brief Stop the main application loop
+   * 
+   * Call this function to terminate the main loop, either from setup() or 
+   * draw()
+   */
+  void noLoop();
+
+  /** 
    * @brief Set the background color
    * 
    * This function can be called from draw and will additionally clear the

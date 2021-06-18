@@ -37,11 +37,13 @@ Window::~Window() {
 }
 
 void Window::background(const vec3& color) {
-  if (glm::any(glm::epsilonNotEqual(_backgroundColor, color, 0.0001f))) {
-    _backgroundColor = color;
-    glClearColor(color[0], color[1], color[2], 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  }
+  _backgroundColor = color;
+  glClearColor(color[0], color[1], color[2], 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void Window::noLoop() {
+  glfwSetWindowShouldClose(_window, GL_TRUE);
 }
 
 void Window::setupOrthoScene(const vec3& center, const vec3& dim) {

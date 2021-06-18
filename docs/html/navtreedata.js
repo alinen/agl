@@ -34,32 +34,32 @@ var NAVTREE =
         [ "References", "index.html#autotoc_md6", null ]
       ] ]
     ] ],
-    [ "Getting Started", "page2.html", [
-      [ "Setting up scenes", "page2.html#start", null ],
-      [ "Using the default camera", "page2.html#camera", null ],
-      [ "Responding to events", "page2.html#events", null ],
-      [ "Drawing shapes", "page2.html#shapes", null ],
-      [ "Using shaders", "page2.html#shaders", [
-        [ "The built-in shaders", "page2.html#builtinshaders", null ],
-        [ "Custom shaders", "page2.html#customshaders", null ]
+    [ "Getting Started", "start.html", [
+      [ "Setting up scenes", "start.html#start", null ],
+      [ "Using the default camera", "start.html#camera", null ],
+      [ "Responding to events", "start.html#events", null ],
+      [ "Drawing shapes", "start.html#shapes", null ],
+      [ "Using shaders", "start.html#shaders", [
+        [ "The built-in shaders", "start.html#builtinshaders", null ],
+        [ "Custom shaders", "start.html#customshaders", null ]
       ] ],
-      [ "Textures", "page2.html#textures", null ],
-      [ "Common problems", "page2.html#troubleshooting", [
-        [ "I have a black screen. What's wrong?", "page2.html#blackscreen", null ]
+      [ "Textures", "start.html#textures", null ],
+      [ "Common problems", "start.html#troubleshooting", [
+        [ "I have a black screen. What's wrong?", "start.html#blackscreen", null ]
       ] ],
-      [ "Known issues", "page2.html#issues", null ]
+      [ "Known issues", "start.html#issues", null ]
     ] ],
-    [ "Examples", "page1.html", [
-      [ "Built-in primitives", "page1.html#primitives", null ],
-      [ "Custom meshes", "page1.html#sec", [
-        [ "Dynamic mesh", "page1.html#subsection1", null ],
-        [ "Point mesh", "page1.html#subsection2", null ],
-        [ "Dynamic Texture", "page1.html#dynamictex", null ],
-        [ "Procedural texture", "page1.html#proctex", null ],
-        [ "Sprites", "page1.html#sprites", null ],
-        [ "Cubemap", "page1.html#cubemap", null ]
+    [ "Examples", "examples.html", [
+      [ "Built-in meshes", "examples.html#primitives", null ],
+      [ "Custom meshes", "examples.html#custommeshes", [
+        [ "Dynamic mesh", "examples.html#subsection1", null ],
+        [ "Point mesh", "examples.html#subsection2", null ],
+        [ "Dynamic Texture", "examples.html#dynamictex", null ],
+        [ "Procedural texture", "examples.html#proctex", null ],
+        [ "Sprites", "examples.html#sprites", null ],
+        [ "Cubemap", "examples.html#cubemap", null ]
       ] ],
-      [ "Shadertoy", "page1.html#shadertoy", null ]
+      [ "Shadertoy", "examples.html#shadertoy", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

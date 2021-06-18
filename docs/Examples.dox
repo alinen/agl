@@ -1,9 +1,9 @@
 /*!
 
-\page page1 Examples
+\page examples Examples
 \tableofcontents
 
-\section primitives Built-in primitives
+\section primitives Built-in meshes
 
 The following example shows how to enable fog, set colors, and draw different
 primitives. The properties correspond to uniform variables in the active
@@ -18,7 +18,7 @@ No video support
 </video>
 \endhtmlonly                                                                
 
-\section sec Custom meshes
+\section custommeshes Custom meshes
 
 \subsection subsection1 Dynamic mesh
 
@@ -35,8 +35,8 @@ Your browser does not support video
 
 \subsection subsection2 Point mesh
 
-The following example overrides agl::PointMesh` to draw a a strange attractor.
-The full code is
+The following example overrides agl::PointMesh` to draw a a strange attractor
+using 400,000 points.  The full code is
 [here](https://github.com/alinen/agl/blob/main/examples/attractor.cpp).
 
 \htmlonly
@@ -50,10 +50,6 @@ Your browser does not support video
 
 Textures can be loaded using agl::Renderer::loadTexture and passed to the
 active shader with agl::Renderer::texture.
-
-\note If the same slot id is used for both textures, the new texture replaces
-the old one. If multiple textures are needed, they should each have their own
-slot id. 
 
 \subsection dynamictex Dynamic Texture
 
@@ -80,6 +76,10 @@ using the agl::Image class. The full code is
 The following example shows how primitives using the same shader can each have
 their texture.  The full code is
 [here](https://github.com/alinen/agl/blob/main/examples/sprites.cpp).
+
+\note If the same slot id is used for both textures, the new texture replaces
+the old one. If multiple textures are needed within the same shader, they
+should each have their own slot id. 
 
 <img width="400" alt="checker" src="https://raw.githubusercontent.com/alinen/agl/main/docs/img/sprites.png"/>
 
