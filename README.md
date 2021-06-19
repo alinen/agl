@@ -41,6 +41,8 @@ int main() {
 
 ## How to build
 
+The source repository is [here](https://github.com/alinen/agl).
+
 ### Tools and dependencies
 
 To get started, you will need a C++ development environment, git, cmake. To
