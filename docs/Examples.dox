@@ -46,7 +46,7 @@ Your browser does not support video
 </video>
 \endhtmlonly
 
-\section textures Textures
+\section extextures Textures
 
 Textures can be loaded using agl::Renderer::loadTexture and passed to the
 active shader with agl::Renderer::texture.

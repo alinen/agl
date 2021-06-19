@@ -74,7 +74,9 @@ var NAVTREE =
       [ "Built-in meshes", "examples.html#primitives", null ],
       [ "Custom meshes", "examples.html#custommeshes", [
         [ "Dynamic mesh", "examples.html#subsection1", null ],
-        [ "Point mesh", "examples.html#subsection2", null ],
+        [ "Point mesh", "examples.html#subsection2", null ]
+      ] ],
+      [ "Textures", "examples.html#extextures", [
         [ "Dynamic Texture", "examples.html#dynamictex", null ],
         [ "Procedural texture", "examples.html#proctex", null ],
         [ "Sprites", "examples.html#sprites", null ],

@@ -118,11 +118,12 @@ agl/build $ ../bin/sphere
 
 ### Docs
 
-Read the docs [here](https://alinen.github.io/agl/html/index.html).
+* [Getting started](https://alinen.github.io/agl/html/start.html)
+* [Reference](https://alinen.github.io/agl/html/reference.html)
+* [Examples]()
 
 ### References 
 
-* [Doxygen Awesome CSS theme](https://jothepro.github.io/doxygen-awesome-css/index.html)
 * [OpenGL](https://www.khronos.org/registry/OpenGL-Refpages/gl4/)
 * [GLFW](https://www.glfw.org/)
 * [GLM](https://glm.g-truc.net/0.9.5/api/index.html)
@@ -130,3 +131,4 @@ Read the docs [here](https://alinen.github.io/agl/html/index.html).
 * [GLTF](https://www.khronos.org/gltf/)
 * [cpplint](https://github.com/cpplint/cpplint)
 * [OpenGL shader cookbook](https://github.com/PacktPublishing/OpenGL-4-Shading-Language-Cookbook-Third-Edition)
+* [Doxygen Awesome CSS theme](https://jothepro.github.io/doxygen-awesome-css/index.html)
