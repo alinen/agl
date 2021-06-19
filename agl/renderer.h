@@ -331,12 +331,83 @@ class Renderer {
   /** @name Positioning
    */
   ///@{
+  /**
+   * @brief Push the current matrix onto the matrix stack
+   *
+   * Use push() and pop() matrix to position objects relative to other objects.
+   * For example, a character might have an arm which rotates relative to the 
+   * rest of its body as it moves forward.
+   * ```
+   * renderer.translate(..);
+   * // draw body
+   * renderer.push();
+   *   renderer.rotate(...);
+   *   // draw arm
+   * renderer.pop();
+   * ```
+   * @verbinclude shapes.cpp
+   */
   void push();
+
+  /**
+   * @brief Pop the current matrix off the matrix stack
+   *
+   * @copydoc push()
+   */
   void pop();
+
+  /**
+   * @brief Clear the current transform
+   *
+   * Sets the current matrix to the identity matrix (e.g. no transform)
+   * @verbinclude shapes.cpp
+   */
   void identity();
+
+  /**
+   * @brief Scale an object
+   * @param xyz The proportions to resize the object.
+   *
+   * Changes the size of an object in each of the XYZ directions. For example,
+   * an x-component of 0.5 halves the size of the object in the X direction.
+   * Transformations are relative to the current position, size, and rotation
+   * of the object.
+   * @verbinclude scale.cpp
+   */
   void scale(const glm::vec3& xyz);
+
+  /**
+   * @brief Translate an object
+   * @param xyz The direction to move the object.
+   *
+   * Moves the object in each of the XYZ directions. For example, an
+   * x-component of 10 will move the object in the positive X direction.
+   * Transformations are relative to the current position, size, and rotation
+   * of the object.
+   * @verbinclude translate.cpp
+   */
   void translate(const glm::vec3& xyz);
+
+  /**
+   * @brief Rotates an object
+   * @param angleRad The angle to rotate in radians
+   * @param axis The axis to rotate around
+   *
+   * Rotates the object by angleRad around the given axis.  Transformations are
+   * relative to the current position, size, and rotation of the object.
+   * @verbinclude rotate.cpp
+   */
   void rotate(float angleRad, const glm::vec3& axis);
+
+  /**
+   * @brief Transforms an object by the given matrix
+   * @param trs The matrix transform
+   *
+   * Typically this matrix will be the product of translation * rotate * scale
+   * matrices. Transformations are relative to the current position, size, and
+   * rotation of the object.
+   * @verbinclude transform.cpp
+   */
   void transform(const glm::mat4& trs);
   ///@}
 

@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('classagl_1_1_image.html',''); initResi
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a17593a3ef1cd9145324c41d05d67ac0f"><td class="memItemLeft" align="right" valign="top"><a id="a17593a3ef1cd9145324c41d05d67ac0f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Image</b> (int width, int height)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Image</b> (int <a class="el" href="classagl_1_1_image.html#ae74be8fbbecd9221095357519300b2dd">width</a>, int <a class="el" href="classagl_1_1_image.html#aab7d25d00aef597c99940e13c368193c">height</a>)</td></tr>
 <tr class="separator:a17593a3ef1cd9145324c41d05d67ac0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9241ae79191c7979a05b66ba4195a0c2"><td class="memItemLeft" align="right" valign="top"><a id="a9241ae79191c7979a05b66ba4195a0c2"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Image</b> (const <a class="el" href="classagl_1_1_image.html">Image</a> &amp;orig)</td></tr>
@@ -107,40 +107,421 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a14a1d01d8e85ae7131680f45b3e0fcc7"><td class="memItemLeft" align="right" valign="top"><a id="a14a1d01d8e85ae7131680f45b3e0fcc7"></a>
 <a class="el" href="classagl_1_1_image.html">Image</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classagl_1_1_image.html">Image</a> &amp;orig)</td></tr>
 <tr class="separator:a14a1d01d8e85ae7131680f45b3e0fcc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91b3da0cadce1f573f2c90777c351773"><td class="memItemLeft" align="right" valign="top"><a id="a91b3da0cadce1f573f2c90777c351773"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>load</b> (const std::string &amp;filename)</td></tr>
+<tr class="memitem:a91b3da0cadce1f573f2c90777c351773"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_image.html#a91b3da0cadce1f573f2c90777c351773">load</a> (const std::string &amp;filename)</td></tr>
+<tr class="memdesc:a91b3da0cadce1f573f2c90777c351773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the given filename (.png)  <a href="classagl_1_1_image.html#a91b3da0cadce1f573f2c90777c351773">More...</a><br /></td></tr>
 <tr class="separator:a91b3da0cadce1f573f2c90777c351773"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04a0f31459797bd9b979a6c927833336"><td class="memItemLeft" align="right" valign="top"><a id="a04a0f31459797bd9b979a6c927833336"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>save</b> (const std::string &amp;filename, bool flip=true) const</td></tr>
+<tr class="memitem:a04a0f31459797bd9b979a6c927833336"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_image.html#a04a0f31459797bd9b979a6c927833336">save</a> (const std::string &amp;filename, bool flip=true) const</td></tr>
+<tr class="memdesc:a04a0f31459797bd9b979a6c927833336"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save the image to the given filename (.png)  <a href="classagl_1_1_image.html#a04a0f31459797bd9b979a6c927833336">More...</a><br /></td></tr>
 <tr class="separator:a04a0f31459797bd9b979a6c927833336"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae74be8fbbecd9221095357519300b2dd"><td class="memItemLeft" align="right" valign="top"><a id="ae74be8fbbecd9221095357519300b2dd"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>width</b> () const</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_image.html#ae74be8fbbecd9221095357519300b2dd">width</a> () const</td></tr>
+<tr class="memdesc:ae74be8fbbecd9221095357519300b2dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the image width in pixels. <br /></td></tr>
 <tr class="separator:ae74be8fbbecd9221095357519300b2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab7d25d00aef597c99940e13c368193c"><td class="memItemLeft" align="right" valign="top"><a id="aab7d25d00aef597c99940e13c368193c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>height</b> () const</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_image.html#aab7d25d00aef597c99940e13c368193c">height</a> () const</td></tr>
+<tr class="memdesc:aab7d25d00aef597c99940e13c368193c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the image height in pixels. <br /></td></tr>
 <tr class="separator:aab7d25d00aef597c99940e13c368193c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb02de241db7b09610a3d30653b99821"><td class="memItemLeft" align="right" valign="top"><a id="abb02de241db7b09610a3d30653b99821"></a>
-unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><b>data</b> () const</td></tr>
+<tr class="memitem:abb02de241db7b09610a3d30653b99821"><td class="memItemLeft" align="right" valign="top">unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_image.html#abb02de241db7b09610a3d30653b99821">data</a> () const</td></tr>
+<tr class="memdesc:abb02de241db7b09610a3d30653b99821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the RGBA data.  <a href="classagl_1_1_image.html#abb02de241db7b09610a3d30653b99821">More...</a><br /></td></tr>
 <tr class="separator:abb02de241db7b09610a3d30653b99821"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1a8e69eab00bc964664043012c48c47"><td class="memItemLeft" align="right" valign="top"><a id="ab1a8e69eab00bc964664043012c48c47"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (int width, int height, unsigned char *data)</td></tr>
+<tr class="memitem:ab1a8e69eab00bc964664043012c48c47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_image.html#ab1a8e69eab00bc964664043012c48c47">set</a> (int <a class="el" href="classagl_1_1_image.html#ae74be8fbbecd9221095357519300b2dd">width</a>, int <a class="el" href="classagl_1_1_image.html#aab7d25d00aef597c99940e13c368193c">height</a>, unsigned char *<a class="el" href="classagl_1_1_image.html#abb02de241db7b09610a3d30653b99821">data</a>)</td></tr>
+<tr class="memdesc:ab1a8e69eab00bc964664043012c48c47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace image RGBA data.  <a href="classagl_1_1_image.html#ab1a8e69eab00bc964664043012c48c47">More...</a><br /></td></tr>
 <tr class="separator:ab1a8e69eab00bc964664043012c48c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad33261452bd09c5ff6da4fa047434cda"><td class="memItemLeft" align="right" valign="top"><a id="ad33261452bd09c5ff6da4fa047434cda"></a>
-<a class="el" href="structagl_1_1_pixel.html">Pixel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> (int row, int col) const</td></tr>
+<tr class="memitem:ad33261452bd09c5ff6da4fa047434cda"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structagl_1_1_pixel.html">Pixel</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_image.html#ad33261452bd09c5ff6da4fa047434cda">get</a> (int row, int col) const</td></tr>
+<tr class="memdesc:ad33261452bd09c5ff6da4fa047434cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pixel at index (row, col)  <a href="classagl_1_1_image.html#ad33261452bd09c5ff6da4fa047434cda">More...</a><br /></td></tr>
 <tr class="separator:ad33261452bd09c5ff6da4fa047434cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b9f784dc80cc9af5fedc584bc17697d"><td class="memItemLeft" align="right" valign="top"><a id="a6b9f784dc80cc9af5fedc584bc17697d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set</b> (int row, int col, const <a class="el" href="structagl_1_1_pixel.html">Pixel</a> &amp;color)</td></tr>
+<tr class="memitem:a6b9f784dc80cc9af5fedc584bc17697d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_image.html#a6b9f784dc80cc9af5fedc584bc17697d">set</a> (int row, int col, const <a class="el" href="structagl_1_1_pixel.html">Pixel</a> &amp;color)</td></tr>
+<tr class="memdesc:a6b9f784dc80cc9af5fedc584bc17697d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the pixel RGBA color at index (row, col)  <a href="classagl_1_1_image.html#a6b9f784dc80cc9af5fedc584bc17697d">More...</a><br /></td></tr>
 <tr class="separator:a6b9f784dc80cc9af5fedc584bc17697d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42f1ca252e4c9db613df1a98b06e04f2"><td class="memItemLeft" align="right" valign="top"><a id="a42f1ca252e4c9db613df1a98b06e04f2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setVec4</b> (int row, int col, const glm::vec4 &amp;color)</td></tr>
+<tr class="memitem:a42f1ca252e4c9db613df1a98b06e04f2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_image.html#a42f1ca252e4c9db613df1a98b06e04f2">setVec4</a> (int row, int col, const glm::vec4 &amp;color)</td></tr>
+<tr class="memdesc:a42f1ca252e4c9db613df1a98b06e04f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the pixel RGBA color at index (row, col)  <a href="classagl_1_1_image.html#a42f1ca252e4c9db613df1a98b06e04f2">More...</a><br /></td></tr>
 <tr class="separator:a42f1ca252e4c9db613df1a98b06e04f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a93a876c6053498c5cf7ae4889721ca"><td class="memItemLeft" align="right" valign="top"><a id="a6a93a876c6053498c5cf7ae4889721ca"></a>
-glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><b>getVec4</b> (int row, int col) const</td></tr>
+<tr class="memitem:a6a93a876c6053498c5cf7ae4889721ca"><td class="memItemLeft" align="right" valign="top">glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classagl_1_1_image.html#a6a93a876c6053498c5cf7ae4889721ca">getVec4</a> (int row, int col) const</td></tr>
+<tr class="memdesc:a6a93a876c6053498c5cf7ae4889721ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pixel RGBA color at index (row, col)  <a href="classagl_1_1_image.html#a6a93a876c6053498c5cf7ae4889721ca">More...</a><br /></td></tr>
 <tr class="separator:a6a93a876c6053498c5cf7ae4889721ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implements loading, modifying, and saving RGBA images. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="abb02de241db7b09610a3d30653b99821"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb02de241db7b09610a3d30653b99821">&#9670;&nbsp;</a></span>data()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char* agl::Image::data </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the RGBA data. </p>
+<p>Data will have size width * height * 4 (RGBA) </p>
+
+</div>
+</div>
+<a id="ad33261452bd09c5ff6da4fa047434cda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad33261452bd09c5ff6da4fa047434cda">&#9670;&nbsp;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structagl_1_1_pixel.html">Pixel</a> agl::Image::get </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the pixel at index (row, col) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The row (value between 0 and height) </td></tr>
+    <tr><td class="paramname">col</td><td>The col (value between 0 and width)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><a class="el" href="structagl_1_1_pixel.html" title="Holder for a RGBA color.">Pixel</a> colors are unsigned char, e.g. in range 0 to 255 </p>
+
+</div>
+</div>
+<a id="a6a93a876c6053498c5cf7ae4889721ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a93a876c6053498c5cf7ae4889721ca">&#9670;&nbsp;</a></span>getVec4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vec4 agl::Image::getVec4 </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the pixel RGBA color at index (row, col) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The row (value between 0 and height) </td></tr>
+    <tr><td class="paramname">col</td><td>The col (value between 0 and width)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>vec4 colors are in range [0,1] </p>
+
+</div>
+</div>
+<a id="a91b3da0cadce1f573f2c90777c351773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91b3da0cadce1f573f2c90777c351773">&#9670;&nbsp;</a></span>load()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool agl::Image::load </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Load the given filename (.png) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>The file to load, relative to the running directory</td></tr>
+  </table>
+  </dd>
+</dl>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+
+using glm::vec3;
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.loadTexture("cloud", "../textures/cloud.png", 0);
+    renderer.loadTexture("particle", "../textures/particle.png", 0);
+    renderer.blendMode(agl::ADD);
+  }
+
+  void draw() {
+    renderer.beginShader("sprite");
+    renderer.texture("image", "cloud");
+    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), red, 0.25f);
+    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), green, 0.25f);
+
+    renderer.texture("image", "particle");
+    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), blue, 0.25f);
+    renderer.endShader();
+  }
+
+  const glm::vec4 red = glm::vec4(1, 0, 0, 1);
+  const glm::vec4 green = glm::vec4(0, 1, 0, 1);
+  const glm::vec4 blue = glm::vec4(0, 0, 1, 1);
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="a04a0f31459797bd9b979a6c927833336"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04a0f31459797bd9b979a6c927833336">&#9670;&nbsp;</a></span>save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool agl::Image::save </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>flip</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Save the image to the given filename (.png) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>The file to load, relative to the running directory </td></tr>
+    <tr><td class="paramname">flip</td><td>Whether the file should flipped vertally before being saved </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6b9f784dc80cc9af5fedc584bc17697d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b9f784dc80cc9af5fedc584bc17697d">&#9670;&nbsp;</a></span>set() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Image::set </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>col</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structagl_1_1_pixel.html">Pixel</a> &amp;&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the pixel RGBA color at index (row, col) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The row (value between 0 and height) </td></tr>
+    <tr><td class="paramname">col</td><td>The col (value between 0 and width)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><a class="el" href="structagl_1_1_pixel.html" title="Holder for a RGBA color.">Pixel</a> colors are unsigned char, e.g. in range 0 to 255 </p><pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+
+using glm::vec2;
+using glm::vec3;
+using glm::vec4;
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.setUniform("Fog.enabled", true);
+    renderer.setUniform("Fog.color", vec3(0.9f));
+    renderer.setUniform("Fog.minDist", 5.0f);
+    renderer.setUniform("Fog.maxDist", 9.0f);
+    renderer.setUniform("Material.specular", vec3(0.0));
+    renderer.setUniform("MainTexture.enabled", true);
+    renderer.setUniform("MainTexture.tile", vec2(10.0));
+
+    int halfw = 32;
+    int halfh = 32;
+    agl::Image checker(halfw*2, halfh*2);
+    for (int i = 0; i &lt; checker.height(); i++) {
+      for (int j = 0; j &lt; checker.width(); j++) {
+        if ((i &lt; halfh &amp;&amp; j &lt; halfw) || (i &gt; halfh &amp;&amp; j &gt; halfw)) {
+          checker.setVec4(i, j, vec4(0, 0, 0, 1));
+        } else {
+          checker.setVec4(i, j, vec4(1, 1, 1, 1));
+        }
+      }
+    }
+    renderer.loadTexture("checker", checker, 0);
+    renderer.texture("MainTexture.texture", "checker");
+
+    setupPerspectiveScene(vec3(0.0), vec3(10.0));
+    background(vec3(0.9f));
+  }
+
+  void draw() {
+    renderer.scale(vec3(20.0f));
+    renderer.plane();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre> 
+</div>
+</div>
+<a id="ab1a8e69eab00bc964664043012c48c47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1a8e69eab00bc964664043012c48c47">&#9670;&nbsp;</a></span>set() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Image::set </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Replace image RGBA data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>The new image width </td></tr>
+    <tr><td class="paramname">height</td><td>The new image height</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This call will replace the old data with the new data. Data should match the size width * height * 4 </p>
+
+</div>
+</div>
+<a id="a42f1ca252e4c9db613df1a98b06e04f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42f1ca252e4c9db613df1a98b06e04f2">&#9670;&nbsp;</a></span>setVec4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void agl::Image::setVec4 </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>col</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::vec4 &amp;&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the pixel RGBA color at index (row, col) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>The row (value between 0 and height) </td></tr>
+    <tr><td class="paramname">col</td><td>The col (value between 0 and width)</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>vec4 colors are in range [0,1] </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>agl/<a class="el" href="image_8h_source.html">image.h</a></li>
 <li>agl/image.cpp</li>
 </ul>

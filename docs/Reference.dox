@@ -12,12 +12,12 @@
 \section refimage Image
 
 - agl::Image::get()
-- agl::Image::getVec3()
+- agl::Image::getVec4()
 - agl::Image::height()
 - agl::Image::load()
 - agl::Image::save()
 - agl::Image::set()
-- agl::Image::setVec3()
+- agl::Image::setVec4()
 - agl::Image::width()
 - agl::Window::screenshot()
 
@@ -124,12 +124,12 @@
 
 \section reftransforms Transforms
 
-- agl::Window::push()
-- agl::Window::pop()
-- agl::Window::translate()
-- agl::Window::rotate()
-- agl::Window::scale()
-- agl::Window::identity()
+- agl::Renderer::identity()
+- agl::Renderer::pop()
+- agl::Renderer::push()
+- agl::Renderer::rotate()
+- agl::Renderer::scale()
+- agl::Renderer::translate()
 
 \section refwindow Window
 
