@@ -112,27 +112,542 @@ $(document).ready(function(){initNavTree('start.html',''); initResizable(); });
 </ul>
 <h1><a class="anchor" id="start"></a>
 Setting up scenes</h1>
+<p>The camera and projection determine the size of the scene that will be drawn (called the view volume). In other words, only objects that are in front of the camera and inside the projection's bounds will be rendered. Let's start with a simple example which uses the default camera and projection.</p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void draw() {
+    renderer.sphere();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><p>By default, the camera is located at position (0, 0, 2) and looks forward along the negative Z direction at position (0, 0, 0). The view volume is a box that extends from -1 to 1 in the X and Y directions, and -10 and 10 in the z direction. The default projection is an orthographic projection, meaning that all objects appear the same depth and there is no forshortening that makes further objects look smaller. The sphere has a default diameter of 1 and is centered at (0, 0, 0), so it appears in view.</p>
+<dl class="section note"><dt>Note</dt><dd>The coordinate system is a right-handed coordinate system where +Y points up and +Z points out of the screen.</dd></dl>
+<p>You have two choices for the projection.</p>
+<ul>
+<li><a class="el" href="classagl_1_1_window.html#a7b000f1549137c994f5c7e439bf01dfa" title="Initialize the projection and camera to fit the given dimensions and center using an orthographic pro...">agl::Window::setupOrthoScene</a> (box-shaped view volume)</li>
+<li><a class="el" href="classagl_1_1_window.html#aa68800283fe7f4b40e4dfff9281c03a1" title="Initialize the projection and camera to fit the given dimensions and center using a perspective proje...">agl::Window::setupPerspectiveScene</a> (pyramidal view volume)</li>
+</ul>
+<p>The easiest way to change the scene size is to use the above functions. These functions will set both the camera position, look at point, and projection to fit the given parameters. Alternatively, you can set the camera and projection properties yourself using</p>
+<ul>
+<li><a class="el" href="classagl_1_1_window.html#abb94594629d3fc1a971eeb86305fc537">agl::Window::lookAt</a></li>
+<li><a class="el" href="classagl_1_1_window.html#a576cd7910f689c49f58f616fdb7b5944" title="Set the current projection to an orthographic view.">agl::Window::ortho</a></li>
+<li><a class="el" href="classagl_1_1_window.html#a7a72080667b1f21ec89b6f8e3b99217d" title="Set the current projection to a perspective view.">agl::Window::perspective</a></li>
+</ul>
 <h1><a class="anchor" id="camera"></a>
 Using the default camera</h1>
+<p>By default, <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">agl::Window</a> defines a default camera, <a class="el" href="classagl_1_1_camera.html" title="Implements orbit and pan camera movement.">agl::Camera</a>. This camera has orbit and pan controls mapped to mouse input. The disable camera movement, call <a class="el" href="classagl_1_1_window.html#a2e3933fd7cf1f32ca9228106eb97f402" title="Set whether the window&#39;s camera controls are active.">agl::Window::setCameraEnabled</a>.</p>
 <h1><a class="anchor" id="events"></a>
 Responding to events</h1>
-<h1><a class="anchor" id="shapes"></a>
+<p>Override the mouse and keyboard methods in <a class="el" href="classagl_1_1_window.html" title="Manages the window and user input.">agl::Window</a> to respond to user input. For example, the following example modifies a texture on <a class="el" href="classagl_1_1_window.html#a022bd571eae1add76f1f06b4e4a4e8a3" title="Override this method to respond to key presses (button up)">agl::Window::keyUp</a></p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+#include "agl/image.h"
+
+using glm::vec2;
+using glm::vec3;
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.setUniform("Material.specular", vec3(0.0));
+    renderer.setUniform("MainTexture.enabled", true);
+    renderer.setUniform("MainTexture.tile", vec2(10.0));
+
+    _texture.load("../textures/bricks.png");
+    renderer.loadTexture("bricks", _texture, 0);
+    renderer.texture("MainTexture.texture", "bricks");
+
+    setupPerspectiveScene(vec3(0.0), vec3(10.0));
+    background(vec3(0.9f));
+  }
+
+  void draw() {
+    renderer.scale(vec3(20.0f));
+    renderer.plane();
+  }
+
+  void keyUp(int key, int mods) {
+    if (key == GLFW_KEY_UP) {
+      swirl();
+      renderer.loadTexture("bricks", _texture, 0);  // replace old image
+    }
+  }
+
+  void swirl() {
+    for (int i = 0; i &lt; _texture.height(); i++) {
+      for (int j = 0; j &lt; _texture.width(); j++) {
+        agl::Pixel color = _texture.get(i, j);
+
+        // swirl colors
+        unsigned char red = color.r;
+        color.r = color.g;
+        color.g = color.b;
+        color.b = red;
+
+        _texture.set(i, j, color);
+      }
+    }
+  }
+
+ private:
+  agl::Image _texture;
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><h1><a class="anchor" id="shapes"></a>
 Drawing shapes</h1>
+<p>Use the primitive calls in <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">agl::Renderer</a> to draw shapes. By default, they will have unit size (e.g. fit into a 1x1x1 box) and be centered at te origin.</p>
+<p>Use the transform functions the modify the positions of these shapes.</p>
 <ul>
-<li>Built-in shapes</li>
-<li>User-defined shapes</li>
-<li>Positioning using the matrix stack</li>
+<li><a class="el" href="classagl_1_1_renderer.html#a5a23688f12b6ddfa97e86fe4db8f4683" title="Scale an object.">agl::Renderer::scale()</a></li>
+<li><a class="el" href="classagl_1_1_renderer.html#aea9dca966b0d88c31ec0af359904b0a9" title="Translate an object.">agl::Renderer::translate()</a></li>
+<li><a class="el" href="classagl_1_1_renderer.html#a2e80dd438494f9adc980a6c595ea35a2" title="Rotates an object.">agl::Renderer::rotate()</a></li>
+<li><a class="el" href="classagl_1_1_renderer.html#a08999004bf88bfaee4bd79a8d1b34227" title="Clear the current transform.">agl::Renderer::identity()</a></li>
 </ul>
-<h1><a class="anchor" id="shaders"></a>
+<p>Below is an example.</p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+
+using glm::vec2;
+using glm::vec3;
+using glm::vec4;
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.setUniform("Fog.enabled", true);
+    renderer.setUniform("Fog.color", vec3(0.9f));
+    renderer.setUniform("Fog.minDist", 5.0f);
+    renderer.setUniform("Fog.maxDist", 9.0f);
+    renderer.setUniform("Material.specular", vec3(0.0));
+    renderer.setUniform("MainTexture.enabled", true);
+    renderer.setUniform("MainTexture.tile", vec2(20.0));
+
+    int halfw = 32;
+    int halfh = 32;
+    agl::Image checker(halfw*2, halfh*2);
+    for (int i = 0; i &lt; checker.height(); i++) {
+      for (int j = 0; j &lt; checker.width(); j++) {
+        if ((i &lt; halfh &amp;&amp; j &lt; halfw) || (i &gt; halfh &amp;&amp; j &gt; halfw)) {
+          checker.setVec4(i, j, vec4(0.7, 0.7, 0.7, 1));
+        } else {
+          checker.setVec4(i, j, vec4(1, 1, 1, 1));
+        }
+      }
+    }
+    renderer.loadTexture("checker", checker, 0);
+
+    setupPerspectiveScene(vec3(0.0), vec3(5.0));
+    background(vec3(0.9f));
+  }
+
+  void draw() {
+    renderer.setUniform("MainTexture.enabled", true);
+    renderer.setUniform("Material.specular", vec3(0.0));
+    renderer.setUniform("Material.diffuse", vec3(1));
+    renderer.texture("MainTexture.texture", "checker");
+    renderer.identity();
+    renderer.translate(vec3(0));
+    renderer.scale(vec3(20.0f));
+    renderer.plane();
+
+    renderer.setUniform("MainTexture.enabled", false);
+    renderer.setUniform("Material.specular", vec3(1));
+    renderer.setUniform("Material.diffuse", vec3(1, 0, 0));
+    renderer.identity();
+    renderer.translate(vec3(0, 0.5, 0));
+    renderer.scale(vec3(0.5));
+    renderer.rotate(elapsedTime(), vec3(0.5, 1, 0));
+    renderer.capsule();
+
+    renderer.setUniform("Material.diffuse", vec3(0.5, 1, 0));
+    renderer.identity();
+    renderer.translate(vec3(-1, 0.5, 1));
+    renderer.scale(vec3(0.5));
+    renderer.rotate(elapsedTime(), vec3(0.5, 0.5, 0));
+    renderer.cone();
+
+    renderer.setUniform("Material.diffuse", vec3(1, 0, 1));
+    renderer.identity();
+    renderer.translate(vec3(0, 0.5, 1));
+    renderer.scale(vec3(0.5));
+    renderer.sphere();
+
+    renderer.setUniform("Material.diffuse", vec3(1, 1, 0.3));
+    renderer.identity();
+    renderer.translate(vec3(1, 0.5, 1));
+    renderer.scale(vec3(0.5));
+    renderer.rotate(elapsedTime(), vec3(-0.5, 0.5, 0));
+    renderer.cube();
+
+    renderer.setUniform("Material.diffuse", vec3(1, 0.8, 0.1));
+    renderer.identity();
+    renderer.translate(vec3(-1, 0.5, 0));
+    renderer.scale(vec3(0.5));
+    renderer.rotate(elapsedTime(), vec3(1, 0.5, 0));
+    renderer.cylinder();
+
+    renderer.setUniform("Material.diffuse", vec3(1, 0, 0.5));
+    renderer.identity();
+    renderer.translate(vec3(1, 0.5, 0));
+    renderer.scale(vec3(0.75));
+    renderer.rotate(elapsedTime(), vec3(0.5, 0.5, 0));
+    renderer.teapot();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><p>You can also define your own meshs by extending the base classes</p>
+<ul>
+<li><a class="el" href="classagl_1_1_triangle_mesh.html" title="Base class for indexed triangle meshes.">agl::TriangleMesh</a> (indexed mesh of triangles)</li>
+<li><a class="el" href="classagl_1_1_line_mesh.html" title="Base class for meshes.">agl::LineMesh</a> (mesh of lines)</li>
+<li>agl::PointsMesh (mesh of points)</li>
+</ul>
+<p>For example,</p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+// Visualizes strange attractors
+// See: Julien C. Sprott, 2000, Strange Attractors: Creating patterns in Chaos
+
+#include "agl/window.h"
+#include "agl/mesh/point_mesh.h"
+
+using glm::vec2;
+using glm::vec4;
+using glm::vec3;
+
+class Attractor : public agl::PointMesh {
+ public:
+  Attractor() : PointMesh() {
+    init();  // initialize the mesh rather than wait for first frame
+  }
+
+  void setParameters(const std::string&amp; name, std::vector&lt;float&gt;* params) {
+    float startc = 32;
+    float startv = -4.5;
+    params-&gt;clear();
+    for (int i = 0; i &lt; name.size(); i++) {
+      char c = name[i];
+      float v = (c - startc)*0.1 + startv;
+      std::cout &lt;&lt; i &lt;&lt; ") " &lt;&lt; name[i] &lt;&lt; " = " &lt;&lt; v &lt;&lt; "\n";
+      params-&gt;push_back(v);
+    }
+  }
+
+  void init() override {
+    std::vector&lt;float&gt; a;
+    // setParameters("MTISVBKHOIJFWSYEKEGYLWJKEOGVLM", &amp;a);
+    setParameters("JKRADSXGDBHIJTQJJDICEJKYSTXFNU", &amp;a);
+
+    int iterationsMax = 400000;
+    float minValue = -1000000;
+    float maxValue =  1000000;
+    vec3 maxBound = vec3(-10.1);  // for window bounds
+    vec3 minBound = vec3(10.1);   // for window bounds
+    bool done = false;
+    vec3 p = vec3(0.05);
+
+    std::vector&lt;GLfloat&gt; points;
+    for (int i = 0; i &lt; iterationsMax &amp;&amp; !done; i++) {
+      float x = p.x;
+      float y = p.y;
+      float z = p.z;
+
+      float xnew = a[0] + a[1]*x + a[2]*x*x + a[3]*x*y + a[4]*x*z +
+                   a[5]*y + a[6]*y*y + a[7]*y*z + a[8]*z + a[9]*z*z;
+
+      float ynew = a[10] + a[11]*x + a[12]*x*x + a[13]*x*y + a[14]*x*z +
+                   a[15]*y + a[16]*y*y + a[17]*y*z + a[18]*z + a[19]*z*z;
+
+      float znew = a[20] + a[21]*x + a[22]*x*x + a[23]*x*y + a[24]*x*z +
+                   a[25]*y + a[26]*y*y + a[27]*y*z + a[28]*z + a[29]*z*z;
+
+      p = glm::clamp(vec3(xnew, ynew, znew), vec3(minValue), vec3(maxValue));
+      if (std::abs(p.x) &gt; maxValue-1) {
+        done = true;
+
+      } else {
+        points.push_back(p.x);
+        points.push_back(p.y);
+        points.push_back(p.z);
+      }
+
+      maxBound = glm::max(p, maxBound);
+      minBound = glm::min(p, minBound);
+    }
+    bounds = maxBound - minBound;
+    center = minBound + 0.5f * (maxBound - minBound);
+    initBuffers(&amp;points, 0, 0, 0);
+  }
+
+ public:
+  vec3 bounds = vec3(0);
+  vec3 center = vec3(0.0);
+};
+
+class MyWindow : public agl::Window {
+ public:
+  void setup() {
+    background(vec3(1.0));
+
+    float fov = glm::radians(45.0);
+    vec3 bounds = _mesh.bounds;
+    float minD = std::min(std::min(bounds.x, bounds.y), bounds.z);
+    float maxD = std::max(std::max(bounds.x, bounds.y), bounds.z);
+    float near = minD * 0.05f / tan(fov);
+    float far = maxD * 10.0f;
+
+    perspective(fov, width()/height(), near, far);
+    lookAt(vec3(0, 0, -2), vec3(0));
+  }
+
+  void draw() {
+    renderer.beginShader("unlit");
+    renderer.setUniform("Material.color", vec4(0.25, 0.25, 0.25, 1));
+    renderer.translate(-_mesh.center);
+    renderer.mesh(_mesh);
+    renderer.endShader();
+  }
+
+  Attractor _mesh;
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><p>You can also access the built-in primitives to customize their properties. The following example creates a custom torus.</p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+#include "agl/mesh/torus.h"
+
+using agl::Torus;
+using glm::vec3;
+
+class MyWindow : public agl::Window {
+ public:
+  void draw() {
+    renderer.rotate(elapsedTime(), vec3(1, 1, 0));
+    renderer.mesh(_fatTorus);
+  }
+
+  Torus _fatTorus = Torus(0.45, 0.5, 20, 20);
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><p>By default, mesh vertex properties are static (e.g. they don't change values after the mesh os created). You can also define dynamic meshes by calling <a class="el" href="classagl_1_1_mesh.html#af359163f168b0f6a2194a49636f487f4" title="Set whether or not this is a dynamic mesh.">agl::Mesh::setIsDynamic()</a>. For example,</p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+#include "agl/mesh/plane.h"
+
+using glm::vec2;
+using glm::vec4;
+using glm::vec3;
+
+class UndulateMesh : public agl::Plane {
+ public:
+  UndulateMesh(int xsize, int ysize) : Plane(1, 1, xsize, ysize) {
+    setIsDynamic(true);
+    init();  // initialize the mesh rather than wait for first frame
+  }
+
+  void update(float elapsedTime) {
+    for (int i = 0; i &lt; numVertices(); i++) {
+      vec3 p = vec3(vertexData(POSITION, i));
+      setVertexData(POSITION, i, vec4(position(p, elapsedTime), 0));
+      setVertexData(NORMAL, i, vec4(normal(p, elapsedTime), 0));
+    }
+  }
+
+  vec3 position(const vec3&amp; p, float t) {
+    float angle = t;
+    float frequency = 7.0;
+    float amplitude = 0.05;
+
+    float heightFn = (angle + frequency * p[0] * frequency * p[2]);
+    float y = amplitude * sin(heightFn);
+    return vec3(p.x, y, p.z);
+  }
+
+  vec3 normal(const vec3&amp; p, float t) {
+    float eps = 0.001;
+    vec3 x = position(p+vec3(eps, 0, 0), t) - position(p-vec3(eps, 0, 0), t);
+    vec3 z = position(p+vec3(0, 0, eps), t) - position(p-vec3(0, 0, eps), t);
+    vec3 y = glm::cross(z, x);
+    return normalize(y);
+  }
+};
+
+class MyWindow : public agl::Window {
+ public:
+  void setup() {
+    perspective(glm::radians(30.0), 1, 0.1, 100);
+    renderer.setUniform("Material.specular", vec3(1.0, 0.2, 0.8));
+    renderer.setUniform("Material.ambient", vec3(0.3, 0.0, 0.2));
+  }
+
+  void draw() {
+    _mesh.update(elapsedTime());
+    renderer.rotate(kPI * 0.2, vec3(1, 0, 0));
+    renderer.mesh(_mesh);
+  }
+
+  UndulateMesh _mesh = UndulateMesh(100, 100);
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><h1><a class="anchor" id="shaders"></a>
 Using shaders</h1>
+<p>The active shader determines how shapes are drawn. By default, the active shader is "phong" (defined in phong.vs) and will color objects with a shiny white, "plastic" material. You can change the properties of the phong shader (such as colors, light direction, textures, and fog) by changing the values of the uniform variables defined in the shader. Some useful properties for phong are</p>
+<p>Light.position Light.color Material.diffuse Material.ambient Material.specular Material.shininess Fog.enabled Fog.color Fog.minDist Fog.maxDist MainTexture.texture</p>
+<p>Shader properties can be changed by called <a class="el" href="classagl_1_1_renderer.html#af59ab1ce370cf7b6951bd4b0f39f212e" title="Set a uniform parameter in the currently active shader.">agl::Renderer::setUniform</a>.</p>
 <h2><a class="anchor" id="builtinshaders"></a>
 The built-in shaders</h2>
-<p>Default layouts and uniform parameters</p>
-<h2><a class="anchor" id="customshaders"></a>
+<p>In addition to phong, agl also includes shaders for billboards (useful for sprites) and lines.</p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+
+using glm::vec3;
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.loadTexture("cloud", "../textures/cloud.png", 0);
+    renderer.loadTexture("particle", "../textures/particle.png", 0);
+    renderer.blendMode(agl::ADD);
+  }
+
+  void draw() {
+    renderer.beginShader("sprite");
+    renderer.texture("image", "cloud");
+    renderer.sprite(vec3(-0.5f, 0.0f, 0.0f), red, 0.25f);
+    renderer.sprite(vec3(0.5f, 0.0f, 0.0f), green, 0.25f);
+
+    renderer.texture("image", "particle");
+    renderer.sprite(vec3(0.0f, 0.25f, 0.0f), blue, 0.25f);
+    renderer.endShader();
+  }
+
+  const glm::vec4 red = glm::vec4(1, 0, 0, 1);
+  const glm::vec4 green = glm::vec4(0, 1, 0, 1);
+  const glm::vec4 blue = glm::vec4(0, 0, 1, 1);
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><h2><a class="anchor" id="customshaders"></a>
 Custom shaders</h2>
+<p>You can also define your own shaders. Call <a class="el" href="classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8" title="Load a GLSL shader from files.">agl::Renderer::loadShader</a> to load it. When you load a shader, you also provide a string key that you use to active the shader when drawing using <a class="el" href="classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d" title="Set active shader to use for rendering.">agl::Renderer::beginShader</a>.</p>
+<p>For compatibility with <a class="el" href="classagl_1_1_renderer.html" title="The Renderer class draws meshes to the screen using shaders.">agl::Renderer</a> your shader should support the following assumptions:</p>
+<ul>
+<li>Vertex positions are in layout location 0</li>
+<li>Vertex normals (if present) are in layout location 1</li>
+<li>Vertex texture coordinate (if present) are in layout location 2</li>
+<li>Vertex tangents (if present) are in layout location 3</li>
+</ul>
+<p>Some properties may not be defined for all meshes. Your shader should also define the following uniform parameters in the vertex shader.</p>
+<ul>
+<li>uniform mat3 NormalMatrix;</li>
+<li>uniform mat4 ModelViewMatrix;</li>
+<li>uniform mat4 MVP;</li>
+</ul>
+<p>The above matrices will be set when primitives are drawn.</p>
 <h1><a class="anchor" id="textures"></a>
 Textures</h1>
-<h1><a class="anchor" id="troubleshooting"></a>
+<p>Textures can be loaded with <a class="el" href="classagl_1_1_renderer.html#a8d56b6bdbeb5d3a4e679a3ddb899db7f" title="Load a texture from a file.">agl::Renderer::loadTexture</a> or using the <a class="el" href="classagl_1_1_image.html" title="Implements loading, modifying, and saving RGBA images.">agl::Image</a> class. Textures are associated with a texture slot. If multiple textures should be passed to a shader, each should have its own unique slot. To pass a texture to a shader, use the method <a class="el" href="classagl_1_1_renderer.html#a669b3b37fa93e010c4d7b3b9016523bb" title="Set a uniform sampler parameter in the currently active shader.">agl::Renderer::texture</a>.</p>
+<pre class="fragment">// Copyright 2020, Savvy Sine, Aline Normoyle
+
+#include "agl/window.h"
+
+using glm::vec2;
+using glm::vec3;
+using glm::vec4;
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.setUniform("Fog.enabled", true);
+    renderer.setUniform("Fog.color", vec3(0.9f));
+    renderer.setUniform("Fog.minDist", 5.0f);
+    renderer.setUniform("Fog.maxDist", 9.0f);
+    renderer.setUniform("Material.specular", vec3(0.0));
+    renderer.setUniform("MainTexture.enabled", true);
+    renderer.setUniform("MainTexture.tile", vec2(10.0));
+
+    int halfw = 32;
+    int halfh = 32;
+    agl::Image checker(halfw*2, halfh*2);
+    for (int i = 0; i &lt; checker.height(); i++) {
+      for (int j = 0; j &lt; checker.width(); j++) {
+        if ((i &lt; halfh &amp;&amp; j &lt; halfw) || (i &gt; halfh &amp;&amp; j &gt; halfw)) {
+          checker.setVec4(i, j, vec4(0, 0, 0, 1));
+        } else {
+          checker.setVec4(i, j, vec4(1, 1, 1, 1));
+        }
+      }
+    }
+    renderer.loadTexture("checker", checker, 0);
+    renderer.texture("MainTexture.texture", "checker");
+
+    setupPerspectiveScene(vec3(0.0), vec3(10.0));
+    background(vec3(0.9f));
+  }
+
+  void draw() {
+    renderer.scale(vec3(20.0f));
+    renderer.plane();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><p>Cubemaps are special textures composed of 6 images intended to map to the sides of a cube. Cubemaps also need unique slots. Use <a class="el" href="classagl_1_1_renderer.html#abda4b08760e08aa30afed9f8a9e5b45c" title="Load a cube map.">agl::Renderer::loadCubemap</a> and agl::renderer::cubemap to use cubemaps in your programs.</p>
+<pre class="fragment">// Copyright (c) 2020, Savvy Sine, Aline Normoyle
+// Visualize a cubemap texture using the skybox primitive
+
+#include "agl/window.h"
+
+class MyWindow : public agl::Window {
+  void setup() {
+    renderer.loadCubemap("cubemap", "../textures/sea", 0);
+    perspective(glm::radians&lt;float&gt;(60.0f), 1.0f, 0.1f, 100.0f);
+  }
+
+  void draw() {
+    renderer.beginShader("cubemap");
+    renderer.skybox(10);
+    renderer.endShader();
+  }
+};
+
+int main() {
+  MyWindow window;
+  window.run();
+}
+</pre><h1><a class="anchor" id="troubleshooting"></a>
 Common problems</h1>
 <h2><a class="anchor" id="blackscreen"></a>
 I have a black screen. What's wrong?</h2>

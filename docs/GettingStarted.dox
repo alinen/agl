@@ -12,25 +12,155 @@ The main classes implemented in this library are
 
 \section start Setting up scenes
 
+The camera and projection determine the size of the scene that will be drawn
+(called the view volume). In other words, only objects that are in front of the
+camera and inside the projection's bounds will be rendered. Let's start with a
+simple example which uses the default camera and projection.
+
+\verbinclude sphere.cpp 
+
+By default, the camera is located at position (0, 0, 2) and looks forward
+along the negative Z direction at position (0, 0, 0). The view volume is a box
+that extends from -1 to 1 in the X and Y directions, and -10 and 10 in the z
+direction. The default projection is an orthographic projection, meaning that
+all objects appear the same depth and there is no forshortening that makes
+further objects look smaller. The sphere has a default diameter of 1 and is 
+centered at (0, 0, 0), so it appears in view.
+
+\note The coordinate system is a right-handed coordinate system where +Y points
+up and +Z points out of the screen.
+
+You have two choices for the projection.
+
+- agl::Window::setupOrthoScene (box-shaped view volume)
+- agl::Window::setupPerspectiveScene (pyramidal view volume)
+
+The easiest way to change the scene size is to use the above functions. These
+functions will set both the camera position, look at point, and projection 
+to fit the given parameters. Alternatively, you can set the camera and 
+projection properties yourself using
+
+- agl::Window::lookAt
+- agl::Window::ortho
+- agl::Window::perspective
+
 \section camera Using the default camera
+
+By default, agl::Window defines a default camera, agl::Camera. This camera 
+has orbit and pan controls mapped to mouse input. The disable camera movement,
+call agl::Window::setCameraEnabled.
 
 \section events Responding to events
 
+Override the mouse and keyboard methods in agl::Window to respond to user input. 
+For example, the following example modifies a texture on agl::Window::keyUp
+
+\verbinclude texture.cpp
+
 \section shapes Drawing shapes
 
-- Built-in shapes
-- User-defined shapes
-- Positioning using the matrix stack
+Use the primitive calls in agl::Renderer to draw shapes. By default, they will 
+have unit size (e.g. fit into a 1x1x1 box) and be centered at te origin. 
+
+Use the transform functions the modify the positions of these shapes. 
+
+- agl::Renderer::scale()
+- agl::Renderer::translate()
+- agl::Renderer::rotate()
+- agl::Renderer::identity()
+
+Below is an example.
+
+\verbinclude shapes.cpp
+
+You can also define your own meshs by extending the base classes 
+
+- agl::TriangleMesh (indexed mesh of triangles)
+- agl::LineMesh (mesh of lines)
+- agl::PointsMesh (mesh of points)
+
+For example,
+
+\verbinclude attractor.cpp
+
+You can also access the built-in primitives to customize their properties.
+The following example creates a custom torus.
+
+\verbinclude fat_torus.cpp
+
+By default, mesh vertex properties are static (e.g. they don't change values
+after the mesh os created). You can also define dynamic meshes by calling 
+agl::Mesh::setIsDynamic(). For example,
+
+\verbinclude undulate.cpp
 
 \section shaders Using shaders
 
+The active shader determines how shapes are drawn. By default, the active
+shader is "phong" (defined in phong.vs) and will color objects with a shiny
+white, "plastic" material. You can change the properties of the phong shader 
+(such as colors, light direction, textures, and fog) by changing the values 
+of the uniform variables defined in the shader. Some useful properties for 
+phong are
+
+* Light.position 
+* Light.color 
+* Material.diffuse 
+* Material.ambient 
+* Material.specular 
+* Material.shininess 
+* Fog.enabled
+* Fog.color
+* Fog.minDist
+* Fog.maxDist
+* MainTexture.texture
+
+Shader properties can be changed by called agl::Renderer::setUniform.
+
 \subsection builtinshaders The built-in shaders 
 
-Default layouts and uniform parameters
+In addition to phong, agl also includes shaders for billboards (useful for 
+sprites) and lines. 
+
+\verbinclude sprites.cpp
 
 \subsection customshaders Custom shaders
 
+You can also define your own shaders. Call agl::Renderer::loadShader to 
+load it. When you load a shader, you also provide a string key that you use
+to active the shader when drawing using agl::Renderer::beginShader.
+
+For compatibility with agl::Renderer your shader should support the 
+following assumptions:
+
+- Vertex positions are in layout location 0
+- Vertex normals (if present) are in layout location 1
+- Vertex texture coordinate (if present) are in layout location 2
+- Vertex tangents (if present) are in layout location 3
+
+Some properties may not be defined for all meshes. Your shader should also 
+define the following uniform parameters in the vertex shader.
+
+- uniform mat3 NormalMatrix;
+- uniform mat4 ModelViewMatrix;
+- uniform mat4 MVP;
+
+The above matrices will be set when primitives are drawn.
+
 \section textures Textures
+
+Textures can be loaded with agl::Renderer::loadTexture or using the agl::Image
+class. Textures are associated with a texture slot. If multiple textures 
+should be passed to a shader, each should have its own unique slot. To 
+pass a texture to a shader, use the method agl::Renderer::texture.
+
+\verbinclude checker.cpp
+
+Cubemaps are special textures composed of 6 images intended to map to the sides
+of a cube. Cubemaps also need unique slots. Use agl::Renderer::loadCubemap and
+agl::renderer::cubemap to use cubemaps in your programs.
+
+\verbinclude cubemap.cpp
 
 \section troubleshooting Common problems
 
