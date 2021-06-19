@@ -26,11 +26,12 @@ var NAVTREE =
 [
   [ "AGL", "index.html", [
     [ "A graphics library", "index.html", [
-      [ "About", "index.html#autotoc_md1", null ],
-      [ "How to build", "index.html#autotoc_md2", [
-        [ "Tools and dependencies", "index.html#autotoc_md3", null ],
-        [ "Compiling and running", "index.html#autotoc_md4", null ],
-        [ "Docs", "index.html#autotoc_md5", null ],
+      [ "About", "index.html#autotoc_md1", [
+        [ "Docs", "index.html#autotoc_md2", null ]
+      ] ],
+      [ "How to build", "index.html#autotoc_md3", [
+        [ "Tools and dependencies", "index.html#autotoc_md4", null ],
+        [ "Compiling and running", "index.html#autotoc_md5", null ],
         [ "References", "index.html#autotoc_md6", null ]
       ] ]
     ] ],

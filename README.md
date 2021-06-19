@@ -33,6 +33,12 @@ int main() {
 
 ![](docs/img/sphere.cpp.screenshot.png)
 
+### Docs
+
+* [Getting started](https://alinen.github.io/agl/html/start.html)
+* [Reference](https://alinen.github.io/agl/html/reference.html)
+* [Examples](https://alinen.github.io/agl/html/examples.html)
+
 ## How to build
 
 ### Tools and dependencies
@@ -116,11 +122,6 @@ agl/build $ make
 agl/build $ ../bin/sphere
 ```
 
-### Docs
-
-* [Getting started](https://alinen.github.io/agl/html/start.html)
-* [Reference](https://alinen.github.io/agl/html/reference.html)
-* [Examples]()
 
 ### References 
 
