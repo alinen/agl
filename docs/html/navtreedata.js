@@ -49,6 +49,27 @@ var NAVTREE =
       ] ],
       [ "Known issues", "start.html#issues", null ]
     ] ],
+    [ "Reference", "reference.html", [
+      [ "Application", "reference.html#refapp", null ],
+      [ "Image", "reference.html#refimage", null ],
+      [ "Input", "reference.html#refinput", [
+        [ "Mouse", "reference.html#refmouse", null ],
+        [ "Keyboard", "reference.html#refkeyboard", null ]
+      ] ],
+      [ "Mesh", "reference.html#refmesh", null ],
+      [ "Random", "reference.html#refrandom", null ],
+      [ "Rendering", "reference.html#refrender", null ],
+      [ "Scene setup", "reference.html#refscene", [
+        [ "Camera", "reference.html#refcamera", null ],
+        [ "Projection", "reference.html#refprojection", null ]
+      ] ],
+      [ "Shaders", "reference.html#refshaders", null ],
+      [ "Shapes", "reference.html#refshapes", null ],
+      [ "Texture", "reference.html#reftexture", null ],
+      [ "Time", "reference.html#reftime", null ],
+      [ "Transforms", "reference.html#reftransforms", null ],
+      [ "Window", "reference.html#refwindow", null ]
+    ] ],
     [ "Examples", "examples.html", [
       [ "Built-in meshes", "examples.html#primitives", null ],
       [ "Custom meshes", "examples.html#custommeshes", [
@@ -82,7 +103,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "agl_8h_source.html",
-"dir_4cae5a16d4dbb916fc6d01d181cb4838.html"
+"cylinder_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,0 +1,141 @@
+/*!
+
+\page reference Reference
+\tableofcontents
+
+\section refapp Application
+
+- agl::Window::setup()
+- agl::Window::draw()
+- agl::Window::noLoop()
+
+\section refimage Image
+
+- agl::Image::get()
+- agl::Image::getVec3()
+- agl::Image::height()
+- agl::Image::load()
+- agl::Image::save()
+- agl::Image::set()
+- agl::Image::setVec3()
+- agl::Image::width()
+- agl::Window::screenshot()
+
+\section refinput Input
+
+\subsection refmouse Mouse
+
+- agl::Window::mouseMotion()
+- agl::Window::mouseDown()
+- agl::Window::mouseUp()
+- agl::Window::scroll()
+- agl::Window::mouseIsDown()
+- agl::Window::mousePosition()
+
+\subsection refkeyboard Keyboard
+
+- agl::Window::keyUp()
+- agl::Window::keyDown()
+
+\section refmesh Mesh
+
+- agl::Capsule
+- agl::Cube
+- agl::Cylinder
+- agl::LineMesh
+- agl::Mesh
+- agl::Plane
+- agl::PointMesh
+- agl::Pyramid
+- agl::Sphere
+- agl::Teapot
+- agl::Torus
+- agl::TriangleMesh
+
+
+\section refrandom Random
+
+- agl::random()
+- agl::randomUnitSquare()
+- agl::randomUnitSphere()
+- agl::randomUnitDisk()
+- agl::randomUnitCube()
+- agl::randomUnitVector()
+- agl::randomHemisphere()
+
+\section refrender Rendering
+
+- agl::Renderer::blendMode()
+- agl::Window::background()
+
+\section refscene Scene setup
+
+- agl::Window::setupOrthoScene()
+- agl::Window::setupPerspectiveScene()
+
+\subsection refcamera Camera
+
+- agl::Renderer::cameraPosition()
+- agl::Renderer::viewMatrix()
+- agl::Window::cameraEnabled()
+- agl::Window::lookAt()
+- agl::Window::setCameraEnabled()
+
+\subsection refprojection Projection
+
+- agl::Renderer::projectionMatrix()
+- agl::Window::ortho()
+- agl::Window::perspective()
+
+
+\section refshaders Shaders
+
+- agl::Renderer::beginShader()
+- agl::Renderer::endShader()
+- agl::Renderer::loadShader()
+- agl::Renderer::setUniform()
+
+\section refshapes Shapes
+
+- agl::Renderer::capsule()
+- agl::Renderer::cone()
+- agl::Renderer::cube()
+- agl::Renderer::cylinder()
+- agl::Renderer::line()
+- agl::Renderer::mesh()
+- agl::Renderer::plane()
+- agl::Renderer::skybox()
+- agl::Renderer::sphere()
+- agl::Renderer::sprite()
+- agl::Renderer::teapot()
+- agl::Renderer::torus()
+
+\section reftexture Texture
+
+- agl::Renderer::cubemap()
+- agl::Renderer::loadTexture()
+- agl::Renderer::loadCubemap()
+- agl::Renderer::texture()
+
+\section reftime Time
+
+- agl::Window::dt()
+- agl::Window::elapsedTime()
+
+\section reftransforms Transforms
+
+- agl::Window::push()
+- agl::Window::pop()
+- agl::Window::translate()
+- agl::Window::rotate()
+- agl::Window::scale()
+- agl::Window::identity()
+
+\section refwindow Window
+
+- agl::Window::height()
+- agl::Window::resize()
+- agl::Window::setWindowSize()
+- agl::Window::width()
+
+*/

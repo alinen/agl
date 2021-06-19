@@ -76,7 +76,7 @@ const float kINFINITY = std::numeric_limits<float>::infinity();
 namespace agl {
 
 /** 
- * @brief Return a random number between 0 and 1 (exclusive)
+ * @brief Return a random number between 0 and 1 [0, 1)
  */ 
 inline float random() {
   static std::uniform_real_distribution<float> distribution(0.0f, 1.0f);
@@ -85,7 +85,7 @@ inline float random() {
 }
 
 /** 
- * @brief Return a random number between min and max (exclusive)
+ * @brief Return a random number between min and max [min, max)
  */ 
 inline float random(float min, float max) {
   static std::uniform_real_distribution<float> distribution(min, max);
