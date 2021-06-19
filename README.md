@@ -33,7 +33,7 @@ int main() {
 
 ![](docs/img/sphere.cpp.screenshot.png)
 
-### Docs
+## Docs
 
 * [Getting started](https://alinen.github.io/agl/html/start.html)
 * [Reference](https://alinen.github.io/agl/html/reference.html)
