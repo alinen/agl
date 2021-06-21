@@ -199,6 +199,52 @@ class Renderer {
   void endShader();
 
   /**
+   * @brief Specify the render pass
+   *
+   * This call only works with shaders that support multi-pass renderering.
+   * These should define a RenderPassType subroutine along with functions 
+   * names pass1, pass2, etc. See ./shaders/sobel.fs
+   */
+  void pass(int passNum);
+
+  /**
+   * @brief Render to a texture instead of to the screen
+   * @targetName The name of the texture target
+   *
+   * After calling this function, all subsequent draw calls will be rendered
+   * to the associated texture target instead of the screen.
+   * The render target should be initialized in setup() using loadRenderTexture.
+   * Only one render target can be active at a time. Calling beginRenderTexture
+   * more than one without calling endRenderTexture will result in an error.
+   * @verbinclude render_texture.cpp
+   */
+  void beginRenderTexture(const std::string& targetName);
+
+  /**
+   * @brief Revert to rendering to the screen
+   *
+   * Calling this method without a matching beginRenderTexture method results in
+   * an error.
+   * @verbinclude render_texture.cpp
+   */
+  void endRenderTexture();
+
+  /**
+   * @brief Load and configure a render texture target
+   * @name The name of the render target and corresponding render texture. Use
+   * this name to activate the target and to use the rendered texture later.
+   * @slot The texture slot associated with the rendered texture
+   * @width The width in pixels of the rendered texture
+   * @height The height in pixels of the rendered texture
+   *
+   * @see beginRenderTexture
+   * @see endRenderTexture
+   * @verbinclude render_texture.cpp
+   */
+  void loadRenderTexture(const std::string& name, int slot,
+      int width, int height);
+
+  /**
    * @brief Clear all active shaders
    *
    * Resets all active shaders (e.g. those for which beginShader has been
@@ -537,6 +583,19 @@ class Renderer {
     int slot;
   };
   std::map<std::string, Texture> _textures;
+
+  // render targets
+  struct RenderTexture {
+    GLuint handleId;    // fbo id
+    GLuint textureId;   // render texture target
+    GLuint depthId;     // depth buffer id
+    int slot;           // texture slot
+    int width;          // texture and depth buffer width
+    int height;         // texture and depth buffer height
+    GLint winProps[4];  // cached window x,y,w,h (needed to restore viewport)
+  };
+  std::map<std::string, RenderTexture> _renderTextures;
+  std::string _activeRenderTexture;
 
   // shaders
   class Shader* _currentShader;

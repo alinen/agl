@@ -226,6 +226,7 @@ void Renderer::texture(const std::string& uniformName,
     const std::string& textureName) {
   assert(_textures.count(textureName) != 0);
 
+  glActiveTexture(GL_TEXTURE0 + _textures[textureName].slot);
   glBindTexture(GL_TEXTURE_2D, _textures[textureName].texId);
   setUniform(uniformName, _textures[textureName].slot);
 }
@@ -535,6 +536,8 @@ void Renderer::loadTexture(const std::string& name,
     glGenTextures(1, &texId);
     _textures[name] = Texture{texId, slot};
   } else {
+    std::cout << "Warning: texture already registered with name: " << 
+        name << std::endl;
     texId = _textures[name].texId;
   }
 
@@ -563,6 +566,91 @@ void Renderer::loadShader(const std::string& name,
 
   _shaders[name] = shader;
 }
+
+void Renderer::beginRenderTexture(const std::string& targetName) {
+  assert(_renderTextures.count(targetName) != 0);
+  assert(_activeRenderTexture == "");
+
+  RenderTexture& tex = _renderTextures[targetName];
+  glBindFramebuffer(GL_FRAMEBUFFER, tex.handleId);
+
+  // Cache viewport size so it can be restored later
+  glGetIntegerv(GL_VIEWPORT, tex.winProps);
+  glViewport(0, 0, tex.width, tex.height);
+  _activeRenderTexture = targetName;
+}
+
+void Renderer::endRenderTexture() {
+  assert(_activeRenderTexture.size() != 0);
+  glFlush();
+
+  // unbind fbo and revert to default (the screen)
+  RenderTexture target = _renderTextures[_activeRenderTexture];
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+  glViewport(target.winProps[0],
+             target.winProps[1],
+             target.winProps[2],
+             target.winProps[3]);
+
+  _activeRenderTexture = "";
+}
+
+void Renderer::loadRenderTexture(const std::string& name,
+    int slot, int width, int height) {
+  // Generate and bind the framebuffer
+  GLuint fboHandle;
+  glGenFramebuffers(1, &fboHandle);
+  glBindFramebuffer(GL_FRAMEBUFFER, fboHandle);
+
+  // Create the texture object
+  GLuint renderTex;
+  glGenTextures(1, &renderTex);
+  glActiveTexture(GL_TEXTURE0 + slot);  // put in given slot!!
+  glBindTexture(GL_TEXTURE_2D, renderTex);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA,
+      GL_UNSIGNED_BYTE, NULL);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+  // save texture as an available texture object with the same name
+  _textures[name] = Texture{renderTex, slot};
+
+  // Bind the texture to the FBO
+  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+      GL_TEXTURE_2D, renderTex, 0);
+
+  // Create the depth buffer
+  GLuint depthBuf;
+  glGenRenderbuffers(1, &depthBuf);
+  glBindRenderbuffer(GL_RENDERBUFFER, depthBuf);
+  glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, width, height);
+
+  // Bind the depth buffer to the FBO
+  glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
+                            GL_RENDERBUFFER, depthBuf);
+
+  // Set the targets for the fragment output variables
+  GLenum drawBuffers[] = {GL_COLOR_ATTACHMENT0};
+  glDrawBuffers(1, drawBuffers);
+
+  GLenum result = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+  if( result != GL_FRAMEBUFFER_COMPLETE) {
+    std::cout << "Framebuffer error: " << result << std::endl;
+  }
+
+  RenderTexture target;
+  target.handleId = fboHandle;
+  target.textureId = renderTex;
+  target.depthId = depthBuf;
+  target.slot = slot;
+  target.width = width;
+  target.height = height;
+  _renderTextures[name] = target;
+
+  // unbind fbo and revert to default (the screen)
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
 
 }  // namespace agl
 
