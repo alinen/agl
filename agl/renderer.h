@@ -199,15 +199,6 @@ class Renderer {
   void endShader();
 
   /**
-   * @brief Specify the render pass
-   *
-   * This call only works with shaders that support multi-pass renderering.
-   * These should define a RenderPassType subroutine along with functions 
-   * names pass1, pass2, etc. See ./shaders/sobel.fs
-   */
-  void pass(int passNum);
-
-  /**
    * @brief Render to a texture instead of to the screen
    * @targetName The name of the texture target
    *
