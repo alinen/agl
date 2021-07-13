@@ -1,4 +1,4 @@
-// Copyright (c) 2020, Savvy Sine, Aline Normoyle
+// Copyright (c) 2020, Savvy Sine, Aline Normoyle, MIT License
 #version 400
 
 uniform vec2 iResolution;
@@ -17,13 +17,13 @@ float sdSphere(in vec3 p, in float s) {
   return length(p)-s;
 }
 
-// Copyright (c) 2013 Inigo Quilez
+// from iq: https://www.shadertoy.com/view/Xds3zN
 float sdBox(vec3 p, vec3 b) {
   vec3 d = abs(p) - b;
   return min(max(d.x,max(d.y,d.z)),0.0) + length(max(d,0.0));
 }
 
-// Copyright (c) 2013 Inigo Quilez
+// from iq: https://www.shadertoy.com/view/Xds3zN
 float sdRoundCone( in vec3 p, in float r1, float r2, float h ) {
   vec2 q = vec2( length(p.xz), p.y );
 
@@ -80,7 +80,7 @@ float object(in vec3 p) {
   return h;
 }
 
-// Copyright (c) 2013 Inigo Quilez
+// adapted from iq: https://www.shadertoy.com/view/Xds3zN
 float raycast( in vec3 ro, in vec3 rd) {
   float res = -1.0;
 

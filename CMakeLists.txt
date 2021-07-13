@@ -8,11 +8,14 @@ if (WIN32) # Include win64 platforms
   find_library(GLFW NAMES glfw3 PATHS external/lib)
 
   set(INCLUDE_DIRS
-     ../../external/include )
+     .
+     agl
+     agl/mesh
+     external/include )
 
   set(LIBRARY_DIRS
     agl
-    ../../external/lib)
+    external/lib)
 
   set(CMAKE_CXX_STANDARD 11)
   set(CMAKE_CXX_FLAGS 
@@ -25,7 +28,7 @@ if (WIN32) # Include win64 platforms
   set(VS_DEBUGGER_WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
   set(CMAKE_EXE_LINKER_FLAGS "/NODEFAULTLIB:\"MSVCRT\" /NODEFAULTLIB:\"LIBCMT\"")
 
-  set(CORE ${GLEW} ${GLFW} opengl32.lib)
+  set(CORE agl ${GLEW} ${GLFW} opengl32.lib)
   set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
   set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
 

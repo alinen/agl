@@ -231,6 +231,14 @@ void Window::init() {
   glfwSetCursorPosCallback(_window, Window::onMouseMotionCb);
   glfwSetScrollCallback(_window, Window::onScrollCb);
 
+#ifndef APPLE
+  if (glewInit() != GLEW_OK)
+  {
+     std::cout << "Cannot initialize GLEW\n";
+     return;
+  }
+#endif
+
   // Initialize openGL and set default values
   renderer.init();
   camera.set(vec3(0.0, 0.0, 2.0), vec3(0.0));

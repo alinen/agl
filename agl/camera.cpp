@@ -17,7 +17,7 @@ using glm::mat4;
 
 Camera::Camera() :
   mSpeed(0.05),
-  mTurnRate(1.0*(M_PI / 180.0)),
+  mTurnRate(0.01),
   mEye(0.0, 2.0, 2.5),
   mLook(0.0, 0.0, 0.0),
   mUp(0.0, 1.0, 0.0),
