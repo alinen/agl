@@ -1,5 +1,5 @@
 project(AGL)
-cmake_minimum_required(VERSION 2.8.11)
+cmake_minimum_required(VERSION 3.14.0)
 
 if (WIN32) # Include win64 platforms
 
@@ -36,7 +36,7 @@ elseif (APPLE)
 
   set(CMAKE_MACOSX_RPATH 1)
   set(CMAKE_CXX_FLAGS "-Wall -Wno-deprecated-declarations -Wno-reorder-ctor -Wno-unused-variable -g -stdlib=libc++ -std=c++14")
-  set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/agl)
+  set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
   set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
   find_library(GL_LIB OpenGL)
   find_library(GLFW glfw)
