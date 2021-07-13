@@ -3,6 +3,7 @@
 Small, easy to use C++ library for 3D drawing, based on openGL.
 
 [![CMake](https://github.com/alinen/agl/actions/workflows/cmake.yml/badge.svg)](https://github.com/alinen/agl/actions/workflows/cmake.yml)
+[![windows](https://github.com/alinen/agl/actions/workflows/cmake-windows.yml/badge.svg)](https://github.com/alinen/agl/actions/workflows/cmake-windows.yml)
 
 ## About
 
