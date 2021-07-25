@@ -2,6 +2,7 @@ var classagl_1_1_renderer =
 [
     [ "Renderer", "classagl_1_1_renderer.html#a4fe528cb281121449c2a4746e5735d30", null ],
     [ "~Renderer", "classagl_1_1_renderer.html#aebc90a408ab326666dc709eb46672287", null ],
+    [ "beginRenderTexture", "classagl_1_1_renderer.html#a6dd31685fad61d17ecbc8077499349d8", null ],
     [ "beginShader", "classagl_1_1_renderer.html#a219ab8aaf5d0bb109bbd1bbbf567f78d", null ],
     [ "blendMode", "classagl_1_1_renderer.html#a93afebe2360a3a99de0e1bde2ad32d90", null ],
     [ "cameraPosition", "classagl_1_1_renderer.html#a4ea0048baff9497d280adb4e3927880b", null ],
@@ -12,6 +13,7 @@ var classagl_1_1_renderer =
     [ "cube", "classagl_1_1_renderer.html#a3fe650ead13556a59095e4cd8cd61c82", null ],
     [ "cubemap", "classagl_1_1_renderer.html#aeec174923d2fd2f7e5d5f8dae017b930", null ],
     [ "cylinder", "classagl_1_1_renderer.html#ad94a4f3d85add8f3d9b8620425cbbd5b", null ],
+    [ "endRenderTexture", "classagl_1_1_renderer.html#ac4e23a934ce73a076afcad7801d22476", null ],
     [ "endShader", "classagl_1_1_renderer.html#a21af4885a9fe659b6515e07bee758374", null ],
     [ "identity", "classagl_1_1_renderer.html#a08999004bf88bfaee4bd79a8d1b34227", null ],
     [ "init", "classagl_1_1_renderer.html#af59f739bbc2ae0747eb724ca98fc2f75", null ],
@@ -20,6 +22,7 @@ var classagl_1_1_renderer =
     [ "loadCubemap", "classagl_1_1_renderer.html#abda4b08760e08aa30afed9f8a9e5b45c", null ],
     [ "loadCubemap", "classagl_1_1_renderer.html#af87fda1afd7cdb18daa4043e155c2e12", null ],
     [ "loadCubemap", "classagl_1_1_renderer.html#a25df953af2c8b6a9c5c53c157022f2f3", null ],
+    [ "loadRenderTexture", "classagl_1_1_renderer.html#ac85f169307f4abbba363d854bf8422dc", null ],
     [ "loadShader", "classagl_1_1_renderer.html#a4a580e7feab0c2c29815b9c4b364b4b8", null ],
     [ "loadTexture", "classagl_1_1_renderer.html#a50067c8743a6f0a672ed666bf3b28af7", null ],
     [ "loadTexture", "classagl_1_1_renderer.html#a8d56b6bdbeb5d3a4e679a3ddb899db7f", null ],

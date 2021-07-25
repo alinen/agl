@@ -1,4 +1,4 @@
-#! bash
+#! /usr/bin/bash
 doxygen Doxyfile
 python3 cpplint.py --quiet agl/*.h
 python3 cpplint.py --quiet agl/*.cpp
