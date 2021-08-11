@@ -53,23 +53,27 @@ elseif (APPLE)
 elseif (UNIX)
 
   set(CMAKE_CXX_FLAGS "-Wall -g -std=c++11 -Wno-comment")
-  set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/agl)
+  set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
   set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
   FIND_PACKAGE(OpenGL REQUIRED) 
   FIND_PACKAGE(GLEW REQUIRED)
 
   set(INCLUDE_DIRS
+     .
+     agl
+     agl/mesh
     external/include)
 
   set(LIBRARY_DIRS
     external/lib
     /usr/X11R6/lib
     /usr/local/lib
+    lib
     agl)
 
   add_definitions(-DUNIX)
-  set(CORE GLEW glfw glut GL GLU X11)
+  set(CORE agl GLEW glfw GL X11)
 
 endif()
 
