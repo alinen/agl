@@ -368,6 +368,7 @@ void Renderer::mesh(const Mesh& mesh) {
   setUniform("MVP", mvp);
   setUniform("ModelViewMatrix", mv);
   setUniform("NormalMatrix", nmv);
+  setUniform("ModelMatrix", _trs);
   setUniform("HasUV", mesh.hasUV());
 
   mesh.render();
