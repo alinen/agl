@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/string_cast.hpp>
 
 std::ostream& operator<<(std::ostream& o, const glm::mat4& m) {
   char line[1024];
@@ -47,3 +48,8 @@ std::ostream& operator<<(std::ostream& o, const glm::vec2& v) {
   return o;
 }
 
+std::ostream& operator<<(std::ostream& o, const glm::quat& v)
+{
+  o << glm::to_string(v);
+  return o;
+}

@@ -11,6 +11,7 @@
 #include <cmath>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/norm.hpp>
+#include <glm/gtx/quaternion.hpp>
 #include <glm/gtc/epsilon.hpp>
 
 /** 
@@ -64,6 +65,16 @@ extern std::ostream& operator<<(std::ostream& o, const glm::vec4& v);
  * ```
  */ 
 extern std::ostream& operator<<(std::ostream& o, const glm::vec2& v);
+
+/** 
+ * @brief Print a quaternion
+ *
+ * ```
+ * quat q(m);
+ * std::cout << q << std::endl;
+ * ```
+ */ 
+extern std::ostream& operator<<(std::ostream& o, const glm::quat& v);
 
 namespace glm {
   using point3 = glm::vec3;
