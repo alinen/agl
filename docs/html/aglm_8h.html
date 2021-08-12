@@ -102,6 +102,7 @@ $(document).ready(function(){initNavTree('aglm_8h.html',''); initResizable(); })
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;glm/gtc/matrix_transform.hpp&gt;</code><br />
 <code>#include &lt;glm/gtx/norm.hpp&gt;</code><br />
+<code>#include &lt;glm/gtx/quaternion.hpp&gt;</code><br />
 <code>#include &lt;glm/gtc/epsilon.hpp&gt;</code><br />
 </div>
 <p><a href="aglm_8h_source.html">Go to the source code of this file.</a></p>
@@ -132,6 +133,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aebfe6edcabf2878c2f278c0964fc98bc"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aglm_8h.html#aebfe6edcabf2878c2f278c0964fc98bc">operator&lt;&lt;</a> (std::ostream &amp;o, const glm::vec2 &amp;v)</td></tr>
 <tr class="memdesc:aebfe6edcabf2878c2f278c0964fc98bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a vector.  <a href="aglm_8h.html#aebfe6edcabf2878c2f278c0964fc98bc">More...</a><br /></td></tr>
 <tr class="separator:aebfe6edcabf2878c2f278c0964fc98bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9969d047ee032f0b13523163d1e6d3f4"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aglm_8h.html#a9969d047ee032f0b13523163d1e6d3f4">operator&lt;&lt;</a> (std::ostream &amp;o, const glm::quat &amp;v)</td></tr>
+<tr class="memdesc:a9969d047ee032f0b13523163d1e6d3f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a quaternion.  <a href="aglm_8h.html#a9969d047ee032f0b13523163d1e6d3f4">More...</a><br /></td></tr>
+<tr class="separator:a9969d047ee032f0b13523163d1e6d3f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa04bffe547f6f0e4643ae0e5810d695a"><td class="memItemLeft" align="right" valign="top"><a id="aa04bffe547f6f0e4643ae0e5810d695a"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aglm_8h.html#aa04bffe547f6f0e4643ae0e5810d695a">agl::random</a> ()</td></tr>
 <tr class="memdesc:aa04bffe547f6f0e4643ae0e5810d695a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a random number between 0 and 1 [0, 1) <br /></td></tr>
@@ -176,7 +180,7 @@ const float&#160;</td><td class="memItemRight" valign="bottom"><b>kINFINITY</b> 
 <div class="textblock"><p>Global utilities and common third party includes. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="af391f797845c27bb26c2baa5e947149e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af391f797845c27bb26c2baa5e947149e">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[1/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af391f797845c27bb26c2baa5e947149e">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[1/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -207,7 +211,7 @@ const float&#160;</td><td class="memItemRight" valign="bottom"><b>kINFINITY</b> 
 </div>
 </div>
 <a id="ac48b43e1b892d72964007a40dc611efc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac48b43e1b892d72964007a40dc611efc">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[2/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac48b43e1b892d72964007a40dc611efc">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[2/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -237,8 +241,40 @@ const float&#160;</td><td class="memItemRight" valign="bottom"><b>kINFINITY</b> 
 </div><!-- fragment --> 
 </div>
 </div>
+<a id="a9969d047ee032f0b13523163d1e6d3f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9969d047ee032f0b13523163d1e6d3f4">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[3/6]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>o</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const glm::quat &amp;&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Print a quaternion. </p>
+<div class="fragment"><div class="line">quat q(m);</div>
+<div class="line">std::cout &lt;&lt; q &lt;&lt; std::endl;</div>
+</div><!-- fragment --> 
+</div>
+</div>
 <a id="aebfe6edcabf2878c2f278c0964fc98bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aebfe6edcabf2878c2f278c0964fc98bc">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[3/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aebfe6edcabf2878c2f278c0964fc98bc">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[4/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -269,7 +305,7 @@ const float&#160;</td><td class="memItemRight" valign="bottom"><b>kINFINITY</b> 
 </div>
 </div>
 <a id="a01a892ebf0a9439910f2cf110da1da84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a01a892ebf0a9439910f2cf110da1da84">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[4/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a01a892ebf0a9439910f2cf110da1da84">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[5/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -300,7 +336,7 @@ const float&#160;</td><td class="memItemRight" valign="bottom"><b>kINFINITY</b> 
 </div>
 </div>
 <a id="aa2767b20226401ae617af326d421f529"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2767b20226401ae617af326d421f529">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[5/5]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2767b20226401ae617af326d421f529">&#9670;&nbsp;</a></span>operator&lt;&lt;() <span class="overload">[6/6]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

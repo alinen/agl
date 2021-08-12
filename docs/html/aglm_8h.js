@@ -4,6 +4,7 @@ var aglm_8h =
     [ "point3", "aglm_8h.html#a9ee553a431b35c7fc6414fab4601271f", null ],
     [ "operator<<", "aglm_8h.html#af391f797845c27bb26c2baa5e947149e", null ],
     [ "operator<<", "aglm_8h.html#ac48b43e1b892d72964007a40dc611efc", null ],
+    [ "operator<<", "aglm_8h.html#a9969d047ee032f0b13523163d1e6d3f4", null ],
     [ "operator<<", "aglm_8h.html#aebfe6edcabf2878c2f278c0964fc98bc", null ],
     [ "operator<<", "aglm_8h.html#a01a892ebf0a9439910f2cf110da1da84", null ],
     [ "operator<<", "aglm_8h.html#aa2767b20226401ae617af326d421f529", null ],
