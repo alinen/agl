@@ -230,7 +230,7 @@ class Window {
    */
   ///@{
   /**
-   * @brief Set the size of the window in pixels
+   * @brief Set the size of the window in pixels.
    *
    * @see width
    * @see height

@@ -113,7 +113,6 @@ void Window::lookAt(const glm::vec3& camPos,
 void Window::run() {
   if (!_window) return;  // window wasn't initialized
 
-  background(vec3(0));
   setup();
 
   while (!glfwWindowShouldClose(_window)) {
@@ -242,6 +241,7 @@ void Window::init() {
   // Initialize openGL and set default values
   renderer.init();
   camera.set(vec3(0.0, 0.0, 2.0), vec3(0.0));
+  background(vec3(0));
 }
 
 void Window::onMouseMotionCb(GLFWwindow* win, double pX, double pY) {

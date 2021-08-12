@@ -52,7 +52,7 @@ elseif (APPLE)
 
 elseif (UNIX)
 
-  set(CMAKE_CXX_FLAGS "-Wall -g -std=c++11 -Wno-comment")
+  set(CMAKE_CXX_FLAGS "-Wall -g -std=c++11 -Wno-comment -Wno-sign-compare -Wno-reorder")
   set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
   set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
