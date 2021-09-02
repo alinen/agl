@@ -511,6 +511,21 @@ class Renderer {
   void fontSize(int s);
 
   /**
+   * @brief Get the width of a string (font metrics)
+   * @param text The phrase to display
+   * @return The width of the string in screen coordinates
+   *
+   */
+  float textWidth(const std::string& text);
+
+  /**
+   * @brief Get the height of a string (font metrics)
+   * @return The height of the string in screen coordinates
+   *
+   */
+  float textHeight();
+
+  /**
    * @brief Draws a sphere centered at the origin with radius 0.5
    *
    * @verbinclude sphere.cpp

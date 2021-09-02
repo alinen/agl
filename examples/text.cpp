@@ -22,8 +22,11 @@ class MyWindow : public agl::Window {
     renderer.sphere();
     renderer.pop();
 
-    renderer.fontColor(glm::vec4(0.5, 0, 0, 0.5));
-    renderer.text("SPHERE!", 250, 250);
+    renderer.fontColor(glm::vec4(0.95, 1.0, 0, 0.8));
+    std::string message = "SPHERE!";
+    float x = 250 - renderer.textWidth(message) * 0.5f;
+    float y = 250 + renderer.textHeight() * 0.25f;
+    renderer.text(message, x, y);
   }
 };
 

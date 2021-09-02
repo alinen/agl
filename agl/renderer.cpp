@@ -277,6 +277,17 @@ void Renderer::fontSize(int s) {
   _fontSize = s;
 }
 
+float Renderer::textWidth(const std::string& s) {
+  float w = fonsTextBounds(_fs, 0, 0, s.c_str(), NULL, NULL);
+  return w;
+}
+
+float Renderer::textHeight() {
+  float lineh = 0;
+  fonsVertMetrics(_fs, NULL, NULL, &lineh);
+  return lineh;
+}
+
 void Renderer::text(const std::string& text, float x, float y) {
   float viewport[4]; 
   glGetFloatv(GL_VIEWPORT, viewport);
