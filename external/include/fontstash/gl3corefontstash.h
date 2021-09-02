@@ -47,6 +47,10 @@ FONS_DEF unsigned int glfonsRGBA(unsigned char r, unsigned char g, unsigned char
 #	define GLFONS_COLOR_ATTRIB 2
 #endif
 
+#ifndef GLFONS_FONT_TEXTURE_SLOT
+#	define GLFONS_FONT_TEXTURE_SLOT 10
+#endif
+
 struct GLFONScontext {
 	GLuint tex;
 	int width, height;
@@ -138,7 +142,7 @@ static void glfons__renderDraw(void* userPtr, const float* verts, const float* t
 	GLFONScontext* gl = (GLFONScontext*)userPtr;
 	if (gl->tex == 0 || gl->vertexArray == 0) return;
 
-	glActiveTexture(GL_TEXTURE0 + 10); // ASN: NEED FONT DEDICATED SLOT
+	glActiveTexture(GL_TEXTURE0 + GLFONS_FONT_TEXTURE_SLOT); 
 	glBindTexture(GL_TEXTURE_2D, gl->tex);
 
 	glBindVertexArray(gl->vertexArray);

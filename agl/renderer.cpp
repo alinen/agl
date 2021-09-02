@@ -550,6 +550,9 @@ void Renderer::loadCubemap(const std::string& name,
 
 void Renderer::loadCubemap(const std::string& name,
     const vector<Image>& faces, int slot) {
+  if (slot == GLFONS_FONT_TEXTURE_SLOT) {
+    std::cout << "WARNING: slot " << slot << " conflicts with font texture\n";
+  }
   glEnable(GL_TEXTURE0 + slot);
   glActiveTexture(GL_TEXTURE0 + slot);
 
@@ -595,6 +598,9 @@ void Renderer::loadTexture(const std::string& name,
 
 void Renderer::loadTexture(const std::string& name,
     const Image& image, int slot) {
+  if (slot == GLFONS_FONT_TEXTURE_SLOT) {
+    std::cout << "WARNING: slot " << slot << " conflicts with font texture\n";
+  }
   glEnable(GL_TEXTURE0 + slot);
   glActiveTexture(GL_TEXTURE0 + slot);
 
@@ -664,6 +670,9 @@ void Renderer::endRenderTexture() {
 
 void Renderer::loadRenderTexture(const std::string& name,
     int slot, int width, int height) {
+  if (slot == GLFONS_FONT_TEXTURE_SLOT) {
+    std::cout << "WARNING: slot " << slot << " conflicts with font texture\n";
+  }
   // Generate and bind the framebuffer
   GLuint fboHandle;
   glGenFramebuffers(1, &fboHandle);
