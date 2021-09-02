@@ -13,9 +13,14 @@
 #include "agl/mesh/torus.h"
 #include "agl/mesh/plane.h"
 #include "agl/mesh/skybox.h"
+#define FONTSTASH_IMPLEMENTATION
+#include "fontstash/fontstash.h"
+#define GLFONTSTASH_IMPLEMENTATION
+#include "fontstash/gl3corefontstash.h"
 
 namespace agl {
 
+static FONScontext* _fs = NULL;
 using glm::vec2;
 using glm::vec3;
 using glm::vec4;
@@ -34,6 +39,11 @@ Renderer::Renderer() {
   _plane = 0;
   _sphere = 0;
   _skybox = 0;
+  _blendMode = DEFAULT;
+
+  _fontNormal = FONS_INVALID;
+  _fs = NULL;
+
   _currentShader = 0;
   _initialized = false;
 }
@@ -43,6 +53,10 @@ Renderer::~Renderer() {
 }
 
 void Renderer::cleanup() {
+  glfonsDelete(_fs);
+  _fs = NULL;
+  _fontNormal = FONS_INVALID;
+
   delete _cube;
   delete _cone;
   delete _capsule;
@@ -94,6 +108,7 @@ void Renderer::init() {
   initLines();
   initBillboards();
   initMesh();
+  initText();
   loadShader("cubemap", "../shaders/cubemap.vs", "../shaders/cubemap.fs");
   loadShader("unlit", "../shaders/unlit.vs", "../shaders/unlit.fs");
   loadShader("normals", "../shaders/normals.vs", "../shaders/normals.fs");
@@ -192,16 +207,35 @@ void Renderer::initBillboards() {
       "../shaders/billboard.fs");
 }
 
+void Renderer::initText() {
+    loadShader("text", "../shaders/text.vs", "../shaders/text.fs");
+    _fs = glfonsCreate(512, 512, FONS_ZERO_TOPLEFT);
+    if (_fs == NULL) {
+      printf("Could not create stash.\n");
+    }
+
+    _fontNormal = fonsAddFont(_fs, "sans", "../fonts/DroidSerif-Regular.ttf");
+    if (_fontNormal == FONS_INVALID) {
+      printf("Could not add font normal.\n");
+    }
+
+    _fontColor = glfonsRGBA(255, 255, 255, 255);
+    _fontSize = 20.0;
+}
+
 void Renderer::blendMode(BlendMode mode) {
   if (mode == ADD) {
+    _blendMode = ADD;
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE);  // Additive blend
 
-  } else if (mode == ALPHA) {
+  } else if (mode == BLEND) {
+    _blendMode = BLEND;
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);  // Alpha blend
 
   } else {
+    _blendMode = DEFAULT;
     glDisable(GL_BLEND);
   }
 }
@@ -229,6 +263,38 @@ void Renderer::texture(const std::string& uniformName,
   glActiveTexture(GL_TEXTURE0 + _textures[textureName].slot);
   glBindTexture(GL_TEXTURE_2D, _textures[textureName].texId);
   setUniform(uniformName, _textures[textureName].slot);
+}
+
+void Renderer::fontColor(const glm::vec4& c) {
+  unsigned char r = (unsigned char) (c[0]*255.9);
+  unsigned char g = (unsigned char) (c[1]*255.9);
+  unsigned char b = (unsigned char) (c[2]*255.9);
+  unsigned char a = (unsigned char) (c[3]*255.9);
+  _fontColor = glfonsRGBA(r, g, b, a);
+}
+
+void Renderer::fontSize(int s) {
+  _fontSize = s;
+}
+
+void Renderer::text(const std::string& text, float x, float y) {
+  float viewport[4]; 
+  glGetFloatv(GL_VIEWPORT, viewport);
+
+  mat4 ortho = glm::ortho(0.0f, viewport[2], viewport[3], 0.0f, -100.0f, 100.0f);
+  BlendMode m = _blendMode;
+  blendMode(BLEND);
+  beginShader("text");
+  setUniform("MVP", ortho);
+
+  fonsSetSize(_fs, _fontSize);
+  fonsSetFont(_fs, _fontNormal);
+  fonsSetColor(_fs, _fontColor);
+  fonsDrawText(_fs, x, y, text.c_str(), NULL);
+  //std::cout << viewport[2] << " " << viewport[3] << std::endl;
+
+  endShader();
+  blendMode(m);
 }
 
 void Renderer::line(const glm::vec3& p1, const glm::vec3& p2,

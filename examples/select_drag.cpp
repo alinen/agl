@@ -32,7 +32,6 @@ class MyWindow : public agl::Window {
 
       mat4 projection = renderer.projectionMatrix();
       mat4 view = renderer.viewMatrix();
-      vec3 lookfrom = renderer.cameraPosition();
 
       vec3 pDir = vec3(ndcDir, 0.0);
       mat4 PV = projection * view;
