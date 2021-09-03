@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['perspective_169',['perspective',['../classagl_1_1_renderer.html#a634eb6dcb6be2328a406aa419797df25',1,'agl::Renderer::perspective()'],['../classagl_1_1_window.html#a7a72080667b1f21ec89b6f8e3b99217d',1,'agl::Window::perspective()']]],
-  ['plane_170',['plane',['../classagl_1_1_renderer.html#a544696fbcc45bab239dbc3c9adbf72d5',1,'agl::Renderer']]],
-  ['pop_171',['pop',['../classagl_1_1_renderer.html#ac10ec0fbd366473c2decd1fb59b512aa',1,'agl::Renderer']]],
-  ['projectionmatrix_172',['projectionMatrix',['../classagl_1_1_renderer.html#abb2da73ef50d1311e6befcf9684b95ad',1,'agl::Renderer']]],
-  ['push_173',['push',['../classagl_1_1_renderer.html#aeab5ce86e5b7b4259598371ce413d02c',1,'agl::Renderer']]]
+  ['operator_3c_3c_174',['operator&lt;&lt;',['../aglm_8h.html#ac48b43e1b892d72964007a40dc611efc',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::mat4 &amp;m):&#160;aglm.cpp'],['../aglm_8h.html#af391f797845c27bb26c2baa5e947149e',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::mat3 &amp;m):&#160;aglm.cpp'],['../aglm_8h.html#a01a892ebf0a9439910f2cf110da1da84',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec3 &amp;v):&#160;aglm.cpp'],['../aglm_8h.html#aa2767b20226401ae617af326d421f529',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec4 &amp;v):&#160;aglm.cpp'],['../aglm_8h.html#aebfe6edcabf2878c2f278c0964fc98bc',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::vec2 &amp;v):&#160;aglm.cpp'],['../aglm_8h.html#a9969d047ee032f0b13523163d1e6d3f4',1,'operator&lt;&lt;(std::ostream &amp;o, const glm::quat &amp;v):&#160;aglm.cpp']]],
+  ['ortho_175',['ortho',['../classagl_1_1_renderer.html#aea4f94741b90f0c91c2846ffef5f2e31',1,'agl::Renderer::ortho()'],['../classagl_1_1_window.html#a576cd7910f689c49f58f616fdb7b5944',1,'agl::Window::ortho()']]]
 ];

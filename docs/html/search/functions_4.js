@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['get_141',['get',['../classagl_1_1_image.html#ad33261452bd09c5ff6da4fa047434cda',1,'agl::Image']]],
-  ['getvec4_142',['getVec4',['../classagl_1_1_image.html#a6a93a876c6053498c5cf7ae4889721ca',1,'agl::Image']]]
+  ['fontcolor_146',['fontColor',['../classagl_1_1_renderer.html#a296f3edf41c65c790b02d1e1dc84f3af',1,'agl::Renderer']]],
+  ['fontsize_147',['fontSize',['../classagl_1_1_renderer.html#a4375f6e8e0d782c04a5366230c4d94c0',1,'agl::Renderer']]]
 ];
