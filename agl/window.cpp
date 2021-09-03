@@ -197,7 +197,9 @@ bool Window::mouseIsDown(int button) const {
 
 void Window::setWindowSize(int w, int h) {
   if (_windowWidth == w && _windowHeight == h) return;
-  glfwSetWindowSize(_window, w, h);  // should indirectly set _windowWidth, etc
+  _windowWidth = w;
+  _windowHeight = h;
+  glfwSetWindowSize(_window, w, h);  
 }
 
 void Window::init() {
