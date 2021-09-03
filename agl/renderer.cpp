@@ -440,7 +440,7 @@ void Renderer::mesh(const Mesh& mesh) {
 
   mat4 mv = _viewMatrix * _trs;
   mat4 mvp = _projectionMatrix * mv;
-  mat3 nmv = mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2]));
+  mat3 nmv = transpose(inverse(mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2]))));
 
   setUniform("MVP", mvp);
   setUniform("ModelViewMatrix", mv);
