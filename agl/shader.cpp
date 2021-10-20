@@ -282,6 +282,11 @@ void Shader::setUniform(const char *name, const glm::mat4 &m) {
   glUniformMatrix4fv(loc, 1, GL_FALSE, &m[0][0]);
 }
 
+void Shader::setUniform(const char *name, const std::vector<glm::mat4> &ms) {
+  GLint loc = getUniformLocation(name);
+  glUniformMatrix4fv(loc, ms.size(), GL_FALSE, &ms[0][0][0]);
+}
+
 void Shader::setUniform(const char *name, const glm::mat3 &m) {
   GLint loc = getUniformLocation(name);
   glUniformMatrix3fv(loc, 1, GL_FALSE, &m[0][0]);

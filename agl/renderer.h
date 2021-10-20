@@ -289,6 +289,11 @@ class Renderer {
   /**
    * @copydoc setUniform(const std::string&,float,float,float)
    */
+  void setUniform(const std::string& name, const std::vector<glm::mat4> &ms);
+
+  /**
+   * @copydoc setUniform(const std::string&,float,float,float)
+   */
   void setUniform(const std::string& name, float val);
 
   /**

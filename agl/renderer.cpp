@@ -515,6 +515,12 @@ void Renderer::setUniform(const std::string& name, const glm::mat3 &m) {
   _currentShader->setUniform(name.c_str(), m);
 }
 
+void Renderer::setUniform(const std::string& name, 
+  const std::vector<glm::mat4> &ms) {
+  assert(_currentShader != nullptr);
+  _currentShader->setUniform(name.c_str(), ms);
+}
+
 void Renderer::setUniform(const std::string& name, float val) {
   assert(_currentShader != nullptr);
   _currentShader->setUniform(name.c_str(), val);
