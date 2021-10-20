@@ -302,6 +302,7 @@ class Window {
   inline void setCameraEnabled(bool on) { _cameraEnabled = on; }
   ///@}
 
+
  private:
   void init();
 
@@ -330,6 +331,9 @@ class Window {
   bool _cameraEnabled;
   glm::vec3 _backgroundColor;
   struct GLFWwindow* _window = 0;
+
+ protected:
+  inline GLFWwindow* window() const { return _window; }
 };
 
 }  // namespace agl
