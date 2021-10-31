@@ -314,7 +314,7 @@ void Renderer::line(const glm::vec3& p1, const glm::vec3& p2,
     const glm::vec3& c1, const glm::vec3& c2) {
   assert(_initialized);
 
-  mat4 mvp = _projectionMatrix * _viewMatrix;
+  mat4 mvp = _projectionMatrix * _viewMatrix * _trs;
   setUniform("MVP", mvp);
 
   GLfloat positions[6];
