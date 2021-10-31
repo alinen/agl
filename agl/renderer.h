@@ -672,6 +672,9 @@ class Renderer {
   int _fontNormal;
   unsigned int _fontColor;
   float _fontSize;
+
+ public:
+  static int PrimitiveSubdivision;
 };
 
 }  // namespace agl

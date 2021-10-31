@@ -29,6 +29,8 @@ using glm::mat3;
 using std::string;
 using std::vector;
 
+int Renderer::PrimitiveSubdivision = 8;
+
 Renderer::Renderer() {
   _cube = 0;
   _cone = 0;
@@ -114,13 +116,13 @@ void Renderer::init() {
   loadShader("normals", "../shaders/normals.vs", "../shaders/normals.fs");
 
   _cube = new Cube(1.0f);
-  _cone = new Cylinder(0.5f, 0.01, 1, 40);
-  _capsule = new Capsule(0.25, 0.5, 40, 40);
-  _cylinder = new Cylinder(0.5, 1.0, 40.0);
+  _cone = new Cylinder(0.5f, 0.01, 1, PrimitiveSubdivision);
+  _capsule = new Capsule(0.25, 0.5, PrimitiveSubdivision, PrimitiveSubdivision);
+  _cylinder = new Cylinder(0.5, 1.0, PrimitiveSubdivision);
   _teapot = new Teapot(13, mat4(1.0));
-  _torus = new Torus(0.5, 0.25, 40, 40);
+  _torus = new Torus(0.5, 0.25, PrimitiveSubdivision, PrimitiveSubdivision);
   _plane = new Plane(1.0, 1.0, 1.0, 1.0);
-  _sphere = new Sphere(0.5f, 40, 40);
+  _sphere = new Sphere(0.5f, PrimitiveSubdivision, PrimitiveSubdivision);
   _skybox = new SkyBox(1);
   _trs = mat4(1.0);
   _initialized = true;
@@ -345,7 +347,7 @@ void Renderer::sprite(const glm::vec3& pos,
     const glm::vec4& color, float size) {
   assert(_initialized);
 
-  mat4 mvp = _projectionMatrix * _viewMatrix;
+  mat4 mvp = _projectionMatrix * _viewMatrix * _trs;
   setUniform("MVP", mvp);
   setUniform("CameraPos", _lookfrom);
   setUniform("Offset", pos);
