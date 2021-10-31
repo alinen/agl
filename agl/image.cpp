@@ -17,7 +17,6 @@ Image::Image() :
   myWidth(0),
   myHeight(0),
   myLoaded(false) {
-  stbi_set_flip_vertically_on_load(false);
 }
 
 Image::Image(int width, int height) :
@@ -72,8 +71,9 @@ void Image::clear() {
   }
 }
 
-bool Image::load(const std::string& filename) {
+bool Image::load(const std::string& filename, bool flip) {
   clear();
+  stbi_set_flip_vertically_on_load(flip);
 
   int x, y, n;
   myData = stbi_load(filename.c_str(), &x, &y, &n, 0);

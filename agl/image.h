@@ -36,10 +36,11 @@ class Image {
   /** 
    * @brief Load the given filename (.png)
    * @param filename The file to load, relative to the running directory
+   * @param flip Whether the file should flipped vertally when loaded
    * 
    * @verbinclude sprites.cpp
    */
-  bool load(const std::string& filename);
+  bool load(const std::string& filename, bool flip = false);
 
   /** 
    * @brief Save the image to the given filename (.png)
