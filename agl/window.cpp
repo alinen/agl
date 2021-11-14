@@ -270,8 +270,9 @@ void Window::onMouseButton(int button, int action, int mods) {
   double xpos, ypos;
   glfwGetCursorPos(_window, &xpos, &ypos);
 
+  // ASN TODO: Save/pass modifiers so users can get it
   if (cameraEnabled()) {
-    camera.onMouseButton(button, action, xpos, ypos);
+    camera.onMouseButton(button, action, xpos, ypos, mods);
   }
 
   if (action == GLFW_PRESS) {

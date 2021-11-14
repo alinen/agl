@@ -225,14 +225,14 @@ float Camera::moveSpeed() const {
 
 void Camera::onMouseMotion(int pX, int pY) {
   // https://www.glfw.org/docs/latest/input_guide.html
-  if (mModifierState != GLFW_PRESS) return;
+  if (mActionState != GLFW_PRESS) return;
 
   int deltaX = mLastX - pX;
   int deltaY = mLastY - pY;
   bool moveLeftRight = abs(deltaX) > abs(deltaY);
   bool moveUpDown = !moveLeftRight;
 
-  if (mButtonState == GLFW_MOUSE_BUTTON_LEFT) {  // Rotate
+  if (mButtonState == GLFW_MOUSE_BUTTON_LEFT && mModifierState == 0x0) {  // Rotate
     if (moveLeftRight && deltaX > 0) orbitLeft(deltaX);
     else if (moveLeftRight && deltaX < 0) orbitRight(-deltaX);
     else if (moveUpDown && deltaY > 0) orbitUp(deltaY);
@@ -253,9 +253,10 @@ void Camera::onMouseMotion(int pX, int pY) {
   mLastY = pY;
 }
 
-void Camera::onMouseButton(int pButton, int pState, int x, int y) {
+void Camera::onMouseButton(int pButton, int pState, int x, int y, int mods) {
   mButtonState = pButton;
-  mModifierState = pState;
+  mActionState = pState;
+  mModifierState = mods;
   mLastX = x;
   mLastY = y;
 }

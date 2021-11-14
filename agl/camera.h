@@ -46,7 +46,7 @@ class Camera {
    */
   ///@{
   void onMouseMotion(int x, int y);  // x and y in screen coords
-  void onMouseButton(int button, int state, int x, int y);
+  void onMouseButton(int button, int state, int x, int y, int mods);
   void onKeyboard(int key, int scancode, int action, int mods);
   void onScroll(float dx, float dy);
   ///@}
@@ -106,6 +106,7 @@ class Camera {
   mutable int mLastX, mLastY;
   int mButtonState;
   int mModifierState;
+  int mActionState;
 };
 
 }  // namespace agl
