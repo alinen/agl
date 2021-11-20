@@ -79,10 +79,11 @@ void Camera::set(const vec3& eyepos, const vec3& look, const vec3& up) {
 
 void Camera::_set(const vec3& eyepos, const vec3& look, const vec3& up) {
   mEye = eyepos;
-  mN = eyepos - look;
+  mLook = look;
+  mN = normalize(eyepos - look);
   mV = cross(up, mN);
   mU = cross(mN, mV);
-  mRadius = length(mN);  // cache this distance
+  mRadius = distance(eyepos, look);  // cache this distance
 
   mU = normalize(mU);
   mV = normalize(mV);
@@ -272,6 +273,6 @@ void Camera::onScroll(float dx, float dy) {
 void Camera::onKeyboard(int pKey, int scancode, int action, int mods) {
   if (pKey == ' ') {
     reset();
-  }
+  } 
 }
 }  // namespace agl
