@@ -48,8 +48,7 @@ std::ostream& operator<<(std::ostream& o, const glm::vec2& v) {
   return o;
 }
 
-std::ostream& operator<<(std::ostream& o, const glm::quat& v)
-{
+std::ostream& operator<<(std::ostream& o, const glm::quat& v) {
   o << glm::to_string(v);
   return o;
 }
