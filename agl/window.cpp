@@ -241,6 +241,7 @@ void Window::init() {
 #endif
 
   // Initialize openGL and set default values
+  glEnable(GL_MULTISAMPLE);
   renderer.init();
   camera.set(vec3(0.0, 0.0, 2.0), vec3(0.0));
   background(vec3(0));
