@@ -76,7 +76,7 @@ bool Image::load(const std::string& filename, bool flip) {
   stbi_set_flip_vertically_on_load(flip);
 
   int x, y, n;
-  myData = stbi_load(filename.c_str(), &x, &y, &n, 0);
+  myData = stbi_load(filename.c_str(), &x, &y, &n, 4);
   myWidth = x;
   myHeight = y;
   myLoaded = true;
