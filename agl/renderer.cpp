@@ -26,6 +26,7 @@ using glm::vec3;
 using glm::vec4;
 using glm::mat4;
 using glm::mat3;
+using glm::quat;
 using std::string;
 using std::vector;
 
@@ -401,6 +402,10 @@ void Renderer::rotate(float angleRad, const vec3& axis) {
   _trs = _trs * glm::rotate(mat4(1.0), angleRad, axis);
 }
 
+void Renderer::rotate(const quat& orientation) {
+  _trs = _trs * glm::mat4(orientation);
+}
+
 void Renderer::transform(const glm::mat4& trs) {
   _trs = _trs * trs;
 }
@@ -628,8 +633,8 @@ void Renderer::loadTexture(const std::string& name,
     glGenTextures(1, &texId);
     _textures[name] = Texture{texId, slot};
   } else {
-    std::cout << "Warning: texture already registered with name: " << 
-        name << std::endl;
+    //std::cout << "Warning: texture already registered with name: " << 
+        //name << std::endl;
     texId = _textures[name].texId;
   }
 

@@ -443,6 +443,16 @@ class Renderer {
   void rotate(float angleRad, const glm::vec3& axis);
 
   /**
+   * @brief Rotates an object
+   * @param quat A unit quaternion representing the rotation
+   *
+   * Rotates the object by quat.  Transformations are
+   * relative to the current position, size, and rotation of the object.
+   * @verbinclude rotate.cpp
+   */
+  void rotate(const glm::quat& orientation);
+
+  /**
    * @brief Transforms an object by the given matrix
    * @param trs The matrix transform
    *
