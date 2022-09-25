@@ -63,7 +63,7 @@ void Window::setupPerspectiveScene(const vec3& center, const vec3& dim) {
   float d = dim[2];
   float vfov = glm::radians(60.0);
   float angle = 0.5f * vfov;
-  float aspect = _windowWidth / _windowHeight;
+  float aspect = ((float)_windowWidth) / _windowHeight;
   float dist;
   vec3 up, eye, look;
 
