@@ -260,6 +260,8 @@ void Window::onMouseMotion(int pX, int pY) {
   int dx = mousePos.x - _lastx;
   int dy = mousePos.y - _lasty;
   mouseMotion(pX, pY, dx, dy);  // user hook
+  _lastx = mousePos.x;
+  _lasty = mousePos.y;
 }
 
 void Window::onMouseButtonCb(GLFWwindow* win,
