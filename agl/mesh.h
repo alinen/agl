@@ -63,13 +63,14 @@ class Mesh {
   bool _isDynamic = false;
   bool _initialized = false;
   std::vector<GLuint> _buffers;   // vertex buffers
-  std::vector<GLfloat> _data[5];  // State for dynamic meshes
+  std::vector<GLfloat> _data[6];  // State for dynamic meshes
   enum VertexAttribute {
     INDEX = 0,
     POSITION,
     NORMAL,
     UV,
     TANGENT,
+    COLOR,
     NUM_ATTRIBUTES
   };
 
@@ -154,6 +155,7 @@ class Mesh {
     std::vector<GLfloat>* points,
     std::vector<GLfloat>* normals,
     std::vector<GLfloat>* texCoords = nullptr,
+    std::vector<GLfloat>* colors = nullptr,
     std::vector<GLfloat>* tangents = nullptr);
 
   virtual void deleteBuffers();

@@ -10,6 +10,7 @@ void Mesh::initBuffers(
   std::vector<GLfloat> * points,
   std::vector<GLfloat> * normals,
   std::vector<GLfloat> * texCoords,
+  std::vector<GLfloat> * colors,
   std::vector<GLfloat> * tangents
 ) {
   if (_initialized) return;
@@ -31,6 +32,7 @@ void Mesh::initBuffers(
     if (normals != nullptr) _data[NORMAL] = *normals;
     if (texCoords != nullptr) _data[UV] = *texCoords;
     if (tangents != nullptr) _data[TANGENT] = *tangents;
+    if (colors != nullptr) _data[COLOR] = *colors;
   }
 
   // The base mesh does not use an indexed buffer but subclasses might
@@ -39,7 +41,7 @@ void Mesh::initBuffers(
   _buffers.push_back(0);
 
   // Based on OpenGL 4.0 Shading language cookbook (David Wolf)
-  GLuint posBuf = 0, normBuf = 0, tcBuf = 0, tangentBuf = 0;
+  GLuint posBuf = 0, normBuf = 0, tcBuf = 0, tangentBuf = 0, cBuf = 0;
   glGenBuffers(1, &posBuf);
   _buffers.push_back(posBuf);
   glBindBuffer(GL_ARRAY_BUFFER, posBuf);
@@ -60,6 +62,14 @@ void Mesh::initBuffers(
     glBindBuffer(GL_ARRAY_BUFFER, tcBuf);
     glBufferData(GL_ARRAY_BUFFER,
         texCoords->size() * sizeof(GLfloat), texCoords->data(), type);
+  }
+
+  if (colors != nullptr) {
+    glGenBuffers(1, &cBuf);
+    _buffers.push_back(cBuf);
+    glBindBuffer(GL_ARRAY_BUFFER, cBuf);
+    glBufferData(GL_ARRAY_BUFFER,
+        colors->size() * sizeof(GLfloat), colors->data(), type);
   }
 
   if (tangents != nullptr) {
@@ -90,6 +100,12 @@ void Mesh::initBuffers(
     glBindBuffer(GL_ARRAY_BUFFER, tcBuf);
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(2);  // Tex coord
+  }
+
+  if (colors != nullptr) {
+    glBindBuffer(GL_ARRAY_BUFFER, cBuf);
+    glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(4);  // Tangents
   }
 
   if (tangents != nullptr) {
