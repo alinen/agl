@@ -30,7 +30,7 @@ using glm::quat;
 using std::string;
 using std::vector;
 
-int Renderer::PrimitiveSubdivision = 8;
+int Renderer::PrimitiveSubdivision = 32;
 
 Renderer::Renderer() {
   _cube = 0;
@@ -448,11 +448,15 @@ void Renderer::mesh(const Mesh& mesh) {
   mat4 mv = _viewMatrix * _trs;
   mat4 mvp = _projectionMatrix * mv;
   mat3 nmv = transpose(inverse(mat3(vec3(mv[0]), vec3(mv[1]), vec3(mv[2]))));
+  mat3 nm = transpose(inverse(mat3(vec3(_trs[0]), vec3(_trs[1]), vec3(_trs[2]))));
 
   setUniform("MVP", mvp);
   setUniform("ModelViewMatrix", mv);
   setUniform("NormalMatrix", nmv);
+  setUniform("ViewMatrix", _viewMatrix);
+  setUniform("ProjectionMatrix", _projectionMatrix);
   setUniform("ModelMatrix", _trs);
+  setUniform("ModelInverseTransposeMatrix", nm);
   setUniform("HasUV", mesh.hasUV());
 
   mesh.render();

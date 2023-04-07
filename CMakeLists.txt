@@ -1,5 +1,5 @@
-project(AGL)
 cmake_minimum_required(VERSION 3.14.0)
+project(AGL)
 
 if (WIN32) # Include win64 platforms
 
