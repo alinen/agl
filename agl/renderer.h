@@ -32,6 +32,25 @@ enum BlendMode {
 };
 
 /**
+ * @brief Mode for drawing polygons
+ *
+ * The cull model determines whether front or back facing polygons 
+ * are drawn. Front-facing polygons have their vertices listed in 
+ * counter-clockwise (CC) order 
+ *
+ * * *NONE*: No culling
+ * * *FRONT*: Only front facing polygons are drawn (Default)
+ * * *BACK*: Only back facing polygons are drawn 
+ * * *FRONT_AND_BACK*: Both front and back facing polygons are drawn
+ */
+enum CullMode {
+  NONE,
+  FRONT,
+  BACK,
+  FRONT_AND_BACK
+};
+
+/**
  * @brief The Renderer class draws meshes to the screen using shaders
  */
 class Renderer {
@@ -154,6 +173,12 @@ class Renderer {
    * @verbinclude select_drag.cpp
    */
   glm::mat4 viewMatrix() const { return _viewMatrix; }
+
+  /**
+   * @brief Get the current transform matrix
+   */
+  glm::mat4 transformMatrix() const { return _trs; }
+
   ///@}
 
   /** @name Shaders
@@ -234,6 +259,21 @@ class Renderer {
    * @verbinclude render_texture.cpp
    */
   void loadRenderTexture(const std::string& name, int slot,
+      int width, int height);
+
+  /**
+   * @brief Load and configure a render texture target for depth only
+   * @name The name of the render target and corresponding render texture. Use
+   * this name to activate the target and to use the rendered texture later.
+   * @slot The texture slot associated with the rendered texture
+   * @width The width in pixels of the rendered texture
+   * @height The height in pixels of the rendered texture
+   *
+   * @see beginRenderTexture
+   * @see endRenderTexture
+   * @verbinclude shadows.cpp
+   */
+  void loadDepthTexture(const std::string& name, int slot,
       int width, int height);
 
   /**
@@ -424,7 +464,7 @@ class Renderer {
    * @param xyz The direction to move the object.
    *
    * Moves the object in each of the XYZ directions. For example, an
-   * x-component of 10 will move the object in the positive X direction.
+   * x-component of 10 will move the object in the positive X direction
    * Transformations are relative to the current position, size, and rotation
    * of the object.
    * @verbinclude translate.cpp
@@ -477,6 +517,20 @@ class Renderer {
    * @verbinclude sprites.cpp
    */
   void blendMode(BlendMode mode);
+
+  /**
+   * @brief Culling mode for drawing polygon faces
+   *
+   * The cull model determines whether front or back facing polygons 
+   * are drawn. Front-facing polygons have their vertices listed in 
+   * counter-clockwise (CC) order 
+   *
+   * * *NONE*: No culling
+   * * *FRONT*: Only front facing polygons are drawn (Default)
+   * * *BACK*: Only back facing polygons are drawn 
+   * * *FRONT_AND_BACK*: Both front and back facing polygons are drawn
+   */
+  void cullMode(CullMode mode);
 
   /** @name Drawing
    */

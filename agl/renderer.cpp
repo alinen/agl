@@ -226,6 +226,24 @@ void Renderer::initText() {
     _fontSize = 20.0;
 }
 
+void Renderer::cullMode(CullMode mode) {
+  if (mode == NONE) {
+    glDisable(GL_CULL_FACE);
+  }
+  else if (mode == FRONT) {
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_FRONT);
+  }
+  else if (mode == BACK) {
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+  }
+  else if (mode == FRONT_AND_BACK) {
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_FRONT_AND_BACK);
+  }
+}
+
 void Renderer::blendMode(BlendMode mode) {
   if (mode == ADD) {
     _blendMode = ADD;
@@ -755,6 +773,60 @@ void Renderer::loadRenderTexture(const std::string& name,
   glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
+void Renderer::loadDepthTexture(const std::string& name,
+    int slot, int width, int height) {
+  if (slot == GLFONS_FONT_TEXTURE_SLOT) {
+    std::cout << "WARNING: slot " << slot << " conflicts with font texture\n";
+  }
+
+  GLfloat border[] = { 1.0f, 0.0f, 0.0f, 0.0f };
+
+  // Create the texture object
+  GLuint depthTex;
+  glGenTextures(1, &depthTex);
+  glActiveTexture(GL_TEXTURE0 + slot);  // put in given slot!!
+  glBindTexture(GL_TEXTURE_2D, depthTex);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, width, height, 0, GL_DEPTH_COMPONENT,
+      GL_UNSIGNED_BYTE, NULL);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_COMPARE_REF_TO_TEXTURE);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_FUNC, GL_LESS);
+  glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, border);
+
+  // save texture as an available texture object with the same name
+  _textures[name] = Texture{depthTex, slot};
+
+  // Generate and bind the framebuffer
+  GLuint depthFbo;
+  glGenFramebuffers(1, &depthFbo);
+  glBindFramebuffer(GL_FRAMEBUFFER, depthFbo);
+  glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT,
+      GL_TEXTURE_2D, depthTex, 0);
+
+  // Set the targets for the fragment output variables
+  GLenum drawBuffers[] = {GL_NONE};
+  glDrawBuffers(1, drawBuffers);
+
+  GLenum result = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+  if( result != GL_FRAMEBUFFER_COMPLETE) {
+    std::cout << "Framebuffer error: " << result << std::endl;
+  }
+
+  RenderTexture target; // todo
+  target.handleId = depthFbo;
+  target.textureId = depthTex;
+  target.depthId = -1;
+  target.slot = slot;
+  target.width = width;
+  target.height = height;
+  _renderTextures[name] = target;
+
+  // unbind fbo and revert to default (the screen)
+  glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
 
 }  // namespace agl
 

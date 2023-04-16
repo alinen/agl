@@ -2,7 +2,8 @@
 
 uniform samplerCube cubemap;
 uniform vec3 etaRatio;
-uniform float fresnel;
+uniform float fresnelBias;
+uniform float fresnelScale;
 uniform float fresnelPower;
 
 in vec3 eyePosition;
@@ -27,7 +28,7 @@ void main()
 	float refractColorB = texture(cubemap, refractDirB).b;
 	vec4 refractColor = vec4(refractColorR, refractColorG, refractColorB, 1.0);
 
-	float reflectivity = fresnel + (1 - fresnel) * pow(1 + dot(v, normal), fresnelPower);
+	float reflectivity = fresnelBias + fresnelScale * pow(1 + dot(v, normal), fresnelPower);
 	reflectivity = max(0, min(1, reflectivity));
 	FragColor = mix(reflectColor, refractColor, reflectivity);
 }

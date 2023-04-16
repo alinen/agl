@@ -17,7 +17,7 @@ if (WIN32) # Include win64 platforms
     agl
     external/lib)
 
-  set(CMAKE_CXX_STANDARD 11)
+  set(CMAKE_CXX_STANDARD 20)
   set(CMAKE_CXX_FLAGS 
      "/wd4018 /wd4244 /wd4305 
      /D_CRT_SECURE_NO_WARNINGS 
@@ -35,7 +35,7 @@ if (WIN32) # Include win64 platforms
 elseif (APPLE)
 
   set(CMAKE_MACOSX_RPATH 1)
-  set(CMAKE_CXX_FLAGS "-Wall -Wno-deprecated-declarations -Wno-reorder-ctor -Wno-unused-function -Wno-unused-variable -g -stdlib=libc++ -std=c++14")
+  set(CMAKE_CXX_FLAGS "-Wall -Wno-deprecated-declarations -Wno-reorder-ctor -Wno-unused-function -Wno-unused-variable -g -stdlib=libc++ -std=c++20")
   set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
   set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
   find_library(GL_LIB OpenGL)
@@ -52,7 +52,7 @@ elseif (APPLE)
 
 elseif (UNIX)
 
-  set(CMAKE_CXX_FLAGS "-Wall -g -std=c++11 -Wno-comment -Wno-sign-compare -Wno-reorder -Wno-unused-function")
+  set(CMAKE_CXX_FLAGS "-Wall -g -std=c++20 -Wno-comment -Wno-sign-compare -Wno-reorder -Wno-unused-function")
   set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/lib)
   set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin)
 
