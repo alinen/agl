@@ -7,12 +7,11 @@ class MyWindow : public agl::Window {
   void setup() {
     setWindowSize(1000, 1000);
 
-    renderer.loadShader("glow",
+    renderer.loadShader("screeneffects",
       "../shaders/shadertoy.vs",
-      "../shaders/glow.fs");
+      "../shaders/screeneffects.fs");
 
-    renderer.loadRenderTexture("SceneRender1", 0, 512, 512);
-    renderer.loadRenderTexture("SceneRender2", 1, 512, 512);
+    renderer.loadRenderTexture("SceneRender", 0, 512, 512);
   }
 
   void keyDown(int key, int mods) {
@@ -25,11 +24,34 @@ class MyWindow : public agl::Window {
     else if (key == '6') effect = 6;
   }
 
-  void drawScene(bool glowOnly) {
+  void drawScene(const vec3& campos, const vec3& lookpos) {
 
+    renderer.push();
+    renderer.translate(vec3(-1, 0.5, 0));
+    renderer.rotate(glm::radians(45.0f), vec3(1, 0, 1));
+    renderer.torus();
+    renderer.pop();
+
+    renderer.push();
+    renderer.translate(vec3(1, 1, 0));
+    renderer.scale(vec3(1, 2, 1));
+    renderer.cube();
+    renderer.pop();
+
+    renderer.push();
+    renderer.scale(vec3(20, 0.1, 20));
+    renderer.cube();
+    renderer.pop();
+  }
+
+  void draw() {
     float aspect = ((float)width()) / height();
+
+    // render pass #1
+    renderer.beginRenderTexture("SceneRender");
     renderer.beginShader("phong");
     renderer.setUniform("Material.specular", 1.0f, 1.0f, 1.0f);
+    renderer.setUniform("Material.diffuse", vec3(0.6f, 0.8f, 1.0f));
     renderer.setUniform("Material.ambient", 0.1f, 0.1f, 0.1f);
     renderer.setUniform("Material.shininess", 80.0f);
     renderer.setUniform("Light.position", lightpos);
@@ -43,52 +65,19 @@ class MyWindow : public agl::Window {
     eyePos[1] = radius * sin(elevation);
     eyePos[2] = radius * sin(azimuth) * cos(elevation);
     renderer.lookAt(eyePos, lookPos, up);
-
-    if (!glowOnly) {
-      renderer.push();
-      renderer.translate(vec3(-1, 0.5, 0));
-      renderer.rotate(glm::radians(45.0f), vec3(1, 0, 1));
-      renderer.torus();
-      renderer.pop();
-    }
-
-    // for testing
-    renderer.setUniform("Material.diffuse", vec3(0.0f, 0.8f, 1.0f));
-    renderer.push();
-    renderer.translate(vec3(1, 1, 0));
-    renderer.scale(glowOnly? vec3(1, 2, 1) : vec3(2,4,2));
-    renderer.cube();
-    renderer.pop();
-
-    renderer.setUniform("Material.diffuse", vec3(0.0f, 0.8f, 1.0f));
-    renderer.push();
-    renderer.scale(vec3(20, 0.1, 20));
-    renderer.cube();
-    renderer.pop();
-
+    drawScene(eyePos, lookPos);
     renderer.endShader();
-  }
-
-  void draw() {
-
-    // render pass #1
-    renderer.beginRenderTexture("SceneRender1");
-    drawScene(true);
     renderer.endRenderTexture();
 
     // render pass #2
-    renderer.beginRenderTexture("SceneRender2");
-    drawScene(false);
-    renderer.endRenderTexture();
-
-    // render pass #3
-    renderer.beginShader("glow");
+    renderer.beginShader("screeneffects");
     lookAt(vec3(0), vec3(0, 0, -2));
     ortho(0, width(), 0, height(), -1, 1);
     background(vec3(0));
+    renderer.setUniform("EffectType", effect);
+    renderer.setUniform("GlobalTime", elapsedTime());
     renderer.setUniform("Resolution", vec2(width(), height()));
-    renderer.texture("ScreenTexture1", "SceneRender1");
-    renderer.texture("ScreenTexture2", "SceneRender2");
+    renderer.texture("ScreenTexture", "SceneRender");
     renderer.identity();
     renderer.translate(vec3(width()*0.5, height()*0.5, 0.0));
     renderer.scale(vec3(width(), height(), 1.0f));
