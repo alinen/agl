@@ -30,6 +30,6 @@ void main()
 
 	float reflectivity = fresnelBias + fresnelScale * pow(1 + dot(v, normal), fresnelPower);
 	reflectivity = max(0, min(1, reflectivity));
-	FragColor = mix(reflectColor, refractColor, reflectivity);
+	FragColor = mix(reflectColor, refractColor, 1-reflectivity);
 }
 

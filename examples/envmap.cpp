@@ -1,7 +1,8 @@
 // Copyright (c) 2020, Savvy Sine, Aline Normoyle
 #include "agl/window.h"
-#include <format>
 #include <string>
+#include <sstream>
+#include <iomanip>
 
 using glm::vec3;
 class MyWindow : public agl::Window {
@@ -13,42 +14,49 @@ class MyWindow : public agl::Window {
 
     renderer.loadCubemap("background", "../textures/sea", 0);
     perspective(glm::radians<float>(60.0f), 1.0f, 0.1f, 100.0f);
+    lookAt(vec3(0,0,2), vec3(0), vec3(0,1,0));
   }
 
-  void keyDown(int key, int mods) {
-    float val = (mods == GLFW_KEY_LEFT_CONTROL)? 0.01 : -0.01;
-    if (key == '1') {
+  void checkKeyDown() {
+    int mod = keyIsDown(GLFW_KEY_LEFT_SHIFT);
+    float val = mod? 0.01 : -0.01;
+
+    if (keyIsDown('F')) {
       FScale = FScale + val;
     }
-    if (key == '2') {
+    if (keyIsDown('B')) {
       FBias = FBias + val;
     }
-    else if (key == 'E') {
+    if (keyIsDown('E')) {
       etaRatio = etaRatio + vec3(val);
     }
-    else if (key == 'R') {
+    if (keyIsDown('1')) {
       etaRatio[0] = etaRatio[0] + val; 
     }
-    else if (key == 'G') {
+    if (keyIsDown('2')) {
       etaRatio[1] = etaRatio[1] + val;
     }
-    else if (key == 'B') {
+    if (keyIsDown('3')) {
       etaRatio[2] = etaRatio[2] + val;
+    }
+    if (keyIsDown('P')) {
+      power += val;
     }
 
   }
 
   void draw() {
 
+    checkKeyDown();
+
     renderer.beginShader("envmap");
     renderer.texture("cubemap", "background");
     renderer.setUniform("etaRatio", etaRatio); // eta/etaPrime
     renderer.setUniform("fresnelScale", FScale);
     renderer.setUniform("fresnelBias", FBias);
-    renderer.setUniform("fresnelPower", 2.0f);
+    renderer.setUniform("fresnelPower", power);
     renderer.scale(vec3(1.5));
-    renderer.rotate(glm::radians(90.0f), vec3(1, 0, 0));
-    renderer.plane();
+    renderer.teapot();
     renderer.endShader();
 
     renderer.beginShader("cubemap");
@@ -57,20 +65,23 @@ class MyWindow : public agl::Window {
     renderer.endShader();
 
     renderer.fontSize(36);
-    /*
-    std::string lines[3];
-    lines[0] = "FScale: " + FScale; 
-    lines[1] = "FBias: " + FBias; 
-    lines[2] = "etaRatio: {:.2f}, {:.2f}, {:.2f}", etaRatio[0], etaRatio[1], etaRatio[2]);
+    
+    std::stringstream lines[4];
+    lines[0] << std::fixed << std::setprecision(2) << "FScale (F): " << FScale; 
+    lines[1] << std::fixed << std::setprecision(2) << "FBias (B): " << FBias; 
+    lines[2] << std::fixed << std::setprecision(2) << "Power (P): " << power; 
+    lines[3] << std::fixed << std::setprecision(2) << "etaRatio (E,1,2,3): " << 
+      etaRatio[0] <<  " " << etaRatio[1] << " "<< etaRatio[2];
 
-    for (int i = 0; i < 3; i++) {
-      renderer.text(lines[i], 25, 25 * (i + 1));
-    }*/
+    for (int i = 0; i < 4; i++) {
+      renderer.text(lines[i].str(), 25, 27 * (i + 1));
+    }
   }
-  float eta = 2.4f;
-  vec3 etaRatio = vec3(eta-0.6, eta-0.4, eta);
-  float FScale = 0.9f;
-  float FBias = 0.1f;
+  float eta = 2.07f;
+  vec3 etaRatio = vec3(eta-0.2, eta-0.1, eta);
+  float FScale = 1.22f;
+  float FBias = 0.55f;
+  float power = 4.0f;
 };
 
 int main() {
