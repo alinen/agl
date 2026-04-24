@@ -88,7 +88,9 @@ On linux, you can install many of the necessary tools and dependencies using `ap
 
 * `sudo apt-get install cmake`
 * `sudo apt-get install git`
-* `brew install glfw3`
+* `sudo apt-get install libglfw3-dev`
+* `sudo apt-get install mesa-utils`
+* `sudo apt-get install libglew-dev`
 
 todo
 
